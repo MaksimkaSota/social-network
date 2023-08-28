@@ -4,4 +4,7 @@
   background: $light-background;
   display: flex;
   flex: auto;
+  .content {
+    width: $right-block-width;
+  }
 }

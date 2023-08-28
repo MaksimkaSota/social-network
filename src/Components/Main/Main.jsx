@@ -1,12 +1,14 @@
 import classes from './Main.module.scss';
 import { Navigation } from './Navigation/Navigation';
-import { Profile } from './Profile/Profile';
+import { MainRoutes } from './MainRoutes';
 
 export const Main = () => {
   return (
     <main className={classes.main}>
       <Navigation />
-      <Profile />
+      <div className={classes.content}>
+        <MainRoutes />
+      </div>
     </main>
   );
 };

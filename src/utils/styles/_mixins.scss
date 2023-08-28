@@ -1,15 +1,5 @@
 @import 'src/utils/styles/variables';
 
-%flex-vertical-center {
-  display: flex;
-  align-items: center;
-}
-
-%left-block {
-  width: $left-block-width;
-  padding: $padding;
-}
-
 @mixin captions($fz, $ls) {
   color: $white;
   font-size: $fz;
@@ -21,4 +11,19 @@
   font-size: 1.5rem;
   color: $c;
   transition: all .3s linear;
+}
+
+%flex-vertical-center {
+  display: flex;
+  align-items: center;
+}
+
+%left-block {
+  width: $left-block-width;
+  padding: $padding;
+}
+
+%mini-title {
+  margin: $marginMaxi 0 $marginMaxi 0;
+  @include captions(2rem, .05rem);
 }

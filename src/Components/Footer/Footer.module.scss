@@ -18,13 +18,13 @@
     align-items: baseline;
     .title {
       @include captions(3rem, .3rem);
-      margin: 0 $margin 0 0;
+      margin: 0 $marginMaxi 0 0;
     }
     .contacts {
       .contact {
         @include click($captions);
         &:not(:last-child) {
-          margin: 0 $margin 0 0;
+          margin: 0 $marginMaxi 0 0;
         }
         &:hover {
           color: $active;
