@@ -1,0 +1,25 @@
+@import 'src/utils/styles/variables';
+@import 'src/utils/styles/mixins';
+
+.navigation {
+  @extend %left-block;
+  .link {
+    display: block;
+    padding: $padding $padding $padding 0;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 5px;
+    @include click($content);
+    &:hover {
+      color: $captions;
+    }
+  }
+  .active {
+    cursor: default;
+    background: $active;
+    border-radius: 5px;
+    &:hover {
+      color: $content;
+    }
+  }
+}

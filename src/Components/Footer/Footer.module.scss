@@ -1,0 +1,35 @@
+@import 'src/utils/styles/variables';
+@import 'src/utils/styles/mixins';
+
+.footer {
+  background: $dark-background;
+  text-align: center;
+  @extend %flex-vertical-center;
+  .mailContainer {
+    @extend %left-block;
+    .mail {
+      width: 100%;
+    }
+  }
+  .contactsContainer {
+    width: $right-block-width;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    .title {
+      @include captions(3rem, .3rem);
+      margin: 0 $marginMaxi 0 0;
+    }
+    .contacts {
+      .contact {
+        @include click($captions);
+        &:not(:last-child) {
+          margin: 0 $marginMaxi 0 0;
+        }
+        &:hover {
+          color: $active;
+        }
+      }
+    }
+  }
+}

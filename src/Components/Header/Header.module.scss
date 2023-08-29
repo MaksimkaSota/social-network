@@ -1,0 +1,24 @@
+@import 'src/utils/styles/variables';
+@import 'src/utils/styles/mixins';
+
+.header {
+  background: $dark-background;
+  @extend %flex-vertical-center;
+  .logoContainer {
+    @extend %left-block;
+    .logo {
+      width: 100%;
+      border-radius: 5px;
+    }
+  }
+  .headline {
+    width: $right-block-width;
+    text-align: center;
+    @include captions(5rem, .5rem);
+  }
+}
+
+
+
+
+

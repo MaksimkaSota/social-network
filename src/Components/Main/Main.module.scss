@@ -1,0 +1,10 @@
+@import 'src/utils/styles/variables';
+
+.main {
+  background: $light-background;
+  display: flex;
+  flex: auto;
+  .content {
+    width: $right-block-width;
+  }
+}

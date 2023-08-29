@@ -1,0 +1,29 @@
+@import 'src/utils/styles/variables';
+
+@mixin captions($fz, $ls) {
+  color: $white;
+  font-size: $fz;
+  letter-spacing: $ls;
+}
+
+@mixin click($c) {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: $c;
+  transition: all .3s linear;
+}
+
+%flex-vertical-center {
+  display: flex;
+  align-items: center;
+}
+
+%left-block {
+  width: $left-block-width;
+  padding: $padding;
+}
+
+%mini-title {
+  margin: $marginMaxi 0 $marginMaxi 0;
+  @include captions(2rem, .05rem);
+}
