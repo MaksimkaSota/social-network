@@ -1,9 +1,9 @@
-import classNames from 'classnames';
+import cn from 'classnames';
 import classes from './Navigation.module.scss';
 import { NavLink } from 'react-router-dom';
 
 export const Navigation = () => {
-  const setClass = ({isActive}) => classNames(classes.link, {[classes.active]: isActive});
+  const setClass = ({isActive}) => cn(classes.link, {[classes.active]: isActive});
 
   return (
     <nav className={classes.navigation}>

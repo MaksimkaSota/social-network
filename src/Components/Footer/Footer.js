@@ -13,13 +13,13 @@ export const Footer = () => {
           <a className={classes.contact}
              href="https://github.com/MaksimkaSota"
              target="_blank"
-             rel="noreferrer">
+             rel="noopener noreferrer">
             GitHub
           </a>
           <a className={classes.contact}
              href="https://linkedin.com/in/maksimkasota"
              target="_blank"
-             rel="noreferrer">
+             rel="noopener noreferrer">
             LinkedIn
           </a>
           <a className={classes.contact} href="mailto:MaksimkaSota@gmail.com">MaksimkaSota@gmail.com</a>
