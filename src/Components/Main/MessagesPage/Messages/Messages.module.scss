@@ -7,4 +7,10 @@
   .title {
     @extend %mini-title;
   }
+  .addMessageBlock {
+    margin: 0 0 $marginMini 0;
+    .inputMessage {
+      @extend %textarea;
+    }
+  }
 }

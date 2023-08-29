@@ -1,5 +1,6 @@
 import classes from './Posts.module.scss';
 import { Post } from '../Post/Post';
+import { Button } from '../../../Common/Button/Button';
 
 export const Posts = () => {
   return (
@@ -7,7 +8,7 @@ export const Posts = () => {
       <h3 className={classes.title}>My posts</h3>
       <div className={classes.addPostBlock}>
         <textarea className={classes.inputPost}></textarea>
-        <button className={classes.addPost}>Add post</button>
+        <Button buttonText='Add post' />
       </div>
       <Post message='Hi, Max '/>
       <Post message='Hi, Eugene' />

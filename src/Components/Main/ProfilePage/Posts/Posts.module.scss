@@ -10,12 +10,7 @@
   .addPostBlock {
     margin: 0 0 $marginMini 0;
     .inputPost {
-      display: block;
-      margin: 0 auto $marginMini auto;
-    }
-    .addPost {
-      display: block;
-      margin: 0 auto;
+      @extend %textarea;
     }
   }
 }
