@@ -1,6 +1,6 @@
 import classes from './Posts.module.scss';
 import { Post } from '../Post/Post';
-import { Button } from '../../../Common/Button/Button';
+import { Button } from '../../../../Common/Button/Button';
 
 export const Posts = () => {
   return (

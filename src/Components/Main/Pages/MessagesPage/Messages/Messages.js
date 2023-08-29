@@ -1,6 +1,6 @@
 import classes from './Messages.module.scss';
 import { Message } from '../Message/Message';
-import { Button } from '../../../Common/Button/Button';
+import { Button } from '../../../../Common/Button/Button';
 
 export const Messages = () => {
   return (
