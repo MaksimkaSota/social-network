@@ -2,19 +2,20 @@ import classes from './Posts.module.scss';
 import { Post } from '../Post/Post';
 import { Button } from '../../../../Common/Button/Button';
 
-export const Posts = () => {
+export const Posts = ({posts, postText, onSetPost, onAddPost}) => {
+  const postsElements = posts
+    .map((post, index) => <Post postText={post.postText} key={index} />);
+
   return (
     <div className={classes.postsBlock}>
       <h3 className={classes.title}>My posts</h3>
       <div className={classes.addPostBlock}>
-        <textarea className={classes.inputPost}></textarea>
-        <Button buttonText='Add post' />
+        <textarea onChange={onSetPost} className={classes.inputPost} value={postText} />
+        <Button callbackClick={onAddPost} buttonText="Add post" />
       </div>
-      <Post message='Hi, Max '/>
-      <Post message='Hi, Eugene' />
-      <Post message='Hi, Yuri' />
-      <Post message='Hi, Alexei' />
-      <Post message='Hi, Andrey' />
+      <div className={classes.posts}>
+        {postsElements}
+      </div>
     </div>
   );
 };

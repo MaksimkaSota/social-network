@@ -1,5 +1,5 @@
 import classes from './ProfilePage.module.scss';
-import { Posts } from './Posts/Posts';
+import { PostsContainer } from './Posts/PostsContainer';
 
 export const ProfilePage = () => {
   return (
@@ -7,7 +7,7 @@ export const ProfilePage = () => {
       <div className={classes.info}>
         <h3 className={classes.title}>My profile info</h3>
       </div>
-      <Posts />
+      <PostsContainer />
     </div>
   );
 };
