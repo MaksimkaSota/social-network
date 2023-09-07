@@ -2,9 +2,16 @@ import classes from './Posts.module.scss';
 import { Post } from '../Post/Post';
 import { Button } from '../../../../Common/Button/Button';
 
-export const Posts = ({posts, postText, onSetPost, onAddPost}) => {
+export const Posts = ({posts, postText, setPost, addPost}) => {
   const postsElements = posts
     .map((post, index) => <Post postText={post.postText} key={index} />);
+
+  const onSetPost = (event) => {
+    setPost(event.target.value);
+  };
+  const onAddPost = () => {
+    addPost();
+  };
 
   return (
     <div className={classes.postsBlock}>

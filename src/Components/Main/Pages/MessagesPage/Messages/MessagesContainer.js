@@ -1,25 +1,11 @@
 import { addMessage, setMessage } from '../../../../../redux/actions/messages';
 import { Messages } from './Messages';
-import { useContext } from 'react';
-import { StoreContext } from '../../../../Common/Context/StoreContext';
+import { connect } from 'react-redux';
 
-export const MessagesContainer = () => {
-  const store = useContext(StoreContext);
-  const dispatch = store.dispatch;
-  const state = store.getState();
+const mapStateToProps = (state) => ({
+  messages: state.messages.messages,
+  messageText: state.messages.messageText
+});
+const mapDispatchToProps = {setMessage, addMessage};
 
-  const onSetMessage = (event) => {
-    dispatch(setMessage(event.target.value));
-  };
-  const onAddMessage = () => {
-    dispatch(addMessage());
-  };
-
-  return (
-    <Messages messages={state.messages.messages}
-              messageText={state.messages.messageText}
-              onSetMessage={onSetMessage}
-              onAddMessage={onAddMessage}
-    />
-  );
-};
+export const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages);
