@@ -1,11 +1,13 @@
-import { addMessage, setMessage } from '../../../../../redux/actions/messages';
 import { Messages } from './Messages';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useActions } from '../../../../../utils/hooks/useActions';
 
-const mapStateToProps = (state) => ({
-  messages: state.messages.messages,
-  messageText: state.messages.messageText
-});
-const mapDispatchToProps = {setMessage, addMessage};
+export const MessagesContainer = () => {
+  const messages = useSelector((state) => state.messages.messages);
+  const messageText = useSelector((state) => state.messages.messageText);
+  const {setMessage, addMessage} = useActions();
 
-export const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages);
+  return (
+    <Messages messages={messages} messageText={messageText} setMessage={setMessage} addMessage={addMessage} />
+  );
+};

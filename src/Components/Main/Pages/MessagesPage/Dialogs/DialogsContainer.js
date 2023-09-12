@@ -1,8 +1,10 @@
 import { Dialogs } from './Dialogs';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-const mapStateToProps = (state) => ({
-  dialogs: state.messages.dialogs
-});
+export const DialogsContainer = () => {
+  const dialogs = useSelector((state) => state.messages.dialogs);
 
-export const DialogsContainer = connect(mapStateToProps)(Dialogs);
+  return (
+    <Dialogs dialogs={dialogs} />
+  );
+};

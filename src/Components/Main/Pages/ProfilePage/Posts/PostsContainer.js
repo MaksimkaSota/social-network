@@ -1,11 +1,13 @@
-import { setPost, addPost  } from '../../../../../redux/actions/profile';
 import { Posts } from './Posts';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useActions } from '../../../../../utils/hooks/useActions';
 
-const mapStateToProps = (state) => ({
-  posts: state.profile.posts,
-  postText: state.profile.postText
-});
-const mapDispatchToProps = {setPost, addPost};
+export const PostsContainer = () => {
+  const posts = useSelector((state) => state.profile.posts);
+  const postText = useSelector((state) => state.profile.postText);
+  const {setPost, addPost} = useActions();
 
-export const PostsContainer = connect(mapStateToProps, mapDispatchToProps)(Posts);
+  return (
+    <Posts posts={posts} postText={postText} setPost={setPost} addPost={addPost} />
+  );
+};
