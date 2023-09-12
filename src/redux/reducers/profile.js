@@ -19,8 +19,9 @@ export const profileReducer = (state = initialState, action) => {
         postText: action.payload
       };
     case ADD_POST:
+      let lastPostId = state.posts[state.posts.length - 1].id;
       const newPost = {
-        id: 6,
+        id: ++lastPostId,
         postText: state.postText
       };
       return {

@@ -4,7 +4,7 @@ import { Button } from '../../../../Common/Button/Button';
 
 export const Messages = ({messages, messageText, setMessage, addMessage}) => {
   const messagesElements = messages
-    .map((message, index) => <Message messageText={message.messageText} key={index} />);
+    .map((message) => <Message messageText={message.messageText} key={message.id} />);
 
   const onSetMessage = (event) => {
     setMessage(event.target.value);

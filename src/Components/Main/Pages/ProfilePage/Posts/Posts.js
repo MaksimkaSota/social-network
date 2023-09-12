@@ -4,7 +4,7 @@ import { Button } from '../../../../Common/Button/Button';
 
 export const Posts = ({posts, postText, setPost, addPost}) => {
   const postsElements = posts
-    .map((post, index) => <Post postText={post.postText} key={index} />);
+    .map((post) => <Post postText={post.postText} key={post.id} />);
 
   const onSetPost = (event) => {
     setPost(event.target.value);

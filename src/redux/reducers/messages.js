@@ -24,8 +24,9 @@ export const messagesReducer = (state = initialState, action) => {
         messageText: action.payload
       };
     case ADD_MESSAGE:
+      let lastMessageId = state.messages[state.messages.length - 1].id;
       const newMessage = {
-        id: 6,
+        id: ++lastMessageId,
         messageText: state.messageText
       };
       return {

@@ -3,7 +3,7 @@ import { Dialog } from '../Dialog/Dialog';
 
 export const Dialogs = ({dialogs}) => {
   const dialogsElements = dialogs
-    .map((dialog, index) => <Dialog name={dialog.name} id={dialog.id} key={index} />);
+    .map((dialog) => <Dialog name={dialog.name} id={dialog.id} key={dialog.id} />);
 
   return (
     <div className={classes.dialogsBlock}>
