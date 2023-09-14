@@ -1,2 +1,2 @@
-export const SET_POST = 'SET-POST';
-export const ADD_POST = 'ADD-POST';
+export const SET_POST = 'SET_POST';
+export const ADD_POST = 'ADD_POST';

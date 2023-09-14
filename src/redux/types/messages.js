@@ -1,2 +1,2 @@
-export const SET_MESSAGE = 'SET-MESSAGE';
-export const ADD_MESSAGE = 'ADD-MESSAGE';
+export const SET_MESSAGE = 'SET_MESSAGE';
+export const ADD_MESSAGE = 'ADD_MESSAGE';

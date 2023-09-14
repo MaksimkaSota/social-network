@@ -18,7 +18,7 @@ export const Messages = ({messages, messageText, setMessage, addMessage}) => {
       <h3 className={classes.title}>Messages</h3>
       <div className={classes.addMessageBlock}>
         <textarea onChange={onSetMessage} className={classes.inputMessage} value={messageText} />
-        <Button callbackClick={onAddMessage} buttonText="Add message" />
+        <Button onClick={onAddMessage} text="Add message" />
       </div>
       <div className={classes.messages}>
         {messagesElements}

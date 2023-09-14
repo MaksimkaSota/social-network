@@ -1,7 +1,7 @@
 import classes from './Button.module.scss';
 
-export const Button = ({buttonText, callbackClick}) => {
+export const Button = ({text, onClick}) => {
   return (
-    <button onClick={callbackClick} className={classes.button}>{buttonText}</button>
+    <button onClick={onClick} className={classes.button}>{text}</button>
   );
 };

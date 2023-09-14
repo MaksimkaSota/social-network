@@ -18,7 +18,7 @@ export const Posts = ({posts, postText, setPost, addPost}) => {
       <h3 className={classes.title}>My posts</h3>
       <div className={classes.addPostBlock}>
         <textarea onChange={onSetPost} className={classes.inputPost} value={postText} />
-        <Button callbackClick={onAddPost} buttonText="Add post" />
+        <Button onClick={onAddPost} text="Add post" />
       </div>
       <div className={classes.posts}>
         {postsElements}
