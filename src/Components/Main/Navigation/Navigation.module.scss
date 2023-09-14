@@ -1,6 +1,3 @@
-@import 'src/utils/styles/variables';
-@import 'src/utils/styles/mixins';
-
 .navigation {
   @extend %left-block;
   .link {

@@ -1,32 +1,32 @@
-@import 'src/utils/styles/variables';
+@import './variables';
 
 @mixin captions($fz, $ls) {
   color: $white;
   font-size: $fz;
   letter-spacing: $ls;
-}
+};
 
 @mixin click($c) {
   cursor: pointer;
   font-size: 1.3rem;
   color: $c;
   transition: all .3s linear;
-}
+};
 
 %flex-vertical-center {
   display: flex;
   align-items: center;
-}
+};
 
 %left-block {
   width: $left-block-width;
   padding: $padding;
-}
+};
 
 %mini-title {
   margin: $marginMini 0 $marginMaxi 0;
   @include captions(2rem, .05rem);
-}
+};
 
 %textarea {
   display: block;
@@ -38,4 +38,4 @@
   border-radius: 5px;
   resize: none;
   outline: none;
-}
+};
