@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
-import { ProfilePage } from './ProfilePage/ProfilePage';
-import { MessagesPage } from './MessagesPage/MessagesPage';
-import { UsersPage } from './UsersPage/UsersPage';
-import { NewsPage } from './NewsPage/NewsPage';
-import { MusicsPage } from './MusicsPage/MusicsPage';
-import { SettingsPage } from './SettingsPage/SettingsPage';
+import { ProfilePage } from './Pages/ProfilePage/ProfilePage';
+import { MessagesPage } from './Pages/MessagesPage/MessagesPage';
+import { UsersPage } from './Pages/UsersPage/UsersPage';
+import { NewsPage } from './Pages/NewsPage/NewsPage';
+import { MusicsPage } from './Pages/MusicsPage/MusicsPage';
+import { SettingsPage } from './Pages/SettingsPage/SettingsPage';
 
 export const MainRoutes = () => {
   return (

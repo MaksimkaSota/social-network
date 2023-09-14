@@ -1,6 +1,3 @@
-@import 'src/utils/styles/variables';
-@import 'src/utils/styles/mixins';
-
 .header {
   background: $dark-background;
   @extend %flex-vertical-center;

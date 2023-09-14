@@ -1,0 +1,17 @@
+.messagesBlock {
+  width: 50%;
+  text-align: center;
+  .title {
+    @extend %mini-title;
+  }
+  .addMessageBlock {
+    margin: 0 0 $marginMini 0;
+    .inputMessage {
+      @extend %textarea;
+    }
+  }
+  .messages {
+    height: 220px;
+    overflow-y: auto;
+  }
+}

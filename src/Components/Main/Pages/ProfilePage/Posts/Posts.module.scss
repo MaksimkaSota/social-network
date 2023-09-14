@@ -1,0 +1,17 @@
+.postsBlock {
+  width: 50%;
+  text-align: center;
+  .title {
+    @extend %mini-title;
+  }
+  .addPostBlock {
+    margin: 0 0 $marginMini 0;
+    .inputPost {
+      @extend %textarea;
+    }
+  }
+  .posts {
+    height: 220px;
+    overflow-y: auto;
+  }
+}
