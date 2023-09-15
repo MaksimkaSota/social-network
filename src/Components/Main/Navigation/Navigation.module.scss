@@ -5,7 +5,7 @@
     padding: $padding;
     font-weight: 700;
     text-align: center;
-    border-radius: 5px;
+    border-radius: $radius;
     @include click($content);
     &:hover {
       color: $captions;
@@ -14,7 +14,7 @@
   .active {
     cursor: default;
     background: $active;
-    border-radius: 5px;
+    border-radius: $radius;
     &:hover {
       color: $content;
     }

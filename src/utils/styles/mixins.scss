@@ -35,7 +35,7 @@
   padding: 5px;
   margin: 0 auto $marginMini auto;
   border: 1px solid $content;
-  border-radius: 5px;
+  border-radius: $radius;
   resize: none;
   outline: none;
 };
