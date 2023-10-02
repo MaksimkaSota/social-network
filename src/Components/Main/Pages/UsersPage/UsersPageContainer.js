@@ -1,7 +1,8 @@
 import { UsersPage } from './UsersPage';
 import { useDispatch, useSelector } from 'react-redux';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { follow, setUsers, unfollow } from '../../../../redux/actions/users';
+import { http } from '../../../../api/http';
 
 export const UsersPageContainer = () => {
   const users = useSelector((state) => state.users.users);
@@ -14,12 +15,15 @@ export const UsersPageContainer = () => {
     (id) => dispatch(unfollow(id)),
     [dispatch]
   );
-  const setUsersCallback = useCallback(
-    (users) => dispatch(setUsers(users)),
-    [dispatch]
-  );
+
+  useEffect(() => {
+    http.get('users')
+      .then((response) => {
+        dispatch(setUsers(response.data.items));
+      });
+  }, []);
 
   return (
-    <UsersPage users={users} follow={followCallback} unfollow={unfollowCallback} setUsers={setUsersCallback} />
+    <UsersPage users={users} follow={followCallback} unfollow={unfollowCallback} />
   );
 };

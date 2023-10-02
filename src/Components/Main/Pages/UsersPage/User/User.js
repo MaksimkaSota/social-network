@@ -14,7 +14,7 @@ export const User = ({user, follow, unfollow}) => {
     <div className={classes.user}>
       <div className={classes.userMainBlock}>
         <div className={classes.userPhotoBlock}>
-          <img className={classes.userPhoto} src={user.userPhotoURL || userPhoto} alt="avatar" />
+          <img className={classes.userPhoto} src={user.photos.small || userPhoto} alt="avatar" />
         </div>
         {
           user.followed ?
@@ -27,19 +27,11 @@ export const User = ({user, follow, unfollow}) => {
         <div className={classes.userInfo}>
           <div>
             <span className={classes.infoTitle}>Name: </span>
-            <span className={classes.infoText}>{user.name || 'user name'}</span>
+            <span className={classes.infoText}>{user.name || 'unknown name'}</span>
           </div>
           <div>
             <span className={classes.infoTitle}>Status: </span>
-            <span className={classes.infoText}>{user.status || 'user status'}</span>
-          </div>
-          <div>
-            <span className={classes.infoTitle}>City: </span>
-            <span className={classes.infoText}>{user.location.city || 'user city'}</span>
-          </div>
-          <div>
-            <span className={classes.infoTitle}>Country: </span>
-            <span className={classes.infoText}>{user.location.country || 'user country'}</span>
+            <span className={classes.infoText}>{user.status || 'unknown status'}</span>
           </div>
         </div>
       </div>
