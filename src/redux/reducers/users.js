@@ -1,7 +1,10 @@
-import { SET_USERS, FOLLOW, UNFOLLOW } from '../types/users';
+import { SET_USERS, FOLLOW, UNFOLLOW, SET_PAGE, SET_TOTAL_COUNT } from '../types/users';
 
 const initialState = {
-  users: []
+  users: [],
+  page: 1,
+  pageSize: 10,
+  totalCount: 0,
 };
 
 export const usersReducer = (state = initialState, action) => {
@@ -31,6 +34,16 @@ export const usersReducer = (state = initialState, action) => {
           return user;
         })
       };
+    case SET_PAGE:
+      return {
+        ...state,
+        page: action.payload
+      }
+    case SET_TOTAL_COUNT:
+      return {
+        ...state,
+        totalCount: action.payload
+      }
     default:
       return state;
   }

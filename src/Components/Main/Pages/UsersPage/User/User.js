@@ -23,7 +23,7 @@ export const User = ({user, follow, unfollow}) => {
         }
       </div>
       <div className={classes.userInfoBlock}>
-        <div className={classes.title}>About {user.name}</div>
+        <div className={classes.title}>About: {user.name}</div>
         <div className={classes.userInfo}>
           <div>
             <span className={classes.infoTitle}>Name: </span>

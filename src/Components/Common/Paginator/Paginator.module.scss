@@ -1,0 +1,28 @@
+.paginator {
+  margin: $marginMini auto $marginMini auto;
+  @extend %flex-vertical-center;
+  justify-content: center;
+  .paginatorBlock {
+    display: flex;
+    margin: 0 $marginMini 0 $marginMini;
+    .pageNumber {
+      padding: $padding;
+      border: 1px solid $content;
+      border-radius: $radius;
+      cursor: pointer;
+      transition: all .3s linear;
+      &:not(:last-child) {
+        margin: 0 $marginMini 0 0;
+      }
+      &:hover {
+        border: 1px solid $active;
+      }
+    }
+    .selectedPage {
+      font-weight: 700;
+      color: $captions;
+      border: 1px solid $active;
+      cursor: default;
+    }
+  }
+}
