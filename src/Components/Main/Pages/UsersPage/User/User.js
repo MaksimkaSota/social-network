@@ -1,6 +1,7 @@
 import classes from './User.module.scss';
 import userPhoto from '../../../../../assets/images/user.png';
 import { Button } from '../../../../Common/Button/Button';
+import { NavLink } from 'react-router-dom';
 
 export const User = ({user, follow, unfollow}) => {
   const onFollow = (id) => () => {
@@ -14,7 +15,9 @@ export const User = ({user, follow, unfollow}) => {
     <div className={classes.user}>
       <div className={classes.userMainBlock}>
         <div className={classes.userPhotoBlock}>
-          <img className={classes.userPhoto} src={user.photos.small || userPhoto} alt="avatar" />
+          <NavLink to={`/profile/${user.id}`}>
+            <img className={classes.userPhoto} src={user.photos.small || userPhoto} alt="avatar" />
+          </NavLink>
         </div>
         {
           user.followed ?

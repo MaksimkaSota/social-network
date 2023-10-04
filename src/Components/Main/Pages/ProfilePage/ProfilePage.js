@@ -1,12 +1,11 @@
 import classes from './ProfilePage.module.scss';
 import { PostsContainer } from './Posts/PostsContainer';
+import { ProfileInfoContainer } from './ProfileInfo/ProfileInfoContainer';
 
 export const ProfilePage = () => {
   return (
     <div className={classes.profilePageBlock}>
-      <div className={classes.info}>
-        <h3 className={classes.title}>My profile info</h3>
-      </div>
+      <ProfileInfoContainer />
       <PostsContainer />
     </div>
   );

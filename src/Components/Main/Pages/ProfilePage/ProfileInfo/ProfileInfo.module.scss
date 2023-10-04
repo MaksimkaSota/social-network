@@ -1,0 +1,8 @@
+.infoBlock {
+  width: 50%;
+  text-align: center;
+  border-right: 1px solid $active;
+  .title {
+    @extend %mini-title;
+  }
+}

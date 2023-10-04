@@ -9,7 +9,7 @@ import { UsersPageContainer } from './Pages/UsersPage/UsersPageContainer';
 export const MainRoutes = () => {
   return (
     <Routes>
-      <Route path="/profile" element={<ProfilePage />} />
+      <Route path="/profile/*" element={<ProfilePage />} />
       <Route path="/messages/*" element={<MessagesPage />} />
       <Route path="/users" element={<UsersPageContainer />} />
       <Route path="/news" element={<NewsPage />} />
