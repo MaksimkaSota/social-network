@@ -4,7 +4,7 @@
   margin: 0 auto;
   font-size: 1rem;
   color: $content;
-  border-radius: 5px;
+  border-radius: $radius;
   border: 1px solid $content;
   cursor: pointer;
   transition: all .3s linear;

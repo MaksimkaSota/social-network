@@ -1,0 +1,42 @@
+.user {
+  width: 50%;
+  display: flex;
+  margin: $marginMin auto $marginMin auto;
+  padding: $padding;
+  border: 1px solid $active;
+  border-radius: $radius;
+  .userMainBlock {
+    width: 40%;
+    border-right: 1px solid $content;
+    .userPhotoBlock {
+      width: 50%;
+      &:not(:last-child) {
+        margin: 0 auto $marginMin auto;
+      }
+      .userPhoto {
+        width: 100%;
+        border: 1px solid $content;
+        border-radius: $radius;
+      }
+    }
+  }
+  .userInfoBlock {
+    width: 60%;
+    .title {
+      @extend %mini-title;
+      margin-bottom: $marginMin;
+    }
+    .userInfo {
+      margin-left: $marginMax;
+      text-align: left;
+      .infoTitle {
+        color: $captions;
+        font-weight: 500;
+        font-size: 1rem;
+      }
+      .infoText {
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
