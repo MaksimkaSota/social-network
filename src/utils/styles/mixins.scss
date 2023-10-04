@@ -24,7 +24,7 @@
 };
 
 %mini-title {
-  margin: $marginMini 0 $marginMaxi 0;
+  margin: $marginMin 0 $marginMax 0;
   @include captions(2rem, .05rem);
 };
 
@@ -33,7 +33,7 @@
   width: 50%;
   height: 50px;
   padding: 5px;
-  margin: 0 auto $marginMini auto;
+  margin: 0 auto $marginMin auto;
   border: 1px solid $content;
   border-radius: $radius;
   resize: none;

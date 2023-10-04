@@ -1,7 +1,7 @@
 .user {
   width: 50%;
   display: flex;
-  margin: $marginMini auto $marginMini auto;
+  margin: $marginMin auto $marginMin auto;
   padding: $padding;
   border: 1px solid $active;
   border-radius: $radius;
@@ -11,7 +11,7 @@
     .userPhotoBlock {
       width: 50%;
       &:not(:last-child) {
-        margin: 0 auto $marginMini auto;
+        margin: 0 auto $marginMin auto;
       }
       .userPhoto {
         width: 100%;
@@ -24,10 +24,10 @@
     width: 60%;
     .title {
       @extend %mini-title;
-      margin-bottom: $marginMini;
+      margin-bottom: $marginMin;
     }
     .userInfo {
-      margin-left: $marginMaxi;
+      margin-left: $marginMax;
       text-align: left;
       .infoTitle {
         color: $captions;

@@ -1,10 +1,10 @@
 .paginator {
-  margin: $marginMini auto $marginMini auto;
+  margin: $marginMin auto $marginMin auto;
   @extend %flex-vertical-center;
   justify-content: center;
   .paginatorBlock {
     display: flex;
-    margin: 0 $marginMini 0 $marginMini;
+    margin: 0 $marginMin 0 $marginMin;
     .pageNumber {
       padding: $padding;
       border: 1px solid $content;
@@ -12,7 +12,7 @@
       cursor: pointer;
       transition: all .3s linear;
       &:not(:last-child) {
-        margin: 0 $marginMini 0 0;
+        margin: 0 $marginMin 0 0;
       }
       &:hover {
         border: 1px solid $active;
@@ -25,4 +25,8 @@
       cursor: default;
     }
   }
+}
+
+.paginatorButton {
+  margin: 0;
 }
