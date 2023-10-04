@@ -50,7 +50,7 @@ export const Paginator = ({
 
   return (
     <div className={classes.paginator}>
-      {currentPortion > 1 && <Button extraClass={classes.paginatorButton} text={'Prev'} onClick={onPrevButton} />}
+      {currentPortion > 1 && <Button className={classes.paginatorButton} text={'Prev'} onClick={onPrevButton} />}
       <div className={classes.paginatorBlock}>
         {
           currentPages
@@ -67,7 +67,7 @@ export const Paginator = ({
             })
         }
       </div>
-      {currentPortion < portionCount && <Button extraClass={classes.paginatorButton} text={'Next'} onClick={onNextButton} />}
+      {currentPortion < portionCount && <Button className={classes.paginatorButton} text={'Next'} onClick={onNextButton} />}
     </div>
   )
 };
