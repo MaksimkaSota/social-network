@@ -4,13 +4,24 @@ import cn from 'classnames';
 import { http } from '../../../api/http';
 import { Button } from '../Button/Button';
 
-export const Paginator = ({page, pageSize, totalCount, setPage, setUsers, setTotalCount, portionSize = 10}) => {
+export const Paginator = ({
+                            page,
+                            pageSize,
+                            totalCount,
+                            setPage,
+                            setUsers,
+                            setTotalCount,
+                            portionSize = 10,
+                            toggleIsFetching
+                          }) => {
   const onCurrentPage = (currentPage) => () => {
+    toggleIsFetching(true);
     setPage(currentPage);
     http.get(`users?page=${currentPage}&count=${pageSize}`)
       .then((response) => {
         setUsers(response.data.items);
         setTotalCount(response.data.totalCount);
+        toggleIsFetching(false);
       });
   }
 
