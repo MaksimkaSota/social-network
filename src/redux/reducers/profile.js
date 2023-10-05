@@ -10,7 +10,7 @@ const initialState = {
     {id: 5, postText: 'Hi, Andrey'}
   ],
   postText: 'Post text',
-  profile: null,
+  profile: {},
   isFetching: false
 };
 

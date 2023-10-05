@@ -2,6 +2,7 @@ import classes from './UsersPage.module.scss';
 import { User } from './User/User';
 import { Paginator } from '../../../Common/Paginator/Paginator';
 import { Preloader } from '../../../Common/Preloader/Preloader';
+import { useMounted } from '../../../../hooks/useMounted';
 
 export const UsersPage = ({
                             users,
@@ -16,29 +17,33 @@ export const UsersPage = ({
                             isFetching,
                             toggleIsFetching
                           }) => {
+  const mounted = useMounted();
+
   return (
-    <>
-      {
-        isFetching ?
-          <Preloader /> :
-          <div className={classes.usersPageBlock}>
-            <Paginator page={page}
-                       pageSize={pageSize}
-                       totalCount={totalCount}
-                       setUsers={setUsers}
-                       setPage={setPage}
-                       setTotalCount={setTotalCount}
-                       toggleIsFetching={toggleIsFetching}
-            />
-            <div>
-              {users.map((user) => <User key={user.id}
-                                         user={user}
-                                         follow={follow}
-                                         unfollow={unfollow} />
-              )}
+    mounted ?
+      <>
+        {
+          isFetching ?
+            <Preloader /> :
+            <div className={classes.usersPageBlock}>
+              <Paginator page={page}
+                         pageSize={pageSize}
+                         totalCount={totalCount}
+                         setUsers={setUsers}
+                         setPage={setPage}
+                         setTotalCount={setTotalCount}
+                         toggleIsFetching={toggleIsFetching}
+              />
+              <div>
+                {users.map((user) => <User key={user.id}
+                                           user={user}
+                                           follow={follow}
+                                           unfollow={unfollow} />
+                )}
+              </div>
             </div>
-          </div>
-      }
-    </>
+        }
+      </> :
+      null
   );
 };

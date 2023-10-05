@@ -6,14 +6,14 @@ import { setProfile, toggleIsFetching } from '../../../../../redux/actions/profi
 
 export const ProfileInfoContainer = () => {
   const profile = useSelector((state) => state.profile.profile);
-  const isFetching = useSelector((state) => state.users.isFetching);
+  const isFetching = useSelector((state) => state.profile.isFetching);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(toggleIsFetching(true));
     http.get(`profile/${2}`)
       .then((response) => {
-        dispatch(setProfile(response.data.items));
+        dispatch(setProfile(response.data));
         dispatch(toggleIsFetching(false));
       });
   }, []);
