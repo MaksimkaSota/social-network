@@ -2,23 +2,23 @@ import { ProfileInfo } from './ProfileInfo';
 import { useEffect } from 'react';
 import { http } from '../../../../../api/http';
 import { useDispatch, useSelector } from 'react-redux';
-import { setProfile, toggleIsFetching } from '../../../../../redux/actions/profile';
+import { setProfile, toggleIsFetchingProfile } from '../../../../../redux/actions/profile';
 
 export const ProfileInfoContainer = () => {
   const profile = useSelector((state) => state.profile.profile);
-  const isFetching = useSelector((state) => state.profile.isFetching);
+  const isFetchingProfile = useSelector((state) => state.profile.isFetchingProfile);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(toggleIsFetching(true));
+    dispatch(toggleIsFetchingProfile(true));
     http.get(`profile/${2}`)
       .then((response) => {
         dispatch(setProfile(response.data));
-        dispatch(toggleIsFetching(false));
+        dispatch(toggleIsFetchingProfile(false));
       });
   }, []);
 
   return (
-    <ProfileInfo profile={profile} isFetching={isFetching} />
+    <ProfileInfo profile={profile} isFetchingProfile={isFetchingProfile} />
   );
 };

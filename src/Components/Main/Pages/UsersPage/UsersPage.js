@@ -14,8 +14,8 @@ export const UsersPage = ({
                             setPage,
                             setUsers,
                             setTotalCount,
-                            isFetching,
-                            toggleIsFetching
+                            isFetchingUsers,
+                            toggleIsFetchingUsers
                           }) => {
   const mounted = useMounted();
 
@@ -23,7 +23,7 @@ export const UsersPage = ({
     mounted ?
       <>
         {
-          isFetching ?
+          isFetchingUsers ?
             <Preloader /> :
             <div className={classes.usersPageBlock}>
               <Paginator page={page}
@@ -32,7 +32,7 @@ export const UsersPage = ({
                          setUsers={setUsers}
                          setPage={setPage}
                          setTotalCount={setTotalCount}
-                         toggleIsFetching={toggleIsFetching}
+                         toggleIsFetchingUsers={toggleIsFetchingUsers}
               />
               <div>
                 {users.map((user) => <User key={user.id}

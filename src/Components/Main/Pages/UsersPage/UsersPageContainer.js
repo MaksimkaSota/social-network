@@ -1,7 +1,14 @@
 import { UsersPage } from './UsersPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCallback, useEffect } from 'react';
-import { follow, setPage, setTotalCount, setUsers, toggleIsFetching, unfollow } from '../../../../redux/actions/users';
+import {
+  follow,
+  setPage,
+  setTotalCount,
+  setUsers,
+  toggleIsFetchingUsers,
+  unfollow
+} from '../../../../redux/actions/users';
 import { http } from '../../../../api/http';
 
 export const UsersPageContainer = () => {
@@ -9,7 +16,7 @@ export const UsersPageContainer = () => {
   const page = useSelector((state) => state.users.page);
   const pageSize = useSelector((state) => state.users.pageSize);
   const totalCount = useSelector((state) => state.users.totalCount);
-  const isFetching = useSelector((state) => state.users.isFetching);
+  const isFetchingUsers = useSelector((state) => state.users.isFetchingUsers);
 
   const dispatch = useDispatch();
   const followCallback = useCallback(
@@ -32,19 +39,19 @@ export const UsersPageContainer = () => {
     (totalCount) => dispatch(setTotalCount(totalCount)),
     [dispatch]
   );
-  const toggleIsFetchingCallback = useCallback(
-    (isFetching) => dispatch(toggleIsFetching(isFetching)),
+  const toggleIsFetchingUsersCallback = useCallback(
+    (isFetching) => dispatch(toggleIsFetchingUsers(isFetching)),
     [dispatch]
   );
 
   useEffect(() => {
-    dispatch(toggleIsFetching(true));
+    dispatch(toggleIsFetchingUsers(true));
     dispatch(setPage(page));
     http.get(`users?page=${page}&count=${pageSize}`)
       .then((response) => {
         dispatch(setUsers(response.data.items));
         dispatch(setTotalCount(response.data.totalCount));
-        dispatch(toggleIsFetching(false));
+        dispatch(toggleIsFetchingUsers(false));
       });
   }, []);
 
@@ -58,8 +65,8 @@ export const UsersPageContainer = () => {
                setUsers={setUsersCallback}
                setPage={setPageCallback}
                setTotalCount={setTotalCountCallback}
-               isFetching={isFetching}
-               toggleIsFetching={toggleIsFetchingCallback}
+               isFetchingUsers={isFetchingUsers}
+               toggleIsFetchingUsers={toggleIsFetchingUsersCallback}
     />
   );
 };
