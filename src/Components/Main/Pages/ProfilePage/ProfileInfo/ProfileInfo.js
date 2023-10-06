@@ -14,6 +14,7 @@ export const ProfileInfo = ({profile, isFetchingProfile}) => {
               <Preloader /> :
               <div className={classes.infoBlock}>
                 <h3 className={classes.title}>My profile info</h3>
+                <p className={classes.fullName}>{profile.fullName}</p>
                 <img
                   className={classes.userPhoto}
                   src={profile.photos.large || userPhoto}

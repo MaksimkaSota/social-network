@@ -5,4 +5,13 @@
   .title {
     @extend %mini-title;
   }
+  .fullName {
+    @include captions(1.3rem, .05rem);
+    margin: 0 0 $marginMin 0;
+  }
+  .userPhoto {
+    width: 30%;
+    margin: 0 auto;
+    border-radius: $radius;
+  }
 }

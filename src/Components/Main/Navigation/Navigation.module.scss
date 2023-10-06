@@ -12,10 +12,10 @@
     }
   }
   .active {
-    cursor: default;
     background: $active;
     border-radius: $radius;
-    &:hover {
+    &:hover:not(:first-child) {
+      cursor: default;
       color: $content;
     }
   }
