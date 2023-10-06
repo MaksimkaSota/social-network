@@ -4,6 +4,7 @@ import { http } from '../../../../../api/http';
 import { useDispatch, useSelector } from 'react-redux';
 import { setProfile, toggleIsFetchingProfile } from '../../../../../redux/actions/profile';
 import { useParams } from 'react-router-dom';
+import { useMounted } from '../../../../../hooks/useMounted';
 
 export const ProfileInfoContainer = () => {
   const profile = useSelector((state) => state.profile.profile);
@@ -12,6 +13,8 @@ export const ProfileInfoContainer = () => {
   const dispatch = useDispatch();
 
   let {id} = useParams();
+
+  const mounted = useMounted();
 
   useEffect(() => {
     if (!id) {
@@ -26,6 +29,6 @@ export const ProfileInfoContainer = () => {
   }, [id]);
 
   return (
-    <ProfileInfo profile={profile} isFetchingProfile={isFetchingProfile} />
+    mounted && <ProfileInfo profile={profile} isFetchingProfile={isFetchingProfile} />
   );
 };

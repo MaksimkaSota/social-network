@@ -10,6 +10,7 @@ import {
   unfollow
 } from '../../../../redux/actions/users';
 import { http } from '../../../../api/http';
+import { useMounted } from '../../../../hooks/useMounted';
 
 export const UsersPageContainer = () => {
   const users = useSelector((state) => state.users.users);
@@ -44,6 +45,8 @@ export const UsersPageContainer = () => {
     [dispatch]
   );
 
+  const mounted = useMounted();
+
   useEffect(() => {
     dispatch(toggleIsFetchingUsers(true));
     dispatch(setPage(page));
@@ -56,17 +59,16 @@ export const UsersPageContainer = () => {
   }, []);
 
   return (
-    <UsersPage users={users}
-               follow={followCallback}
-               unfollow={unfollowCallback}
-               page={page}
-               pageSize={pageSize}
-               totalCount={totalCount}
-               setUsers={setUsersCallback}
-               setPage={setPageCallback}
-               setTotalCount={setTotalCountCallback}
-               isFetchingUsers={isFetchingUsers}
-               toggleIsFetchingUsers={toggleIsFetchingUsersCallback}
-    />
+    mounted && <UsersPage users={users}
+                          follow={followCallback}
+                          unfollow={unfollowCallback}
+                          page={page}
+                          pageSize={pageSize}
+                          totalCount={totalCount}
+                          setUsers={setUsersCallback}
+                          setPage={setPageCallback}
+                          setTotalCount={setTotalCountCallback}
+                          isFetchingUsers={isFetchingUsers}
+                          toggleIsFetchingUsers={toggleIsFetchingUsersCallback} />
   );
 };
