@@ -8,7 +8,9 @@ import { useParams } from 'react-router-dom';
 export const ProfileInfoContainer = () => {
   const profile = useSelector((state) => state.profile.profile);
   const isFetchingProfile = useSelector((state) => state.profile.isFetchingProfile);
+
   const dispatch = useDispatch();
+
   let {id} = useParams();
 
   useEffect(() => {
@@ -18,7 +20,6 @@ export const ProfileInfoContainer = () => {
     dispatch(toggleIsFetchingProfile(true));
     http.get(`profile/${id}`)
       .then((response) => {
-        console.log(response.data)
         dispatch(setProfile(response.data));
         dispatch(toggleIsFetchingProfile(false));
       });
