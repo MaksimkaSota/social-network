@@ -4,6 +4,7 @@ import { useCallback, useEffect } from 'react';
 import {
   follow,
   setPage,
+  setSubscribersId,
   setTotalCount,
   setUsers,
   toggleIsFetchingUsers,
@@ -18,6 +19,7 @@ export const UsersPageContainer = () => {
   const pageSize = useSelector((state) => state.users.pageSize);
   const totalCount = useSelector((state) => state.users.totalCount);
   const isFetchingUsers = useSelector((state) => state.users.isFetchingUsers);
+  const subscribersId = useSelector((state) => state.users.subscribersId);
 
   const dispatch = useDispatch();
   const followCallback = useCallback(
@@ -44,6 +46,10 @@ export const UsersPageContainer = () => {
     (isFetching) => dispatch(toggleIsFetchingUsers(isFetching)),
     [dispatch]
   );
+  const setSubscribersIdCallback = useCallback(
+    (isFetching, id) => dispatch(setSubscribersId(isFetching, id)),
+    [dispatch]
+  );
 
   const mounted = useMounted();
 
@@ -62,6 +68,8 @@ export const UsersPageContainer = () => {
     mounted && <UsersPage users={users}
                           follow={followCallback}
                           unfollow={unfollowCallback}
+                          subscribersId={subscribersId}
+                          setSubscribersId={setSubscribersIdCallback}
                           page={page}
                           pageSize={pageSize}
                           totalCount={totalCount}

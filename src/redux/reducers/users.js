@@ -1,11 +1,20 @@
-import { SET_USERS, FOLLOW, UNFOLLOW, SET_PAGE, SET_TOTAL_COUNT, TOGGLE_IS_FETCHING_USERS } from '../types/users';
+import {
+  SET_USERS,
+  FOLLOW,
+  UNFOLLOW,
+  SET_PAGE,
+  SET_TOTAL_COUNT,
+  TOGGLE_IS_FETCHING_USERS,
+  SET_SUBSCRIBERS_ID
+} from '../types/users';
 
 const initialState = {
   users: [],
   page: 1,
   pageSize: 10,
   totalCount: 0,
-  isFetchingUsers: false
+  isFetchingUsers: false,
+  subscribersId: []
 };
 
 export const usersReducer = (state = initialState, action) => {
@@ -49,6 +58,14 @@ export const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetchingUsers: action.payload
+      }
+    case SET_SUBSCRIBERS_ID:
+      return {
+        ...state,
+        subscribersId:
+          action.payload.isFetching ?
+            [...state.subscribersId, action.payload.id] :
+            state.subscribersId.filter((id) => id !== action.payload.id)
       }
     default:
       return state;

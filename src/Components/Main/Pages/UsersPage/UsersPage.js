@@ -7,6 +7,8 @@ export const UsersPage = ({
                             users,
                             follow,
                             unfollow,
+                            subscribersId,
+                            setSubscribersId,
                             page,
                             pageSize,
                             totalCount,
@@ -33,7 +35,9 @@ export const UsersPage = ({
           {users.map((user) => <User key={user.id}
                                      user={user}
                                      follow={follow}
-                                     unfollow={unfollow} />
+                                     unfollow={unfollow}
+                                     subscribersId={subscribersId}
+                                     setSubscribersId={setSubscribersId} />
           )}
         </div>
       </div>

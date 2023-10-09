@@ -4,18 +4,22 @@ import { Button } from '../../../../Common/Button/Button';
 import { NavLink } from 'react-router-dom';
 import { followAPI, unfollowAPI } from '../../../../../api/users';
 
-export const User = ({user, follow, unfollow}) => {
+export const User = ({user, follow, unfollow, subscribersId, setSubscribersId}) => {
   const onFollow = (id) => () => {
+    setSubscribersId(true, id);
     followAPI(id)
       .then((data) => {
+        setSubscribersId(false, id);
         if (data.resultCode === 0) {
           follow(id);
         }
       });
   };
   const onUnfollow = (id) => () => {
+    setSubscribersId(true, id);
     unfollowAPI(id)
       .then((data) => {
+        setSubscribersId(false, id);
         if (data.resultCode === 0) {
           unfollow(id);
         }
@@ -32,8 +36,8 @@ export const User = ({user, follow, unfollow}) => {
         </div>
         {
           user.followed ?
-            <Button onClick={onUnfollow(user.id)} text="Unfollow" /> :
-            <Button onClick={onFollow(user.id)} text="Follow" />
+            <Button onClick={onUnfollow(user.id)} text="Unfollow" disabled={subscribersId.includes(user.id)} /> :
+            <Button onClick={onFollow(user.id)} text="Follow" disabled={subscribersId.includes(user.id)}/>
         }
       </div>
       <div className={classes.userInfoBlock}>
