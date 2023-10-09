@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setProfile, toggleIsFetchingProfile } from '../../../../../redux/actions/profile';
 import { useParams } from 'react-router-dom';
 import { useMounted } from '../../../../../hooks/useMounted';
+import { getProfileAPI } from '../../../../../api/profile';
 
 export const ProfileInfoContainer = () => {
   const profile = useSelector((state) => state.profile.profile);
@@ -21,9 +22,9 @@ export const ProfileInfoContainer = () => {
       id = 29516;
     }
     dispatch(toggleIsFetchingProfile(true));
-    http.get(`profile/${id}`)
-      .then((response) => {
-        dispatch(setProfile(response.data));
+    getProfileAPI(id)
+      .then((data) => {
+        dispatch(setProfile(data));
         dispatch(toggleIsFetchingProfile(false));
       });
   }, [id]);

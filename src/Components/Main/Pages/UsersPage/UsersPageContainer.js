@@ -9,8 +9,8 @@ import {
   toggleIsFetchingUsers,
   unfollow
 } from '../../../../redux/actions/users';
-import { http } from '../../../../api/http';
 import { useMounted } from '../../../../hooks/useMounted';
+import { getUsersAPI } from '../../../../api/users';
 
 export const UsersPageContainer = () => {
   const users = useSelector((state) => state.users.users);
@@ -50,10 +50,10 @@ export const UsersPageContainer = () => {
   useEffect(() => {
     dispatch(toggleIsFetchingUsers(true));
     dispatch(setPage(page));
-    http.get(`users?page=${page}&count=${pageSize}`)
-      .then((response) => {
-        dispatch(setUsers(response.data.items));
-        dispatch(setTotalCount(response.data.totalCount));
+    getUsersAPI(page, pageSize)
+      .then((data) => {
+        dispatch(setUsers(data.items));
+        dispatch(setTotalCount(data.totalCount));
         dispatch(toggleIsFetchingUsers(false));
       });
   }, []);

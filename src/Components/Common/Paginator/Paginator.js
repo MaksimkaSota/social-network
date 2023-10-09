@@ -1,8 +1,8 @@
 import classes from './Paginator.module.scss';
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
-import { http } from '../../../api/http';
 import { Button } from '../Button/Button';
+import { getUsersAPI } from '../../../api/users';
 
 export const Paginator = ({
                             page,
@@ -17,10 +17,10 @@ export const Paginator = ({
   const onCurrentPage = (currentPage) => () => {
     toggleIsFetchingUsers(true);
     setPage(currentPage);
-    http.get(`users?page=${currentPage}&count=${pageSize}`)
-      .then((response) => {
-        setUsers(response.data.items);
-        setTotalCount(response.data.totalCount);
+    getUsersAPI(currentPage, pageSize)
+      .then((data) => {
+        setUsers(data.items);
+        setTotalCount(data.totalCount);
         toggleIsFetchingUsers(false);
       });
   }

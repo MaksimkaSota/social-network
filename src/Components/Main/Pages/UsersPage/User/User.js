@@ -2,22 +2,21 @@ import classes from './User.module.scss';
 import userPhoto from '../../../../../assets/images/user.png';
 import { Button } from '../../../../Common/Button/Button';
 import { NavLink } from 'react-router-dom';
-import { http } from '../../../../../api/http';
-import { setTotalCount, setUsers, toggleIsFetchingUsers } from '../../../../../redux/actions/users';
+import { followAPI, unfollowAPI } from '../../../../../api/users';
 
 export const User = ({user, follow, unfollow}) => {
   const onFollow = (id) => () => {
-    http.post(`follow/${id}`)
-      .then((response) => {
-        if (response.data.resultCode === 0) {
+    followAPI(id)
+      .then((data) => {
+        if (data.resultCode === 0) {
           follow(id);
         }
       });
   };
   const onUnfollow = (id) => () => {
-    http.delete(`follow/${id}`)
-      .then((response) => {
-        if (response.data.resultCode === 0) {
+    unfollowAPI(id)
+      .then((data) => {
+        if (data.resultCode === 0) {
           unfollow(id);
         }
       });
