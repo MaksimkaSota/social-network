@@ -12,16 +12,16 @@ export const Paginator = ({
                             setUsers,
                             setTotalCount,
                             portionSize = 10,
-                            toggleIsFetching
+                            toggleIsFetchingUsers
                           }) => {
   const onCurrentPage = (currentPage) => () => {
-    toggleIsFetching(true);
+    toggleIsFetchingUsers(true);
     setPage(currentPage);
     http.get(`users?page=${currentPage}&count=${pageSize}`)
       .then((response) => {
         setUsers(response.data.items);
         setTotalCount(response.data.totalCount);
-        toggleIsFetching(false);
+        toggleIsFetchingUsers(false);
       });
   }
 

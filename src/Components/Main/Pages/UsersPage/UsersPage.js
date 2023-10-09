@@ -13,32 +13,29 @@ export const UsersPage = ({
                             setPage,
                             setUsers,
                             setTotalCount,
-                            isFetching,
-                            toggleIsFetching
+                            isFetchingUsers,
+                            toggleIsFetchingUsers
                           }) => {
+
   return (
-    <>
-      {
-        isFetching ?
-          <Preloader /> :
-          <div className={classes.usersPageBlock}>
-            <Paginator page={page}
-                       pageSize={pageSize}
-                       totalCount={totalCount}
-                       setUsers={setUsers}
-                       setPage={setPage}
-                       setTotalCount={setTotalCount}
-                       toggleIsFetching={toggleIsFetching}
-            />
-            <div>
-              {users.map((user) => <User key={user.id}
-                                         user={user}
-                                         follow={follow}
-                                         unfollow={unfollow} />
-              )}
-            </div>
-          </div>
-      }
-    </>
+    isFetchingUsers ?
+      <Preloader /> :
+      <div className={classes.usersPageBlock}>
+        <Paginator page={page}
+                   pageSize={pageSize}
+                   totalCount={totalCount}
+                   setUsers={setUsers}
+                   setPage={setPage}
+                   setTotalCount={setTotalCount}
+                   toggleIsFetchingUsers={toggleIsFetchingUsers}
+        />
+        <div>
+          {users.map((user) => <User key={user.id}
+                                     user={user}
+                                     follow={follow}
+                                     unfollow={unfollow} />
+          )}
+        </div>
+      </div>
   );
 };

@@ -17,6 +17,9 @@
         width: 100%;
         border: 1px solid $content;
         border-radius: $radius;
+        &:hover {
+          border: 1px solid $active;
+        }
       }
     }
   }
