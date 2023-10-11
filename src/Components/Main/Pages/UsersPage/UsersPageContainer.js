@@ -1,17 +1,8 @@
 import { UsersPage } from './UsersPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCallback, useEffect } from 'react';
-import {
-  follow,
-  setPage,
-  setSubscribersId,
-  setTotalCount,
-  setUsers,
-  toggleIsFetchingUsers,
-  unfollow
-} from '../../../../redux/actions/users';
 import { useMounted } from '../../../../hooks/useMounted';
-import { getUsersAPI } from '../../../../api/users';
+import { followUser, getUsers, unfollowUser } from '../../../../redux/thunks/users';
 
 export const UsersPageContainer = () => {
   const users = useSelector((state) => state.users.users);
@@ -22,61 +13,34 @@ export const UsersPageContainer = () => {
   const subscribersId = useSelector((state) => state.users.subscribersId);
 
   const dispatch = useDispatch();
-  const followCallback = useCallback(
-    (id) => dispatch(follow(id)),
+  const followUserCallback = useCallback(
+    (id) => dispatch(followUser(id)),
     [dispatch]
   );
-  const unfollowCallback = useCallback(
-    (id) => dispatch(unfollow(id)),
+  const unfollowUserCallback = useCallback(
+    (id) => dispatch(unfollowUser(id)),
     [dispatch]
   );
-  const setUsersCallback = useCallback(
-    (users) => dispatch(setUsers(users)),
-    [dispatch]
-  );
-  const setPageCallback = useCallback(
-    (page) => dispatch(setPage(page)),
-    [dispatch]
-  );
-  const setTotalCountCallback = useCallback(
-    (totalCount) => dispatch(setTotalCount(totalCount)),
-    [dispatch]
-  );
-  const toggleIsFetchingUsersCallback = useCallback(
-    (isFetching) => dispatch(toggleIsFetchingUsers(isFetching)),
-    [dispatch]
-  );
-  const setSubscribersIdCallback = useCallback(
-    (isFetching, id) => dispatch(setSubscribersId(isFetching, id)),
+  const getUsersCallback = useCallback(
+    (page, pageSize) => dispatch(getUsers(page, pageSize)),
     [dispatch]
   );
 
   const mounted = useMounted();
 
   useEffect(() => {
-    dispatch(toggleIsFetchingUsers(true));
-    dispatch(setPage(page));
-    getUsersAPI(page, pageSize)
-      .then((data) => {
-        dispatch(setUsers(data.items));
-        dispatch(setTotalCount(data.totalCount));
-        dispatch(toggleIsFetchingUsers(false));
-      });
+    dispatch(getUsers(page, pageSize));
   }, []);
 
   return (
     mounted && <UsersPage users={users}
-                          follow={followCallback}
-                          unfollow={unfollowCallback}
-                          subscribersId={subscribersId}
-                          setSubscribersId={setSubscribersIdCallback}
                           page={page}
                           pageSize={pageSize}
                           totalCount={totalCount}
-                          setUsers={setUsersCallback}
-                          setPage={setPageCallback}
-                          setTotalCount={setTotalCountCallback}
                           isFetchingUsers={isFetchingUsers}
-                          toggleIsFetchingUsers={toggleIsFetchingUsersCallback} />
+                          subscribersId={subscribersId}
+                          followUser={followUserCallback}
+                          unfollowUser={unfollowUserCallback}
+                          getUsers={getUsersCallback} />
   );
 };

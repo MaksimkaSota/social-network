@@ -8,22 +8,12 @@ export const Paginator = ({
                             page,
                             pageSize,
                             totalCount,
-                            setPage,
-                            setUsers,
-                            setTotalCount,
                             portionSize = 10,
-                            toggleIsFetchingUsers
+                            onCurrentPageCallback
                           }) => {
   const onCurrentPage = (currentPage) => () => {
-    toggleIsFetchingUsers(true);
-    setPage(currentPage);
-    getUsersAPI(currentPage, pageSize)
-      .then((data) => {
-        setUsers(data.items);
-        setTotalCount(data.totalCount);
-        toggleIsFetchingUsers(false);
-      });
-  }
+    onCurrentPageCallback(currentPage, pageSize);
+  };
 
   const pagesCount = Math.ceil(totalCount / pageSize);
   const currentPages = [];

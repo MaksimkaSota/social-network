@@ -1,11 +1,9 @@
 import { ProfileInfo } from './ProfileInfo';
 import { useEffect } from 'react';
-import { http } from '../../../../../api/http';
 import { useDispatch, useSelector } from 'react-redux';
-import { setProfile, toggleIsFetchingProfile } from '../../../../../redux/actions/profile';
 import { useParams } from 'react-router-dom';
 import { useMounted } from '../../../../../hooks/useMounted';
-import { getProfileAPI } from '../../../../../api/profile';
+import { getProfile } from '../../../../../redux/thunks/profile';
 
 export const ProfileInfoContainer = () => {
   const profile = useSelector((state) => state.profile.profile);
@@ -21,12 +19,7 @@ export const ProfileInfoContainer = () => {
     if (!id) {
       id = 29516;
     }
-    dispatch(toggleIsFetchingProfile(true));
-    getProfileAPI(id)
-      .then((data) => {
-        dispatch(setProfile(data));
-        dispatch(toggleIsFetchingProfile(false));
-      });
+    dispatch(getProfile(id));
   }, [id]);
 
   return (
