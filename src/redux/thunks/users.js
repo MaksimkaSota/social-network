@@ -10,40 +10,34 @@ import {
 import { followAPI, getUsersAPI, unfollowAPI } from '../../api/users';
 
 export const getUsers = (page, pageSize) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(toggleIsFetchingUsers(true));
     dispatch(setPage(page));
-    getUsersAPI(page, pageSize)
-      .then((data) => {
-        dispatch(setUsers(data.items));
-        dispatch(setTotalCount(data.totalCount));
-        dispatch(toggleIsFetchingUsers(false));
-      });
+    const data = await getUsersAPI(page, pageSize);
+    dispatch(setUsers(data.items));
+    dispatch(setTotalCount(data.totalCount));
+    dispatch(toggleIsFetchingUsers(false));
   };
 };
 
 export const followUser = (id) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(setSubscribersId(true, id));
-    followAPI(id)
-      .then((data) => {
-        dispatch(setSubscribersId(false, id));
-        if (data.resultCode === 0) {
-          dispatch(follow(id));
-        }
-      });
+    const data = await followAPI(id);
+    dispatch(setSubscribersId(false, id));
+    if (data.resultCode === 0) {
+      dispatch(follow(id));
+    }
   };
 };
 
 export const unfollowUser = (id) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(setSubscribersId(true, id));
-    unfollowAPI(id)
-      .then((data) => {
-        dispatch(setSubscribersId(false, id));
-        if (data.resultCode === 0) {
-          dispatch(unfollow(id));
-        }
-      });
+    const data = await unfollowAPI(id);
+    dispatch(setSubscribersId(false, id));
+    if (data.resultCode === 0) {
+      dispatch(unfollow(id));
+    }
   };
 };
