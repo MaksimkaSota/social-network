@@ -1,29 +1,19 @@
 import classes from './Paginator.module.scss';
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
-import { http } from '../../../api/http';
 import { Button } from '../Button/Button';
+import { getUsersAPI } from '../../../api/users';
 
 export const Paginator = ({
                             page,
                             pageSize,
                             totalCount,
-                            setPage,
-                            setUsers,
-                            setTotalCount,
                             portionSize = 10,
-                            toggleIsFetchingUsers
+                            onCurrentPageCallback
                           }) => {
   const onCurrentPage = (currentPage) => () => {
-    toggleIsFetchingUsers(true);
-    setPage(currentPage);
-    http.get(`users?page=${currentPage}&count=${pageSize}`)
-      .then((response) => {
-        setUsers(response.data.items);
-        setTotalCount(response.data.totalCount);
-        toggleIsFetchingUsers(false);
-      });
-  }
+    onCurrentPageCallback(currentPage, pageSize);
+  };
 
   const pagesCount = Math.ceil(totalCount / pageSize);
   const currentPages = [];

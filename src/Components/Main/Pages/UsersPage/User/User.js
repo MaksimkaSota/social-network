@@ -3,12 +3,12 @@ import userPhoto from '../../../../../assets/images/user.png';
 import { Button } from '../../../../Common/Button/Button';
 import { NavLink } from 'react-router-dom';
 
-export const User = ({user, follow, unfollow}) => {
+export const User = ({user, subscribersId, followUser, unfollowUser}) => {
   const onFollow = (id) => () => {
-    follow(id);
+    followUser(id);
   };
   const onUnfollow = (id) => () => {
-    unfollow(id);
+    unfollowUser(id);
   };
 
   return (
@@ -21,8 +21,8 @@ export const User = ({user, follow, unfollow}) => {
         </div>
         {
           user.followed ?
-            <Button onClick={onUnfollow(user.id)} text="Unfollow" /> :
-            <Button onClick={onFollow(user.id)} text="Follow" />
+            <Button onClick={onUnfollow(user.id)} text="Unfollow" disabled={subscribersId.includes(user.id)} /> :
+            <Button onClick={onFollow(user.id)} text="Follow" disabled={subscribersId.includes(user.id)} />
         }
       </div>
       <div className={classes.userInfoBlock}>

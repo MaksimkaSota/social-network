@@ -5,35 +5,27 @@ import { Preloader } from '../../../Common/Preloader/Preloader';
 
 export const UsersPage = ({
                             users,
-                            follow,
-                            unfollow,
                             page,
                             pageSize,
                             totalCount,
-                            setPage,
-                            setUsers,
-                            setTotalCount,
                             isFetchingUsers,
-                            toggleIsFetchingUsers
+                            subscribersId,
+                            getUsers,
+                            followUser,
+                            unfollowUser
                           }) => {
 
   return (
     isFetchingUsers ?
       <Preloader /> :
       <div className={classes.usersPageBlock}>
-        <Paginator page={page}
-                   pageSize={pageSize}
-                   totalCount={totalCount}
-                   setUsers={setUsers}
-                   setPage={setPage}
-                   setTotalCount={setTotalCount}
-                   toggleIsFetchingUsers={toggleIsFetchingUsers}
-        />
+        <Paginator page={page} pageSize={pageSize} totalCount={totalCount} onCurrentPageCallback={getUsers} />
         <div>
           {users.map((user) => <User key={user.id}
                                      user={user}
-                                     follow={follow}
-                                     unfollow={unfollow} />
+                                     subscribersId={subscribersId}
+                                     followUser={followUser}
+                                     unfollowUser={unfollowUser} />
           )}
         </div>
       </div>
