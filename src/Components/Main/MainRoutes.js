@@ -4,14 +4,18 @@ import { MusicsPage } from './Pages/MusicsPage/MusicsPage';
 import { SettingsPage } from './Pages/SettingsPage/SettingsPage';
 import { UsersPageContainer } from './Pages/UsersPage/UsersPageContainer';
 import { LoginPage } from './Pages/LoginPage/Login';
-import { MessagesPageContainer } from './Pages/MessagesPage/MessagesPageContainer';
-import { ProfilePageContainer } from './Pages/ProfilePage/ProfilePageContainer';
+import { ProfilePage } from './Pages/ProfilePage/ProfilePage';
+import { MessagesPage } from './Pages/MessagesPage/MessagesPage';
+import { useAuthRedirect } from '../../hooks/useRedirect';
 
 export const MainRoutes = () => {
+  const authProfilePage = useAuthRedirect(<ProfilePage /> );
+  const authMessagesPage = useAuthRedirect(<MessagesPage /> );
+
   return (
     <Routes>
-      <Route path="/profile/:id?" element={<ProfilePageContainer />} />
-      <Route path="/messages/*" element={<MessagesPageContainer />} />
+      <Route path="/profile/:id?" element={authProfilePage} />
+      <Route path="/messages/*" element={authMessagesPage} />
       <Route path="/users" element={<UsersPageContainer />} />
       <Route path="/news" element={<NewsPage />} />
       <Route path="/musics" element={<MusicsPage />} />
