@@ -1,0 +1,27 @@
+.statusBlock {
+  width: 90%;
+  margin: 0 auto;
+  .status {
+    display: flex;
+    align-items: baseline;
+    .title {
+      color: $captions;
+      margin: 0 $marginMin 0 0;
+      font-size: 1rem;
+    }
+    .statusText {
+      word-break: break-word;
+      text-align: left;
+      font-size: .9rem;
+    }
+    .inputStatus {
+      @extend %textarea;
+      width: 100%;
+    }
+  }
+}
+
+.statusPreloader {
+  width: 30px;
+  margin: 0
+}

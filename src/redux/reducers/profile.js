@@ -1,4 +1,11 @@
-import { ADD_POST, SET_POST, SET_PROFILE, TOGGLE_IS_FETCHING_PROFILE } from '../types/profile';
+import {
+  ADD_POST,
+  SET_POST,
+  SET_PROFILE,
+  SET_STATUS,
+  TOGGLE_IS_FETCHING_PROFILE,
+  TOGGLE_IS_FETCHING_STATUS
+} from '../types/profile';
 
 const initialState = {
   posts: [
@@ -10,7 +17,9 @@ const initialState = {
   ],
   postText: 'Post text',
   profile: {},
-  isFetchingProfile: false
+  isFetchingProfile: false,
+  status: '',
+  isFetchingStatus: false
 };
 
 export const profileReducer = (state = initialState, action) => {
@@ -40,6 +49,16 @@ export const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetchingProfile: action.payload
+      }
+    case SET_STATUS:
+      return {
+        ...state,
+        status: action.payload
+      };
+    case TOGGLE_IS_FETCHING_STATUS:
+      return {
+        ...state,
+        isFetchingStatus: action.payload
       }
     default:
       return state;
