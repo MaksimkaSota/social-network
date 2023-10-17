@@ -9,12 +9,13 @@ import { MessagesPage } from './Pages/MessagesPage/MessagesPage';
 import { useAuthRedirect } from '../../hooks/useRedirect';
 
 export const MainRoutes = () => {
-  const authProfilePage = useAuthRedirect(<ProfilePage /> );
+  // const authProfilePage = useAuthRedirect(<ProfilePage /> );
   const authMessagesPage = useAuthRedirect(<MessagesPage /> );
 
   return (
     <Routes>
-      <Route path="/profile/:id?" element={authProfilePage} />
+      {/*<Route path="/profile/:id?" element={authProfilePage} />*/}
+      <Route path="/profile/:id?" element={<ProfilePage />} />
       <Route path="/messages/*" element={authMessagesPage} />
       <Route path="/users" element={<UsersPageContainer />} />
       <Route path="/news" element={<NewsPage />} />

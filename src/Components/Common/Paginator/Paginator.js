@@ -2,7 +2,6 @@ import classes from './Paginator.module.scss';
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { Button } from '../Button/Button';
-import { getUsersAPI } from '../../../api/users';
 
 export const Paginator = ({
                             page,
@@ -35,8 +34,8 @@ export const Paginator = ({
   };
 
   useEffect(() => {
-    setCurrentPortion(Math.ceil(page / portionSize))
-  }, [page]);
+    setCurrentPortion(Math.ceil(page / portionSize));
+  }, []);
 
   return (
     <div className={classes.paginator}>
@@ -59,5 +58,5 @@ export const Paginator = ({
       </div>
       {currentPortion < portionCount && <Button className={classes.paginatorButton} text={'Next'} onClick={onNextButton} />}
     </div>
-  )
+  );
 };
