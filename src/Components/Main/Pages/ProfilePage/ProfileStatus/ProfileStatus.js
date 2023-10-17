@@ -25,25 +25,21 @@ export const ProfileStatus = ({status, updateStatus, isFetchingStatus}) => {
 
   return (
     <div className={classes.statusBlock}>
-      {
-        editMode ?
-          <div className={classes.status}>
-            <b className={classes.title}>Status:</b>
+      <div className={classes.status}>
+        <b className={classes.title}>Status:</b>
+        {
+          editMode ?
             <textarea className={classes.inputStatus}
                       onChange={onChangeLocalStatus}
                       onBlur={onDeactivateEditMode}
                       autoFocus={true}
-                      value={localStatus} />
-          </div> :
-          <div className={classes.status}>
-            <b className={classes.title}>Status:</b>
-            {
-              isFetchingStatus ?
-                <Preloader className={classes.statusPreloader} /> :
-                <p className={classes.statusText} onDoubleClick={onActivateEditMode}>{status || 'no status'}</p>
-            }
-          </div>
-      }
+                      value={localStatus}
+            /> :
+            isFetchingStatus ?
+              <Preloader className={classes.statusPreloader} /> :
+              <p className={classes.statusText} onDoubleClick={onActivateEditMode}>{status || 'no status'}</p>
+        }
+      </div>
     </div>
   );
 };
