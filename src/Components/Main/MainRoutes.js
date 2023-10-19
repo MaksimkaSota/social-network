@@ -3,7 +3,7 @@ import { NewsPage } from './Pages/NewsPage/NewsPage';
 import { MusicsPage } from './Pages/MusicsPage/MusicsPage';
 import { SettingsPage } from './Pages/SettingsPage/SettingsPage';
 import { UsersPageContainer } from './Pages/UsersPage/UsersPageContainer';
-import { LoginPage } from './Pages/LoginPage/Login';
+import { LoginPage } from './Pages/LoginPage/LoginPage';
 import { ProfilePage } from './Pages/ProfilePage/ProfilePage';
 import { MessagesPage } from './Pages/MessagesPage/MessagesPage';
 import { useAuthRedirect } from '../../hooks/useRedirect';
