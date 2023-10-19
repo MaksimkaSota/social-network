@@ -13,8 +13,8 @@
       border-radius: $radius;
     }
     .fieldError {
-      position: relative;
       color:$error;
+      font-size: 1.1rem;
     }
   }
   .toggleBlock {

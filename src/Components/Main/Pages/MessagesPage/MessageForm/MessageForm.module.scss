@@ -1,0 +1,13 @@
+.addMessageBlock {
+  margin: 0 0 $marginMin 0;
+  .fieldBlock {
+    margin: 0 0 $marginMin 0;
+    .inputMessage {
+      @extend %textarea;
+    }
+    .fieldError {
+      color:$error;
+      font-size: 1.1rem;
+    }
+  }
+}

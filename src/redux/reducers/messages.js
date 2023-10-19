@@ -1,4 +1,4 @@
-import { ADD_MESSAGE, SET_MESSAGE } from '../types/messages';
+import { ADD_MESSAGE } from '../types/messages';
 
 const initialState = {
   dialogs: [
@@ -12,27 +12,20 @@ const initialState = {
     {id: 1, messageText: 'Hi'},
     {id: 2, messageText: 'Hey'},
     {id: 3, messageText: 'Hello'}
-  ],
-  messageText: 'Message text'
+  ]
 };
 
 export const messagesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_MESSAGE:
-      return {
-        ...state,
-        messageText: action.payload
-      };
     case ADD_MESSAGE:
       let lastMessageId = state.messages[state.messages.length - 1].id;
       const newMessage = {
         id: ++lastMessageId,
-        messageText: state.messageText
+        messageText: action.payload
       };
       return {
         ...state,
-        messages: [...state.messages, newMessage],
-        messageText: ''
+        messages: [...state.messages, newMessage]
       };
     default:
       return state;

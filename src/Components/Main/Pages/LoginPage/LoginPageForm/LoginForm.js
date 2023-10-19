@@ -8,6 +8,7 @@ export const LoginForm = ({isSubmitting}) => {
       <div className={classes.fieldBlock}>
         <Field
           name={'email'}
+          component={'input'}
           type={'email'}
           className={classes.field}
           placeholder={'Email'}
@@ -17,6 +18,7 @@ export const LoginForm = ({isSubmitting}) => {
       <div className={classes.fieldBlock}>
         <Field
           name={'password'}
+          component={'input'}
           type={'password'}
           className={classes.field}
           placeholder={'Password'}
@@ -27,6 +29,7 @@ export const LoginForm = ({isSubmitting}) => {
       <div className={classes.toggleBlock}>
         <Field
           name={'rememberMe'}
+          component={'input'}
           type={'checkbox'}
           className={classes.checkbox}
           id={'rememberMe'}
