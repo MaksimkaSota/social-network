@@ -6,7 +6,7 @@ export const getAuthAPI = async () => {
 };
 
 export const loginAPI = async (email, password, rememberMe) => {
-  const response = await http.post(`auth/login`, {email: email, password: password, rememberMe: rememberMe});
+  const response = await http.post(`auth/login`, {email, password, rememberMe});
   return await response.data;
 };
 

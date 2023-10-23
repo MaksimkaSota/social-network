@@ -11,6 +11,6 @@ export const getStatusAPI = async (id) => {
 };
 
 export const updateStatusAPI = async (status) => {
-  const response = await http.put(`profile/status`, {status: status});
+  const response = await http.put(`profile/status`, {status});
   return await response.data;
 };
