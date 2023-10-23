@@ -1,4 +1,4 @@
-import { SET_AUTH_DATA, SET_AUTH_USER_PHOTO } from '../types/auth';
+import { RESET_AUTH_DATA, SET_AUTH_DATA, SET_AUTH_USER_PHOTO } from '../types/auth';
 
 const initialState = {
   id: null,
@@ -20,6 +20,11 @@ export const authReducer = (state = initialState, action) => {
       return {
         ...state,
         authUserPhoto: action.payload,
+      }
+    case RESET_AUTH_DATA:
+      return {
+        ...state,
+        ...initialState
       }
     default:
       return state;

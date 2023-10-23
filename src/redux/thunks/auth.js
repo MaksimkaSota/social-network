@@ -1,5 +1,5 @@
-import { getAuthAPI } from '../../api/auth';
-import { setAuthData, setAuthUserPhoto } from '../actions/auth';
+import { getAuthAPI, loginAPI, logoutAPI } from '../../api/auth';
+import { resetAuthData, setAuthData, setAuthUserPhoto } from '../actions/auth';
 import { getProfileAPI } from '../../api/profile';
 
 export const getAuth = () => {
@@ -11,4 +11,27 @@ export const getAuth = () => {
       dispatch(setAuthUserPhoto(dataProfile.photos.small));
     }
   };
+};
+
+export const login = (email, password, rememberMe, setStatus, setSubmitting) => {
+  return async (dispatch) => {
+    const data = await loginAPI(email, password, rememberMe);
+    if (data.resultCode === 0) {
+      dispatch(getAuth());
+    } else {
+      const message = data.messages[0] || 'Some error';
+      console.log(message);
+      setStatus(message);
+    }
+    setSubmitting(false);
+  };
+};
+
+export const logout = () => {
+  return async (dispatch) => {
+    const data = await logoutAPI();
+    if (data.resultCode === 0) {
+      dispatch(resetAuthData());
+    }
+  }
 };

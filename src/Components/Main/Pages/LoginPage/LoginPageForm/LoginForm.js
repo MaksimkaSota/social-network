@@ -2,7 +2,7 @@ import { ErrorMessage, Field, Form } from 'formik';
 import classes from './LoginForm.module.scss';
 import { Button } from '../../../../Common/Button/Button';
 
-export const LoginForm = ({isSubmitting}) => {
+export const LoginForm = ({isSubmitting, status}) => {
   return (
     <Form className={classes.loginForm}>
       <div className={classes.fieldBlock}>
@@ -36,6 +36,7 @@ export const LoginForm = ({isSubmitting}) => {
         />
         <label htmlFor={'rememberMe'} className={classes.label}>Remember me</label>
       </div>
+      {status && <p className={classes.formError}>{status}</p>}
       <Button text={'Login'} type={'submit'} className={classes.loginButton} disabled={isSubmitting} />
     </Form>
   );

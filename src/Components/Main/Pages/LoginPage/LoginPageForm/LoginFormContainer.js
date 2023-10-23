@@ -12,10 +12,9 @@ const validationSchema = Yup.object().shape({
     .required('Required password')
 });
 
-export const LoginFormContainer = () => {
-  const onSubmit = (formData, {setSubmitting}) => {
-    console.log(formData);
-    setSubmitting(false);
+export const LoginFormContainer = ({login}) => {
+  const onSubmit = (formData, {setStatus, setSubmitting}) => {
+    login(formData.email, formData.password, formData.rememberMe, setStatus, setSubmitting);
   };
 
   return (
@@ -29,7 +28,7 @@ export const LoginFormContainer = () => {
       onSubmit={onSubmit}
     >
       {
-        ({isSubmitting}) => <LoginForm isSubmitting={isSubmitting} />
+        ({isSubmitting, status}) => <LoginForm isSubmitting={isSubmitting} status={status} />
       }
     </Formik>
   );

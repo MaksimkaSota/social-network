@@ -1,2 +1,3 @@
 export const SET_AUTH_DATA = 'SET_AUTH_DATA';
 export const SET_AUTH_USER_PHOTO = 'SET_AUTH_USER_PHOTO';
+export const RESET_AUTH_DATA = 'RESET_AUTH_DATA';

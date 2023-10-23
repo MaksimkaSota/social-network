@@ -1,7 +1,7 @@
 import { ProfileInfo } from './ProfileInfo';
 import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useMounted } from '../../../../../hooks/useMounted';
 import { getProfile, getStatus, updateStatus } from '../../../../../redux/thunks/profile';
 
@@ -10,6 +10,7 @@ export const ProfileInfoContainer = () => {
   const isFetchingProfile = useSelector((state) => state.profile.isFetchingProfile);
   const status = useSelector((state) => state.profile.status);
   const isFetchingStatus = useSelector((state) => state.profile.isFetchingStatus);
+  const authorizedUserId = useSelector((state) => state.auth.id);
 
   const dispatch = useDispatch();
   const updateStatusCallback = useCallback(
@@ -17,17 +18,23 @@ export const ProfileInfoContainer = () => {
     [dispatch]
   );
 
-  let {id} = useParams();
+  let {id: paramId} = useParams();
+  const navigate = useNavigate();
 
   const mounted = useMounted();
 
   useEffect(() => {
-    if (!id) {
-      id = 29516;
+    if (!paramId) {
+      paramId = authorizedUserId;
+      if (!paramId) {
+        navigate('/login');
+      }
     }
-    dispatch(getProfile(id));
-    dispatch(getStatus(id));
-  }, [id]);
+    if (paramId) {
+      dispatch(getProfile(paramId));
+      dispatch(getStatus(paramId));
+    }
+  }, [paramId]);
 
   return (
     mounted && <ProfileInfo profile={profile}
