@@ -20,7 +20,6 @@ export const login = (email, password, rememberMe, setStatus, setSubmitting) => 
       dispatch(getAuth());
     } else {
       const message = data.messages[0] || 'Some error';
-      console.log(message);
       setStatus(message);
     }
     setSubmitting(false);

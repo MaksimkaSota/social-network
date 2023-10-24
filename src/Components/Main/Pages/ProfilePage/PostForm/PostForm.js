@@ -1,14 +1,18 @@
-import { ErrorMessage, Field, Form } from 'formik';
+import { Form } from 'formik';
 import classes from './PostForm.module.scss';
 import { Button } from '../../../../Common/Button/Button';
+import { FormField } from '../../../../Common/FormField/FormField';
 
 export const PostForm = ({isSubmitting}) => {
   return (
     <Form className={classes.addPostBlock}>
-      <div className={classes.fieldBlock}>
-        <Field name={'text'} component={'textarea'} className={classes.inputPost} placeholder={'Post text'} />
-        <ErrorMessage name="text" component="p" className={classes.fieldError} />
-      </div>
+      <FormField
+        classNameFormField={classes.fieldBlock}
+        classNameField={classes.inputPost}
+        name={'text'}
+        component={'textarea'}
+        placeholder={'Post text'}
+      />
       <Button text={'Add post'} type={'submit'} disabled={isSubmitting} />
     </Form>
   );

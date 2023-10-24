@@ -1,14 +1,18 @@
-import { ErrorMessage, Field, Form } from 'formik';
+import { Form } from 'formik';
 import classes from './MessageForm.module.scss';
 import { Button } from '../../../../Common/Button/Button';
+import { FormField } from '../../../../Common/FormField/FormField';
 
 export const MessageForm = ({isSubmitting}) => {
   return (
     <Form className={classes.addMessageBlock}>
-      <div className={classes.fieldBlock}>
-        <Field name={'text'} component={'textarea'} className={classes.inputMessage} placeholder={'Message text'} />
-        <ErrorMessage name="text" component="p" className={classes.fieldError} />
-      </div>
+      <FormField
+        classNameFormField={classes.fieldBlock}
+        classNameField={classes.inputMessage}
+        name={'text'}
+        component={'textarea'}
+        placeholder={'Message text'}
+      />
       <Button text={'Add message'} type={'submit'} disabled={isSubmitting} />
     </Form>
   );

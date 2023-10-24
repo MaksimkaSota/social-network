@@ -1,41 +1,35 @@
-import { ErrorMessage, Field, Form } from 'formik';
+import { Form } from 'formik';
 import classes from './LoginForm.module.scss';
 import { Button } from '../../../../Common/Button/Button';
+import { FormField } from '../../../../Common/FormField/FormField';
 
 export const LoginForm = ({isSubmitting, status}) => {
   return (
     <Form className={classes.loginForm}>
-      <div className={classes.fieldBlock}>
-        <Field
-          name={'email'}
-          component={'input'}
-          type={'email'}
-          className={classes.field}
-          placeholder={'Email'}
-        />
-        <ErrorMessage name="email" component="p" className={classes.fieldError} />
-      </div>
-      <div className={classes.fieldBlock}>
-        <Field
-          name={'password'}
-          component={'input'}
-          type={'password'}
-          className={classes.field}
-          placeholder={'Password'}
-          autoComplete={'on'}
-        />
-        <ErrorMessage name="password" component="p" className={classes.fieldError} />
-      </div>
-      <div className={classes.toggleBlock}>
-        <Field
-          name={'rememberMe'}
-          component={'input'}
-          type={'checkbox'}
-          className={classes.checkbox}
-          id={'rememberMe'}
-        />
-        <label htmlFor={'rememberMe'} className={classes.label}>Remember me</label>
-      </div>
+      <FormField
+        classNameFormField={classes.fieldBlock}
+        classNameField={classes.field}
+        name={'email'}
+        type={'email'}
+        placeholder={'Email'}
+      />
+      <FormField
+        classNameFormField={classes.fieldBlock}
+        classNameField={classes.field}
+        name={'password'}
+        type={'password'}
+        placeholder={'Password'}
+        props={{autoComplete: 'on'}}
+      />
+      <FormField
+        classNameFormField={classes.toggleBlock}
+        classNameField={classes.checkbox}
+        classNameLabel={classes.label}
+        name={'rememberMe'}
+        type={'checkbox'}
+        text={'Remember me'}
+        props={{id: 'rememberMe'}}
+      />
       {status && <p className={classes.formError}>{status}</p>}
       <Button text={'Login'} type={'submit'} className={classes.loginButton} disabled={isSubmitting} />
     </Form>

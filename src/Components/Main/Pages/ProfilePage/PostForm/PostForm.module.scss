@@ -5,9 +5,5 @@
     .inputPost {
       @extend %textarea;
     }
-    .fieldError {
-      color:$error;
-      font-size: 1.1rem;
-    }
   }
 }
