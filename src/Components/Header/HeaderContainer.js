@@ -1,7 +1,7 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Header } from './Header';
-import { getAuth, logout } from '../../redux/thunks/auth';
+import { logout } from '../../redux/thunks/auth';
 
 export const HeaderContainer = () => {
   const isAuth = useSelector((state) => state.auth.isAuth);
@@ -13,10 +13,6 @@ export const HeaderContainer = () => {
     () => dispatch(logout()),
     [dispatch]
   );
-
-  useEffect(() => {
-    dispatch(getAuth());
-  }, []);
 
   return (
     <Header isAuth={isAuth} loginName={loginName} authUserPhoto={authUserPhoto} logout={logoutCallback} />
