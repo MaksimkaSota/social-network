@@ -7,7 +7,7 @@ import { updateStatus } from '../../../../../redux/thunks/profile';
 export const ProfileInfoContainer = () => {
   const profile = useSelector((state) => state.profile.profile);
   const status = useSelector((state) => state.profile.status);
-  const isFetchingStatus = useSelector((state) => state.profile.isFetchingStatus);
+  const isFetchingStatus = useSelector((state) => state.loading.SET_STATUS);
 
   const dispatch = useDispatch();
   const updateStatusCallback = useCallback(

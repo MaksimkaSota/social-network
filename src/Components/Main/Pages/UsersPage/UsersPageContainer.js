@@ -9,7 +9,7 @@ export const UsersPageContainer = () => {
   const page = useSelector((state) => state.users.page);
   const pageSize = useSelector((state) => state.users.pageSize);
   const totalCount = useSelector((state) => state.users.totalCount);
-  const isFetchingUsers = useSelector((state) => state.users.isFetchingUsers);
+  const isFetchingUsers = useSelector((state) => state.loading.SET_USERS);
   const subscribersId = useSelector((state) => state.users.subscribersId);
 
   const dispatch = useDispatch();

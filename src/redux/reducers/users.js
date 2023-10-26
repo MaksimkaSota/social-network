@@ -1,11 +1,10 @@
 import {
-  SET_USERS,
+  SET_USERS_SUCCESS,
   FOLLOW,
   UNFOLLOW,
   SET_PAGE,
   SET_TOTAL_COUNT,
-  TOGGLE_IS_FETCHING_USERS,
-  SET_SUBSCRIBERS_ID
+  SET_SUBSCRIBERS_ID,
 } from '../types/users';
 
 const initialState = {
@@ -13,13 +12,12 @@ const initialState = {
   page: 1,
   pageSize: 10,
   totalCount: 0,
-  isFetchingUsers: false,
   subscribersId: []
 };
 
 export const usersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_USERS:
+    case SET_USERS_SUCCESS:
       return {
         ...state,
         users: action.payload
@@ -53,11 +51,6 @@ export const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         totalCount: action.payload
-      }
-    case TOGGLE_IS_FETCHING_USERS:
-      return {
-        ...state,
-        isFetchingUsers: action.payload
       }
     case SET_SUBSCRIBERS_ID:
       return {

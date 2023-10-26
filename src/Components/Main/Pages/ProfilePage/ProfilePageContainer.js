@@ -5,7 +5,7 @@ import { getProfile, getStatus } from '../../../../redux/thunks/profile';
 import { useNavigate, useParams } from 'react-router-dom';
 
 export const ProfilePageContainer = () => {
-  const isFetchingProfile = useSelector((state) => state.profile.isFetchingProfile);
+  const isFetchingProfile = useSelector((state) => state.loading.SET_PROFILE);
   const authorizedUserId = useSelector((state) => state.auth.id);
 
   const dispatch = useDispatch();
