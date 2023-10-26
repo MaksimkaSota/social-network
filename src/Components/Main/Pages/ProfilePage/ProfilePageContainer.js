@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getProfile, getStatus } from '../../../../redux/thunks/profile';
 import { useNavigate, useParams } from 'react-router-dom';
+import { isFetchingProfileSelector } from '../../../../redux/selectors/loading';
+import { idSelector } from '../../../../redux/selectors/auth';
 
 export const ProfilePageContainer = () => {
-  const isFetchingProfile = useSelector((state) => state.loading.SET_PROFILE);
-  const authorizedUserId = useSelector((state) => state.auth.id);
+  const isFetchingProfile = useSelector(isFetchingProfileSelector);
+  const authorizedUserId = useSelector(idSelector);
 
   const dispatch = useDispatch();
 

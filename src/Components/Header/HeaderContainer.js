@@ -2,11 +2,12 @@ import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Header } from './Header';
 import { logout } from '../../redux/thunks/auth';
+import { authUserPhotoSelector, isAuthSelector, loginSelector } from '../../redux/selectors/auth';
 
 export const HeaderContainer = () => {
-  const isAuth = useSelector((state) => state.auth.isAuth);
-  const loginName = useSelector((state) => state.auth.login);
-  const authUserPhoto = useSelector((state) => state.auth.authUserPhoto);
+  const isAuth = useSelector(isAuthSelector);
+  const loginName = useSelector(loginSelector);
+  const authUserPhoto = useSelector(authUserPhotoSelector);
 
   const dispatch = useDispatch();
   const logoutCallback = useCallback(
