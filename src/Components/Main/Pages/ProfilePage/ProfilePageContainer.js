@@ -5,7 +5,6 @@ import { getProfile, getStatus } from '../../../../redux/thunks/profile';
 import { useNavigate, useParams } from 'react-router-dom';
 import { isFetchingProfileSelector } from '../../../../redux/selectors/loading';
 import { idSelector } from '../../../../redux/selectors/auth';
-import { useMounted } from '../../../../hooks/useMounted';
 
 export const ProfilePageContainer = () => {
   const isFetchingProfile = useSelector(isFetchingProfileSelector);
@@ -29,9 +28,7 @@ export const ProfilePageContainer = () => {
     }
   }, [paramId]);
 
-  const mounted = useMounted();
-
   return (
-    mounted && <ProfilePage isFetchingProfile={isFetchingProfile} />
+    <ProfilePage isFetchingProfile={isFetchingProfile} />
   );
 };
