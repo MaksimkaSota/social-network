@@ -1,19 +1,22 @@
 import { App } from './App';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { initialize } from '../redux/thunks/initial';
-import { initialSelector } from '../redux/selectors/initial';
+import { getAuth } from '../redux/thunks/auth';
+import { isFetchingAuthSelector } from '../redux/selectors/loading';
+import { useMounted } from '../hooks/useMounted';
 
 export const AppContainer = () => {
-  const initialized = useSelector(initialSelector);
+  const isFetchingAuth = useSelector(isFetchingAuthSelector);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(initialize());
+    dispatch(getAuth());
   }, []);
 
+  const mounted = useMounted();
+
   return (
-    <App initialized={initialized} />
+    mounted && <App isFetchingAuth={isFetchingAuth} />
   );
 };

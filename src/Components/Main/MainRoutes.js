@@ -22,7 +22,6 @@ export const MainRoutes = () => {
       <Route path="/musics" element={<MusicsPage />} />
       <Route path="/settings" element={<SettingsPage />} />
       <Route path="/login" element={<LoginPageContainer />} />
-      <Route path="/login" element={<LoginPageContainer />} />
     </Routes>
   );
 };

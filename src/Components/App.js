@@ -4,16 +4,16 @@ import { Footer } from './Footer/Footer';
 import { Preloader } from './Common/Preloader/Preloader';
 import classes from './App.module.scss';
 
-export const App = ({initialized}) => {
+export const App = ({isFetchingAuth}) => {
   return (
-    initialized ?
+    isFetchingAuth ?
+      <div className={classes.preloaderWrapper}>
+        <Preloader className={classes.preloader} />
+      </div> :
       <div className={classes.wrapper}>
         <HeaderContainer />
         <Main />
         <Footer />
-      </div> :
-      <div className={classes.preloaderWrapper}>
-        <Preloader className={classes.preloader} />
       </div>
   );
 };

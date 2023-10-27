@@ -1,4 +1,4 @@
-import { RESET_AUTH_DATA, SET_AUTH_DATA, SET_AUTH_USER_PHOTO } from '../types/auth';
+import { SET_AUTH_SUCCESS, RESET_AUTH_DATA, SET_AUTH_USER_PHOTO } from '../types/auth';
 
 const initialState = {
   id: null,
@@ -10,7 +10,7 @@ const initialState = {
 
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_AUTH_DATA:
+    case SET_AUTH_SUCCESS:
       return {
         ...state,
         ...action.payload,
