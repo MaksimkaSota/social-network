@@ -21,22 +21,19 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         ...action.payload,
         isAuth: true
-      }
+      };
     case SET_AUTH_SUCCESS_INCORRECT:
       return {
         ...state,
         incorrectAuthText: action.payload
-      }
+      };
     case SET_AUTH_USER_PHOTO:
       return {
         ...state,
         authUserPhoto: action.payload,
-      }
+      };
     case RESET_AUTH_DATA:
-      return {
-        ...state,
-        ...initialState
-      }
+      return initialState;
     default:
       return state;
   }

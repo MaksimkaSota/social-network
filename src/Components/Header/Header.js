@@ -17,13 +17,13 @@ export const Header = ({isAuth, loginName, authUserPhoto, logout}) => {
             <>
               <img className={classes.userPhoto} src={authUserPhoto} alt="avatar" />
               <p className={classes.text}>{loginName}</p>
-              <Button text={'Logout'} onClick={logout} />
+              <Button text="Logout" onClick={logout} />
             </> :
             <>
               <img className={classes.userPhoto} src={userPhoto} alt="avatar" />
               <p className={classes.text}>You are not authorized</p>
-              <NavLink to={'/login'}>
-                <Button text={'Login'} />
+              <NavLink to="/login">
+                <Button text="Login" />
               </NavLink>
             </>
         }

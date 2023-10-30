@@ -14,19 +14,15 @@ export const ProfilePageContainer = () => {
 
   const dispatch = useDispatch();
 
-  let {id: paramId} = useParams();
+  let {id: paramId = authorizedUserId} = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!paramId) {
-      paramId = authorizedUserId;
-      if (!paramId) {
-        navigate('/login');
-      }
-    }
     if (paramId) {
       dispatch(getProfile(paramId));
       dispatch(getStatus(paramId));
+    } else {
+      navigate('/login');
     }
   }, [paramId]);
 

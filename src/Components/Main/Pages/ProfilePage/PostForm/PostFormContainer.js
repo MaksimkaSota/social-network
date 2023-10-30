@@ -4,13 +4,12 @@ import { PostForm } from './PostForm';
 
 const validationSchema = Yup.object().shape({
   text: Yup.string()
-    .max(100, 'Must be shorter than 100 characters')
+    .max(100, 'Must be not more than 100 characters')
     .required('Required')
 });
 
 export const PostFormContainer = ({addPost}) => {
-  const onSubmit = (formData, {setSubmitting, resetForm}) => {
-    setSubmitting(false);
+  const onSubmit = (formData, {resetForm}) => {
     addPost(formData.text);
     resetForm();
   };
@@ -21,9 +20,7 @@ export const PostFormContainer = ({addPost}) => {
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
-      {
-        ({isSubmitting}) => <PostForm isSubmitting={isSubmitting} />
-      }
+      {() => <PostForm />}
     </Formik>
   );
 };

@@ -46,12 +46,12 @@ export const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         page: action.payload
-      }
+      };
     case SET_TOTAL_COUNT:
       return {
         ...state,
         totalCount: action.payload
-      }
+      };
     case SET_SUBSCRIBERS_ID:
       return {
         ...state,
@@ -59,7 +59,7 @@ export const usersReducer = (state = initialState, action) => {
           action.payload.isFetching ?
             [...state.subscribersId, action.payload.id] :
             state.subscribersId.filter((id) => id !== action.payload.id)
-      }
+      };
     default:
       return state;
   }
