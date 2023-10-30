@@ -8,7 +8,8 @@ export const Paginator = ({
                             pageSize,
                             totalCount,
                             portionSize = 10,
-                            onCurrentPageCallback
+                            onCurrentPageCallback,
+                            isFetching
                           }) => {
   const onCurrentPage = (currentPage) => () => {
     onCurrentPageCallback(currentPage, pageSize);
@@ -46,12 +47,13 @@ export const Paginator = ({
             .filter((currentPage) => currentPage >= leftBorderPortion && currentPage <= rightBorderPortion)
             .map((currentPage) => {
               return (
-                <div
+                <Button
                   className={cn({[classes.selectedPage]: currentPage === page}, classes.pageNumber)}
+                  text={currentPage}
+                  onClick={onCurrentPage(currentPage)}
+                  disabled={isFetching || currentPage === page}
                   key={currentPage}
-                  onClick={onCurrentPage(currentPage)}>
-                  {currentPage}
-                </div>
+                />
               )
             })
         }

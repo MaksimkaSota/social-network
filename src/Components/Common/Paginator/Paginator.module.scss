@@ -5,24 +5,12 @@
   .paginatorBlock {
     display: flex;
     margin: 0 $marginMin 0 $marginMin;
-    .pageNumber {
-      padding: $padding;
-      border: 1px solid $content;
-      border-radius: $radius;
-      cursor: pointer;
-      transition: all .3s linear;
-      &:not(:last-child) {
-        margin: 0 $marginMin 0 0;
-      }
-      &:hover {
-        border: 1px solid $active;
-      }
+    .pageNumber:not(:last-child) {
+      margin: 0 $marginMin 0 0;
     }
     .selectedPage {
       font-weight: 700;
       color: $captions;
-      border: 1px solid $active;
-      cursor: default;
     }
   }
 }

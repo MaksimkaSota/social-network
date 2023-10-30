@@ -1,8 +1,8 @@
 import { getAuthAPI, loginAPI, logoutAPI } from '../../api/auth';
 import {
   setAuthRequest,
-  setAuthSuccess,
-  setAuthFailure,
+  setAuthSuccessCorrect,
+  setAuthSuccessIncorrect,
   setAuthUserPhoto,
   resetAuthData
 } from '../actions/auth';
@@ -13,11 +13,11 @@ export const getAuth = () => {
     dispatch(setAuthRequest());
     const dataAuth = await getAuthAPI();
     if (dataAuth.resultCode === 0) {
-      dispatch(setAuthSuccess(dataAuth.data));
+      dispatch(setAuthSuccessCorrect(dataAuth.data));
       const dataProfile = await getProfileAPI(dataAuth.data.id);
       dispatch(setAuthUserPhoto(dataProfile.photos.small));
     } else if (dataAuth.resultCode === 1) {
-      dispatch(setAuthFailure());
+      dispatch(setAuthSuccessIncorrect(dataAuth.messages[0]));
     }
   };
 };

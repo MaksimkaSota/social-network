@@ -35,7 +35,7 @@ export const ProfileStatus = ({status, updateStatus, isFetchingStatus}) => {
                       autoFocus={true}
                       value={localStatus}
             /> :
-            isFetchingStatus ?
+            isFetchingStatus && status !== localStatus ?
               <Preloader className={classes.statusPreloader} /> :
               <p className={classes.statusText} onDoubleClick={onActivateEditMode}>{status || 'no status'}</p>
         }
