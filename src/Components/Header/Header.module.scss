@@ -26,5 +26,8 @@
       color: $captions;
       text-align: center;
     }
+    .incorrectAuthText {
+      color: $error;
+    }
   }
 }

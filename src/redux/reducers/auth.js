@@ -10,7 +10,7 @@ const initialState = {
   email: null,
   login: null,
   isAuth: false,
-  authUserPhoto: {},
+  authUserPhoto: '',
   incorrectAuthText: ''
 };
 
@@ -33,7 +33,10 @@ export const authReducer = (state = initialState, action) => {
         authUserPhoto: action.payload,
       };
     case RESET_AUTH_DATA:
-      return initialState;
+      return {
+        ...state,
+        ...action.payload
+      }
     default:
       return state;
   }

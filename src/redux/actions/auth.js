@@ -12,5 +12,8 @@ export const setAuthSuccessIncorrect = (incorrectAuthText) => ({
   type: SET_AUTH_SUCCESS_INCORRECT,
   payload: incorrectAuthText
 });
-export const setAuthUserPhoto = (profile) => ({type: SET_AUTH_USER_PHOTO, payload: profile});
-export const resetAuthData = () => ({type: RESET_AUTH_DATA});
+export const setAuthUserPhoto = (photo) => ({type: SET_AUTH_USER_PHOTO, payload: photo});
+export const resetAuthData = (id, email, login, isAuth, authUserPhoto) => ({
+  type: RESET_AUTH_DATA,
+  payload: {id, email, login, isAuth, authUserPhoto}
+});

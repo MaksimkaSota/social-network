@@ -3,8 +3,9 @@ import logo from '../../assets/images/logo.png';
 import { NavLink } from 'react-router-dom';
 import userPhoto from '../../assets/images/user.png';
 import { Button } from '../Common/Button/Button';
+import cn from 'classnames';
 
-export const Header = ({isAuth, loginName, authUserPhoto, logout}) => {
+export const Header = ({isAuth, loginName, authUserPhoto, logout, incorrectAuthText}) => {
   return (
     <header className={classes.header}>
       <div className={classes.logoContainer}>
@@ -21,7 +22,7 @@ export const Header = ({isAuth, loginName, authUserPhoto, logout}) => {
             </> :
             <>
               <img className={classes.userPhoto} src={userPhoto} alt="avatar" />
-              <p className={classes.text}>You are not authorized</p>
+              <p className={cn(classes.text, classes.incorrectAuthText)}>{incorrectAuthText}</p>
               <NavLink to="/login">
                 <Button text="Login" />
               </NavLink>

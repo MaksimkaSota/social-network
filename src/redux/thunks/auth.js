@@ -39,7 +39,7 @@ export const logout = () => {
   return async (dispatch) => {
     const data = await logoutAPI();
     if (data.resultCode === 0) {
-      dispatch(resetAuthData());
+      dispatch(resetAuthData(null, null, null, false, ''));
     }
   };
 };
