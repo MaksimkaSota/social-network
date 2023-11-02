@@ -13,7 +13,7 @@ export const setAuthSuccessIncorrect = (incorrectAuthText) => ({
   payload: incorrectAuthText
 });
 export const setAuthUserPhoto = (photo) => ({type: SET_AUTH_USER_PHOTO, payload: photo});
-export const resetAuthData = (id, email, login, isAuth, authUserPhoto) => ({
+export const resetAuthData = ({id, email, login, isAuth, authUserPhoto}) => ({
   type: RESET_AUTH_DATA,
   payload: {id, email, login, isAuth, authUserPhoto}
 });

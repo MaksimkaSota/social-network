@@ -8,7 +8,7 @@ export const LoginPage = ({login, isAuth, incorrectAuthText}) => {
       <Navigate to="/profile" /> :
       <div className={classes.loginPageBlock}>
         <h1 className={classes.title}>Login</h1>
-        <p className={classes.incorrectAuthText}>{incorrectAuthText}! Log in, please!</p>
+        <p className={classes.incorrectAuthText}>{incorrectAuthText || 'You are not authorized'}! Log in, please!</p>
         <LoginFormContainer login={login} />
       </div>
   );
