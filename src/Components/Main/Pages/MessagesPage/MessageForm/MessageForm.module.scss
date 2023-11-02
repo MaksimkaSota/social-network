@@ -1,0 +1,9 @@
+.addMessageBlock {
+  margin: 0 0 $marginMin 0;
+  .fieldBlock {
+    margin: 0 0 $marginMin 0;
+    .inputMessage {
+      @extend %textarea;
+    }
+  }
+}

@@ -1,28 +1,20 @@
 import classes from './Posts.module.scss';
 import { Post } from '../Post/Post';
-import { Button } from '../../../../Common/Button/Button';
+import { PostFormContainer } from '../PostForm/PostFormContainer';
 
-export const Posts = ({posts, postText, setPost, addPost}) => {
+export const Posts = ({posts, addPost, isAuth}) => {
   const postsElements = posts
     .map((post) => <Post postText={post.postText} key={post.id} />);
 
-  const onSetPost = (event) => {
-    setPost(event.target.value);
-  };
-  const onAddPost = () => {
-    addPost();
-  };
-
-  return (
-    <div className={classes.postsBlock}>
-      <h3 className={classes.title}>My posts</h3>
-      <div className={classes.addPostBlock}>
-        <textarea onChange={onSetPost} className={classes.inputPost} value={postText} />
-        <Button onClick={onAddPost} text="Add post" />
+  if (isAuth) {
+    return (
+      <div className={classes.postsBlock}>
+        <h3 className={classes.title}>Posts</h3>
+        <PostFormContainer addPost={addPost} />
+        <div className={classes.posts}>
+          {postsElements}
+        </div>
       </div>
-      <div className={classes.posts}>
-        {postsElements}
-      </div>
-    </div>
-  );
+    );
+  }
 };

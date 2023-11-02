@@ -1,4 +1,3 @@
-import { SET_MESSAGE, ADD_MESSAGE } from '../types/messages';
+import { ADD_MESSAGE } from '../types/messages';
 
-export const setMessage = (text) => ({type: SET_MESSAGE, payload: text});
-export const addMessage = () => ({type: ADD_MESSAGE});
+export const addMessage = (text) => ({type: ADD_MESSAGE, payload: text});

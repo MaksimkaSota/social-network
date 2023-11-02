@@ -26,14 +26,8 @@
       color: $captions;
       text-align: center;
     }
-    .click {
-      display: block;
-      text-align: center;
-      color: $captions;
-      text-transform: uppercase;
-      &:hover {
-        color: $active;
-      }
+    .incorrectAuthText {
+      color: $error;
     }
   }
 }

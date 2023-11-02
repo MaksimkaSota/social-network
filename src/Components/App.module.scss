@@ -5,3 +5,13 @@
   display: flex;
   flex-direction: column;
 }
+
+.preloaderWrapper {
+  width: 100%;
+  min-height: 100vh;
+  @extend %flex-vertical-center;
+  justify-content: center;
+  .preloader {
+    width: 500px;
+  }
+}

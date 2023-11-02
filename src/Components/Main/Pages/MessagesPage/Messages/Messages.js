@@ -1,25 +1,15 @@
 import classes from './Messages.module.scss';
 import { Message } from '../Message/Message';
-import { Button } from '../../../../Common/Button/Button';
+import { MessageFormContainer } from '../MessageForm/MessageFormContainer';
 
-export const Messages = ({messages, messageText, setMessage, addMessage}) => {
+export const Messages = ({messages, addMessage}) => {
   const messagesElements = messages
     .map((message) => <Message messageText={message.messageText} key={message.id} />);
-
-  const onSetMessage = (event) => {
-    setMessage(event.target.value);
-  };
-  const onAddMessage = () => {
-    addMessage();
-  };
 
   return (
     <div className={classes.messagesBlock}>
       <h3 className={classes.title}>Messages</h3>
-      <div className={classes.addMessageBlock}>
-        <textarea onChange={onSetMessage} className={classes.inputMessage} value={messageText} />
-        <Button onClick={onAddMessage} text="Add message" />
-      </div>
+      <MessageFormContainer addMessage={addMessage} />
       <div className={classes.messages}>
         {messagesElements}
       </div>

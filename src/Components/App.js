@@ -1,15 +1,19 @@
-import './App.module.scss';
-import { Footer } from './Footer/Footer';
-import { Main } from './Main/Main';
-import classes from './App.module.scss';
 import { HeaderContainer } from './Header/HeaderContainer';
+import { Main } from './Main/Main';
+import { Footer } from './Footer/Footer';
+import { Preloader } from './Common/Preloader/Preloader';
+import classes from './App.module.scss';
 
-export const App = () => {
+export const App = ({isFetchingAuth}) => {
   return (
-    <div className={classes.wrapper}>
-      <HeaderContainer />
-      <Main />
-      <Footer />
-    </div>
+    isFetchingAuth ?
+      <div className={classes.preloaderWrapper}>
+        <Preloader className={classes.preloader} />
+      </div> :
+      <div className={classes.wrapper}>
+        <HeaderContainer />
+        <Main />
+        <Footer />
+      </div>
   );
 };

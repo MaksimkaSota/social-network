@@ -1,11 +1,11 @@
-import { StrictMode } from 'react';
-import ReactDOM from 'react-dom/client';
 import './index.scss';
-import { App } from './Components/App';
+import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import { store } from './redux/store';
-import { BrowserRouter } from 'react-router-dom';
+import { StrictMode } from 'react';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { AppContainer } from './Components/AppContainer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -13,7 +13,7 @@ root.render(
   <StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <AppContainer />
       </BrowserRouter>
     </Provider>
   </StrictMode>

@@ -1,12 +1,15 @@
 import classes from './ProfilePage.module.scss';
 import { PostsContainer } from './Posts/PostsContainer';
 import { ProfileInfoContainer } from './ProfileInfo/ProfileInfoContainer';
+import { Preloader } from '../../../Common/Preloader/Preloader';
 
-export const ProfilePage = () => {
+export const ProfilePage = ({isFetchingProfile, profile}) => {
   return (
-    <div className={classes.profilePageBlock}>
-      <ProfileInfoContainer />
-      <PostsContainer />
-    </div>
+    isFetchingProfile && !Object.keys(profile).length ?
+      <Preloader /> :
+      <div className={classes.profilePageBlock}>
+        <ProfileInfoContainer />
+        <PostsContainer />
+      </div>
   );
 };

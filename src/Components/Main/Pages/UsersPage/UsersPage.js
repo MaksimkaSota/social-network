@@ -16,10 +16,15 @@ export const UsersPage = ({
                           }) => {
 
   return (
-    isFetchingUsers ?
+    isFetchingUsers && !users.length ?
       <Preloader /> :
       <div className={classes.usersPageBlock}>
-        <Paginator page={page} pageSize={pageSize} totalCount={totalCount} onCurrentPageCallback={getUsers} />
+        <Paginator page={page}
+                   pageSize={pageSize}
+                   totalCount={totalCount}
+                   onCurrentPageCallback={getUsers}
+                   isFetching={isFetchingUsers}
+        />
         <div>
           {users.map((user) => <User key={user.id}
                                      user={user}

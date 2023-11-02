@@ -4,12 +4,6 @@
   .title {
     @extend %mini-title;
   }
-  .addMessageBlock {
-    margin: 0 0 $marginMin 0;
-    .inputMessage {
-      @extend %textarea;
-    }
-  }
   .messages {
     height: 220px;
     overflow-y: auto;
