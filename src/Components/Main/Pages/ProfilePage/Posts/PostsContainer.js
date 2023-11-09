@@ -1,9 +1,9 @@
 import React from 'react';
-import { addPost } from '../../../../../redux/actions/profile';
+import { addPost } from '../../../../../redux/actions/posts';
 import { Posts } from './Posts';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCallback } from 'react';
-import { postsSelector } from '../../../../../redux/selectors/profile';
+import { postsSelector } from '../../../../../redux/selectors/posts';
 import { isAuthSelector } from '../../../../../redux/selectors/auth';
 
 export const PostsContainer = React.memo(() => {
