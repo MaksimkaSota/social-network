@@ -19,24 +19,21 @@ export const getUsers = (page, pageSize) => {
   };
 };
 
+const followUnfollowUser = async (dispatch, id, apiMethod, actionCreator) => {
+  dispatch(setSubscribersId(true, id));
+  const data = await apiMethod(id);
+  dispatch(setSubscribersId(false, id));
+  if (data.resultCode === 0) {
+    dispatch(actionCreator(id));
+  }
+};
 export const followUser = (id) => {
   return async (dispatch) => {
-    dispatch(setSubscribersId(true, id));
-    const data = await followAPI(id);
-    dispatch(setSubscribersId(false, id));
-    if (data.resultCode === 0) {
-      dispatch(follow(id));
-    }
+    await followUnfollowUser(dispatch, id, followAPI, follow);
   };
 };
-
 export const unfollowUser = (id) => {
   return async (dispatch) => {
-    dispatch(setSubscribersId(true, id));
-    const data = await unfollowAPI(id);
-    dispatch(setSubscribersId(false, id));
-    if (data.resultCode === 0) {
-      dispatch(unfollow(id));
-    }
+    await followUnfollowUser(dispatch, id, unfollowAPI, unfollow);
   };
 };
