@@ -1,10 +1,10 @@
 import {
-  SET_USERS_SUCCESS,
-  FOLLOW,
-  UNFOLLOW,
-  SET_PAGE,
-  SET_TOTAL_COUNT,
-  SET_SUBSCRIBERS_ID,
+  USERS_SET_USERS_SUCCESS,
+  USERS_FOLLOW,
+  USERS_UNFOLLOW,
+  USERS_SET_PAGE,
+  USERS_SET_TOTAL_COUNT,
+  USERS_SET_SUBSCRIBERS_ID,
 } from '../types/users';
 
 const initialState = {
@@ -17,12 +17,12 @@ const initialState = {
 
 export const usersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_USERS_SUCCESS:
+    case USERS_SET_USERS_SUCCESS:
       return {
         ...state,
         users: action.payload
       };
-    case FOLLOW:
+    case USERS_FOLLOW:
       return {
         ...state,
         users: state.users.map(user => {
@@ -32,7 +32,7 @@ export const usersReducer = (state = initialState, action) => {
           return user;
         })
       };
-    case UNFOLLOW:
+    case USERS_UNFOLLOW:
       return {
         ...state,
         users: state.users.map(user => {
@@ -42,17 +42,17 @@ export const usersReducer = (state = initialState, action) => {
           return user;
         })
       };
-    case SET_PAGE:
+    case USERS_SET_PAGE:
       return {
         ...state,
         page: action.payload
       };
-    case SET_TOTAL_COUNT:
+    case USERS_SET_TOTAL_COUNT:
       return {
         ...state,
         totalCount: action.payload
       };
-    case SET_SUBSCRIBERS_ID:
+    case USERS_SET_SUBSCRIBERS_ID:
       return {
         ...state,
         subscribersId:

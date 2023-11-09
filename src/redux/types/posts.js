@@ -1,2 +1,2 @@
-export const ADD_POST = 'ADD_POST';
-export const DELETE_POST = 'DELETE_POST';
+export const POSTS_ADD_POST = 'POSTS_ADD_POST';
+export const POSTS_DELETE_POST = 'POSTS_DELETE_POST';

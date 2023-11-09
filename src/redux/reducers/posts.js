@@ -1,4 +1,4 @@
-import { ADD_POST, DELETE_POST } from '../types/posts';
+import { POSTS_ADD_POST, POSTS_DELETE_POST } from '../types/posts';
 
 const initialState = {
   posts: [
@@ -12,7 +12,7 @@ const initialState = {
 
 export const postsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_POST:
+    case POSTS_ADD_POST:
       let lastPostId = state.posts[state.posts.length - 1].id;
       const newPost = {
         id: ++lastPostId,
@@ -22,7 +22,7 @@ export const postsReducer = (state = initialState, action) => {
         ...state,
         posts: [...state.posts, newPost]
       };
-    case DELETE_POST:
+    case POSTS_DELETE_POST:
       return {
         ...state,
         posts: state.posts.filter((post) => post.id !== action.payload)

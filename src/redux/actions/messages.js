@@ -1,4 +1,4 @@
-import { ADD_MESSAGE, DELETE_MESSAGE } from '../types/messages';
+import { MESSAGES_ADD_MESSAGE, MESSAGES_DELETE_MESSAGE } from '../types/messages';
 
-export const addMessage = (text) => ({type: ADD_MESSAGE, payload: text});
-export const deleteMessage = (id) => ({type: DELETE_MESSAGE, payload: id});
+export const addMessage = (text) => ({type: MESSAGES_ADD_MESSAGE, payload: text});
+export const deleteMessage = (id) => ({type: MESSAGES_DELETE_MESSAGE, payload: id});
