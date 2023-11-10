@@ -4,7 +4,7 @@ import { useCallback } from 'react';
 import { login } from '../../../../redux/thunks/auth';
 import { incorrectAuthTextSelector, isAuthSelector } from '../../../../redux/selectors/auth';
 
-export const LoginPageContainer = () => {
+const LoginPageContainer = () => {
   const isAuth = useSelector(isAuthSelector);
   const incorrectAuthText = useSelector(incorrectAuthTextSelector);
   const dispatch = useDispatch();
@@ -18,3 +18,5 @@ export const LoginPageContainer = () => {
     <LoginPage login={loginCallback} isAuth={isAuth} incorrectAuthText={incorrectAuthText} />
   );
 };
+
+export default LoginPageContainer;
