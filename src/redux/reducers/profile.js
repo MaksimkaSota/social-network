@@ -1,4 +1,4 @@
-import { PROFILE_SET_PROFILE_SUCCESS, PROFILE_SET_STATUS_SUCCESS } from '../types/profile';
+import { SET_PROFILE_SUCCESS, SET_PROFILE_STATUS_SUCCESS } from '../types/profile';
 
 const initialState = {
   profile: {},
@@ -7,12 +7,12 @@ const initialState = {
 
 export const profileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case PROFILE_SET_PROFILE_SUCCESS:
+    case SET_PROFILE_SUCCESS:
       return {
         ...state,
         profile: action.payload
       };
-    case PROFILE_SET_STATUS_SUCCESS:
+    case SET_PROFILE_STATUS_SUCCESS:
       return {
         ...state,
         status: action.payload

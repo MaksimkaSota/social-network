@@ -1,10 +1,10 @@
 import {
-  USERS_SET_USERS_SUCCESS,
-  USERS_FOLLOW,
-  USERS_UNFOLLOW,
-  USERS_SET_PAGE,
-  USERS_SET_TOTAL_COUNT,
-  USERS_SET_SUBSCRIBERS_ID,
+  SET_USERS_SUCCESS,
+  FOLLOW_USERS_USER,
+  UNFOLLOW_USERS_USER,
+  SET_USERS_PAGE,
+  SET_USERS_TOTAL_COUNT,
+  SET_USERS_SUBSCRIBERS_ID,
 } from '../types/users';
 import { updateObjectInArray } from '../../utils/helpers/reducersHelpers';
 
@@ -18,32 +18,32 @@ const initialState = {
 
 export const usersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case USERS_SET_USERS_SUCCESS:
+    case SET_USERS_SUCCESS:
       return {
         ...state,
         users: action.payload
       };
-    case USERS_FOLLOW:
+    case FOLLOW_USERS_USER:
       return {
         ...state,
         users: updateObjectInArray(state.users, action.payload, {followed: true})
       };
-    case USERS_UNFOLLOW:
+    case UNFOLLOW_USERS_USER:
       return {
         ...state,
         users: updateObjectInArray(state.users, action.payload, {followed: false})
       };
-    case USERS_SET_PAGE:
+    case SET_USERS_PAGE:
       return {
         ...state,
         page: action.payload
       };
-    case USERS_SET_TOTAL_COUNT:
+    case SET_USERS_TOTAL_COUNT:
       return {
         ...state,
         totalCount: action.payload
       };
-    case USERS_SET_SUBSCRIBERS_ID:
+    case SET_USERS_SUBSCRIBERS_ID:
       return {
         ...state,
         subscribersId:
