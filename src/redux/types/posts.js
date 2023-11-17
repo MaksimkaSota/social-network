@@ -1,0 +1,2 @@
+export const ADD_POSTS_POST = 'ADD_POSTS_POST';
+export const DELETE_POSTS_POST = 'DELETE_POSTS_POST';

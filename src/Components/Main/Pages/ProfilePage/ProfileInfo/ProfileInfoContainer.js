@@ -4,10 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useMounted } from '../../../../../hooks/useMounted';
 import { updateStatus } from '../../../../../redux/thunks/profile';
 import { isFetchingStatusSelector } from '../../../../../redux/selectors/loading';
-import { profileSelector, statusSelector } from '../../../../../redux/selectors/profile';
+import { statusSelector } from '../../../../../redux/selectors/profile';
 
-export const ProfileInfoContainer = () => {
-  const profile = useSelector(profileSelector);
+export const ProfileInfoContainer = ({profile}) => {
   const status = useSelector(statusSelector);
   const isFetchingStatus = useSelector(isFetchingStatusSelector);
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { MessageForm } from './MessageForm';
@@ -8,7 +9,7 @@ const validationSchema = Yup.object().shape({
     .required('Required')
 });
 
-export const MessageFormContainer = ({addMessage}) => {
+export const MessageFormContainer = React.memo(({addMessage}) => {
   const onSubmit = (formData, {resetForm}) => {
     addMessage(formData.text);
     resetForm();
@@ -23,4 +24,4 @@ export const MessageFormContainer = ({addMessage}) => {
       {() => <MessageForm />}
     </Formik>
   );
-};
+});

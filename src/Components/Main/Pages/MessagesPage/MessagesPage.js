@@ -1,12 +1,12 @@
 import classes from './MessagesPage.module.scss';
-import { MessagesContainer } from './Messages/MessagesContainer';
-import { DialogsContainer } from './Dialogs/DialogsContainer';
+import { Dialogs } from './Dialogs/Dialogs';
+import { Messages } from './Messages/Messages';
 
-export const MessagesPage = () => {
+export const MessagesPage = ({dialogs, messages, addMessage}) => {
   return (
     <div className={classes.messagesPageBlock}>
-      <DialogsContainer />
-      <MessagesContainer />
+      <Dialogs dialogs={dialogs} />
+      <Messages messages={messages} addMessage={addMessage} />
     </div>
   );
 };

@@ -8,7 +8,7 @@ export const ProfilePage = ({isFetchingProfile, profile}) => {
     isFetchingProfile && !Object.keys(profile).length ?
       <Preloader /> :
       <div className={classes.profilePageBlock}>
-        <ProfileInfoContainer />
+        <ProfileInfoContainer profile={profile}/>
         <PostsContainer />
       </div>
   );

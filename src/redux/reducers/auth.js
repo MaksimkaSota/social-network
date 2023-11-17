@@ -1,9 +1,4 @@
-import {
-  SET_AUTH_SUCCESS_CORRECT,
-  SET_AUTH_SUCCESS_INCORRECT,
-  RESET_AUTH_DATA,
-  SET_AUTH_USER_PHOTO
-} from '../types/auth';
+import { SET_AUTH_SUCCESS_CORRECT, SET_AUTH_SUCCESS_INCORRECT, RESET_AUTH_DATA, SET_AUTH_PHOTO } from '../types/auth';
 
 const initialState = {
   id: null,
@@ -27,7 +22,7 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         incorrectAuthText: action.payload
       };
-    case SET_AUTH_USER_PHOTO:
+    case SET_AUTH_PHOTO:
       return {
         ...state,
         authUserPhoto: action.payload,

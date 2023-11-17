@@ -12,7 +12,7 @@ import {
   usersSelector
 } from '../../../../redux/selectors/users';
 
-export const UsersPageContainer = () => {
+const UsersPageContainer = () => {
   const users = useSelector(usersSelector);
   const page = useSelector(pageSelector);
   const pageSize = useSelector(pageSizeSelector);
@@ -52,3 +52,5 @@ export const UsersPageContainer = () => {
                           getUsers={getUsersCallback} />
   );
 };
+
+export default UsersPageContainer;

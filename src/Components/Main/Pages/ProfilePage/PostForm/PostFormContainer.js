@@ -1,3 +1,4 @@
+import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { PostForm } from './PostForm';
@@ -8,7 +9,7 @@ const validationSchema = Yup.object().shape({
     .required('Required')
 });
 
-export const PostFormContainer = ({addPost}) => {
+export const PostFormContainer = React.memo(({addPost}) => {
   const onSubmit = (formData, {resetForm}) => {
     addPost(formData.text);
     resetForm();
@@ -23,4 +24,4 @@ export const PostFormContainer = ({addPost}) => {
       {() => <PostForm />}
     </Formik>
   );
-};
+});

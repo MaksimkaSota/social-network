@@ -131,7 +131,8 @@
     "modulePaths": [],
     "moduleNameMapper": {
       "^react-native$": "react-native-web",
-      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
+      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+      "axios": "axios/dist/node/axios.cjs"
     },
     "moduleFileExtensions": [
       "web.js",
@@ -155,5 +156,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "react-test-renderer": "^18.2.0"
   }
 }
