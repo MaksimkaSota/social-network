@@ -1,6 +1,5 @@
 .inputFileBlock {
-  width: 30%;
-  margin: 0 auto;
+  @include position(30%, 0 auto);
   .button {
     width: 100%;
     margin: 0;
@@ -12,5 +11,6 @@
   .labelInputFile {
     font-size: 0.7rem;
     display: block;
+    margin: 0 0 $marginMin 0;
   }
 }

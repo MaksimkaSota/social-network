@@ -1,9 +1,16 @@
 @import './variables';
 
-@mixin captions($fz, $ls) {
-  color: $white;
+@mixin position($w, $m) {
+  width: $w;
+  margin: $m;
+};
+
+@mixin captions($fz, $ls: null) {
+  color: $captions;
   font-size: $fz;
-  letter-spacing: $ls;
+  @if ($ls) {
+    letter-spacing: $ls;
+  }
 };
 
 @mixin click($c) {

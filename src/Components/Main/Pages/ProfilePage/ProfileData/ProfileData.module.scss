@@ -1,0 +1,22 @@
+.dataBlock {
+  @include position(90%, 0 auto $marginMin auto);
+  .updateButtonBlock {
+    width: 30%;
+    .button {
+      width: 100%;
+      margin: 0;
+      padding: 5px $padding;
+    }
+  }
+  .descriptionBlock {
+    display: flex;
+    align-items: center;
+    .title {
+      @include captions(1.1rem);
+      margin: 0 $marginMin 0 0;
+    }
+    .text {
+      font-size: 1.2rem;
+    }
+  }
+}

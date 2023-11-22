@@ -1,17 +1,15 @@
 .statusBlock {
-  width: 90%;
-  margin: 0 auto;
+  @include position(90%, 0 auto $marginMin auto);
   display: flex;
-  align-items: baseline;
+  align-items: center;
   .title {
-    color: $captions;
+    @include captions(1.1rem);
     margin: 0 $marginMin 0 0;
-    font-size: 1rem;
   }
   .statusText {
     word-break: break-word;
     text-align: left;
-    font-size: .9rem;
+    font-size: 1.2rem;
   }
   .inputStatus {
     @extend %textarea;

@@ -1,0 +1,8 @@
+.contactsBlock {
+  text-align: left;
+  .title {
+    @include captions(1.1rem);
+    display: block;
+  }
+}
+
