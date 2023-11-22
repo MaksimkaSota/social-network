@@ -1,7 +1,6 @@
 .wrapper {
-  width: 90%;
+  @include position(90%, 0 auto);
   min-height: 100vh;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
@@ -9,7 +8,7 @@
 .preloaderWrapper {
   width: 100%;
   min-height: 100vh;
-  @extend %flex-vertical-center;
+  @include flex(null, center);
   justify-content: center;
   .preloader {
     width: 500px;

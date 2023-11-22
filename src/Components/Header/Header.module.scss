@@ -1,6 +1,6 @@
 .header {
   background: $dark-background;
-  @extend %flex-vertical-center;
+  @include flex(null, center);
   .logoContainer {
     @extend %left-block;
     .logo {
@@ -16,8 +16,7 @@
   .loginContainer {
     @extend %left-block;
     .userPhoto {
-      width: 50%;
-      margin: 0 auto $marginMin auto;
+      @include position(50%, 0 auto $marginMin auto);
       border-radius: $radius;
     }
     .text {

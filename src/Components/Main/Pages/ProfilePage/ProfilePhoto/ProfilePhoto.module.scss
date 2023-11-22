@@ -1,14 +1,11 @@
 .photoBlock {
-  width: 90%;
-  margin: 0 auto;
+  @include position(90%, 0 auto);
   .userPhoto {
-    width: 30%;
-    margin: 0 auto $marginMin auto;
+    @include position(30%, 0 auto $marginMin auto);
     border-radius: $radius;
   }
 }
 
 .photoPreloader {
-  width: 30%;
-  margin: 0 auto $marginMin auto;
+  @include position(30%, 0 auto $marginMin auto);
 }

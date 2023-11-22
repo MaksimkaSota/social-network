@@ -1,6 +1,5 @@
 .contact {
-  display: flex;
-  align-items: baseline;
+  @include flex(null, center);
   .title {
     @include captions(1rem);
     margin: 0 $marginMin;

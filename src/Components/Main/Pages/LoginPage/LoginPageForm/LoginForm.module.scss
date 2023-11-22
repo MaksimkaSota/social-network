@@ -1,6 +1,5 @@
 .loginForm {
-  width: 30%;
-  margin: 0 auto;
+  @include position(30%, 0 auto);
   border: 1px solid $active;
   border-radius: $radius;
   padding: $padding;
@@ -14,8 +13,7 @@
     }
   }
   .toggleBlock {
-    display: flex;
-    justify-content: center;
+    @include flex(center, null);
     margin: 0 0 $marginMin 0;
     .checkbox {
       cursor: pointer;

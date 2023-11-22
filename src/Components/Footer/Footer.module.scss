@@ -1,7 +1,7 @@
 .footer {
   background: $dark-background;
   text-align: center;
-  @extend %flex-vertical-center;
+  @include flex(null, center);
   .mailContainer {
     @extend %left-block;
     .mail {
@@ -10,16 +10,14 @@
   }
   .contactsContainer {
     width: $right-block-width;
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
+    @include flex(center, baseline);
     .title {
       @include captions(3rem, .3rem);
       margin: 0 $marginMax 0 0;
     }
     .contacts {
       .contact {
-        @include click($captions);
+        @include link($captions);
         &:not(:last-child) {
           margin: 0 $marginMax 0 0;
         }

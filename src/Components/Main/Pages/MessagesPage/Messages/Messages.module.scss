@@ -2,7 +2,7 @@
   width: 50%;
   text-align: center;
   .title {
-    @extend %mini-title;
+    @extend %title;
   }
   .messages {
     height: 220px;

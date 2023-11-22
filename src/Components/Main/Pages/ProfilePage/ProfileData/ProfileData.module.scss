@@ -3,14 +3,12 @@
   .updateButtonBlock {
     width: 30%;
     .button {
-      width: 100%;
-      margin: 0;
+      @include position(100%, 0);
       padding: 5px $padding;
     }
   }
   .descriptionBlock {
-    display: flex;
-    align-items: center;
+    @include flex(null, center);
     .title {
       @include captions(1.1rem);
       margin: 0 $marginMin 0 0;

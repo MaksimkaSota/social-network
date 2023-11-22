@@ -6,7 +6,7 @@
     font-weight: 700;
     text-align: center;
     border-radius: $radius;
-    @include click($content);
+    @include link($content);
     &:hover {
       color: $captions;
     }
