@@ -2,14 +2,14 @@ import { Button } from '../Button/Button';
 import classes from './InputFile.module.scss';
 import { useRef, useState } from 'react';
 
-export const InputFile = ({saveFile}) => {
+export const InputFile = ({actionFile}) => {
   const [fileInfo, setFileInfo] = useState('No file chosen');
   const inputFile = useRef(null);
 
   const onChangeInputFile = (event) => {
     if (event.target.files.length) {
       setFileInfo(event.target.files[0].name);
-      // saveFile(event.target.files[0]);
+      actionFile(event.target.files[0]);
     } else {
       setFileInfo('No file chosen');
     }

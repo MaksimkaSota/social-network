@@ -1,5 +1,12 @@
-import { setProfileRequest, setProfileSuccess, setStatusRequest, setStatusSuccess } from '../actions/profile';
-import { getProfileAPI, getStatusAPI, updateStatusAPI } from '../../api/profile';
+import {
+  setProfileRequest,
+  setProfileSuccess,
+  setStatusRequest,
+  setStatusSuccess,
+  setPhotoRequest,
+  setPhotoSuccess,
+} from '../actions/profile';
+import { getProfileAPI, getStatusAPI, updateStatusAPI, updatePhotoAPI } from '../../api/profile';
 
 export const getProfile = (id) => {
   return async (dispatch) => {
@@ -31,6 +38,16 @@ export const updateStatus = (status) => {
       default:
         dispatch(setStatusSuccess('Some server status error'));
         break;
+    }
+  };
+};
+
+export const updatePhoto = (photo) => {
+  return async (dispatch) => {
+    dispatch(setPhotoRequest());
+    const data = await updatePhotoAPI(photo);
+    if (data.resultCode === 0) {
+      dispatch(setPhotoSuccess(data.data.photos));
     }
   };
 };

@@ -9,7 +9,9 @@ export const ProfileInfo = ({
                               isFetchingProfile,
                               status,
                               updateStatus,
-                              isFetchingStatus
+                              isFetchingStatus,
+                              updatePhoto,
+                              isFetchingPhoto
                             }) => {
   return (
     isFetchingProfile ?
@@ -18,7 +20,9 @@ export const ProfileInfo = ({
         <h3 className={classes.title}>Profile info</h3>
         <p className={classes.fullName}>{profile.fullName}</p>
         <ProfilePhoto isOwner={isOwner}
-                      photo={profile.photos.large} />
+                      photo={profile.photos.large}
+                      updatePhoto={updatePhoto}
+                      isFetchingPhoto={isFetchingPhoto} />
         <ProfileStatus status={status}
                        updateStatus={updateStatus}
                        isFetchingStatus={isFetchingStatus} />
