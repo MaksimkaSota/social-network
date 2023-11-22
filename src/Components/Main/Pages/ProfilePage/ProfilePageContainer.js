@@ -26,7 +26,9 @@ export const ProfilePageContainer = () => {
     }
   }, [paramId]);
 
+  const isOwner = paramId === authorizedUserId;
+
   return (
-    <ProfilePage isFetchingProfile={isFetchingProfile} profile={profile} />
+    <ProfilePage isFetchingProfile={isFetchingProfile} profile={profile} isOwner={isOwner} />
   );
 };

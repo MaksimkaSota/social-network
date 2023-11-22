@@ -1,0 +1,9 @@
+.photoBlock {
+  width: 90%;
+  margin: 0 auto;
+  .userPhoto {
+    width: 30%;
+    margin: 0 auto $marginMin auto;
+    border-radius: $radius;
+  }
+}

@@ -6,7 +6,7 @@ import { updateStatus } from '../../../../../redux/thunks/profile';
 import { isFetchingStatusSelector } from '../../../../../redux/selectors/loading';
 import { statusSelector } from '../../../../../redux/selectors/profile';
 
-export const ProfileInfoContainer = ({profile}) => {
+export const ProfileInfoContainer = ({profile, isOwner}) => {
   const status = useSelector(statusSelector);
   const isFetchingStatus = useSelector(isFetchingStatusSelector);
 
@@ -20,6 +20,7 @@ export const ProfileInfoContainer = ({profile}) => {
 
   return (
     mounted && <ProfileInfo profile={profile}
+                            isOwner={isOwner}
                             status={status}
                             updateStatus={updateStatusCallback}
                             isFetchingStatus={isFetchingStatus} />
