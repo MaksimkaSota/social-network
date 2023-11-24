@@ -1,37 +1,49 @@
 import classes from './ProfileInfo.module.scss';
-import { Preloader } from '../../../../Common/Preloader/Preloader';
 import { ProfileStatus } from '../ProfileStatus/ProfileStatus';
 import { ProfilePhoto } from '../ProfilePhoto/ProfilePhoto';
 import { ProfileData } from '../ProfileData/ProfileData';
 
 export const ProfileInfo = ({
-                              profile,
                               isOwner,
-                              isFetchingProfile,
+                              profile,
                               status,
                               updateStatus,
                               isFetchingStatus,
                               updatePhoto,
-                              isFetchingPhoto
+                              isFetchingPhoto,
+                              updateData
                             }) => {
+  const data = {
+    fullName: profile.fullName,
+    lookingForAJob: profile.lookingForAJob,
+    lookingForAJobDescription: profile.lookingForAJobDescription,
+    aboutMe: profile.aboutMe,
+    contacts: {
+      facebook: profile.facebook,
+      website: profile.website,
+      vk: profile.vk,
+      twitter: profile.twitter,
+      instagram: profile.instagram,
+      youtube: profile.youtube,
+      github: profile.github,
+      mainLink: profile.mainLink
+    }
+  };
+  const photo = profile.photos.large;
+
   return (
-    isFetchingProfile ?
-      <Preloader /> :
-      <div className={classes.infoBlock}>
-        <h3 className={classes.title}>Profile info</h3>
-        <ProfileStatus status={status}
-                       updateStatus={updateStatus}
-                       isFetchingStatus={isFetchingStatus} />
-        <ProfilePhoto isOwner={isOwner}
-                      photo={profile.photos.large}
-                      updatePhoto={updatePhoto}
-                      isFetchingPhoto={isFetchingPhoto} />
-        <ProfileData isOwner={isOwner}
-                     fullName={profile.fullName}
-                     lookingForAJob={profile.lookingForAJob}
-                     lookingForAJobDescription={profile.lookingForAJobDescription}
-                     aboutMe={profile.aboutMe}
-                     contacts={profile.contacts} />
-      </div>
+    <div className={classes.infoBlock}>
+      <h3 className={classes.title}>Profile info</h3>
+      <ProfileStatus status={status}
+                     updateStatus={updateStatus}
+                     isFetchingStatus={isFetchingStatus} />
+      <ProfilePhoto isOwner={isOwner}
+                    photo={photo}
+                    updatePhoto={updatePhoto}
+                    isFetchingPhoto={isFetchingPhoto} />
+      <ProfileData isOwner={isOwner}
+                   data={data}
+                   updateData={updateData} />
+    </div>
   );
 };

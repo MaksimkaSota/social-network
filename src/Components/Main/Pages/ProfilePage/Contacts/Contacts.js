@@ -1,5 +1,5 @@
-import { Contact } from '../Contact/Contact';
 import classes from './Contacts.module.scss';
+import { Contact } from '../Contact/Contact';
 
 export const Contacts = ({contacts}) => {
   return (
@@ -8,7 +8,7 @@ export const Contacts = ({contacts}) => {
       {
         Object.entries(contacts).map((contact, index) => {
           return (
-            <Contact title={contact[0]} value={contact[1]} key={index} />
+            <Contact title={contact[0]} text={contact[1]} key={index} />
           );
         })
       }

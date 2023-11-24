@@ -25,3 +25,8 @@ export const updatePhotoAPI = async (photo) => {
   });
   return await response.data;
 };
+
+export const updateProfileAPI = async (profile) => {
+  const response = await http.put(`profile`, profile);
+  return await response.data;
+};

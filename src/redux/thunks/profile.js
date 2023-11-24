@@ -6,7 +6,8 @@ import {
   setPhotoRequest,
   setPhotoSuccess,
 } from '../actions/profile';
-import { getProfileAPI, getStatusAPI, updateStatusAPI, updatePhotoAPI } from '../../api/profile';
+import { getProfileAPI, getStatusAPI, updateStatusAPI, updatePhotoAPI, updateProfileAPI } from '../../api/profile';
+import { fillErrorsObject } from '../../utils/helpers/thunksHelpers';
 
 export const getProfile = (id) => {
   return async (dispatch) => {
@@ -49,5 +50,34 @@ export const updatePhoto = (photo) => {
     if (data.resultCode === 0) {
       dispatch(setPhotoSuccess(data.data.photos));
     }
+  };
+};
+
+export const updateData = (profile, setStatus, setSubmitting, setEditModeData, dataKeys, contactsDataKeys) => {
+  return async (dispatch, getState) => {
+    const data = await updateProfileAPI(profile);
+    if (data.resultCode === 0) {
+      const id = getState().auth.id;
+      dispatch(getProfile(id));
+      setEditModeData(false);
+    } else {
+      const errors = {
+        contacts: {}
+      };
+      data.messages.forEach((message) => {
+        dataKeys.forEach((dataKey) => {
+          (dataKey === 'lookingForAJob' || dataKey === 'lookingForAJobDescription') && (dataKey = 'Job');
+          if (dataKey === 'contacts') {
+            contactsDataKeys.forEach((contactsDataKey) => {
+              fillErrorsObject(errors.contacts, contactsDataKey, message);
+            });
+          } else {
+            fillErrorsObject(errors, dataKey, message);
+          }
+        });
+      });
+      setStatus(errors);
+    }
+    setSubmitting(false);
   };
 };

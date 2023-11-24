@@ -1,0 +1,19 @@
+.contactBlock {
+  .contact {
+    @include flex(null, center);
+    &:not(:last-child) {
+      margin: 0 0 $marginMin 0;
+    }
+    .title {
+      @include captions(1rem);
+      margin: 0 $marginMin;
+    }
+    .field {
+      padding: 5px;
+      border-radius: $radius;
+    }
+  }
+  .error {
+    margin: 0 0 $marginMin $marginMin;
+  }
+}

@@ -11,6 +11,7 @@ export const FormField = ({
                             placeholder,
                             text,
                             props = {},
+                            onChange
                           }) => {
   return (
     <div className={classNameFormField}>
@@ -20,6 +21,7 @@ export const FormField = ({
         component={component}
         type={type}
         placeholder={placeholder}
+        onChange={onChange}
         {...props}
       />
       <ErrorMessage name={name} component="p" className={classes.fieldError} />

@@ -14,8 +14,7 @@
     @extend %textarea;
     width: 100%;
   }
-}
-
-.statusPreloader {
-  @include position(30px, 0);
+  .statusPreloader {
+    @include position(30px, 0);
+  }
 }
