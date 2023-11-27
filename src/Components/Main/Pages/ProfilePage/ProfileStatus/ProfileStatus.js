@@ -2,7 +2,7 @@ import classes from './ProfileStatus.module.scss';
 import { useEffect, useState } from 'react';
 import { Preloader } from '../../../../Common/Preloader/Preloader';
 
-export const ProfileStatus = ({status, updateStatus, isFetchingStatus}) => {
+export const ProfileStatus = ({isOwner, status, updateStatus, isFetchingStatus}) => {
   const [editModeStatus, setEditModeStatus] = useState(false);
   const [localStatus, setLocalStatus] = useState(status);
 
@@ -11,7 +11,9 @@ export const ProfileStatus = ({status, updateStatus, isFetchingStatus}) => {
   }, [status]);
 
   const onActivateEditModeStatus = () => {
-    setEditModeStatus(true);
+    if (isOwner) {
+      setEditModeStatus(true);
+    }
   };
 
   const onDeactivateEditModeStatus = () => {
@@ -21,7 +23,7 @@ export const ProfileStatus = ({status, updateStatus, isFetchingStatus}) => {
 
   const onChangeLocalStatus = (event) => {
     setLocalStatus(event.target.value);
-  }
+  };
 
   return (
     <div className={classes.statusBlock}>
