@@ -1,9 +1,9 @@
 .contactBlock {
+  &:not(:last-child) {
+    margin: 0 0 $marginMin 0;
+  }
   .contact {
     @include flex(null, center);
-    &:not(:last-child) {
-      margin: 0 0 $marginMin 0;
-    }
     .title {
       @include captions(1rem);
       margin: 0 $marginMin;
@@ -14,6 +14,6 @@
     }
   }
   .error {
-    margin: 0 0 $marginMin $marginMin;
+    margin: $marginMin 0 0 $marginMin;
   }
 }
