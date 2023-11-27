@@ -4,8 +4,9 @@ import { NavLink } from 'react-router-dom';
 import userPhoto from '../../assets/images/user.png';
 import { Button } from '../Common/Button/Button';
 import cn from 'classnames';
+import { Preloader } from '../Common/Preloader/Preloader';
 
-export const Header = ({isAuth, loginName, authUserPhoto, logout, incorrectAuthText}) => {
+export const Header = ({isAuth, loginName, authUserPhoto, isFetchingAuthUserPhoto, logout, incorrectAuthText}) => {
   return (
     <header className={classes.header}>
       <div className={classes.logoContainer}>
@@ -16,7 +17,11 @@ export const Header = ({isAuth, loginName, authUserPhoto, logout, incorrectAuthT
         {
           isAuth ?
             <>
-              <img className={classes.userPhoto} src={authUserPhoto} alt="avatar" />
+              {
+                isFetchingAuthUserPhoto ?
+                  <Preloader className={classes.authUserPhotoPreloader} /> :
+                  <img className={classes.userPhoto} src={authUserPhoto} alt="avatar" />
+              }
               <p className={classes.text}>{loginName}</p>
               <Button text="Logout" onClick={logout} />
             </> :

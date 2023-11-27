@@ -15,6 +15,9 @@
   }
   .loginContainer {
     @extend %left-block;
+    .authUserPhotoPreloader {
+      @include position(50%, 0 auto $marginMin auto);
+    }
     .userPhoto {
       @include position(50%, 0 auto $marginMin auto);
       border-radius: $radius;

@@ -10,6 +10,7 @@ import {
 } from '../actions/profile';
 import { getProfileAPI, getStatusAPI, updateStatusAPI, updatePhotoAPI, updateProfileAPI } from '../../api/profile';
 import { fillErrorsObject } from '../../utils/helpers/thunksHelpers';
+import { setAuthUserPhoto } from '../actions/auth';
 
 export const getProfile = (id) => {
   return async (dispatch) => {
@@ -51,6 +52,7 @@ export const updatePhoto = (photo) => {
     const data = await updatePhotoAPI(photo);
     if (data.resultCode === 0) {
       dispatch(setPhotoSuccess(data.data.photos));
+      dispatch(setAuthUserPhoto(data.data.photos.small));
     }
   };
 };
