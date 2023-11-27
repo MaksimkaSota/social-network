@@ -21,7 +21,7 @@ export const PostFormContainer = React.memo(({addPost}) => {
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
-      {() => <PostForm />}
+      {({handleChange}) => <PostForm handleChange={handleChange} />}
     </Formik>
   );
 });

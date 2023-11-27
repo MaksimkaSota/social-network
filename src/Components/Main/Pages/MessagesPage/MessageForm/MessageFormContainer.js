@@ -21,7 +21,7 @@ export const MessageFormContainer = React.memo(({addMessage}) => {
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
-      {() => <MessageForm />}
+      {({handleChange}) => <MessageForm handleChange={handleChange} />}
     </Formik>
   );
 });

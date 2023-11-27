@@ -3,7 +3,7 @@ import classes from './LoginForm.module.scss';
 import { Button } from '../../../../Common/Button/Button';
 import { FormField } from '../../../../Common/FormField/FormField';
 
-export const LoginForm = ({isSubmitting, status}) => {
+export const LoginForm = ({isSubmitting, status, handleChange}) => {
   return (
     <Form className={classes.loginForm}>
       <FormField
@@ -12,7 +12,7 @@ export const LoginForm = ({isSubmitting, status}) => {
         name="email"
         type="email"
         placeholder="Email"
-      />
+        onChange={handleChange} />
       <FormField
         classNameFormField={classes.fieldBlock}
         classNameField={classes.field}
@@ -20,7 +20,7 @@ export const LoginForm = ({isSubmitting, status}) => {
         type="password"
         placeholder="Password"
         props={{autoComplete: 'on'}}
-      />
+        onChange={handleChange} />
       <FormField
         classNameFormField={classes.toggleBlock}
         classNameField={classes.checkbox}
@@ -29,7 +29,7 @@ export const LoginForm = ({isSubmitting, status}) => {
         type="checkbox"
         text="Remember me"
         props={{id: 'rememberMe'}}
-      />
+        onChange={handleChange} />
       {status && <p className={classes.formError}>{status}</p>}
       <Button text="Login" type="submit" className={classes.loginButton} disabled={isSubmitting} />
     </Form>
