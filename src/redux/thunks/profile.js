@@ -5,6 +5,8 @@ import {
   setStatusSuccess,
   setPhotoRequest,
   setPhotoSuccess,
+  setDataRequest,
+  setDataSuccess,
 } from '../actions/profile';
 import { getProfileAPI, getStatusAPI, updateStatusAPI, updatePhotoAPI, updateProfileAPI } from '../../api/profile';
 import { fillErrorsObject } from '../../utils/helpers/thunksHelpers';
@@ -60,9 +62,12 @@ export const updateData = (profileData, setStatus, setSubmitting, setEditModeDat
 
     const data = await updateProfileAPI(profileData);
     if (data.resultCode === 0) {
-      const id = getState().auth.id;
-      dispatch(getProfile(id));
       setEditModeData(false);
+      dispatch(setDataRequest());
+      const id = getState().auth.id;
+      const data = await getProfileAPI(id);
+      dispatch(setProfileSuccess(data));
+      dispatch(setDataSuccess());
     } else {
       const errors = {
         contacts: {}

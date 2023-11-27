@@ -3,13 +3,18 @@ import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMounted } from '../../../../../hooks/useMounted';
 import { updateData, updateStatus, updatePhoto } from '../../../../../redux/thunks/profile';
-import { isFetchingStatusSelector, isFetchingPhotoSelector } from '../../../../../redux/selectors/loading';
+import {
+  isFetchingStatusSelector,
+  isFetchingPhotoSelector,
+  isFetchingDataSelector
+} from '../../../../../redux/selectors/loading';
 import { statusSelector } from '../../../../../redux/selectors/profile';
 
 export const ProfileInfoContainer = ({profile, isOwner}) => {
   const status = useSelector(statusSelector);
   const isFetchingStatus = useSelector(isFetchingStatusSelector);
   const isFetchingPhoto = useSelector(isFetchingPhotoSelector);
+  const isFetchingData = useSelector(isFetchingDataSelector);
 
   const dispatch = useDispatch();
   const updateStatusCallback = useCallback(
@@ -37,6 +42,7 @@ export const ProfileInfoContainer = ({profile, isOwner}) => {
                             isFetchingStatus={isFetchingStatus}
                             updatePhoto={updatePhotoCallback}
                             isFetchingPhoto={isFetchingPhoto}
-                            updateData={updateDataCallback} />
+                            updateData={updateDataCallback}
+                            isFetchingData={isFetchingData} />
   );
 };

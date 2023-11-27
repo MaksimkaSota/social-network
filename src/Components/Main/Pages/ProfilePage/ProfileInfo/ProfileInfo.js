@@ -11,7 +11,8 @@ export const ProfileInfo = ({
                               isFetchingStatus,
                               updatePhoto,
                               isFetchingPhoto,
-                              updateData
+                              updateData,
+                              isFetchingData
                             }) => {
   const data = {
     fullName: profile.fullName,
@@ -44,7 +45,8 @@ export const ProfileInfo = ({
                     isFetchingPhoto={isFetchingPhoto} />
       <ProfileData isOwner={isOwner}
                    data={data}
-                   updateData={updateData} />
+                   updateData={updateData}
+                   isFetchingData={isFetchingData} />
     </div>
   );
 };
