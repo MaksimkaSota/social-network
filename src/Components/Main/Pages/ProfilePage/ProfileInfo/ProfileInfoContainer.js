@@ -21,8 +21,8 @@ export const ProfileInfoContainer = ({profile, isOwner}) => {
     [dispatch]
   );
   const updateDataCallback = useCallback(
-    (profile, setStatus, setSubmitting, setEditModeData, dataKeys, contactsDataKeys) => {
-      return dispatch(updateData(profile, setStatus, setSubmitting, setEditModeData, dataKeys, contactsDataKeys));
+    (profileData, setStatus, setSubmitting, setEditModeData) => {
+      return dispatch(updateData(profileData, setStatus, setSubmitting, setEditModeData));
     },
     [dispatch]
   );

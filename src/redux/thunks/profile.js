@@ -53,9 +53,12 @@ export const updatePhoto = (photo) => {
   };
 };
 
-export const updateData = (profile, setStatus, setSubmitting, setEditModeData, dataKeys, contactsDataKeys) => {
+export const updateData = (profileData, setStatus, setSubmitting, setEditModeData) => {
   return async (dispatch, getState) => {
-    const data = await updateProfileAPI(profile);
+    const dataKeys = Object.keys(profileData);
+    const contactsDataKeys = Object.keys(profileData.contacts);
+
+    const data = await updateProfileAPI(profileData);
     if (data.resultCode === 0) {
       const id = getState().auth.id;
       dispatch(getProfile(id));

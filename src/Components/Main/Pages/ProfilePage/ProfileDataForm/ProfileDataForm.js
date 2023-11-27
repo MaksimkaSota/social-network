@@ -7,7 +7,7 @@ import { FormServerError } from '../../../../Common/FormServerError/FormServerEr
 import { ContactsForm } from '../ContactsForm/ContactsForm';
 
 export const ProfileDataForm = ({data, isSubmitting, status, handleChange, setFieldValue}) => {
-  const [editModeSkills, setEditModeSkills] = useState(data.lookingForAJob || false);
+  const [editModeSkills, setEditModeSkills] = useState(data.lookingForAJob);
 
   const onToggleEditModeSkills = (event) => {
     setFieldValue('lookingForAJob', event.target.checked);

@@ -10,33 +10,13 @@ const validationSchema = Yup.object().shape({
 });
 
 export const ProfileDataFormContainer = ({data, updateData, setEditModeData}) => {
-  const initialValue = {
-    fullName: data.fullName || '',
-    lookingForAJob: data.lookingForAJob || false,
-    lookingForAJobDescription: data.lookingForAJobDescription || '',
-    aboutMe: data.aboutMe || '',
-    contacts: {
-      facebook: data.facebook || '',
-      website: data.website || '',
-      vk: data.vk || '',
-      twitter: data.twitter || '',
-      instagram: data.instagram || '',
-      youtube: data.youtube || '',
-      github: data.github || '',
-      mainLink: data.mainLink || ''
-    }
-  };
-
-  const dataKeys = Object.keys(initialValue);
-  const contactsDataKeys = Object.keys(initialValue.contacts);
-
   const onSubmit = (formData, {setStatus, setSubmitting}) => {
-    updateData(formData, setStatus, setSubmitting, setEditModeData, dataKeys, contactsDataKeys);
+    updateData(formData, setStatus, setSubmitting, setEditModeData);
   };
 
   return (
     <Formik
-      initialValues={initialValue}
+      initialValues={data}
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
