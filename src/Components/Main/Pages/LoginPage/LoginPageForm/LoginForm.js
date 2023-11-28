@@ -3,25 +3,28 @@ import classes from './LoginForm.module.scss';
 import { Button } from '../../../../Common/Button/Button';
 import { FormField } from '../../../../Common/FormField/FormField';
 import { FormServerError } from '../../../../Common/FormServerError/FormServerError';
+import cn from 'classnames';
 
-export const LoginForm = ({isSubmitting, status, handleChange}) => {
+export const LoginForm = ({isSubmitting, status, handleChange, errors}) => {
   return (
     <Form className={classes.loginForm}>
       <FormField
         classNameFormField={classes.fieldBlock}
-        classNameField={classes.field}
+        classNameField={cn(classes.field, {[classes.fieldError]: status})}
         name="email"
         type="email"
         placeholder="Email"
-        onChange={handleChange} />
+        onChange={handleChange}
+        errors={errors} />
       <FormField
         classNameFormField={classes.fieldBlock}
-        classNameField={classes.field}
+        classNameField={cn(classes.field, {[classes.fieldError]: status})}
         name="password"
         type="password"
         placeholder="Password"
         props={{autoComplete: 'on'}}
-        onChange={handleChange} />
+        onChange={handleChange}
+        errors={errors} />
       <FormField
         classNameFormField={classes.toggleBlock}
         classNameField={classes.checkbox}

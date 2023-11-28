@@ -5,8 +5,9 @@ import { FormField } from '../../../../Common/FormField/FormField';
 import { Button } from '../../../../Common/Button/Button';
 import { FormServerError } from '../../../../Common/FormServerError/FormServerError';
 import { ContactsForm } from '../ContactsForm/ContactsForm';
+import cn from 'classnames';
 
-export const ProfileDataForm = ({data, isSubmitting, status, handleChange, setFieldValue}) => {
+export const ProfileDataForm = ({data, isSubmitting, status, handleChange, setFieldValue, errors}) => {
   const [editModeSkills, setEditModeSkills] = useState(data.lookingForAJob);
 
   const onToggleEditModeSkills = (event) => {
@@ -21,11 +22,12 @@ export const ProfileDataForm = ({data, isSubmitting, status, handleChange, setFi
       </div>
       <div className={classes.descriptionBlock}>
         <b className={classes.title}>Full name:</b>
-        <FormField classNameField={classes.field}
+        <FormField classNameField={cn(classes.field, {[classes.fieldError]: status && status['fullName']})}
                    name="fullName"
                    type="text"
                    placeholder="Full name"
-                   onChange={handleChange} />
+                   onChange={handleChange}
+                   errors={errors} />
       </div>
       {
         (status && status['fullName']) &&
@@ -33,7 +35,8 @@ export const ProfileDataForm = ({data, isSubmitting, status, handleChange, setFi
       }
       <div className={classes.descriptionBlock}>
         <b className={classes.title}>Looking for a job:</b>
-        <FormField classNameLabel={classes.label}
+        <FormField classNameField={classes.checkbox}
+                   classNameLabel={classes.label}
                    name="lookingForAJob"
                    type="checkbox"
                    props={{id: 'rememberMe'}}
@@ -44,7 +47,7 @@ export const ProfileDataForm = ({data, isSubmitting, status, handleChange, setFi
         editModeSkills &&
         <div className={classes.descriptionBlock}>
           <b className={classes.title}>My professional skills:</b>
-          <FormField classNameField={classes.textarea}
+          <FormField classNameField={cn(classes.textarea, {[classes.fieldError]: status && status['Job']})}
                      name="lookingForAJobDescription"
                      component="textarea"
                      placeholder="My professional skills"
@@ -57,7 +60,7 @@ export const ProfileDataForm = ({data, isSubmitting, status, handleChange, setFi
       }
       <div className={classes.descriptionBlock}>
         <b className={classes.title}>About me:</b>
-        <FormField classNameField={classes.textarea}
+        <FormField classNameField={cn(classes.textarea, {[classes.fieldError]: status && status['aboutMe']})}
                    name="aboutMe"
                    component="textarea"
                    placeholder="About me"

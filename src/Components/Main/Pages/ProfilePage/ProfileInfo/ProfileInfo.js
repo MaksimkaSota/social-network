@@ -20,14 +20,14 @@ export const ProfileInfo = ({
     lookingForAJobDescription: profile.lookingForAJobDescription,
     aboutMe: profile.aboutMe,
     contacts: {
-      facebook: profile.facebook,
-      website: profile.website,
-      vk: profile.vk,
-      twitter: profile.twitter,
-      instagram: profile.instagram,
-      youtube: profile.youtube,
-      github: profile.github,
-      mainLink: profile.mainLink
+      facebook: profile.contacts.facebook,
+      website: profile.contacts.website,
+      vk: profile.contacts.vk,
+      twitter: profile.contacts.twitter,
+      instagram: profile.contacts.instagram,
+      youtube: profile.contacts.youtube,
+      github: profile.contacts.github,
+      mainLink: profile.contacts.mainLink
     }
   };
   const photo = profile.photos.large;

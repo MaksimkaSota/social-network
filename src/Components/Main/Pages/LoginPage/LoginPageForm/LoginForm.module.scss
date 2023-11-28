@@ -11,6 +11,9 @@
       padding: $padding;
       border-radius: $radius;
     }
+    .fieldError {
+      border: 2px solid $error;
+    }
   }
   .toggleBlock {
     @include flex(center, null);

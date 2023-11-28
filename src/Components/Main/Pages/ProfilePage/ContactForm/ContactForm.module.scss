@@ -12,6 +12,9 @@
       padding: 5px;
       border-radius: $radius;
     }
+    .fieldError {
+      border: 2px solid $error;
+    }
   }
   .error {
     margin: $marginMin 0 0 $marginMin;

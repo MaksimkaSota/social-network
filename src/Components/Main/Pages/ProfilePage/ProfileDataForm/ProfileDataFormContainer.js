@@ -20,13 +20,14 @@ export const ProfileDataFormContainer = ({data, updateData, setEditModeData}) =>
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
-      {({isSubmitting, status, handleChange, setFieldValue}) => (
+      {({isSubmitting, status, handleChange, setFieldValue, errors}) => (
         <ProfileDataForm
           data={data}
           isSubmitting={isSubmitting}
           status={status}
           handleChange={handleChange}
           setFieldValue={setFieldValue}
+          errors={errors}
         />
       )}
     </Formik>

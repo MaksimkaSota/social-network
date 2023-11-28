@@ -22,14 +22,20 @@
       padding: 5px;
       border-radius: $radius;
     }
+    .fieldError {
+      border: 2px solid $error;
+    }
     .textarea {
       @extend %textarea;
       width: 100%;
     }
+    .checkbox {
+      cursor: pointer;
+      margin: 0 $marginMin 0 0;
+    }
     .label {
       cursor: pointer;
       font-size: 1rem;
-      margin: 0 0 0 $marginMin;
     }
   }
   .error {
