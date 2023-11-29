@@ -15,7 +15,8 @@ export const LoginForm = ({isSubmitting, status, handleChange, errors}) => {
         type="email"
         placeholder="Email"
         onChange={handleChange}
-        errors={errors} />
+        errors={errors}
+      />
       <FormField
         classNameFormField={classes.fieldBlock}
         classNameField={cn(classes.field, {[classes.fieldError]: status})}
@@ -24,7 +25,8 @@ export const LoginForm = ({isSubmitting, status, handleChange, errors}) => {
         placeholder="Password"
         props={{autoComplete: 'on'}}
         onChange={handleChange}
-        errors={errors} />
+        errors={errors}
+      />
       <FormField
         classNameFormField={classes.toggleBlock}
         classNameField={classes.checkbox}
@@ -33,7 +35,8 @@ export const LoginForm = ({isSubmitting, status, handleChange, errors}) => {
         type="checkbox"
         text="Remember me"
         props={{id: 'rememberMe'}}
-        onChange={handleChange} />
+        onChange={handleChange}
+      />
       {status && <FormServerError status={status} className={classes.error} />}
       <Button text="Login" type="submit" className={classes.loginButton} disabled={isSubmitting} />
     </Form>

@@ -8,11 +8,13 @@ export const ContactsForm = ({data, status, handleChange}) => {
       {
         Object.keys(data.contacts).map((contact, index) => {
           return (
-            <ContactForm title={contact}
-                         name={`contacts.${contact}`}
-                         status={status}
-                         handleChange={handleChange}
-                         key={index} />
+            <ContactForm
+              title={contact}
+              name={`contacts.${contact}`}
+              status={status}
+              handleChange={handleChange}
+              key={index}
+            />
           );
         })
       }

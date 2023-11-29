@@ -22,54 +22,53 @@ export const ProfileDataForm = ({data, isSubmitting, status, handleChange, setFi
       </div>
       <div className={classes.descriptionBlock}>
         <b className={classes.title}>Full name:</b>
-        <FormField classNameField={cn(classes.field, {[classes.fieldError]: status && status['fullName']})}
-                   name="fullName"
-                   type="text"
-                   placeholder="Full name"
-                   onChange={handleChange}
-                   errors={errors} />
+        <FormField
+          classNameField={cn(classes.field, {[classes.fieldError]: status?.fullName})}
+          name="fullName"
+          type="text"
+          placeholder="Full name"
+          onChange={handleChange}
+          errors={errors}
+        />
       </div>
-      {
-        (status && status['fullName']) &&
-        <FormServerError name="fullName" status={status} className={classes.error} />
-      }
+      {status?.fullName && <FormServerError name="fullName" status={status} className={classes.error} />}
       <div className={classes.descriptionBlock}>
         <b className={classes.title}>Looking for a job:</b>
-        <FormField classNameField={classes.checkbox}
-                   classNameLabel={classes.label}
-                   name="lookingForAJob"
-                   type="checkbox"
-                   props={{id: 'rememberMe'}}
-                   text="looking for a job"
-                   onChange={onToggleEditModeSkills} />
+        <FormField
+          classNameField={classes.checkbox}
+          classNameLabel={classes.label}
+          name="lookingForAJob"
+          type="checkbox"
+          props={{id: 'rememberMe'}}
+          text="looking for a job"
+          onChange={onToggleEditModeSkills}
+        />
       </div>
       {
         editModeSkills &&
         <div className={classes.descriptionBlock}>
           <b className={classes.title}>My professional skills:</b>
-          <FormField classNameField={cn(classes.textarea, {[classes.fieldError]: status && status['Job']})}
-                     name="lookingForAJobDescription"
-                     component="textarea"
-                     placeholder="My professional skills"
-                     onChange={handleChange} />
+          <FormField
+            classNameField={cn(classes.textarea, {[classes.fieldError]: status?.Job})}
+            name="lookingForAJobDescription"
+            component="textarea"
+            placeholder="My professional skills"
+            onChange={handleChange}
+          />
         </div>
       }
-      {
-        (status && status['Job']) &&
-        <FormServerError name="Job" status={status} className={classes.error} />
-      }
+      {status?.Job && <FormServerError name="Job" status={status} className={classes.error} />}
       <div className={classes.descriptionBlock}>
         <b className={classes.title}>About me:</b>
-        <FormField classNameField={cn(classes.textarea, {[classes.fieldError]: status && status['aboutMe']})}
-                   name="aboutMe"
-                   component="textarea"
-                   placeholder="About me"
-                   onChange={handleChange} />
+        <FormField
+          classNameField={cn(classes.textarea, {[classes.fieldError]: status?.aboutMe})}
+          name="aboutMe"
+          component="textarea"
+          placeholder="About me"
+          onChange={handleChange}
+        />
       </div>
-      {
-        (status && status['aboutMe']) &&
-        <FormServerError name="aboutMe" status={status} className={classes.error} />
-      }
+      {status?.aboutMe && <FormServerError name="aboutMe" status={status} className={classes.error} />}
       <ContactsForm data={data} status={status} handleChange={handleChange} />
     </Form>
   );

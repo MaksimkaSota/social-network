@@ -13,7 +13,8 @@ export const PostForm = ({handleChange, errors}) => {
         component="textarea"
         placeholder="Post text"
         onChange={handleChange}
-        errors={errors} />
+        errors={errors}
+      />
       <Button text="Add post" type="submit" />
     </Form>
   );

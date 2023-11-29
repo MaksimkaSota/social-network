@@ -35,18 +35,24 @@ export const ProfileInfo = ({
   return (
     <div className={classes.infoBlock}>
       <h3 className={classes.title}>Profile info</h3>
-      <ProfileStatus isOwner={isOwner}
-                     status={status}
-                     updateStatus={updateStatus}
-                     isFetchingStatus={isFetchingStatus} />
-      <ProfilePhoto isOwner={isOwner}
-                    photo={photo}
-                    updatePhoto={updatePhoto}
-                    isFetchingPhoto={isFetchingPhoto} />
-      <ProfileData isOwner={isOwner}
-                   data={data}
-                   updateData={updateData}
-                   isFetchingData={isFetchingData} />
+      <ProfileStatus
+        isOwner={isOwner}
+        status={status}
+        updateStatus={updateStatus}
+        isFetchingStatus={isFetchingStatus}
+      />
+      <ProfilePhoto
+        isOwner={isOwner}
+        photo={photo}
+        updatePhoto={updatePhoto}
+        isFetchingPhoto={isFetchingPhoto}
+      />
+      <ProfileData
+        isOwner={isOwner}
+        data={data}
+        updateData={updateData}
+        isFetchingData={isFetchingData}
+      />
     </div>
   );
 };

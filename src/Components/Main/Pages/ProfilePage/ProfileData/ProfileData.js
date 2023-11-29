@@ -21,9 +21,11 @@ export const ProfileData = ({
     <div className={classes.dataBlock}>
       {
         editModeData ?
-          <ProfileDataFormContainer data={data}
-                                    updateData={updateData}
-                                    setEditModeData={setEditModeData} /> :
+          <ProfileDataFormContainer
+            data={data}
+            updateData={updateData}
+            setEditModeData={setEditModeData}
+          /> :
           <>
             {
               isOwner &&

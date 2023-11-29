@@ -9,18 +9,15 @@ export const ContactForm = ({title, name, status, handleChange}) => {
       <div className={classes.contact}>
         <b className={classes.title}>{title}:</b>
         <FormField
-          classNameField={cn(classes.field, {
-            [classes.fieldError]: status && status.contacts && status.contacts[title]
-          })}
+          classNameField={cn(classes.field, {[classes.fieldError]: status?.contacts?.[title]})}
           name={name}
-          type={'text'}
+          type='text'
           placeholder={title}
           onChange={handleChange}
         />
       </div>
       {
-        (status && status.contacts && status.contacts[title]) &&
-        <FormServerError name={title} status={status.contacts} className={classes.error} />
+        status?.contacts?.[title] && <FormServerError name={title} status={status.contacts} className={classes.error} />
       }
     </div>
   );

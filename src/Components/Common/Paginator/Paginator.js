@@ -61,4 +61,4 @@ export const Paginator = ({
       {currentPortion < portionCount && <Button className={classes.paginatorButton} text={'Next'} onClick={onNextButton} />}
     </div>
   );
-};
+}

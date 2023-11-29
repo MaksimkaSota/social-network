@@ -13,7 +13,8 @@ export const MessageForm = ({handleChange, errors}) => {
         component="textarea"
         placeholder="Message text"
         onChange={handleChange}
-        errors={errors} />
+        errors={errors}
+      />
       <Button text="Add message" type="submit" />
     </Form>
   );
