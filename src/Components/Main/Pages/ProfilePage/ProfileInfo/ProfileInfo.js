@@ -1,21 +1,58 @@
 import classes from './ProfileInfo.module.scss';
-import userPhoto from '../../../../../assets/images/user.png';
-import { Preloader } from '../../../../Common/Preloader/Preloader';
 import { ProfileStatus } from '../ProfileStatus/ProfileStatus';
+import { ProfilePhoto } from '../ProfilePhoto/ProfilePhoto';
+import { ProfileData } from '../ProfileData/ProfileData';
 
-export const ProfileInfo = ({profile, isFetchingProfile, status, updateStatus, isFetchingStatus}) => {
+export const ProfileInfo = ({
+                              isOwner,
+                              profile,
+                              status,
+                              updateStatus,
+                              isFetchingStatus,
+                              updatePhoto,
+                              isFetchingPhoto,
+                              updateData,
+                              isFetchingData
+                            }) => {
+  const data = {
+    fullName: profile.fullName,
+    lookingForAJob: profile.lookingForAJob,
+    lookingForAJobDescription: profile.lookingForAJobDescription,
+    aboutMe: profile.aboutMe,
+    contacts: {
+      facebook: profile.contacts.facebook,
+      website: profile.contacts.website,
+      vk: profile.contacts.vk,
+      twitter: profile.contacts.twitter,
+      instagram: profile.contacts.instagram,
+      youtube: profile.contacts.youtube,
+      github: profile.contacts.github,
+      mainLink: profile.contacts.mainLink
+    }
+  };
+  const photo = profile.photos.large;
+
   return (
-    isFetchingProfile ?
-      <Preloader /> :
-      <div className={classes.infoBlock}>
-        <h3 className={classes.title}>Profile info</h3>
-        <p className={classes.fullName}>{profile.fullName}</p>
-        <img
-          className={classes.userPhoto}
-          src={profile.photos.large || userPhoto}
-          alt="avatar"
-        />
-        <ProfileStatus status={status} updateStatus={updateStatus} isFetchingStatus={isFetchingStatus} />
-      </div>
+    <div className={classes.infoBlock}>
+      <h3 className={classes.title}>Profile info</h3>
+      <ProfileStatus
+        isOwner={isOwner}
+        status={status}
+        updateStatus={updateStatus}
+        isFetchingStatus={isFetchingStatus}
+      />
+      <ProfilePhoto
+        isOwner={isOwner}
+        photo={photo}
+        updatePhoto={updatePhoto}
+        isFetchingPhoto={isFetchingPhoto}
+      />
+      <ProfileData
+        isOwner={isOwner}
+        data={data}
+        updateData={updateData}
+        isFetchingData={isFetchingData}
+      />
+    </div>
   );
 };

@@ -1,0 +1,10 @@
+.photoBlock {
+  @include position(90%, 0 auto);
+  .userPhoto {
+    @include position(30%, 0 auto $marginMin auto);
+    border-radius: $radius;
+  }
+  .photoPreloader {
+    @include position(30%, 0 auto $marginMin auto);
+  }
+}

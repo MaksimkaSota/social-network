@@ -1,4 +1,3 @@
 .preloader {
-  width: 300px;
-  margin: $marginMax auto 0 auto;
+  @include position(300px, $marginMax auto 0 auto);
 }

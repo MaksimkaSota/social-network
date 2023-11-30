@@ -1,6 +1,5 @@
 .loginForm {
-  width: 30%;
-  margin: 0 auto;
+  @include position(30%, 0 auto);
   border: 1px solid $active;
   border-radius: $radius;
   padding: $padding;
@@ -12,10 +11,12 @@
       padding: $padding;
       border-radius: $radius;
     }
+    .fieldError {
+      border: 2px solid $error;
+    }
   }
   .toggleBlock {
-    display: flex;
-    justify-content: center;
+    @include flex(center, null);
     margin: 0 0 $marginMin 0;
     .checkbox {
       cursor: pointer;
@@ -27,13 +28,12 @@
       font-size: 1rem;
     }
   }
-  .formError {
+  .error {
+    text-align: center;
     margin: 0 0 $marginMin 0;
-    color: $error;
     font-size: 1.1rem;
   }
-}
-
-.loginButton {
-  width: 100%;
+  .loginButton {
+    width: 100%;
+  }
 }

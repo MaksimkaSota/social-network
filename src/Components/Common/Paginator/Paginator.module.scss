@@ -1,6 +1,6 @@
 .paginator {
   margin: $marginMin auto $marginMin auto;
-  @extend %flex-vertical-center;
+  @include flex(null, center);
   justify-content: center;
   .paginatorBlock {
     display: flex;
@@ -13,8 +13,7 @@
       color: $captions;
     }
   }
-}
-
-.paginatorButton {
-  margin: 0;
+  .paginatorButton {
+    margin: 0;
+  }
 }

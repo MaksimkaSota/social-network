@@ -2,6 +2,8 @@ const initialState = {
   SET_USERS: false,
   SET_PROFILE: false,
   SET_PROFILE_STATUS: false,
+  SET_PROFILE_PHOTO: false,
+  SET_PROFILE_DATA: false,
   SET_AUTH: true
 };
 

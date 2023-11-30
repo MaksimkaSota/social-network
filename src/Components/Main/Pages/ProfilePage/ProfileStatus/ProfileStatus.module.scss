@@ -1,27 +1,20 @@
 .statusBlock {
-  width: 90%;
-  margin: 0 auto;
-  .status {
-    display: flex;
-    align-items: baseline;
-    .title {
-      color: $captions;
-      margin: 0 $marginMin 0 0;
-      font-size: 1rem;
-    }
-    .statusText {
-      word-break: break-word;
-      text-align: left;
-      font-size: .9rem;
-    }
-    .inputStatus {
-      @extend %textarea;
-      width: 100%;
-    }
+  @include position(90%, 0 auto $marginMin auto);
+  @include flex(null, center);
+  .title {
+    @include captions(1.1rem);
+    margin: 0 $marginMin 0 0;
   }
-}
-
-.statusPreloader {
-  width: 30px;
-  margin: 0
+  .statusText {
+    word-break: break-word;
+    text-align: left;
+    font-size: 1.2rem;
+  }
+  .inputStatus {
+    @extend %textarea;
+    width: 100%;
+  }
+  .statusPreloader {
+    @include position(30px, 0);
+  }
 }

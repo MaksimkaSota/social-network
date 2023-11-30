@@ -1,21 +1,32 @@
 @import './variables';
 
-@mixin captions($fz, $ls) {
-  color: $white;
+@mixin position($w, $m) {
+  width: $w;
+  margin: $m;
+};
+
+@mixin flex($jc, $ai) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $ai;
+};
+
+@mixin captions($fz, $ls: null) {
+  color: $captions;
   font-size: $fz;
   letter-spacing: $ls;
 };
 
-@mixin click($c) {
+@mixin link($c) {
   cursor: pointer;
   font-size: 1.3rem;
   color: $c;
   transition: all .3s linear;
 };
 
-%flex-vertical-center {
-  display: flex;
-  align-items: center;
+%title {
+  margin: $marginMin 0 $marginMax 0;
+  @include captions(2rem, .05rem);
 };
 
 %left-block {
@@ -23,18 +34,11 @@
   padding: $padding;
 };
 
-%mini-title {
-  margin: $marginMin 0 $marginMax 0;
-  @include captions(2rem, .05rem);
-};
-
 %textarea {
-  display: block;
-  width: 50%;
-  height: 60px;
+  @include position(50%, 0 auto);
   padding: 5px;
-  margin: 0 auto;
-  border: 1px solid $content;
+  display: block;
+  height: 60px;
   border-radius: $radius;
   resize: none;
   outline: none;

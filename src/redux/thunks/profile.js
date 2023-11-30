@@ -1,5 +1,16 @@
-import { setProfileRequest, setProfileSuccess, setStatusRequest, setStatusSuccess } from '../actions/profile';
-import { getProfileAPI, getStatusAPI, updateStatusAPI } from '../../api/profile';
+import {
+  setProfileRequest,
+  setProfileSuccess,
+  setStatusRequest,
+  setStatusSuccess,
+  setPhotoRequest,
+  setPhotoSuccess,
+  setDataRequest,
+  setDataSuccess,
+} from '../actions/profile';
+import { getProfileAPI, getStatusAPI, updateStatusAPI, updatePhotoAPI, updateProfileAPI } from '../../api/profile';
+import { fillErrorsObject } from '../../utils/helpers/thunksHelpers';
+import { setAuthUserPhoto } from '../actions/auth';
 
 export const getProfile = (id) => {
   return async (dispatch) => {
@@ -32,5 +43,51 @@ export const updateStatus = (status) => {
         dispatch(setStatusSuccess('Some server status error'));
         break;
     }
+  };
+};
+
+export const updatePhoto = (photo) => {
+  return async (dispatch) => {
+    dispatch(setPhotoRequest());
+    const data = await updatePhotoAPI(photo);
+    if (data.resultCode === 0) {
+      dispatch(setPhotoSuccess(data.data.photos));
+      dispatch(setAuthUserPhoto(data.data.photos.small));
+    }
+  };
+};
+
+export const updateData = (profileData, setStatus, setSubmitting, setEditModeData) => {
+  return async (dispatch, getState) => {
+    const dataKeys = Object.keys(profileData);
+    const contactsDataKeys = Object.keys(profileData.contacts);
+
+    const data = await updateProfileAPI(profileData);
+    if (data.resultCode === 0) {
+      setEditModeData(false);
+      dispatch(setDataRequest());
+      const id = getState().auth.id;
+      const data = await getProfileAPI(id);
+      dispatch(setProfileSuccess(data));
+      dispatch(setDataSuccess());
+    } else {
+      const errors = {
+        contacts: {}
+      };
+      data.messages.forEach((message) => {
+        dataKeys.forEach((dataKey) => {
+          (dataKey === 'lookingForAJob' || dataKey === 'lookingForAJobDescription') && (dataKey = 'Job');
+          if (dataKey === 'contacts') {
+            contactsDataKeys.forEach((contactsDataKey) => {
+              fillErrorsObject(errors.contacts, contactsDataKey, message);
+            });
+          } else {
+            fillErrorsObject(errors, dataKey, message);
+          }
+        });
+      });
+      setStatus(errors);
+    }
+    setSubmitting(false);
   };
 };

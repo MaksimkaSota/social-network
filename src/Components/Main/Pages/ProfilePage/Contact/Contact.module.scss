@@ -1,0 +1,10 @@
+.contact {
+  @include flex(null, center);
+  .title {
+    @include captions(1rem);
+    margin: 0 $marginMin;
+  }
+  .text {
+    font-size: 1.1rem;
+  }
+}

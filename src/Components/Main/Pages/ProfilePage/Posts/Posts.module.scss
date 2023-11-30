@@ -2,7 +2,7 @@
   width: 50%;
   text-align: center;
   .title {
-    @extend %mini-title;
+    @extend %title;
   }
   .addPostBlock {
     margin: 0 0 $marginMin 0;
