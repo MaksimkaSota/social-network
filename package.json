@@ -158,6 +158,7 @@
     ]
   },
   "devDependencies": {
+    "react-svg-loader": "^3.0.3",
     "react-test-renderer": "^18.2.0"
   }
 }

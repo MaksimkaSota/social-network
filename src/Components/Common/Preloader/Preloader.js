@@ -1,9 +1,9 @@
 import classes from './Preloader.module.scss';
-import preloader from '../../../assets/images/preloader.svg';
 import cn from 'classnames';
+import Loader from '../../../assets/images/loader.svg';
 
 export const Preloader = ({className}) => {
   return (
-    <img className={cn(classes.preloader, className)} src={preloader} alt="preloader" />
+    <Loader className={cn(classes.preloader, className)} />
   );
 };
