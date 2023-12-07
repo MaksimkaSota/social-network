@@ -1,4 +1,10 @@
-import { SET_AUTH_SUCCESS_CORRECT, SET_AUTH_SUCCESS_INCORRECT, RESET_AUTH_DATA, SET_AUTH_PHOTO } from '../types/auth';
+import {
+  SET_AUTH_SUCCESS_CORRECT,
+  SET_AUTH_SUCCESS_INCORRECT,
+  RESET_AUTH_DATA,
+  SET_AUTH_PHOTO,
+  SET_AUTH_CAPTCHA_URL
+} from '../types/auth';
 
 const initialState = {
   id: null,
@@ -6,7 +12,8 @@ const initialState = {
   login: null,
   isAuth: false,
   authUserPhoto: '',
-  incorrectAuthText: ''
+  incorrectAuthText: '',
+  captchaUrl: '',
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -31,6 +38,11 @@ export const authReducer = (state = initialState, action) => {
       return {
         ...state,
         ...action.payload
+      }
+    case SET_AUTH_CAPTCHA_URL:
+      return {
+        ...state,
+        captchaUrl: action.payload,
       }
     default:
       return state;

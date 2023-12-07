@@ -27,9 +27,7 @@ export const Header = ({isAuth, loginName, authUserPhoto, isFetchingAuthUserPhot
             </> :
             <>
               <img className={classes.userPhoto} src={userPhoto} alt="avatar" />
-              <p className={cn(classes.text, classes.incorrectAuthText)}>
-                {incorrectAuthText || 'You are not authorized'}
-              </p>
+              <p className={cn(classes.text, classes.incorrectAuthText)}>{incorrectAuthText}</p>
               <NavLink to="/login">
                 <Button text="Login" />
               </NavLink>

@@ -3,7 +3,8 @@ import {
   SET_AUTH_SUCCESS_CORRECT,
   SET_AUTH_SUCCESS_INCORRECT,
   SET_AUTH_PHOTO,
-  RESET_AUTH_DATA
+  RESET_AUTH_DATA,
+  SET_AUTH_CAPTCHA_URL
 } from '../types/auth';
 
 export const setAuthRequest = () => ({type: SET_AUTH_REQUEST});
@@ -13,7 +14,8 @@ export const setAuthSuccessIncorrect = (incorrectAuthText) => ({
   payload: incorrectAuthText
 });
 export const setAuthUserPhoto = (photo) => ({type: SET_AUTH_PHOTO, payload: photo});
-export const resetAuthData = ({id, email, login, isAuth, authUserPhoto}) => ({
+export const resetAuthData = ({id, email, login, isAuth, authUserPhoto, captchaUrl}) => ({
   type: RESET_AUTH_DATA,
-  payload: {id, email, login, isAuth, authUserPhoto}
+  payload: {id, email, login, isAuth, authUserPhoto, captchaUrl}
 });
+export const setCaptchaUrl = (captchaUrl) => ({type: SET_AUTH_CAPTCHA_URL, payload: captchaUrl});
