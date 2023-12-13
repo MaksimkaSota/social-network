@@ -27,7 +27,7 @@ export const ProfileStatus = ({isOwner, status, updateStatus, isFetchingStatus})
 
   return (
     <div className={classes.statusBlock}>
-      <b className={classes.title}>Status:</b>
+      <h5 className={classes.title}>Status:</h5>
       {
         editModeStatus ?
           <textarea className={classes.inputStatus}
