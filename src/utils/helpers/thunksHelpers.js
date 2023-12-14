@@ -3,3 +3,7 @@ export const fillErrorsObject = (object, key, message) => {
     object[key] = message;
   }
 };
+
+export const getErrorMessage = (errorObject) => {
+  return errorObject.response.data.message || errorObject.message;
+};

@@ -9,6 +9,7 @@ import {
 } from '../actions/auth';
 import { getProfileAPI } from '../../api/profile';
 import { setProfileFailure } from '../actions/profile';
+import { getErrorMessage } from '../../utils/helpers/thunksHelpers';
 
 export const getAuth = () => {
   return async (dispatch) => {
@@ -21,8 +22,7 @@ export const getAuth = () => {
         const dataProfile = await getProfileAPI(dataAuth.data.id);
         dispatch(setAuthUserPhoto(dataProfile.photos.small));
       } catch (error) {
-        const message = error.response.data.message || error.message;
-        dispatch(setProfileFailure(error.response.status, message));
+        dispatch(setProfileFailure(error.response.status, getErrorMessage(error)));
       }
     } else if (dataAuth.resultCode === 1) {
       dispatch(setAuthSuccessIncorrect(dataAuth.messages[0]));
