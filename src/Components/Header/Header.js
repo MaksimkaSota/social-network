@@ -20,7 +20,7 @@ export const Header = ({isAuth, loginName, authUserPhoto, isFetchingAuthUserPhot
               {
                 isFetchingAuthUserPhoto ?
                   <Preloader className={classes.authUserPhotoPreloader} /> :
-                  <img className={classes.userPhoto} src={authUserPhoto} alt="avatar" />
+                  <img className={classes.userPhoto} src={authUserPhoto || userPhoto} alt="avatar" />
               }
               <p className={classes.text}>{loginName}</p>
               <Button text="Logout" onClick={logout} />

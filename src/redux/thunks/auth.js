@@ -8,6 +8,7 @@ import {
   setCaptchaUrl
 } from '../actions/auth';
 import { getProfileAPI } from '../../api/profile';
+import { setProfileFailure } from '../actions/profile';
 
 export const getAuth = () => {
   return async (dispatch) => {
@@ -16,8 +17,13 @@ export const getAuth = () => {
     if (dataAuth.resultCode === 0) {
       dispatch(setAuthSuccessCorrect(dataAuth.data));
       dispatch(setAuthSuccessIncorrect(''));
-      const dataProfile = await getProfileAPI(dataAuth.data.id);
-      dispatch(setAuthUserPhoto(dataProfile.photos.small));
+      try {
+        const dataProfile = await getProfileAPI(dataAuth.data.id);
+        dispatch(setAuthUserPhoto(dataProfile.photos.small));
+      } catch (error) {
+        const message = error.response.data.message || error.message;
+        dispatch(setProfileFailure(error.response.status, message));
+      }
     } else if (dataAuth.resultCode === 1) {
       dispatch(setAuthSuccessIncorrect(dataAuth.messages[0]));
     }
@@ -62,7 +68,6 @@ export const logout = () => {
 export const getCaptchaUrl = () => {
   return async (dispatch) => {
     const data = await getCaptchaUrlAPI();
-    const captchaUrl = data.url;
-    dispatch(setCaptchaUrl(captchaUrl));
+    dispatch(setCaptchaUrl(data.url));
   };
 };

@@ -7,6 +7,7 @@ import {
   setPhotoSuccess,
   setDataRequest,
   setDataSuccess,
+  setProfileFailure,
 } from '../actions/profile';
 import { getProfileAPI, getStatusAPI, updateStatusAPI, updatePhotoAPI, updateProfileAPI } from '../../api/profile';
 import { fillErrorsObject } from '../../utils/helpers/thunksHelpers';
@@ -14,9 +15,14 @@ import { setAuthUserPhoto } from '../actions/auth';
 
 export const getProfile = (id) => {
   return async (dispatch) => {
-    dispatch(setProfileRequest());
-    const data = await getProfileAPI(id);
-    dispatch(setProfileSuccess(data));
+    try {
+      dispatch(setProfileRequest());
+      const data = await getProfileAPI(id);
+      dispatch(setProfileSuccess(data));
+    } catch (error) {
+      const message = error.response.data.message || error.message;
+      dispatch(setProfileFailure(error.response.status, message));
+    }
   };
 };
 
