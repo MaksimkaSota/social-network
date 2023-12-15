@@ -1,5 +1,6 @@
 const initialState = {
-  SET_PROFILE: null
+  SET_PROFILE: null,
+  SET_AUTH: null
 };
 
 export const errorReducer = (state = initialState, action) => {

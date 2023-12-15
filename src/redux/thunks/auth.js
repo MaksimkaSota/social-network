@@ -5,7 +5,8 @@ import {
   setAuthSuccessIncorrect,
   setAuthUserPhoto,
   resetAuthData,
-  setCaptchaUrl
+  setCaptchaUrl,
+  setAuthFailure
 } from '../actions/auth';
 import { getProfileAPI } from '../../api/profile';
 import { setProfileFailure } from '../actions/profile';
@@ -13,19 +14,23 @@ import { getErrorMessage } from '../../utils/helpers/thunksHelpers';
 
 export const getAuth = () => {
   return async (dispatch) => {
-    dispatch(setAuthRequest());
-    const dataAuth = await getAuthAPI();
-    if (dataAuth.resultCode === 0) {
-      dispatch(setAuthSuccessCorrect(dataAuth.data));
-      dispatch(setAuthSuccessIncorrect(''));
-      try {
-        const dataProfile = await getProfileAPI(dataAuth.data.id);
-        dispatch(setAuthUserPhoto(dataProfile.photos.small));
-      } catch (error) {
-        dispatch(setProfileFailure(error.response.status, getErrorMessage(error)));
+    try {
+      dispatch(setAuthRequest());
+      const dataAuth = await getAuthAPI();
+      if (dataAuth.resultCode === 0) {
+        dispatch(setAuthSuccessCorrect(dataAuth.data));
+        dispatch(setAuthSuccessIncorrect(''));
+        try {
+          const dataProfile = await getProfileAPI(dataAuth.data.id);
+          dispatch(setAuthUserPhoto(dataProfile.photos.small));
+        } catch (error) {
+          dispatch(setProfileFailure(error.response.status, getErrorMessage(error)));
+        }
+      } else if (dataAuth.resultCode === 1) {
+        dispatch(setAuthSuccessIncorrect(dataAuth.messages[0]));
       }
-    } else if (dataAuth.resultCode === 1) {
-      dispatch(setAuthSuccessIncorrect(dataAuth.messages[0]));
+    } catch (error) {
+      dispatch(setAuthFailure(error.response.status, getErrorMessage(error)));
     }
   };
 };
