@@ -21,4 +21,8 @@
   .dataPreloader {
     @include position(50%, $marginMin auto 0 auto);
   }
+  .dataError {
+    color: $error;
+    font-size: 1.3rem;
+  }
 }

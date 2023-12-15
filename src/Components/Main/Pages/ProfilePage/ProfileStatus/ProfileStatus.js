@@ -1,8 +1,9 @@
 import classes from './ProfileStatus.module.scss';
 import { useEffect, useState } from 'react';
 import { Preloader } from '../../../../Common/Preloader/Preloader';
+import cn from 'classnames';
 
-export const ProfileStatus = ({isOwner, status, updateStatus, isFetchingStatus}) => {
+export const ProfileStatus = ({isOwner, status, updateStatus, isFetchingStatus, errorStatus}) => {
   const [editModeStatus, setEditModeStatus] = useState(false);
   const [localStatus, setLocalStatus] = useState(status);
 
@@ -38,7 +39,13 @@ export const ProfileStatus = ({isOwner, status, updateStatus, isFetchingStatus})
           /> :
           isFetchingStatus && status !== localStatus ?
             <Preloader className={classes.statusPreloader} /> :
-            <p className={classes.statusText} onDoubleClick={onActivateEditModeStatus}>{status || 'no status'}</p>
+            <div>
+              <p className={classes.statusText} onDoubleClick={onActivateEditModeStatus}>{status || 'no status'}</p>
+              {
+                errorStatus &&
+                <p className={classes.statusTextError}>Error {errorStatus.code}, Failed to update status</p>
+              }
+            </div>
       }
     </div>
   );

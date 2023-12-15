@@ -6,7 +6,15 @@ import { Button } from '../Common/Button/Button';
 import cn from 'classnames';
 import { Preloader } from '../Common/Preloader/Preloader';
 
-export const Header = ({isAuth, loginName, authUserPhoto, isFetchingAuthUserPhoto, logout, incorrectAuthText}) => {
+export const Header = ({
+                         isAuth,
+                         loginName,
+                         authUserPhoto,
+                         isFetchingAuthUserPhoto,
+                         errorAuthUserPhoto,
+                         logout,
+                         incorrectAuthText
+                       }) => {
   return (
     <header className={classes.header}>
       <div className={classes.logoContainer}>
@@ -20,7 +28,10 @@ export const Header = ({isAuth, loginName, authUserPhoto, isFetchingAuthUserPhot
               {
                 isFetchingAuthUserPhoto ?
                   <Preloader className={classes.authUserPhotoPreloader} /> :
-                  <img className={classes.userPhoto} src={authUserPhoto || userPhoto} alt="avatar" />
+                  <>
+                    <img className={classes.userPhoto} src={authUserPhoto || userPhoto} alt="avatar" />
+                    {errorAuthUserPhoto && <p className={classes.userPhotoError}>Error {errorAuthUserPhoto.code}</p>}
+                  </>
               }
               <p className={classes.text}>{loginName}</p>
               <Button text="Logout" onClick={logout} />

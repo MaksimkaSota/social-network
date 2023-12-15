@@ -15,18 +15,22 @@
   }
   .loginContainer {
     @extend %left-block;
+    text-align: center;
     .authUserPhotoPreloader {
       @include position(50%, 0 auto $marginMin auto);
     }
     .userPhoto {
-      @include position(50%, 0 auto $marginMin auto);
+      @include position(50%, 0 auto 0 auto);
       border-radius: $radius;
     }
+    .userPhotoError {
+      color: $error;
+      font-size: 1rem;
+    }
     .text {
-      margin: 0 0 $marginMin 0;
+      margin: $marginMin 0;
       font-size: .9rem;
       color: $captions;
-      text-align: center;
     }
     .incorrectAuthText {
       color: $error;

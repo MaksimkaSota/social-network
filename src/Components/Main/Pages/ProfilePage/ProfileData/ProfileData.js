@@ -9,7 +9,8 @@ export const ProfileData = ({
                               isOwner,
                               data,
                               updateData,
-                              isFetchingData
+                              isFetchingData,
+                              errorData
                             }) => {
   const [editModeData, setEditModeData] = useState(false);
 
@@ -37,6 +38,10 @@ export const ProfileData = ({
               isFetchingData ?
                 <Preloader className={classes.dataPreloader} /> :
                 <>
+                  {
+                    errorData &&
+                    <p className={classes.dataError}>Error {errorData.code}, Failed to update data</p>
+                  }
                   <div className={classes.descriptionBlock}>
                     <h5 className={classes.title}>Full name:</h5>
                     <p className={classes.text}>{data.fullName}</p>
