@@ -1,6 +1,7 @@
 import {
   setUsersRequest,
   setUsersSuccess,
+  setUsersFailure,
   follow,
   setPage,
   setSubscribersId,
@@ -8,14 +9,19 @@ import {
   unfollow
 } from '../actions/users';
 import { followAPI, getUsersAPI, unfollowAPI } from '../../api/users';
+import { getErrorMessage } from '../../utils/helpers/thunksHelpers';
 
 export const getUsers = (page, pageSize) => {
   return async (dispatch) => {
-    dispatch(setUsersRequest());
-    dispatch(setPage(page));
-    const data = await getUsersAPI(page, pageSize);
-    dispatch(setUsersSuccess(data.items));
-    dispatch(setTotalCount(data.totalCount));
+    try {
+      dispatch(setUsersRequest());
+      dispatch(setPage(page));
+      const data = await getUsersAPI(page, pageSize);
+      dispatch(setUsersSuccess(data.items));
+      dispatch(setTotalCount(data.totalCount));
+    } catch (error) {
+      dispatch(setUsersFailure(error.response.status, getErrorMessage(error)));
+    }
   };
 };
 

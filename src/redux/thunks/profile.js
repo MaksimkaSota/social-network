@@ -1,13 +1,13 @@
 import {
   setProfileRequest,
   setProfileSuccess,
+  setProfileFailure,
   setStatusRequest,
   setStatusSuccess,
   setPhotoRequest,
   setPhotoSuccess,
   setDataRequest,
-  setDataSuccess,
-  setProfileFailure,
+  setDataSuccess
 } from '../actions/profile';
 import { getProfileAPI, getStatusAPI, updateStatusAPI, updatePhotoAPI, updateProfileAPI } from '../../api/profile';
 import { fillErrorsObject, getErrorMessage } from '../../utils/helpers/thunksHelpers';

@@ -4,9 +4,9 @@ import { useEffect } from 'react';
 import { getProfile, getStatus } from '../../../../redux/thunks/profile';
 import { useNavigate, useParams } from 'react-router-dom';
 import { isFetchingProfileSelector } from '../../../../redux/selectors/loading';
+import { errorProfileSelector } from '../../../../redux/selectors/error';
 import { idSelector } from '../../../../redux/selectors/auth';
 import { profileSelector } from '../../../../redux/selectors/profile';
-import { errorProfileSelector } from '../../../../redux/selectors/error';
 
 export const ProfilePageContainer = () => {
   const profile = useSelector(profileSelector);

@@ -1,6 +1,7 @@
 import {
   SET_USERS_REQUEST,
   SET_USERS_SUCCESS,
+  SET_USERS_FAILURE,
   FOLLOW_USERS_USER,
   UNFOLLOW_USERS_USER,
   SET_USERS_PAGE,
@@ -10,6 +11,7 @@ import {
 
 export const setUsersRequest = () => ({type: SET_USERS_REQUEST});
 export const setUsersSuccess = (users) => ({type: SET_USERS_SUCCESS, payload: users});
+export const setUsersFailure = (code, message) => ({type: SET_USERS_FAILURE, payload: {code, message}});
 export const follow = (id) => ({type: FOLLOW_USERS_USER, payload: id});
 export const unfollow = (id) => ({type: UNFOLLOW_USERS_USER, payload: id});
 export const setPage = (page) => ({type: SET_USERS_PAGE, payload: page});

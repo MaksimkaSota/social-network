@@ -1,4 +1,5 @@
 const initialState = {
+  SET_USERS: null,
   SET_PROFILE: null,
   SET_AUTH: null
 };

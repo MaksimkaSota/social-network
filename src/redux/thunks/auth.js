@@ -3,10 +3,10 @@ import {
   setAuthRequest,
   setAuthSuccessCorrect,
   setAuthSuccessIncorrect,
+  setAuthFailure,
   setAuthUserPhoto,
   resetAuthData,
-  setCaptchaUrl,
-  setAuthFailure
+  setCaptchaUrl
 } from '../actions/auth';
 import { getProfileAPI } from '../../api/profile';
 import { setProfileFailure } from '../actions/profile';
