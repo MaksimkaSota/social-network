@@ -5,21 +5,8 @@
     @include captions(1.1rem);
     margin: 0 $marginMin 0 0;
   }
-  .statusText {
-    word-break: break-word;
-    text-align: left;
-    font-size: 1.2rem;
-    cursor: pointer;
-  }
-  .statusTextError {
-    color: $error;
-    font-size: 1rem;
-  }
   .inputStatus {
     @extend %textarea;
     width: 100%;
-  }
-  .statusPreloader {
-    @include position(30px, 0);
   }
 }

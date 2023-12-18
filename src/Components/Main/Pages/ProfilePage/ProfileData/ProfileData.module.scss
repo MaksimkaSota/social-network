@@ -7,22 +7,4 @@
       padding: 5px $padding;
     }
   }
-  .descriptionBlock {
-    @include flex(null, center);
-    .title {
-      @include captions(1.1rem);
-      margin: 0 $marginMin 0 0;
-    }
-    .text {
-      font-size: 1.2rem;
-      word-break: break-word;
-    }
-  }
-  .dataPreloader {
-    @include position(50%, $marginMin auto 0 auto);
-  }
-  .dataError {
-    color: $error;
-    font-size: 1.3rem;
-  }
 }

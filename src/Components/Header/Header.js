@@ -1,10 +1,7 @@
 import classes from './Header.module.scss';
 import logo from '../../assets/images/logo.png';
-import { NavLink } from 'react-router-dom';
-import userPhoto from '../../assets/images/user.png';
-import { Button } from '../Common/Button/Button';
-import cn from 'classnames';
-import { Preloader } from '../Common/Preloader/Preloader';
+import { HeaderAuthInfo } from './HeaderAuthInfo/HeaderAuthInfo';
+import { HeaderNotAuthInfo } from './HeaderNotAuthInfo/HeaderNotAuthInfo';
 
 export const Header = ({
                          isAuth,
@@ -24,25 +21,14 @@ export const Header = ({
       <div className={classes.loginContainer}>
         {
           isAuth ?
-            <>
-              {
-                isFetchingAuthUserPhoto ?
-                  <Preloader className={classes.authUserPhotoPreloader} /> :
-                  <>
-                    <img className={classes.userPhoto} src={authUserPhoto || userPhoto} alt="avatar" />
-                    {errorAuthUserPhoto && <p className={classes.userPhotoError}>Error {errorAuthUserPhoto.code}</p>}
-                  </>
-              }
-              <p className={classes.text}>{loginName}</p>
-              <Button text="Logout" onClick={logout} />
-            </> :
-            <>
-              <img className={classes.userPhoto} src={userPhoto} alt="avatar" />
-              <p className={cn(classes.text, classes.incorrectAuthText)}>{incorrectAuthText}</p>
-              <NavLink to="/login">
-                <Button text="Login" />
-              </NavLink>
-            </>
+            <HeaderAuthInfo
+              loginName={loginName}
+              authUserPhoto={authUserPhoto}
+              isFetchingAuthUserPhoto={isFetchingAuthUserPhoto}
+              errorAuthUserPhoto={errorAuthUserPhoto}
+              logout={logout}
+            /> :
+            <HeaderNotAuthInfo incorrectAuthText={incorrectAuthText} />
         }
       </div>
     </header>

@@ -1,0 +1,14 @@
+.headerNotAuthInfo {
+  .userPhoto {
+    @include position(50%, 0 auto 0 auto);
+    border-radius: $radius;
+  }
+  .text {
+    margin: $marginMin 0;
+    font-size: .9rem;
+    color: $captions;
+  }
+  .incorrectAuthText {
+    color: $error;
+  }
+}
