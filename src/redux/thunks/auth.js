@@ -24,13 +24,13 @@ export const getAuth = () => {
           const dataProfile = await getProfileAPI(dataAuth.data.id);
           dispatch(setAuthUserPhoto(dataProfile.photos.small));
         } catch (error) {
-          dispatch(setProfileFailure(error.response.status, getErrorMessage(error)));
+          dispatch(setProfileFailure(error.response?.status, getErrorMessage(error)));
         }
       } else if (dataAuth.resultCode === 1) {
         dispatch(setAuthSuccessIncorrect(dataAuth.messages[0]));
       }
     } catch (error) {
-      dispatch(setAuthFailure(error.response.status, getErrorMessage(error)));
+      dispatch(setAuthFailure(error.response?.status, getErrorMessage(error)));
     }
   };
 };

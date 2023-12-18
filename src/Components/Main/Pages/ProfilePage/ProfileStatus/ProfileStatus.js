@@ -40,7 +40,7 @@ export const ProfileStatus = ({isOwner, status, updateStatus, isFetchingStatus, 
           isFetchingStatus && status !== localStatus ?
             <Preloader className={classes.statusPreloader} /> :
             <div>
-              <p className={classes.statusText} onDoubleClick={onActivateEditModeStatus}>{status || 'no status'}</p>
+              <p className={classes.statusText} onClick={onActivateEditModeStatus}>{status || 'no status'}</p>
               {
                 errorStatus &&
                 <p className={classes.statusTextError}>Error {errorStatus.code}, Failed to update status</p>

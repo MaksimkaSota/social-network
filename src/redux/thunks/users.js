@@ -20,7 +20,7 @@ export const getUsers = (page, pageSize) => {
       dispatch(setUsersSuccess(data.items));
       dispatch(setTotalCount(data.totalCount));
     } catch (error) {
-      dispatch(setUsersFailure(error.response.status, getErrorMessage(error)));
+      dispatch(setUsersFailure(error.response?.status, getErrorMessage(error)));
     }
   };
 };

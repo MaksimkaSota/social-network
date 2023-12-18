@@ -23,7 +23,7 @@ export const getProfile = (id) => {
       const data = await getProfileAPI(id);
       dispatch(setProfileSuccess(data));
     } catch (error) {
-      dispatch(setProfileFailure(error.response.status, getErrorMessage(error)));
+      dispatch(setProfileFailure(error.response?.status, getErrorMessage(error)));
     }
   };
 };
@@ -35,7 +35,7 @@ export const getStatus = (id) => {
       const data = await getStatusAPI(id);
       dispatch(setStatusSuccess(data));
     } catch (error) {
-      dispatch(setStatusFailure(error.response.status, getErrorMessage(error)));
+      dispatch(setStatusFailure(error.response?.status, getErrorMessage(error)));
     }
   };
 };
@@ -57,7 +57,7 @@ export const updateStatus = (status) => {
           break;
       }
     } catch (error) {
-      dispatch(setStatusFailure(error.response.status, getErrorMessage(error)));
+      dispatch(setStatusFailure(error.response?.status, getErrorMessage(error)));
     }
   };
 };
@@ -72,7 +72,7 @@ export const updatePhoto = (photo) => {
         dispatch(setAuthUserPhoto(data.data.photos.small));
       }
     } catch (error) {
-      dispatch(setPhotoFailure(error.response.status, getErrorMessage(error)));
+      dispatch(setPhotoFailure(error.response?.status, getErrorMessage(error)));
     }
   };
 };
@@ -111,7 +111,7 @@ export const updateData = (profileData, setStatus, setSubmitting, setEditModeDat
       }
     } catch (error) {
       setEditModeData(false);
-      dispatch(setDataFailure(error.response.status, getErrorMessage(error)));
+      dispatch(setDataFailure(error.response?.status, getErrorMessage(error)));
     }
     setSubmitting(false);
   };

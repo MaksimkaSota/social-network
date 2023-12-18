@@ -5,5 +5,5 @@ export const fillErrorsObject = (object, key, message) => {
 };
 
 export const getErrorMessage = (errorObject) => {
-  return errorObject.response.data.message || errorObject.message;
+  return errorObject.response?.data.message || errorObject.message;
 };
