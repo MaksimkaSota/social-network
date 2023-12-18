@@ -10,7 +10,9 @@ import {
   pageSizeSelector,
   subscribersIdSelector,
   totalCountSelector,
-  usersSelector
+  usersSelector,
+  followErrorsSelector,
+  unfollowErrorsSelector
 } from '../../../../redux/selectors/users';
 
 const UsersPageContainer = () => {
@@ -21,6 +23,8 @@ const UsersPageContainer = () => {
   const subscribersId = useSelector(subscribersIdSelector);
   const isFetchingUsers = useSelector(isFetchingUsersSelector);
   const errorUsers = useSelector(errorUsersSelector);
+  const followErrors = useSelector(followErrorsSelector);
+  const unfollowErrors = useSelector(unfollowErrorsSelector);
 
   const dispatch = useDispatch();
   const followUserCallback = useCallback(
@@ -50,6 +54,8 @@ const UsersPageContainer = () => {
                           isFetchingUsers={isFetchingUsers}
                           errorUsers={errorUsers}
                           subscribersId={subscribersId}
+                          followErrors={followErrors}
+                          unfollowErrors={unfollowErrors}
                           followUser={followUserCallback}
                           unfollowUser={unfollowUserCallback}
                           getUsers={getUsersCallback} />

@@ -12,6 +12,8 @@ export const UsersPage = ({
                             isFetchingUsers,
                             errorUsers,
                             subscribersId,
+                            followErrors,
+                            unfollowErrors,
                             getUsers,
                             followUser,
                             unfollowUser
@@ -41,6 +43,8 @@ export const UsersPage = ({
         {users.map((user) => <User key={user.id}
                                    user={user}
                                    subscribersId={subscribersId}
+                                   followErrors={followErrors}
+                                   unfollowErrors={unfollowErrors}
                                    followUser={followUser}
                                    unfollowUser={unfollowUser} />
         )}
