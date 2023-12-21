@@ -14,3 +14,8 @@
     width: 500px;
   }
 }
+
+.errorAuthContainer {
+  @include flex(center, null);
+  height: 100vh;
+}

@@ -6,7 +6,8 @@ import {
   setAuthFailure,
   setAuthUserPhoto,
   resetAuthData,
-  setCaptchaUrl
+  setCaptchaUrl,
+  setLogoutError
 } from '../actions/auth';
 import { getProfileAPI } from '../../api/profile';
 import { setProfileFailure } from '../actions/profile';
@@ -37,16 +38,21 @@ export const getAuth = () => {
 
 export const login = (loginData, setStatus, setSubmitting, setFieldValue, setFieldTouched) => {
   return async (dispatch) => {
-    const data = await loginAPI(loginData.email, loginData.password, loginData.rememberMe, loginData.captcha);
-    if (data.resultCode === 0) {
-      dispatch(getAuth());
-    } else {
-      if (data.resultCode === 10) {
-        dispatch(getCaptchaUrl());
-        setFieldValue('isCaptcha', true);
-        setFieldTouched('captcha', false);
+    try {
+      const data = await loginAPI(loginData.email, loginData.password, loginData.rememberMe, loginData.captcha);
+      if (data.resultCode === 0) {
+        dispatch(getAuth());
+      } else {
+        if (data.resultCode === 10) {
+          dispatch(getCaptchaUrl());
+          setFieldValue('isCaptcha', true);
+          setFieldTouched('captcha', false);
+        }
+        const message = data.messages[0] || 'Some error';
+        setStatus(message);
       }
-      const message = data.messages[0] || 'Some error';
+    } catch (error) {
+      const message = `Error ${error.response?.status}, ${getErrorMessage(error)}`;
       setStatus(message);
     }
     setSubmitting(false);
@@ -55,17 +61,21 @@ export const login = (loginData, setStatus, setSubmitting, setFieldValue, setFie
 
 export const logout = () => {
   return async (dispatch) => {
-    const data = await logoutAPI();
-    if (data.resultCode === 0) {
-      dispatch(resetAuthData({
-        id: null,
-        name: null,
-        login: null,
-        isAuth: false,
-        authUserPhoto: '',
-        captchaUrl: ''
-      }));
-      dispatch(setAuthSuccessIncorrect('You are not authorized'));
+    try {
+      const data = await logoutAPI();
+      if (data.resultCode === 0) {
+        dispatch(resetAuthData({
+          id: null,
+          name: null,
+          login: null,
+          isAuth: false,
+          authUserPhoto: '',
+          captchaUrl: ''
+        }));
+        dispatch(setAuthSuccessIncorrect('You are not authorized'));
+      }
+    } catch (error) {
+      dispatch(setLogoutError(error.response?.status, getErrorMessage(error)));
     }
   };
 };

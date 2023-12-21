@@ -4,8 +4,10 @@ import { Footer } from './Footer/Footer';
 import { Preloader } from './Common/Preloader/Preloader';
 import { Error } from './Common/Error/Error';
 import classes from './App.module.scss';
+import { ErrorPopup } from './ErrorPopup/ErrorPopup';
 
-export const App = ({isFetchingAuth, errorAuth}) => {
+export const App = ({isFetchingAuth, errorAuth, logoutError, resetLogoutError}) => {
+  console.log(logoutError);
   if (isFetchingAuth) {
     return (
       <div className={classes.preloaderWrapper}>
@@ -16,7 +18,9 @@ export const App = ({isFetchingAuth, errorAuth}) => {
 
   if (errorAuth) {
     return (
-      <Error code={errorAuth.code} message={errorAuth.message} />
+      <div className={classes.errorAuthContainer}>
+        <Error code={errorAuth.code} message={errorAuth.message} />
+      </div>
     );
   }
 
@@ -25,6 +29,7 @@ export const App = ({isFetchingAuth, errorAuth}) => {
       <HeaderContainer />
       <Main />
       <Footer />
+      {logoutError && <ErrorPopup errorObject={logoutError} resetError={resetLogoutError} />}
     </div>
   );
 };
