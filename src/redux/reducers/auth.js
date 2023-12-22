@@ -4,8 +4,7 @@ import {
   RESET_AUTH_DATA,
   SET_AUTH_PHOTO,
   SET_AUTH_CAPTCHA_URL,
-  SET_AUTH_LOGOUT_ERROR,
-  RESET_AUTH_LOGOUT_ERROR
+  SET_AUTH_LOGOUT_ERROR
 } from '../types/auth';
 
 const initialState = {
@@ -51,11 +50,6 @@ export const authReducer = (state = initialState, action) => {
       return {
         ...state,
         logoutError: action.payload,
-      }
-    case RESET_AUTH_LOGOUT_ERROR:
-      return {
-        ...state,
-        logoutError: null,
       }
     default:
       return state;

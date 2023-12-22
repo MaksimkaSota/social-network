@@ -75,7 +75,10 @@ export const logout = () => {
         dispatch(setAuthSuccessIncorrect('You are not authorized'));
       }
     } catch (error) {
-      dispatch(setLogoutError(error.response?.status, getErrorMessage(error)));
+      dispatch(setLogoutError({
+        code: error.response?.status,
+        message: getErrorMessage(error)
+      }));
     }
   };
 };

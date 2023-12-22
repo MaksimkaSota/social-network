@@ -5,7 +5,7 @@ import { getAuth } from '../redux/thunks/auth';
 import { isFetchingAuthSelector } from '../redux/selectors/loading';
 import { errorAuthSelector } from '../redux/selectors/error';
 import { logoutErrorSelector } from '../redux/selectors/auth';
-import { resetLogoutError } from '../redux/actions/auth';
+import { setLogoutError } from '../redux/actions/auth';
 import { Error } from './Common/Error/Error';
 import { ErrorCatcher } from './Common/ErrorCatcher/ErrorCatcher';
 
@@ -15,8 +15,8 @@ export const AppContainer = () => {
   const logoutError = useSelector(logoutErrorSelector);
 
   const dispatch = useDispatch();
-  const resetLogoutErrorCallback = useCallback(
-    () => dispatch(resetLogoutError()),
+  const setLogoutErrorCallback = useCallback(
+    (error) => dispatch(setLogoutError(error)),
     [dispatch]
   );
 
@@ -44,7 +44,7 @@ export const AppContainer = () => {
         isFetchingAuth={isFetchingAuth}
         errorAuth={errorAuth}
         logoutError={logoutError}
-        resetLogoutError={resetLogoutErrorCallback}
+        setLogoutError={setLogoutErrorCallback}
       />
     </ErrorCatcher>
   );

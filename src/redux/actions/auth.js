@@ -6,8 +6,7 @@ import {
   SET_AUTH_PHOTO,
   RESET_AUTH_DATA,
   SET_AUTH_CAPTCHA_URL,
-  SET_AUTH_LOGOUT_ERROR,
-  RESET_AUTH_LOGOUT_ERROR
+  SET_AUTH_LOGOUT_ERROR
 } from '../types/auth';
 
 export const setAuthRequest = () => ({type: SET_AUTH_REQUEST});
@@ -23,5 +22,4 @@ export const resetAuthData = ({id, email, login, isAuth, authUserPhoto, captchaU
   payload: {id, email, login, isAuth, authUserPhoto, captchaUrl}
 });
 export const setCaptchaUrl = (captchaUrl) => ({type: SET_AUTH_CAPTCHA_URL, payload: captchaUrl});
-export const setLogoutError = (code, message) => ({type: SET_AUTH_LOGOUT_ERROR, payload: {code, message}});
-export const resetLogoutError = () => ({type: RESET_AUTH_LOGOUT_ERROR});
+export const setLogoutError = (error) => ({type: SET_AUTH_LOGOUT_ERROR, payload: error});

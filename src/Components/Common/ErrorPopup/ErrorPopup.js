@@ -7,11 +7,11 @@ export const ErrorPopup = ({errorObject, resetError}) => {
   const errorPopup = useRef(null);
 
   const onButtonClick = () => {
-    resetError();
+    resetError(null);
   };
   const onPopupClick = (event) => {
     if (event.target.className === errorPopup.current.className) {
-      resetError();
+      resetError(null);
     }
   };
 
