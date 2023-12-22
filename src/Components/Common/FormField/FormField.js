@@ -13,14 +13,14 @@ export const FormField = ({
                             text,
                             props = {},
                             onChange,
-                            errors
+                            errors,
+                            touched
                           }) => {
   return (
     <div className={classNameFormField}>
       <Field
-        className={cn(classNameField, {
-          [classes.errorValidation]: errors && errors[name],
-          [classes.successValidation]: errors && !errors[name]
+        className={cn(classNameField, classes.successValidation, {
+          [classes.errorValidation]: touched?.[name] && errors?.[name]
         })}
         name={name}
         component={component}

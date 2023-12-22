@@ -3,6 +3,6 @@
   .title {
     @include captions(1.1rem);
     display: block;
-    margin: $marginMin 0 $marginMin 0;
+    margin: 0;
   }
 }

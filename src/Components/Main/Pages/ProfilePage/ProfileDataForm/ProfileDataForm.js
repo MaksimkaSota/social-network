@@ -21,7 +21,7 @@ export const ProfileDataForm = ({data, isSubmitting, status, handleChange, setFi
         <Button text="Save" type="submit" className={classes.button} disabled={isSubmitting} />
       </div>
       <div className={classes.descriptionBlock}>
-        <b className={classes.title}>Full name:</b>
+        <h5 className={classes.title}>Full name:</h5>
         <FormField
           classNameField={cn(classes.field, {[classes.fieldError]: status?.fullName})}
           name="fullName"
@@ -33,7 +33,7 @@ export const ProfileDataForm = ({data, isSubmitting, status, handleChange, setFi
       </div>
       {status?.fullName && <FormServerError name="fullName" status={status} className={classes.error} />}
       <div className={classes.descriptionBlock}>
-        <b className={classes.title}>Looking for a job:</b>
+        <h5 className={classes.title}>Looking for a job:</h5>
         <FormField
           classNameField={classes.checkbox}
           classNameLabel={classes.label}
@@ -47,7 +47,7 @@ export const ProfileDataForm = ({data, isSubmitting, status, handleChange, setFi
       {
         editModeSkills &&
         <div className={classes.descriptionBlock}>
-          <b className={classes.title}>My professional skills:</b>
+          <h5 className={classes.title}>My professional skills:</h5>
           <FormField
             classNameField={cn(classes.textarea, {[classes.fieldError]: status?.Job})}
             name="lookingForAJobDescription"
@@ -59,7 +59,7 @@ export const ProfileDataForm = ({data, isSubmitting, status, handleChange, setFi
       }
       {status?.Job && <FormServerError name="Job" status={status} className={classes.error} />}
       <div className={classes.descriptionBlock}>
-        <b className={classes.title}>About me:</b>
+        <h5 className={classes.title}>About me:</h5>
         <FormField
           classNameField={cn(classes.textarea, {[classes.fieldError]: status?.aboutMe})}
           name="aboutMe"

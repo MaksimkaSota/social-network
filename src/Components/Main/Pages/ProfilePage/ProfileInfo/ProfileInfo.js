@@ -9,10 +9,13 @@ export const ProfileInfo = ({
                               status,
                               updateStatus,
                               isFetchingStatus,
+                              errorStatus,
                               updatePhoto,
                               isFetchingPhoto,
+                              errorPhoto,
                               updateData,
-                              isFetchingData
+                              isFetchingData,
+                              errorData
                             }) => {
   const data = {
     fullName: profile.fullName,
@@ -40,18 +43,21 @@ export const ProfileInfo = ({
         status={status}
         updateStatus={updateStatus}
         isFetchingStatus={isFetchingStatus}
+        errorStatus={errorStatus}
       />
       <ProfilePhoto
         isOwner={isOwner}
         photo={photo}
         updatePhoto={updatePhoto}
         isFetchingPhoto={isFetchingPhoto}
+        errorPhoto={errorPhoto}
       />
       <ProfileData
         isOwner={isOwner}
         data={data}
         updateData={updateData}
         isFetchingData={isFetchingData}
+        errorData={errorData}
       />
     </div>
   );

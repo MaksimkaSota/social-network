@@ -3,3 +3,5 @@ export const pageSelector = (state) => state.users.page;
 export const pageSizeSelector = (state) => state.users.pageSize;
 export const totalCountSelector = (state) => state.users.totalCount;
 export const subscribersIdSelector = (state) => state.users.subscribersId;
+export const followErrorsSelector = (state) => state.users.followErrors;
+export const unfollowErrorsSelector = (state) => state.users.unfollowErrors;

@@ -5,6 +5,7 @@ import { postsReducer } from './posts';
 import { usersReducer } from './users';
 import { authReducer } from './auth';
 import { loadingReducer } from './loading';
+import { errorReducer } from './error';
 
 export const rootReducer = combineReducers({
   profile: profileReducer,
@@ -12,5 +13,6 @@ export const rootReducer = combineReducers({
   posts: postsReducer,
   users: usersReducer,
   auth: authReducer,
-  loading: loadingReducer
+  loading: loadingReducer,
+  error: errorReducer
 });

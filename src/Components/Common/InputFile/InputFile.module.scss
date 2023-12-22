@@ -2,7 +2,7 @@
   @include position(30%, 0 auto);
   .button {
     width: 100%;
-    margin: 0;
+    margin: $marginMin 0 0 0;
     padding: 5px $padding;
   }
   .inputFile {

@@ -1,10 +1,12 @@
 import {
   SET_USERS_SUCCESS,
   FOLLOW_USERS_USER,
+  SET_USERS_FOLLOW_ERRORS,
   UNFOLLOW_USERS_USER,
+  SET_USERS_UNFOLLOW_ERRORS,
   SET_USERS_PAGE,
   SET_USERS_TOTAL_COUNT,
-  SET_USERS_SUBSCRIBERS_ID,
+  SET_USERS_SUBSCRIBERS_ID
 } from '../types/users';
 import { updateObjectInArray } from '../../utils/helpers/reducersHelpers';
 
@@ -13,7 +15,9 @@ const initialState = {
   page: 1,
   pageSize: 10,
   totalCount: 0,
-  subscribersId: []
+  subscribersId: [],
+  followErrors: [],
+  unfollowErrors: []
 };
 
 export const usersReducer = (state = initialState, action) => {
@@ -32,6 +36,16 @@ export const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         users: updateObjectInArray(state.users, action.payload, {followed: false})
+      };
+    case SET_USERS_FOLLOW_ERRORS:
+      return {
+        ...state,
+        followErrors: [...state.followErrors, action.payload]
+      };
+    case SET_USERS_UNFOLLOW_ERRORS:
+      return {
+        ...state,
+        unfollowErrors: [...state.unfollowErrors, action.payload]
       };
     case SET_USERS_PAGE:
       return {
