@@ -1,13 +1,12 @@
+import classes from './App.module.scss';
 import { HeaderContainer } from './Header/HeaderContainer';
 import { Main } from './Main/Main';
 import { Footer } from './Footer/Footer';
 import { Preloader } from './Common/Preloader/Preloader';
 import { Error } from './Common/Error/Error';
-import classes from './App.module.scss';
-import { ErrorPopup } from './ErrorPopup/ErrorPopup';
+import { ErrorPopup } from './Common/ErrorPopup/ErrorPopup';
 
 export const App = ({isFetchingAuth, errorAuth, logoutError, resetLogoutError}) => {
-  console.log(logoutError);
   if (isFetchingAuth) {
     return (
       <div className={classes.preloaderWrapper}>
@@ -18,9 +17,7 @@ export const App = ({isFetchingAuth, errorAuth, logoutError, resetLogoutError}) 
 
   if (errorAuth) {
     return (
-      <div className={classes.errorAuthContainer}>
-        <Error code={errorAuth.code} message={errorAuth.message} />
-      </div>
+      <Error code={errorAuth.code} message={errorAuth.message} isGlobalError={true} />
     );
   }
 

@@ -1,7 +1,7 @@
 import classes from './ErrorPopup.module.scss';
 import { useRef } from 'react';
-import { Error } from '../Common/Error/Error';
-import { Button } from '../Common/Button/Button';
+import { Error } from '../Error/Error';
+import { Button } from '../Button/Button';
 
 export const ErrorPopup = ({errorObject, resetError}) => {
   const errorPopup = useRef(null);
