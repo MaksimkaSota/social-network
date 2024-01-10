@@ -8,7 +8,8 @@ export const Header = ({
                          loginName,
                          authUserPhoto,
                          isFetchingAuthUserPhoto,
-                         errorAuthUserPhoto,
+                         authUserPhotoError,
+                         updateUserPhotoError,
                          logout,
                          incorrectAuthText
                        }) => {
@@ -25,7 +26,8 @@ export const Header = ({
               loginName={loginName}
               authUserPhoto={authUserPhoto}
               isFetchingAuthUserPhoto={isFetchingAuthUserPhoto}
-              errorAuthUserPhoto={errorAuthUserPhoto}
+              authUserPhotoError={authUserPhotoError}
+              updateUserPhotoError={updateUserPhotoError}
               logout={logout}
             /> :
             <HeaderNotAuthInfo incorrectAuthText={incorrectAuthText} />

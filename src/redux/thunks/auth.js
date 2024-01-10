@@ -5,12 +5,12 @@ import {
   setAuthSuccessIncorrect,
   setAuthFailure,
   setAuthUserPhoto,
+  setAuthUserPhotoError,
   resetAuthData,
   setCaptchaUrl,
   setLogoutError
 } from '../actions/auth';
 import { getProfileAPI } from '../../api/profile';
-import { setProfileFailure } from '../actions/profile';
 import { getErrorMessage } from '../../utils/helpers/thunksHelpers';
 
 export const getAuth = () => {
@@ -25,7 +25,7 @@ export const getAuth = () => {
           const dataProfile = await getProfileAPI(dataAuth.data.id);
           dispatch(setAuthUserPhoto(dataProfile.photos.small));
         } catch (error) {
-          dispatch(setProfileFailure(error.response?.status, getErrorMessage(error)));
+          dispatch(setAuthUserPhotoError(error.response?.status, getErrorMessage(error)));
         }
       } else if (dataAuth.resultCode === 1) {
         dispatch(setAuthSuccessIncorrect(dataAuth.messages[0]));

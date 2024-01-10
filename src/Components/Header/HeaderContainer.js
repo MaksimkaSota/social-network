@@ -4,6 +4,7 @@ import { Header } from './Header';
 import { logout } from '../../redux/thunks/auth';
 import {
   authUserPhotoSelector,
+  authUserPhotoErrorSelector,
   incorrectAuthTextSelector,
   isAuthSelector,
   loginSelector
@@ -16,7 +17,8 @@ export const HeaderContainer = () => {
   const loginName = useSelector(loginSelector);
   const authUserPhoto = useSelector(authUserPhotoSelector);
   const isFetchingAuthUserPhoto = useSelector(isFetchingPhotoSelector);
-  const errorAuthUserPhoto = useSelector(errorPhotoSelector);
+  const authUserPhotoError = useSelector(authUserPhotoErrorSelector);
+  const updateUserPhotoError = useSelector(errorPhotoSelector);
   const incorrectAuthText = useSelector(incorrectAuthTextSelector);
 
   const dispatch = useDispatch();
@@ -31,7 +33,8 @@ export const HeaderContainer = () => {
       loginName={loginName}
       authUserPhoto={authUserPhoto}
       isFetchingAuthUserPhoto={isFetchingAuthUserPhoto}
-      errorAuthUserPhoto={errorAuthUserPhoto}
+      authUserPhotoError={authUserPhotoError}
+      updateUserPhotoError={updateUserPhotoError}
       logout={logoutCallback}
       incorrectAuthText={incorrectAuthText}
     />

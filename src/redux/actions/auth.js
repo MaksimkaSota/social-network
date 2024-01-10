@@ -4,6 +4,7 @@ import {
   SET_AUTH_SUCCESS_INCORRECT,
   SET_AUTH_FAILURE,
   SET_AUTH_PHOTO,
+  SET_AUTH_PHOTO_ERROR,
   RESET_AUTH_DATA,
   SET_AUTH_CAPTCHA_URL,
   SET_AUTH_LOGOUT_ERROR
@@ -17,6 +18,7 @@ export const setAuthSuccessIncorrect = (incorrectAuthText) => ({
 });
 export const setAuthFailure = (code, message) => ({type: SET_AUTH_FAILURE, payload: {code, message}});
 export const setAuthUserPhoto = (photo) => ({type: SET_AUTH_PHOTO, payload: photo});
+export const setAuthUserPhotoError = (code, message) => ({type: SET_AUTH_PHOTO_ERROR, payload: {code, message}});
 export const resetAuthData = ({id, email, login, isAuth, authUserPhoto, captchaUrl}) => ({
   type: RESET_AUTH_DATA,
   payload: {id, email, login, isAuth, authUserPhoto, captchaUrl}
