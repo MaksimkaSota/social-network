@@ -10,7 +10,7 @@ import {
   loginSelector
 } from '../../redux/selectors/auth';
 import { isFetchingPhotoSelector } from '../../redux/selectors/loading';
-import { errorPhotoSelector } from '../../redux/selectors/error';
+import { photoErrorSelector } from '../../redux/selectors/error';
 
 export const HeaderContainer = () => {
   const isAuth = useSelector(isAuthSelector);
@@ -18,7 +18,7 @@ export const HeaderContainer = () => {
   const authUserPhoto = useSelector(authUserPhotoSelector);
   const isFetchingAuthUserPhoto = useSelector(isFetchingPhotoSelector);
   const authUserPhotoError = useSelector(authUserPhotoErrorSelector);
-  const updateUserPhotoError = useSelector(errorPhotoSelector);
+  const updateUserPhotoError = useSelector(photoErrorSelector);
   const incorrectAuthText = useSelector(incorrectAuthTextSelector);
 
   const dispatch = useDispatch();

@@ -4,14 +4,14 @@ import { useEffect } from 'react';
 import { getProfile, getStatus } from '../../../../redux/thunks/profile';
 import { useNavigate, useParams } from 'react-router-dom';
 import { isFetchingProfileSelector } from '../../../../redux/selectors/loading';
-import { errorProfileSelector } from '../../../../redux/selectors/error';
+import { profileErrorSelector } from '../../../../redux/selectors/error';
 import { idSelector } from '../../../../redux/selectors/auth';
 import { profileSelector } from '../../../../redux/selectors/profile';
 
 export const ProfilePageContainer = () => {
   const profile = useSelector(profileSelector);
   const isFetchingProfile = useSelector(isFetchingProfileSelector);
-  const errorProfile = useSelector(errorProfileSelector);
+  const profileError = useSelector(profileErrorSelector);
   const authorizedUserId = useSelector(idSelector);
 
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ export const ProfilePageContainer = () => {
   return (
     <ProfilePage
       isFetchingProfile={isFetchingProfile}
-      errorProfile={errorProfile}
+      profileError={profileError}
       profile={profile}
       isOwner={isOwner}
     />

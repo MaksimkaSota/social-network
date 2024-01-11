@@ -3,14 +3,14 @@ import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAuth } from '../redux/thunks/auth';
 import { isFetchingAuthSelector } from '../redux/selectors/loading';
-import { errorAuthSelector } from '../redux/selectors/error';
+import { authErrorSelector } from '../redux/selectors/error';
 import { logoutErrorSelector } from '../redux/selectors/auth';
 import { setLogoutError } from '../redux/actions/auth';
 import { ErrorCatcher } from './Common/ErrorCatcher/ErrorCatcher';
 
 export const AppContainer = () => {
   const isFetchingAuth = useSelector(isFetchingAuthSelector);
-  const errorAuth = useSelector(errorAuthSelector);
+  const authError = useSelector(authErrorSelector);
   const logoutError = useSelector(logoutErrorSelector);
 
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ export const AppContainer = () => {
     <ErrorCatcher globalError={globalError} setGlobalError={setGlobalError}>
       <App
         isFetchingAuth={isFetchingAuth}
-        errorAuth={errorAuth}
+        authError={authError}
         logoutError={logoutError}
         setLogoutError={setLogoutErrorCallback}
       />

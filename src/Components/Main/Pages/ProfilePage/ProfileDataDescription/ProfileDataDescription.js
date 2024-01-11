@@ -2,7 +2,7 @@ import classes from './ProfileDataDescription.module.scss';
 import { Preloader } from '../../../../Common/Preloader/Preloader';
 import { Contacts } from '../Contacts/Contacts';
 
-export const ProfileDataDescription = ({data, isFetchingData, errorData}) => {
+export const ProfileDataDescription = ({data, isFetchingData, dataError}) => {
   if (isFetchingData) {
     return (
       <div className={classes.dataPreloaderWrapper}>
@@ -13,7 +13,7 @@ export const ProfileDataDescription = ({data, isFetchingData, errorData}) => {
 
   return (
     <div className={classes.dataDescriptionBlock}>
-      {errorData && <p className={classes.dataError}>Error {errorData.code}, Failed to update data</p>}
+      {dataError && <p className={classes.dataError}>Error {dataError.code}, Failed to update data</p>}
       <div className={classes.descriptionBlock}>
         <h5 className={classes.title}>Full name:</h5>
         <p className={classes.text}>{data.fullName}</p>

@@ -2,7 +2,7 @@ import classes from './ProfileStatus.module.scss';
 import { useEffect, useState } from 'react';
 import { ProfileStatusText } from '../ProfileStatusText/ProfileStatusText';
 
-export const ProfileStatus = ({isOwner, status, updateStatus, isFetchingStatus, errorStatus}) => {
+export const ProfileStatus = ({isOwner, status, updateStatus, isFetchingStatus, statusError}) => {
   const [editModeStatus, setEditModeStatus] = useState(false);
   const [localStatus, setLocalStatus] = useState(status);
 
@@ -37,7 +37,7 @@ export const ProfileStatus = ({isOwner, status, updateStatus, isFetchingStatus, 
             localStatus={localStatus}
             setEditModeStatus={setEditModeStatus}
             isFetchingStatus={isFetchingStatus}
-            errorStatus={errorStatus}
+            statusError={statusError}
           />
       }
     </div>

@@ -4,7 +4,7 @@ import { useCallback, useEffect } from 'react';
 import { useMounted } from '../../../../hooks/useMounted';
 import { followUser, getUsers, unfollowUser } from '../../../../redux/thunks/users';
 import { isFetchingUsersSelector } from '../../../../redux/selectors/loading';
-import { errorUsersSelector } from '../../../../redux/selectors/error';
+import { usersErrorSelector } from '../../../../redux/selectors/error';
 import {
   pageSelector,
   pageSizeSelector,
@@ -22,7 +22,7 @@ const UsersPageContainer = () => {
   const totalCount = useSelector(totalCountSelector);
   const subscribersId = useSelector(subscribersIdSelector);
   const isFetchingUsers = useSelector(isFetchingUsersSelector);
-  const errorUsers = useSelector(errorUsersSelector);
+  const usersError = useSelector(usersErrorSelector);
   const followErrors = useSelector(followErrorsSelector);
   const unfollowErrors = useSelector(unfollowErrorsSelector);
 
@@ -52,7 +52,7 @@ const UsersPageContainer = () => {
                           pageSize={pageSize}
                           totalCount={totalCount}
                           isFetchingUsers={isFetchingUsers}
-                          errorUsers={errorUsers}
+                          usersError={usersError}
                           subscribersId={subscribersId}
                           followErrors={followErrors}
                           unfollowErrors={unfollowErrors}

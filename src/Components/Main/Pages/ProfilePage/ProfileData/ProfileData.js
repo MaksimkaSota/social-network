@@ -9,7 +9,7 @@ export const ProfileData = ({
                               data,
                               updateData,
                               isFetchingData,
-                              errorData
+                              dataError
                             }) => {
   const [editModeData, setEditModeData] = useState(false);
 
@@ -33,7 +33,7 @@ export const ProfileData = ({
                 <Button text="Edit profile" className={classes.button} onClick={onActivateEditModeData} />
               </div>
             }
-            <ProfileDataDescription data={data} isFetchingData={isFetchingData} errorData={errorData}/>
+            <ProfileDataDescription data={data} isFetchingData={isFetchingData} dataError={dataError}/>
           </>
       }
     </div>

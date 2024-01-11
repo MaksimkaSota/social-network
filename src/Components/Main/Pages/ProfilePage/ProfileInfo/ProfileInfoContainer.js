@@ -10,19 +10,19 @@ import {
   isFetchingDataSelector
 } from '../../../../../redux/selectors/loading';
 import {
-  errorStatusSelector,
-  errorPhotoSelector,
-  errorDataSelector
+  statusErrorSelector,
+  photoErrorSelector,
+  dataErrorSelector,
 } from '../../../../../redux/selectors/error';
 
 export const ProfileInfoContainer = ({profile, isOwner}) => {
   const status = useSelector(statusSelector);
   const isFetchingStatus = useSelector(isFetchingStatusSelector);
-  const errorStatus = useSelector(errorStatusSelector);
+  const statusError = useSelector(statusErrorSelector);
   const isFetchingPhoto = useSelector(isFetchingPhotoSelector);
-  const errorPhoto = useSelector(errorPhotoSelector);
+  const photoError = useSelector(photoErrorSelector);
   const isFetchingData = useSelector(isFetchingDataSelector);
-  const errorData = useSelector(errorDataSelector);
+  const dataError = useSelector(dataErrorSelector);
 
   const dispatch = useDispatch();
   const updateStatusCallback = useCallback(
@@ -48,12 +48,12 @@ export const ProfileInfoContainer = ({profile, isOwner}) => {
                             status={status}
                             updateStatus={updateStatusCallback}
                             isFetchingStatus={isFetchingStatus}
-                            errorStatus={errorStatus}
+                            statusError={statusError}
                             updatePhoto={updatePhotoCallback}
                             isFetchingPhoto={isFetchingPhoto}
-                            errorPhoto={errorPhoto}
+                            photoError={photoError}
                             updateData={updateDataCallback}
                             isFetchingData={isFetchingData}
-                            errorData={errorData} />
+                            dataError={dataError} />
   );
 };

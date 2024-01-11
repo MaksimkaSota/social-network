@@ -10,7 +10,7 @@ export const UsersPage = ({
                             pageSize,
                             totalCount,
                             isFetchingUsers,
-                            errorUsers,
+                            usersError,
                             subscribersId,
                             followErrors,
                             unfollowErrors,
@@ -24,9 +24,9 @@ export const UsersPage = ({
     );
   }
 
-  if (errorUsers) {
+  if (usersError) {
     return (
-      <Error code={errorUsers.code} message={errorUsers.message} />
+      <Error code={usersError.code} message={usersError.message} />
     );
   }
 

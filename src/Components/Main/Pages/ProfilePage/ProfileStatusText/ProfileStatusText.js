@@ -1,7 +1,7 @@
 import classes from './ProfileStatusText.module.scss';
 import { Preloader } from '../../../../Common/Preloader/Preloader';
 
-export const ProfileStatusText = ({isOwner, status, localStatus, setEditModeStatus, isFetchingStatus, errorStatus}) => {
+export const ProfileStatusText = ({isOwner, status, localStatus, setEditModeStatus, isFetchingStatus, statusError}) => {
   const onActivateEditModeStatus = () => {
     if (isOwner) {
       setEditModeStatus(true);
@@ -20,8 +20,8 @@ export const ProfileStatusText = ({isOwner, status, localStatus, setEditModeStat
     <div className={classes.statusTextBlock}>
       <p className={classes.statusText} onClick={onActivateEditModeStatus}>{status || 'no status'}</p>
       {
-        errorStatus &&
-        <p className={classes.statusTextError}>Error {errorStatus.code}, Failed to update status</p>
+        statusError &&
+        <p className={classes.statusTextError}>Error {statusError.code}, Failed to update status</p>
       }
     </div>
   );

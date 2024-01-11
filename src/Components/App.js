@@ -6,7 +6,7 @@ import { Preloader } from './Common/Preloader/Preloader';
 import { Error } from './Common/Error/Error';
 import { ErrorPopup } from './Common/ErrorPopup/ErrorPopup';
 
-export const App = ({isFetchingAuth, errorAuth, logoutError, setLogoutError}) => {
+export const App = ({isFetchingAuth, authError, logoutError, setLogoutError}) => {
   if (isFetchingAuth) {
     return (
       <div className={classes.preloaderWrapper}>
@@ -15,9 +15,9 @@ export const App = ({isFetchingAuth, errorAuth, logoutError, setLogoutError}) =>
     );
   }
 
-  if (errorAuth) {
+  if (authError) {
     return (
-      <Error code={errorAuth.code} message={errorAuth.message} isGlobalError={true} />
+      <Error code={authError.code} message={authError.message} isGlobalError={true} />
     );
   }
 
