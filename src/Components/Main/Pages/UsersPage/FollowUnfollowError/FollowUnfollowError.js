@@ -1,8 +1,8 @@
 import classes from './FollowUnfollowError.module.scss';
 
 export const FollowUnfollowError = ({errors, userId}) => {
-  if (errors.some((error) => error.id === userId)) {
-    const currentError = errors.find((error) => error.id === userId);
+  const currentError = errors.find((error) => error.id === userId);
+  if (currentError) {
     return (
       <div className={classes.followUnfollowErrorBlock}>
         <p className={classes.followUnfollowError}><b>Error {currentError.code}</b>, {currentError.message}</p>

@@ -22,7 +22,7 @@ export const PostFormContainer = React.memo(({addPost}) => {
       onSubmit={onSubmit}
     >
       {({handleChange, errors, touched}) => (
-        <PostForm handleChange={handleChange} errors={errors} touched={touched} />
+        <PostForm handleChange={handleChange} errors={errors} touched={touched} disabled={errors.text} />
       )}
     </Formik>
   );
