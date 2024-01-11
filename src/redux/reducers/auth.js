@@ -1,4 +1,12 @@
-import { SET_AUTH_SUCCESS_CORRECT, SET_AUTH_SUCCESS_INCORRECT, RESET_AUTH_DATA, SET_AUTH_PHOTO } from '../types/auth';
+import {
+  SET_AUTH_SUCCESS_CORRECT,
+  SET_AUTH_SUCCESS_INCORRECT,
+  RESET_AUTH_DATA,
+  SET_AUTH_PHOTO,
+  SET_AUTH_PHOTO_ERROR,
+  SET_AUTH_CAPTCHA_URL,
+  SET_AUTH_LOGOUT_ERROR
+} from '../types/auth';
 
 const initialState = {
   id: null,
@@ -6,7 +14,10 @@ const initialState = {
   login: null,
   isAuth: false,
   authUserPhoto: '',
-  incorrectAuthText: ''
+  authUserPhotoError: null,
+  incorrectAuthText: '',
+  captchaUrl: '',
+  logoutError: null
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -27,11 +38,26 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         authUserPhoto: action.payload,
       };
+    case SET_AUTH_PHOTO_ERROR:
+      return {
+        ...state,
+        authUserPhotoError: action.payload,
+      };
     case RESET_AUTH_DATA:
       return {
         ...state,
         ...action.payload
-      }
+      };
+    case SET_AUTH_CAPTCHA_URL:
+      return {
+        ...state,
+        captchaUrl: action.payload,
+      };
+    case SET_AUTH_LOGOUT_ERROR:
+      return {
+        ...state,
+        logoutError: action.payload,
+      };
     default:
       return state;
   }

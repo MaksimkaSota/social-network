@@ -4,7 +4,7 @@ import classes from '../Contacts/Contacts.module.scss';
 export const ContactsForm = ({data, status, handleChange}) => {
   return (
     <div className={classes.contactsBlock}>
-      <b className={classes.title}>Contacts:</b>
+      <h5 className={classes.title}>Contacts:</h5>
       {
         Object.keys(data.contacts).map((contact, index) => {
           return (

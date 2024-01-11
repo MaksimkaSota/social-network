@@ -1,0 +1,21 @@
+.errorPageBlock {
+  height: 100%;
+  padding: $padding 0;
+  @include flex(space-evenly, center);
+  flex-direction: column;
+  .errorTitle {
+    @extend %title;
+    color: $error;
+  }
+  .errorText {
+    font-size: 1.3rem;
+    color: $error;
+  }
+  .errorImage {
+    width: 300px;
+  }
+}
+
+.globalError {
+  height: 100vh;
+}

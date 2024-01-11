@@ -1,20 +1,21 @@
-.statusBlock {
+.profileStatus {
   @include position(90%, 0 auto $marginMin auto);
-  @include flex(null, center);
-  .title {
-    @include captions(1.1rem);
-    margin: 0 $marginMin 0 0;
+  .statusBlock {
+    @include flex(null, center);
+    .title {
+      @include captions(1.1rem);
+      margin: 0 $marginMin 0 0;
+    }
+    .inputStatus {
+      @extend %textarea;
+      width: 100%;
+    }
   }
-  .statusText {
-    word-break: break-word;
-    text-align: left;
-    font-size: 1.2rem;
-  }
-  .inputStatus {
-    @extend %textarea;
-    width: 100%;
-  }
-  .statusPreloader {
-    @include position(30px, 0);
+  .updateButtonBlock {
+    width: 30%;
+    .button {
+      @include position(100%, 0);
+      padding: 5px $padding;
+    }
   }
 }

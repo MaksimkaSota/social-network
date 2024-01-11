@@ -6,6 +6,7 @@ import { SettingsPage } from './Pages/SettingsPage/SettingsPage';
 import { useAuthRedirect } from '../../hooks/useRedirect';
 import { ProfilePageContainer } from './Pages/ProfilePage/ProfilePageContainer';
 import { Preloader } from '../Common/Preloader/Preloader';
+import { NotFoundPage } from './Pages/NotFoundPage/NotFoundPage';
 
 const MessagesPageContainer = React.lazy(() => import('./Pages/MessagesPage/MessagesPageContainer'));
 const UsersPageContainer = React.lazy(() => import('./Pages/UsersPage/UsersPageContainer'));
@@ -18,6 +19,7 @@ export const MainRoutes = () => {
   return (
     <Suspense fallback={<Preloader />}>
       <Routes>
+        <Route path="*" element={<NotFoundPage />} />
         <Route path="/" element={<Navigate to={'/profile'} />} />
         <Route path="/profile" element={authProfilePage} />
         <Route path="/profile/:id?" element={<ProfilePageContainer />} />

@@ -1,10 +1,10 @@
-.fieldError {
-  color:$error;
-  font-size: 1.1rem;
+.successValidation {
+  border: 2px solid $active;
 }
 .errorValidation {
   border: 2px solid $error;
 }
-.successValidation {
-  border: 2px solid $active;
+.fieldError {
+  color:$error;
+  font-size: 1.1rem;
 }
