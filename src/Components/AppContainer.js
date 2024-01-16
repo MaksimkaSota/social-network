@@ -14,10 +14,7 @@ export const AppContainer = () => {
   const logoutError = useSelector(logoutErrorSelector);
 
   const dispatch = useDispatch();
-  const setLogoutErrorCallback = useCallback(
-    (error) => dispatch(setLogoutError(error)),
-    [dispatch]
-  );
+  const setLogoutErrorCallback = useCallback((error) => dispatch(setLogoutError(error)), [dispatch]);
 
   useEffect(() => {
     dispatch(getAuth());
