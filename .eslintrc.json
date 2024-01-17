@@ -6,20 +6,96 @@
     "node": true,
     "jest": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:prettier/recommended"
-  ],
+  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
-    "ecmaVersion": "latest",
-    "sourceType": "module"
+    "requireConfigFile": false,
+    "babelOptions": {
+      "presets": ["@babel/preset-react"]
+    }
   },
-  "plugins": [
-    "react"
-  ],
+  "plugins": ["react", "import", "react-hooks", "jsx-a11y"],
+  "settings": {
+    "import/extensions": [".js", ".jsx"]
+  },
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "react/prop-types": "off"
+    "react/jsx-filename-extension": "off",
+    "react/function-component-definition": "off",
+    "react/prefer-stateless-function": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/no-array-index-key": "off",
+    "react/prop-types": "off",
+    "react/button-has-type": "off",
+    "react/no-did-update-set-state": "off",
+    "react/destructuring-assignment": [
+      "error",
+      "always",
+      {"ignoreClassFields": true}
+    ],
+    "react/sort-comp": [
+      "error",
+      {"order": ["instance-variables", "static-methods", "lifecycle", "everything-else", "render"]}
+    ],
+    "react/jsx-wrap-multilines": [
+      "error",
+      {
+        "declaration": "ignore",
+        "assignment": "ignore",
+        "return": "parens-new-line",
+        "arrow": "ignore"
+      }
+    ],
+
+    "import/order": "error",
+    "import/prefer-default-export": "off",
+    "import/no-named-as-default": "off",
+
+    "no-plusplus": "off",
+    "prefer-destructuring": "off",
+    "class-methods-use-this": "off",
+    "lines-between-class-members": [
+      "error",
+      "always",
+      {"exceptAfterSingleLine": true}
+    ],
+    "eqeqeq": [
+      "error",
+      "always",
+      {"null": "ignore"}
+    ],
+    "no-use-before-define": [
+      "error",
+      {"functions": false}
+    ],
+    "indent": [
+      "warn",
+      2,
+      { "SwitchCase": 1 }
+    ],
+    "max-len": [
+      "warn",
+      {
+        "code": 120,
+        "ignoreComments": false
+      }
+    ],
+    "no-console": [
+      "warn",
+      {"allow": ["warn", "error"]}
+    ],
+
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": [],
+        "specialLink": [],
+        "aspects": ["noHref", "invalidHref", "preferButton"]
+      }
+    ]
   }
 }

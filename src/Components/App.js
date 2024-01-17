@@ -16,7 +16,7 @@ export const App = ({ isFetchingAuth, authError, logoutError, setLogoutError }) 
   }
 
   if (authError) {
-    return <Error code={authError.code} message={authError.message} isGlobalError={true} />;
+    return <Error code={authError.code} message={authError.message} isGlobalError />;
   }
 
   return (
