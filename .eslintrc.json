@@ -11,7 +11,10 @@
   "parserOptions": {
     "requireConfigFile": false,
     "babelOptions": {
-      "presets": ["@babel/preset-react"]
+      "presets": [
+        ["babel-preset-react-app", false],
+        "babel-preset-react-app/prod"
+      ]
     }
   },
   "plugins": ["react", "import", "react-hooks", "jsx-a11y"],
@@ -19,6 +22,11 @@
     "import/extensions": [".js", ".jsx"]
   },
   "rules": {
+    "prettier/prettier": [
+      "error",
+      {"endOfLine": "auto"}
+    ],
+
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": "off",
     "react/function-component-definition": "off",
