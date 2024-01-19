@@ -74,12 +74,15 @@
     ],
     "no-use-before-define": [
       "error",
-      {"functions": false}
+      {
+        "functions": false,
+        "classes": false
+      }
     ],
     "indent": [
       "warn",
       2,
-      { "SwitchCase": 1 }
+      {"SwitchCase": 1}
     ],
     "max-len": [
       "warn",
