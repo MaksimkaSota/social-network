@@ -7,7 +7,7 @@ const initialState = {
   SET_AUTH: null,
 };
 
-export const errorReducer = (action, state = initialState) => {
+export const errorReducer = (state = initialState, action) => {
   const matches = /(.*)_(REQUEST|FAILURE)/.exec(action.type);
 
   if (!matches) return state;

@@ -7,7 +7,7 @@ const initialState = {
   SET_AUTH: true,
 };
 
-export const loadingReducer = (action, state = initialState) => {
+export const loadingReducer = (state = initialState, action) => {
   const matches = /(.*)_(REQUEST|SUCCESS_CORRECT|SUCCESS_INCORRECT|SUCCESS|FAILURE)/.exec(action.type);
 
   if (!matches) return state;

@@ -15,7 +15,7 @@ const initialState = {
   ],
 };
 
-export const messagesReducer = (action, state = initialState) => {
+export const messagesReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_MESSAGES_MESSAGE: {
       let lastMessageId = state.messages[state.messages.length - 1].id;

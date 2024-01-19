@@ -20,7 +20,7 @@ const initialState = {
   unfollowErrors: [],
 };
 
-export const usersReducer = (action, state = initialState) => {
+export const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USERS_SUCCESS:
       return {

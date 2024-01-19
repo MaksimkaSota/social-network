@@ -5,7 +5,7 @@ const initialState = {
   status: '',
 };
 
-export const profileReducer = (action, state = initialState) => {
+export const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_PROFILE_SUCCESS:
       return {

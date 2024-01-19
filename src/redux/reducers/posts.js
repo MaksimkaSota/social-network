@@ -10,7 +10,7 @@ const initialState = {
   ],
 };
 
-export const postsReducer = (action, state = initialState) => {
+export const postsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POSTS_POST: {
       let lastPostId = state.posts[state.posts.length - 1].id;

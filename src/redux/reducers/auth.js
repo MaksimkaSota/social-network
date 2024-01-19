@@ -20,7 +20,7 @@ const initialState = {
   logoutError: null,
 };
 
-export const authReducer = (action, state = initialState) => {
+export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_AUTH_SUCCESS_CORRECT:
       return {

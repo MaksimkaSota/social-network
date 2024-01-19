@@ -60,6 +60,7 @@
     "import/no-named-as-default": "off",
 
     "no-plusplus": "off",
+    "default-param-last": "off",
     "prefer-destructuring": "off",
     "class-methods-use-this": "off",
     "lines-between-class-members": [
