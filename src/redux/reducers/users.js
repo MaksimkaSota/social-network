@@ -6,7 +6,7 @@ import {
   SET_USERS_UNFOLLOW_ERRORS,
   SET_USERS_PAGE,
   SET_USERS_TOTAL_COUNT,
-  SET_USERS_SUBSCRIBERS_ID
+  SET_USERS_SUBSCRIBERS_ID,
 } from '../types/users';
 import { updateObjectInArray } from '../../utils/helpers/reducersHelpers';
 
@@ -17,53 +17,52 @@ const initialState = {
   totalCount: 0,
   subscribersId: [],
   followErrors: [],
-  unfollowErrors: []
+  unfollowErrors: [],
 };
 
-export const usersReducer = (state = initialState, action) => {
+export const usersReducer = (action, state = initialState) => {
   switch (action.type) {
     case SET_USERS_SUCCESS:
       return {
         ...state,
-        users: action.payload
+        users: action.payload,
       };
     case FOLLOW_USERS_USER:
       return {
         ...state,
-        users: updateObjectInArray(state.users, action.payload, {followed: true})
+        users: updateObjectInArray(state.users, action.payload, { followed: true }),
       };
     case UNFOLLOW_USERS_USER:
       return {
         ...state,
-        users: updateObjectInArray(state.users, action.payload, {followed: false})
+        users: updateObjectInArray(state.users, action.payload, { followed: false }),
       };
     case SET_USERS_FOLLOW_ERRORS:
       return {
         ...state,
-        followErrors: [...state.followErrors, action.payload]
+        followErrors: [...state.followErrors, action.payload],
       };
     case SET_USERS_UNFOLLOW_ERRORS:
       return {
         ...state,
-        unfollowErrors: [...state.unfollowErrors, action.payload]
+        unfollowErrors: [...state.unfollowErrors, action.payload],
       };
     case SET_USERS_PAGE:
       return {
         ...state,
-        page: action.payload
+        page: action.payload,
       };
     case SET_USERS_TOTAL_COUNT:
       return {
         ...state,
-        totalCount: action.payload
+        totalCount: action.payload,
       };
     case SET_USERS_SUBSCRIBERS_ID:
       return {
         ...state,
-        subscribersId:
-          action.payload.isFetching ?
-            [...state.subscribersId, action.payload.id] :
-            state.subscribersId.filter((id) => id !== action.payload.id)
+        subscribersId: action.payload.isFetching
+          ? [...state.subscribersId, action.payload.id]
+          : state.subscribersId.filter((id) => id !== action.payload.id),
       };
     default:
       return state;

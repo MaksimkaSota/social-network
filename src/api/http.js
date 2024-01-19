@@ -7,6 +7,6 @@ export const http = axios.create({
   withCredentials: true,
   baseURL: URL,
   headers: {
-    'API-KEY': KEY
-  }
+    'API-KEY': KEY,
+  },
 });

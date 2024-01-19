@@ -8,7 +8,7 @@ import {
   follow,
   setFollowErrors,
   unfollow,
-  setUnfollowErrors
+  setUnfollowErrors,
 } from '../actions/users';
 import { followAPI, getUsersAPI, unfollowAPI } from '../../api/users';
 import { getErrorMessage } from '../../utils/helpers/thunksHelpers';
@@ -40,7 +40,7 @@ export const followUser = (id) => {
     try {
       await followUnfollowUser(dispatch, id, followAPI, follow);
     } catch (error) {
-      dispatch(setFollowErrors({id, code: error.response?.status, message: getErrorMessage(error)}));
+      dispatch(setFollowErrors({ id, code: error.response?.status, message: getErrorMessage(error) }));
     }
   };
 };
@@ -49,7 +49,7 @@ export const unfollowUser = (id) => {
     try {
       await followUnfollowUser(dispatch, id, unfollowAPI, unfollow);
     } catch (error) {
-      dispatch(setUnfollowErrors({id, code: error.response?.status, message: getErrorMessage(error)}));
+      dispatch(setUnfollowErrors({ id, code: error.response?.status, message: getErrorMessage(error) }));
     }
   };
 };

@@ -5,7 +5,7 @@ import {
   SET_AUTH_PHOTO,
   SET_AUTH_PHOTO_ERROR,
   SET_AUTH_CAPTCHA_URL,
-  SET_AUTH_LOGOUT_ERROR
+  SET_AUTH_LOGOUT_ERROR,
 } from '../types/auth';
 
 const initialState = {
@@ -17,21 +17,21 @@ const initialState = {
   authUserPhotoError: null,
   incorrectAuthText: '',
   captchaUrl: '',
-  logoutError: null
+  logoutError: null,
 };
 
-export const authReducer = (state = initialState, action) => {
+export const authReducer = (action, state = initialState) => {
   switch (action.type) {
     case SET_AUTH_SUCCESS_CORRECT:
       return {
         ...state,
         ...action.payload,
-        isAuth: true
+        isAuth: true,
       };
     case SET_AUTH_SUCCESS_INCORRECT:
       return {
         ...state,
-        incorrectAuthText: action.payload
+        incorrectAuthText: action.payload,
       };
     case SET_AUTH_PHOTO:
       return {
@@ -46,7 +46,7 @@ export const authReducer = (state = initialState, action) => {
     case RESET_AUTH_DATA:
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     case SET_AUTH_CAPTCHA_URL:
       return {

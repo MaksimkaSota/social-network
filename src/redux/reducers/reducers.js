@@ -14,5 +14,5 @@ export const rootReducer = combineReducers({
   users: usersReducer,
   auth: authReducer,
   loading: loadingReducer,
-  error: errorReducer
+  error: errorReducer,
 });

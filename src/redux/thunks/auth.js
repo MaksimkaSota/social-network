@@ -8,7 +8,7 @@ import {
   setAuthUserPhotoError,
   resetAuthData,
   setCaptchaUrl,
-  setLogoutError
+  setLogoutError,
 } from '../actions/auth';
 import { getProfileAPI } from '../../api/profile';
 import { getErrorMessage } from '../../utils/helpers/thunksHelpers';
@@ -33,6 +33,13 @@ export const getAuth = () => {
     } catch (error) {
       dispatch(setAuthFailure(error.response?.status, getErrorMessage(error)));
     }
+  };
+};
+
+export const getCaptchaUrl = () => {
+  return async (dispatch) => {
+    const data = await getCaptchaUrlAPI();
+    dispatch(setCaptchaUrl(data.url));
   };
 };
 
@@ -64,28 +71,25 @@ export const logout = () => {
     try {
       const data = await logoutAPI();
       if (data.resultCode === 0) {
-        dispatch(resetAuthData({
-          id: null,
-          name: null,
-          login: null,
-          isAuth: false,
-          authUserPhoto: '',
-          captchaUrl: ''
-        }));
+        dispatch(
+          resetAuthData({
+            id: null,
+            name: null,
+            login: null,
+            isAuth: false,
+            authUserPhoto: '',
+            captchaUrl: '',
+          })
+        );
         dispatch(setAuthSuccessIncorrect('You are not authorized'));
       }
     } catch (error) {
-      dispatch(setLogoutError({
-        code: error.response?.status,
-        message: getErrorMessage(error)
-      }));
+      dispatch(
+        setLogoutError({
+          code: error.response?.status,
+          message: getErrorMessage(error),
+        })
+      );
     }
-  };
-};
-
-export const getCaptchaUrl = () => {
-  return async (dispatch) => {
-    const data = await getCaptchaUrlAPI();
-    dispatch(setCaptchaUrl(data.url));
   };
 };

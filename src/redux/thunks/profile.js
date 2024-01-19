@@ -10,7 +10,7 @@ import {
   setPhotoFailure,
   setDataRequest,
   setDataSuccess,
-  setDataFailure
+  setDataFailure,
 } from '../actions/profile';
 import { getProfileAPI, getStatusAPI, updateStatusAPI, updatePhotoAPI, updateProfileAPI } from '../../api/profile';
 import { fillErrorsObject, getErrorMessage } from '../../utils/helpers/thunksHelpers';
@@ -88,22 +88,25 @@ export const updateData = (profileData, setStatus, setSubmitting, setEditModeDat
         setEditModeData(false);
         dispatch(setDataRequest());
         const id = getState().auth.id;
-        const data = await getProfileAPI(id);
-        dispatch(setProfileSuccess(data));
+        const profile = await getProfileAPI(id);
+        dispatch(setProfileSuccess(profile));
         dispatch(setDataSuccess());
       } else {
         const errors = {
-          contacts: {}
+          contacts: {},
         };
         data.messages.forEach((message) => {
           dataKeys.forEach((dataKey) => {
-            (dataKey === 'lookingForAJob' || dataKey === 'lookingForAJobDescription') && (dataKey = 'Job');
-            if (dataKey === 'contacts') {
+            let key = dataKey;
+            if (key === 'lookingForAJob' || key === 'lookingForAJobDescription') {
+              key = 'Job';
+            }
+            if (key === 'contacts') {
               contactsDataKeys.forEach((contactsDataKey) => {
                 fillErrorsObject(errors.contacts, contactsDataKey, message);
               });
             } else {
-              fillErrorsObject(errors, dataKey, message);
+              fillErrorsObject(errors, key, message);
             }
           });
         });
