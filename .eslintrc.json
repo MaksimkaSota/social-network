@@ -31,11 +31,13 @@
     "react/jsx-filename-extension": "off",
     "react/function-component-definition": "off",
     "react/prefer-stateless-function": "off",
+    "react/jsx-props-no-spreading": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/no-array-index-key": "off",
     "react/prop-types": "off",
     "react/button-has-type": "off",
     "react/no-did-update-set-state": "off",
+    "react/state-in-constructor": "off",
     "react/destructuring-assignment": [
       "error",
       "always",
