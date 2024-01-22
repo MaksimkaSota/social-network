@@ -1,13 +1,13 @@
 import { Form } from 'formik';
+import cn from 'classnames';
 import classes from './LoginForm.module.scss';
 import { Button } from '../../../../Common/Button/Button';
 import { FormField } from '../../../../Common/FormField/FormField';
 import { FormServerError } from '../../../../Common/FormServerError/FormServerError';
-import cn from 'classnames';
 
-export const LoginForm = ({isSubmitting, status, handleChange, errors, touched, captchaUrl}) => {
+export const LoginForm = ({ isSubmitting, status, handleChange, errors, touched, captchaUrl }) => {
   return (
-    <Form className={cn(classes.loginForm, {[classes.loginFormError]: status})}>
+    <Form className={cn(classes.loginForm, { [classes.loginFormError]: status })}>
       <FormField
         classNameFormField={classes.fieldBlock}
         classNameField={classes.field}
@@ -24,7 +24,7 @@ export const LoginForm = ({isSubmitting, status, handleChange, errors, touched, 
         name="password"
         type="password"
         placeholder="Password"
-        props={{autoComplete: 'on'}}
+        props={{ autoComplete: 'on' }}
         onChange={handleChange}
         errors={errors}
         touched={touched}
@@ -36,11 +36,10 @@ export const LoginForm = ({isSubmitting, status, handleChange, errors, touched, 
         name="rememberMe"
         type="checkbox"
         text="Remember me"
-        props={{id: 'rememberMe'}}
+        props={{ id: 'rememberMe' }}
         onChange={handleChange}
       />
-      {
-        captchaUrl &&
+      {captchaUrl && (
         <>
           <img className={classes.captcha} src={captchaUrl} alt="captcha" />
           <FormField
@@ -54,7 +53,7 @@ export const LoginForm = ({isSubmitting, status, handleChange, errors, touched, 
             touched={touched}
           />
         </>
-      }
+      )}
       <Button text="Login" type="submit" className={classes.loginButton} disabled={isSubmitting} />
       {status && <FormServerError status={status} className={classes.error} />}
     </Form>

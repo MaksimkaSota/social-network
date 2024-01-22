@@ -1,7 +1,7 @@
 import classes from './ProfileStatusText.module.scss';
 import { Preloader } from '../../../../Common/Preloader/Preloader';
 
-export const ProfileStatusText = ({status, localStatus, isFetchingStatus, statusError}) => {
+export const ProfileStatusText = ({ status, localStatus, isFetchingStatus, statusError }) => {
   if (isFetchingStatus && status !== localStatus) {
     return (
       <div className={classes.statusPreloaderWrapper}>
@@ -13,10 +13,7 @@ export const ProfileStatusText = ({status, localStatus, isFetchingStatus, status
   return (
     <div className={classes.statusTextBlock}>
       <p className={classes.statusText}>{status || 'no status'}</p>
-      {
-        statusError &&
-        <p className={classes.statusTextError}>Error {statusError.code}, Failed to update status</p>
-      }
+      {statusError && <p className={classes.statusTextError}>Error {statusError.code}, Failed to update status</p>}
     </div>
   );
 };

@@ -4,19 +4,19 @@ import { ProfilePhoto } from '../ProfilePhoto/ProfilePhoto';
 import { ProfileData } from '../ProfileData/ProfileData';
 
 export const ProfileInfo = ({
-                              isOwner,
-                              profile,
-                              status,
-                              updateStatus,
-                              isFetchingStatus,
-                              statusError,
-                              updatePhoto,
-                              isFetchingPhoto,
-                              photoError,
-                              updateData,
-                              isFetchingData,
-                              dataError
-                            }) => {
+  isOwner,
+  profile,
+  status,
+  updateStatus,
+  isFetchingStatus,
+  statusError,
+  updatePhoto,
+  isFetchingPhoto,
+  photoError,
+  updateData,
+  isFetchingData,
+  dataError,
+}) => {
   const data = {
     fullName: profile.fullName,
     lookingForAJob: profile.lookingForAJob,
@@ -30,8 +30,8 @@ export const ProfileInfo = ({
       instagram: profile.contacts.instagram,
       youtube: profile.contacts.youtube,
       github: profile.contacts.github,
-      mainLink: profile.contacts.mainLink
-    }
+      mainLink: profile.contacts.mainLink,
+    },
   };
   const photo = profile.photos.large;
 

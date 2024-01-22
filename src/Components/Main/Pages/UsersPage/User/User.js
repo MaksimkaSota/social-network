@@ -1,10 +1,10 @@
+import { NavLink } from 'react-router-dom';
 import classes from './User.module.scss';
 import userPhoto from '../../../../../assets/images/user.png';
 import { Button } from '../../../../Common/Button/Button';
 import { FollowUnfollowError } from '../FollowUnfollowError/FollowUnfollowError';
-import { NavLink } from 'react-router-dom';
 
-export const User = ({user, subscribersId, followErrors, unfollowErrors, followUser, unfollowUser}) => {
+export const User = ({ user, subscribersId, followErrors, unfollowErrors, followUser, unfollowUser }) => {
   const onFollow = (id) => () => {
     followUser(id);
   };
@@ -20,17 +20,17 @@ export const User = ({user, subscribersId, followErrors, unfollowErrors, followU
             <img className={classes.userPhoto} src={user.photos.small || userPhoto} alt="avatar" />
           </NavLink>
         </div>
-        {
-          user.followed ?
-            <>
-              <Button onClick={onUnfollow(user.id)} text="Unfollow" disabled={subscribersId.includes(user.id)} />
-              <FollowUnfollowError errors={unfollowErrors} userId={user.id} />
-            </> :
-            <>
-              <Button onClick={onFollow(user.id)} text="Follow" disabled={subscribersId.includes(user.id)} />
-              <FollowUnfollowError errors={followErrors} userId={user.id} />
-            </>
-        }
+        {user.followed ? (
+          <>
+            <Button onClick={onUnfollow(user.id)} text="Unfollow" disabled={subscribersId.includes(user.id)} />
+            <FollowUnfollowError errors={unfollowErrors} userId={user.id} />
+          </>
+        ) : (
+          <>
+            <Button onClick={onFollow(user.id)} text="Follow" disabled={subscribersId.includes(user.id)} />
+            <FollowUnfollowError errors={followErrors} userId={user.id} />
+          </>
+        )}
       </div>
       <div className={classes.userInfoBlock}>
         <div className={classes.title}>About: {user.name}</div>

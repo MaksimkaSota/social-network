@@ -1,8 +1,8 @@
-import { ProfilePage } from './ProfilePage';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getProfile, getStatus } from '../../../../redux/thunks/profile';
 import { useNavigate, useParams } from 'react-router-dom';
+import { getProfile, getStatus } from '../../../../redux/thunks/profile';
+import { ProfilePage } from './ProfilePage';
 import { isFetchingProfileSelector } from '../../../../redux/selectors/loading';
 import { profileErrorSelector } from '../../../../redux/selectors/error';
 import { idSelector } from '../../../../redux/selectors/auth';
@@ -16,7 +16,7 @@ export const ProfilePageContainer = () => {
 
   const dispatch = useDispatch();
 
-  let {id: paramId = authorizedUserId} = useParams();
+  const { id: paramId = authorizedUserId } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {

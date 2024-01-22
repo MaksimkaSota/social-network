@@ -1,6 +1,6 @@
-import { UsersPage } from './UsersPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCallback, useEffect } from 'react';
+import { UsersPage } from './UsersPage';
 import { useMounted } from '../../../../hooks/useMounted';
 import { followUser, getUsers, unfollowUser } from '../../../../redux/thunks/users';
 import { isFetchingUsersSelector } from '../../../../redux/selectors/loading';
@@ -12,7 +12,7 @@ import {
   totalCountSelector,
   usersSelector,
   followErrorsSelector,
-  unfollowErrorsSelector
+  unfollowErrorsSelector,
 } from '../../../../redux/selectors/users';
 
 const UsersPageContainer = () => {
@@ -27,16 +27,10 @@ const UsersPageContainer = () => {
   const unfollowErrors = useSelector(unfollowErrorsSelector);
 
   const dispatch = useDispatch();
-  const followUserCallback = useCallback(
-    (id) => dispatch(followUser(id)),
-    [dispatch]
-  );
-  const unfollowUserCallback = useCallback(
-    (id) => dispatch(unfollowUser(id)),
-    [dispatch]
-  );
+  const followUserCallback = useCallback((id) => dispatch(followUser(id)), [dispatch]);
+  const unfollowUserCallback = useCallback((id) => dispatch(unfollowUser(id)), [dispatch]);
   const getUsersCallback = useCallback(
-    (page, pageSize) => dispatch(getUsers(page, pageSize)),
+    (currentPage, currentPageSize) => dispatch(getUsers(currentPage, currentPageSize)),
     [dispatch]
   );
 
@@ -47,18 +41,22 @@ const UsersPageContainer = () => {
   }, []);
 
   return (
-    mounted && <UsersPage users={users}
-                          page={page}
-                          pageSize={pageSize}
-                          totalCount={totalCount}
-                          isFetchingUsers={isFetchingUsers}
-                          usersError={usersError}
-                          subscribersId={subscribersId}
-                          followErrors={followErrors}
-                          unfollowErrors={unfollowErrors}
-                          followUser={followUserCallback}
-                          unfollowUser={unfollowUserCallback}
-                          getUsers={getUsersCallback} />
+    mounted && (
+      <UsersPage
+        users={users}
+        page={page}
+        pageSize={pageSize}
+        totalCount={totalCount}
+        isFetchingUsers={isFetchingUsers}
+        usersError={usersError}
+        subscribersId={subscribersId}
+        followErrors={followErrors}
+        unfollowErrors={unfollowErrors}
+        followUser={followUserCallback}
+        unfollowUser={unfollowUserCallback}
+        getUsers={getUsersCallback}
+      />
+    )
   );
 };
 
