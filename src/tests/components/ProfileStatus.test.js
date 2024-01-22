@@ -9,7 +9,7 @@ describe('ProfileStatus Component tests', () => {
   it(`After creation element 'statusText' should be displayed`, async () => {
     const root = createComponent('My logic is undeniable', null);
 
-    const statusText = await root.findByProps({className: 'statusText'});
+    const statusText = await root.findByProps({ className: 'statusText' });
     expect(statusText).not.toBeNull();
   });
 
@@ -17,24 +17,24 @@ describe('ProfileStatus Component tests', () => {
     const root = createComponent('My logic is undeniable', null);
 
     await expect(async () => {
-      await root.findByProps({className: 'inputStatus'});
+      await root.findByProps({ className: 'inputStatus' });
     }).rejects.toThrow();
   });
 
   it(`After creation element 'statusText' should contains 'status'`, async () => {
     const root = createComponent('My logic is undeniable', null);
 
-    const statusText = await root.findByProps({className: 'statusText'});
+    const statusText = await root.findByProps({ className: 'statusText' });
     expect(statusText.props.children).toBe('My logic is undeniable');
   });
 
   it(`After double click element 'inputStatus' should contains 'status'`, async () => {
     const root = createComponent('My logic is undeniable', null);
 
-    const statusText = await root.findByProps({className: 'statusText'});
+    const statusText = await root.findByProps({ className: 'statusText' });
     act(() => statusText.props.onDoubleClick());
 
-    const inputStatus = await root.findByProps({className: 'inputStatus'});
+    const inputStatus = await root.findByProps({ className: 'inputStatus' });
     expect(inputStatus.props.value).toBe('My logic is undeniable');
   });
 
@@ -42,10 +42,10 @@ describe('ProfileStatus Component tests', () => {
     const mockCallback = jest.fn();
     const root = createComponent(null, mockCallback);
 
-    const statusText = await root.findByProps({className: 'statusText'});
+    const statusText = await root.findByProps({ className: 'statusText' });
     act(() => statusText.props.onDoubleClick());
 
-    const inputStatus = await root.findByProps({className: 'inputStatus'});
+    const inputStatus = await root.findByProps({ className: 'inputStatus' });
     act(() => inputStatus.props.onBlur());
 
     expect(mockCallback.mock.calls.length).toBe(1);

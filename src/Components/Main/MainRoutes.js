@@ -20,7 +20,7 @@ export const MainRoutes = () => {
     <Suspense fallback={<Preloader />}>
       <Routes>
         <Route path="*" element={<NotFoundPage />} />
-        <Route path="/" element={<Navigate to={'/profile'} />} />
+        <Route path="/" element={<Navigate to="/profile" />} />
         <Route path="/profile" element={authProfilePage} />
         <Route path="/profile/:id?" element={<ProfilePageContainer />} />
         <Route path="/messages/*" element={authMessagesPage} />

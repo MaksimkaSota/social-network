@@ -4,15 +4,15 @@ import { HeaderAuthInfo } from './HeaderAuthInfo/HeaderAuthInfo';
 import { HeaderNotAuthInfo } from './HeaderNotAuthInfo/HeaderNotAuthInfo';
 
 export const Header = ({
-                         isAuth,
-                         loginName,
-                         authUserPhoto,
-                         isFetchingAuthUserPhoto,
-                         authUserPhotoError,
-                         updateUserPhotoError,
-                         logout,
-                         incorrectAuthText
-                       }) => {
+  isAuth,
+  loginName,
+  authUserPhoto,
+  isFetchingAuthUserPhoto,
+  authUserPhotoError,
+  updateUserPhotoError,
+  logout,
+  incorrectAuthText,
+}) => {
   return (
     <header className={classes.header}>
       <div className={classes.logoContainer}>
@@ -20,18 +20,18 @@ export const Header = ({
       </div>
       <h1 className={classes.headline}>Social Network</h1>
       <div className={classes.loginContainer}>
-        {
-          isAuth ?
-            <HeaderAuthInfo
-              loginName={loginName}
-              authUserPhoto={authUserPhoto}
-              isFetchingAuthUserPhoto={isFetchingAuthUserPhoto}
-              authUserPhotoError={authUserPhotoError}
-              updateUserPhotoError={updateUserPhotoError}
-              logout={logout}
-            /> :
-            <HeaderNotAuthInfo incorrectAuthText={incorrectAuthText} />
-        }
+        {isAuth ? (
+          <HeaderAuthInfo
+            loginName={loginName}
+            authUserPhoto={authUserPhoto}
+            isFetchingAuthUserPhoto={isFetchingAuthUserPhoto}
+            authUserPhotoError={authUserPhotoError}
+            updateUserPhotoError={updateUserPhotoError}
+            logout={logout}
+          />
+        ) : (
+          <HeaderNotAuthInfo incorrectAuthText={incorrectAuthText} />
+        )}
       </div>
     </header>
   );

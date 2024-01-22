@@ -3,7 +3,7 @@ export const updateObjectInArray = (items, itemId, objectProps) => {
     if (item.id === itemId) {
       return {
         ...item,
-        ...objectProps
+        ...objectProps,
       };
     }
     return item;
