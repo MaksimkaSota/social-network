@@ -1,6 +1,6 @@
-import { LoginPage } from './LoginPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCallback } from 'react';
+import { LoginPage } from './LoginPage';
 import { login } from '../../../../redux/thunks/auth';
 import { captchaUrlSelector, incorrectAuthTextSelector, isAuthSelector } from '../../../../redux/selectors/auth';
 

@@ -5,29 +5,25 @@ import { Preloader } from '../../../Common/Preloader/Preloader';
 import { Error } from '../../../Common/Error/Error';
 
 export const UsersPage = ({
-                            users,
-                            page,
-                            pageSize,
-                            totalCount,
-                            isFetchingUsers,
-                            usersError,
-                            subscribersId,
-                            followErrors,
-                            unfollowErrors,
-                            getUsers,
-                            followUser,
-                            unfollowUser
-                          }) => {
+  users,
+  page,
+  pageSize,
+  totalCount,
+  isFetchingUsers,
+  usersError,
+  subscribersId,
+  followErrors,
+  unfollowErrors,
+  getUsers,
+  followUser,
+  unfollowUser,
+}) => {
   if (isFetchingUsers && !users.length) {
-    return (
-      <Preloader />
-    );
+    return <Preloader />;
   }
 
   if (usersError) {
-    return (
-      <Error code={usersError.code} message={usersError.message} />
-    );
+    return <Error code={usersError.code} message={usersError.message} />;
   }
 
   return (
@@ -40,14 +36,17 @@ export const UsersPage = ({
         isFetching={isFetchingUsers}
       />
       <div>
-        {users.map((user) => <User key={user.id}
-                                   user={user}
-                                   subscribersId={subscribersId}
-                                   followErrors={followErrors}
-                                   unfollowErrors={unfollowErrors}
-                                   followUser={followUser}
-                                   unfollowUser={unfollowUser} />
-        )}
+        {users.map((user) => (
+          <User
+            key={user.id}
+            user={user}
+            subscribersId={subscribersId}
+            followErrors={followErrors}
+            unfollowErrors={unfollowErrors}
+            followUser={followUser}
+            unfollowUser={unfollowUser}
+          />
+        ))}
       </div>
     </div>
   );

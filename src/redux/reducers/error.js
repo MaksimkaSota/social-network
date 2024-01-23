@@ -4,7 +4,7 @@ const initialState = {
   SET_PROFILE_STATUS: null,
   SET_PROFILE_PHOTO: null,
   SET_PROFILE_DATA: null,
-  SET_AUTH: null
+  SET_AUTH: null,
 };
 
 export const errorReducer = (state = initialState, action) => {

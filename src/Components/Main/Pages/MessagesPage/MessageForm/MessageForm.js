@@ -3,7 +3,7 @@ import classes from './MessageForm.module.scss';
 import { Button } from '../../../../Common/Button/Button';
 import { FormField } from '../../../../Common/FormField/FormField';
 
-export const MessageForm = ({handleChange, errors, touched, disabled}) => {
+export const MessageForm = ({ handleChange, errors, touched, disabled }) => {
   return (
     <Form className={classes.addMessageBlock}>
       <FormField

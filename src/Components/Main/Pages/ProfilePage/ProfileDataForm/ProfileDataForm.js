@@ -1,13 +1,13 @@
 import { Form } from 'formik';
-import classes from './ProfileDataForm.module.scss';
 import { useState } from 'react';
+import cn from 'classnames';
+import classes from './ProfileDataForm.module.scss';
 import { FormField } from '../../../../Common/FormField/FormField';
 import { Button } from '../../../../Common/Button/Button';
 import { FormServerError } from '../../../../Common/FormServerError/FormServerError';
 import { ContactsForm } from '../ContactsForm/ContactsForm';
-import cn from 'classnames';
 
-export const ProfileDataForm = ({data, isSubmitting, status, handleChange, setFieldValue, errors}) => {
+export const ProfileDataForm = ({ data, isSubmitting, status, handleChange, setFieldValue, errors }) => {
   const [editModeSkills, setEditModeSkills] = useState(data.lookingForAJob);
 
   const onToggleEditModeSkills = (event) => {
@@ -23,7 +23,7 @@ export const ProfileDataForm = ({data, isSubmitting, status, handleChange, setFi
       <div className={classes.descriptionBlock}>
         <h5 className={classes.title}>Full name:</h5>
         <FormField
-          classNameField={cn(classes.field, {[classes.fieldError]: status?.fullName})}
+          classNameField={cn(classes.field, { [classes.fieldError]: status?.fullName })}
           name="fullName"
           type="text"
           placeholder="Full name"
@@ -39,29 +39,28 @@ export const ProfileDataForm = ({data, isSubmitting, status, handleChange, setFi
           classNameLabel={classes.label}
           name="lookingForAJob"
           type="checkbox"
-          props={{id: 'rememberMe'}}
+          props={{ id: 'rememberMe' }}
           text="looking for a job"
           onChange={onToggleEditModeSkills}
         />
       </div>
-      {
-        editModeSkills &&
+      {editModeSkills && (
         <div className={classes.descriptionBlock}>
           <h5 className={classes.title}>My professional skills:</h5>
           <FormField
-            classNameField={cn(classes.textarea, {[classes.fieldError]: status?.Job})}
+            classNameField={cn(classes.textarea, { [classes.fieldError]: status?.Job })}
             name="lookingForAJobDescription"
             component="textarea"
             placeholder="My professional skills"
             onChange={handleChange}
           />
         </div>
-      }
+      )}
       {status?.Job && <FormServerError name="Job" status={status} className={classes.error} />}
       <div className={classes.descriptionBlock}>
         <h5 className={classes.title}>About me:</h5>
         <FormField
-          classNameField={cn(classes.textarea, {[classes.fieldError]: status?.aboutMe})}
+          classNameField={cn(classes.textarea, { [classes.fieldError]: status?.aboutMe })}
           name="aboutMe"
           component="textarea"
           placeholder="About me"

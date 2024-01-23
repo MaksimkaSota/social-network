@@ -3,36 +3,36 @@
 @mixin position($w, $m) {
   width: $w;
   margin: $m;
-};
+}
 
 @mixin flex($jc, $ai) {
   display: flex;
   justify-content: $jc;
   align-items: $ai;
-};
+}
 
 @mixin captions($fz, $ls: null) {
   color: $captions;
   font-size: $fz;
   letter-spacing: $ls;
-};
+}
 
 @mixin link($c) {
   cursor: pointer;
   font-size: 1.3rem;
   color: $c;
-  transition: all .3s linear;
-};
+  transition: all 0.3s linear;
+}
 
 %title {
   margin: $marginMin 0 $marginMax 0;
-  @include captions(2rem, .05rem);
-};
+  @include captions(2rem, 0.05rem);
+}
 
 %left-block {
   width: $left-block-width;
   padding: $padding;
-};
+}
 
 %textarea {
   @include position(50%, 0 auto);
@@ -42,4 +42,4 @@
   border-radius: $radius;
   resize: none;
   outline: none;
-};
+}

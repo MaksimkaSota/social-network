@@ -7,7 +7,7 @@
   border-radius: $radius;
   border: 1px solid $content;
   cursor: pointer;
-  transition: all .3s linear;
+  transition: all 0.3s linear;
   &:hover {
     box-shadow: 0 0 0 3px $active;
   }

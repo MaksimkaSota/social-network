@@ -3,7 +3,7 @@ import classes from './PostForm.module.scss';
 import { Button } from '../../../../Common/Button/Button';
 import { FormField } from '../../../../Common/FormField/FormField';
 
-export const PostForm = ({handleChange, errors, touched, disabled}) => {
+export const PostForm = ({ handleChange, errors, touched, disabled }) => {
   return (
     <Form className={classes.addPostBlock}>
       <FormField

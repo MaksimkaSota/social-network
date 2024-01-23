@@ -3,12 +3,12 @@ import { postsReducer } from '../../redux/reducers/posts';
 
 const state = {
   posts: [
-    {id: 1, postText: 'Hi, Max'},
-    {id: 2, postText: 'Hi, Eugene'},
-    {id: 3, postText: 'Hi, Yuri'},
-    {id: 4, postText: 'Hi, Alexei'},
-    {id: 5, postText: 'Hi, Andrey'}
-  ]
+    { id: 1, postText: 'Hi, Max' },
+    { id: 2, postText: 'Hi, Eugene' },
+    { id: 3, postText: 'Hi, Yuri' },
+    { id: 4, postText: 'Hi, Alexei' },
+    { id: 5, postText: 'Hi, Andrey' },
+  ],
 };
 
 describe('Posts reducer tests', () => {

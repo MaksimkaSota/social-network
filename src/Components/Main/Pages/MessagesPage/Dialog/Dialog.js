@@ -1,12 +1,14 @@
 import { NavLink } from 'react-router-dom';
-import classes from './Dialog.module.scss';
 import cn from 'classnames';
+import classes from './Dialog.module.scss';
 
-export const Dialog = ({name, id}) => {
-  const setClass = ({isActive}) => cn(classes.dialog, {[classes.active]: isActive});
+export const Dialog = ({ name, id }) => {
+  const setClass = ({ isActive }) => cn(classes.dialog, { [classes.active]: isActive });
   const path = `/messages/${id}`;
 
   return (
-    <NavLink to={path} className={setClass}>{name}</NavLink>
+    <NavLink to={path} className={setClass}>
+      {name}
+    </NavLink>
   );
 };

@@ -7,7 +7,7 @@ import {
   authUserPhotoErrorSelector,
   incorrectAuthTextSelector,
   isAuthSelector,
-  loginSelector
+  loginSelector,
 } from '../../redux/selectors/auth';
 import { isFetchingPhotoSelector } from '../../redux/selectors/loading';
 import { photoErrorSelector } from '../../redux/selectors/error';
@@ -22,10 +22,7 @@ export const HeaderContainer = () => {
   const incorrectAuthText = useSelector(incorrectAuthTextSelector);
 
   const dispatch = useDispatch();
-  const logoutCallback = useCallback(
-    () => dispatch(logout()),
-    [dispatch]
-  );
+  const logoutCallback = useCallback(() => dispatch(logout()), [dispatch]);
 
   return (
     <Header

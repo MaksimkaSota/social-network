@@ -1,8 +1,8 @@
+import { useRef, useState } from 'react';
 import { Button } from '../Button/Button';
 import classes from './InputFile.module.scss';
-import { useRef, useState } from 'react';
 
-export const InputFile = ({actionFile}) => {
+export const InputFile = ({ actionFile }) => {
   const [fileInfo, setFileInfo] = useState('No file chosen');
   const inputFile = useRef(null);
 
@@ -22,14 +22,10 @@ export const InputFile = ({actionFile}) => {
   return (
     <div className={classes.inputFileBlock}>
       <Button text="Choose file" onClick={autoClick} className={classes.button} />
-      <input
-        className={classes.inputFile}
-        type="file"
-        ref={inputFile}
-        id="inputFile"
-        onChange={onChangeInputFile}
-      />
-      <label className={classes.labelInputFile} htmlFor="inputFile">{fileInfo}</label>
+      <input className={classes.inputFile} type="file" ref={inputFile} id="inputFile" onChange={onChangeInputFile} />
+      <label className={classes.labelInputFile} htmlFor="inputFile">
+        {fileInfo}
+      </label>
     </div>
   );
 };

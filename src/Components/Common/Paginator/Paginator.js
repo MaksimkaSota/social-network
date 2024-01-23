@@ -1,16 +1,9 @@
-import classes from './Paginator.module.scss';
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
+import classes from './Paginator.module.scss';
 import { Button } from '../Button/Button';
 
-export const Paginator = ({
-                            page,
-                            pageSize,
-                            totalCount,
-                            portionSize = 10,
-                            onCurrentPageCallback,
-                            isFetching
-                          }) => {
+export const Paginator = ({ page, pageSize, totalCount, portionSize = 10, onCurrentPageCallback, isFetching }) => {
   const onCurrentPage = (currentPage) => () => {
     onCurrentPageCallback(currentPage, pageSize);
   };
@@ -36,29 +29,30 @@ export const Paginator = ({
 
   useEffect(() => {
     setCurrentPortion(Math.ceil(page / portionSize));
+    // eslint-disable-next-line
   }, []);
 
   return (
     <div className={classes.paginator}>
-      {currentPortion > 1 && <Button className={classes.paginatorButton} text={'Prev'} onClick={onPrevButton} />}
+      {currentPortion > 1 && <Button className={classes.paginatorButton} text="Prev" onClick={onPrevButton} />}
       <div className={classes.paginatorBlock}>
-        {
-          currentPages
-            .filter((currentPage) => currentPage >= leftBorderPortion && currentPage <= rightBorderPortion)
-            .map((currentPage) => {
-              return (
-                <Button
-                  className={cn({[classes.selectedPage]: currentPage === page}, classes.pageNumber)}
-                  text={currentPage}
-                  onClick={onCurrentPage(currentPage)}
-                  disabled={isFetching || currentPage === page}
-                  key={currentPage}
-                />
-              )
-            })
-        }
+        {currentPages
+          .filter((currentPage) => currentPage >= leftBorderPortion && currentPage <= rightBorderPortion)
+          .map((currentPage) => {
+            return (
+              <Button
+                className={cn({ [classes.selectedPage]: currentPage === page }, classes.pageNumber)}
+                text={currentPage}
+                onClick={onCurrentPage(currentPage)}
+                disabled={isFetching || currentPage === page}
+                key={currentPage}
+              />
+            );
+          })}
       </div>
-      {currentPortion < portionCount && <Button className={classes.paginatorButton} text={'Next'} onClick={onNextButton} />}
+      {currentPortion < portionCount && (
+        <Button className={classes.paginatorButton} text="Next" onClick={onNextButton} />
+      )}
     </div>
   );
-}
+};

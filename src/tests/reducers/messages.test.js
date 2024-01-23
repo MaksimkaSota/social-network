@@ -3,10 +3,10 @@ import { messagesReducer } from '../../redux/reducers/messages';
 
 const state = {
   messages: [
-    {id: 1, messageText: 'Hi'},
-    {id: 2, messageText: 'Hey'},
-    {id: 3, messageText: 'Hello'}
-  ]
+    { id: 1, messageText: 'Hi' },
+    { id: 2, messageText: 'Hey' },
+    { id: 3, messageText: 'Hello' },
+  ],
 };
 
 describe('Messages reducer tests', () => {

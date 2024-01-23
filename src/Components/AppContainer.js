@@ -1,6 +1,6 @@
-import { App } from './App';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { App } from './App';
 import { getAuth } from '../redux/thunks/auth';
 import { isFetchingAuthSelector } from '../redux/selectors/loading';
 import { authErrorSelector } from '../redux/selectors/error';
@@ -14,14 +14,11 @@ export const AppContainer = () => {
   const logoutError = useSelector(logoutErrorSelector);
 
   const dispatch = useDispatch();
-  const setLogoutErrorCallback = useCallback(
-    (error) => dispatch(setLogoutError(error)),
-    [dispatch]
-  );
+  const setLogoutErrorCallback = useCallback((error) => dispatch(setLogoutError(error)), [dispatch]);
 
   useEffect(() => {
     dispatch(getAuth());
-  }, []);
+  }, [dispatch]);
 
   const [globalError, setGlobalError] = useState(null);
 

@@ -4,17 +4,13 @@ import { ProfileInfoContainer } from './ProfileInfo/ProfileInfoContainer';
 import { Preloader } from '../../../Common/Preloader/Preloader';
 import { Error } from '../../../Common/Error/Error';
 
-export const ProfilePage = ({isFetchingProfile, profileError, profile, isOwner}) => {
+export const ProfilePage = ({ isFetchingProfile, profileError, profile, isOwner }) => {
   if (isFetchingProfile && !Object.keys(profile).length) {
-    return (
-      <Preloader />
-    );
+    return <Preloader />;
   }
 
   if (profileError) {
-    return (
-      <Error code={profileError.code} message={profileError.message} />
-    );
+    return <Error code={profileError.code} message={profileError.message} />;
   }
 
   return (

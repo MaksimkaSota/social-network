@@ -3,42 +3,39 @@ import { Error } from '../Error/Error';
 import { ErrorPopup } from '../ErrorPopup/ErrorPopup';
 
 export class ErrorCatcher extends Component {
-  state = {errorMessage: ''};
+  state = { errorMessage: '' };
+
+  static getDerivedStateFromError() {
+    return { errorMessage: 'Some UI Error! We are sorry... Fix it soon!' };
+  }
+
+  componentDidMount() {
+    window.addEventListener('unhandledrejection', this.catchUnhandledPromiseErrors);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('unhandledrejection', this.catchUnhandledPromiseErrors);
+  }
 
   catchUnhandledPromiseErrors = (event) => {
     const error = {
       code: event.reason.response.status,
-      message: 'Unhandled Promise Error! We are sorry... Fix it soon!'
+      message: 'Unhandled Promise Error! We are sorry... Fix it soon!',
     };
     this.props.setGlobalError(error);
   };
 
-  componentDidMount() {
-    window.addEventListener('unhandledrejection', this.catchUnhandledPromiseErrors);
-  };
-
-  componentWillUnmount() {
-    window.removeEventListener('unhandledrejection', this.catchUnhandledPromiseErrors);
-  };
-
-  static getDerivedStateFromError() {
-    return {errorMessage: 'Some UI Error! We are sorry... Fix it soon!'};
-  };
-
   render() {
-    if (this.state.errorMessage) {
-      return (
-        <Error message={this.state.errorMessage} isGlobalError={true} />
-      );
+    const { errorMessage } = this.state;
+    const { children, globalError, setGlobalError } = this.props;
+    if (errorMessage) {
+      return <Error message={errorMessage} isGlobalError />;
     }
     return (
       <>
-        {this.props.children}
-        {
-          this.props.globalError &&
-          <ErrorPopup errorObject={this.props.globalError} resetError={this.props.setGlobalError} />
-        }
+        {children}
+        {globalError && <ErrorPopup errorObject={globalError} resetError={setGlobalError} />}
       </>
     );
-  };
+  }
 }

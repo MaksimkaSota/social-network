@@ -4,7 +4,7 @@ const initialState = {
   SET_PROFILE_STATUS: false,
   SET_PROFILE_PHOTO: false,
   SET_PROFILE_DATA: false,
-  SET_AUTH: true
+  SET_AUTH: true,
 };
 
 export const loadingReducer = (state = initialState, action) => {

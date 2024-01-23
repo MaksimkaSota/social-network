@@ -12,7 +12,7 @@
     width: $right-block-width;
     @include flex(center, baseline);
     .title {
-      @include captions(3rem, .3rem);
+      @include captions(3rem, 0.3rem);
       margin: 0 $marginMax 0 0;
     }
     .contacts {

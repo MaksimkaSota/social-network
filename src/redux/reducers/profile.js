@@ -10,17 +10,17 @@ export const profileReducer = (state = initialState, action) => {
     case SET_PROFILE_SUCCESS:
       return {
         ...state,
-        profile: action.payload
+        profile: action.payload,
       };
     case SET_PROFILE_STATUS_SUCCESS:
       return {
         ...state,
-        status: action.payload
+        status: action.payload,
       };
     case SET_PROFILE_PHOTO_SUCCESS:
       return {
         ...state,
-        profile: {...state.profile, photos: action.payload}
+        profile: { ...state.profile, photos: action.payload },
       };
     default:
       return state;

@@ -5,13 +5,13 @@
     @extend %left-block;
     .logo {
       width: 100%;
-      border-radius:$radius;
+      border-radius: $radius;
     }
   }
   .headline {
     width: 80%;
     text-align: center;
-    @include captions(5rem, .5rem);
+    @include captions(5rem, 0.5rem);
   }
   .loginContainer {
     @extend %left-block;
