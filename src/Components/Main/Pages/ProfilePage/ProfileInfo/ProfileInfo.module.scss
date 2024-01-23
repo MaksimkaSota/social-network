@@ -6,7 +6,7 @@
     @extend %title;
   }
   .fullName {
-    @include captions(1.3rem, .05rem);
+    @include captions(1.3rem, 0.05rem);
     margin: 0 0 $marginMin 0;
   }
 }
