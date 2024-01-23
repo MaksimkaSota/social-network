@@ -18,7 +18,7 @@ export const AppContainer = () => {
 
   useEffect(() => {
     dispatch(getAuth());
-  }, []);
+  }, [dispatch]);
 
   const [globalError, setGlobalError] = useState(null);
 

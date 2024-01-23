@@ -29,6 +29,7 @@ export const Paginator = ({ page, pageSize, totalCount, portionSize = 10, onCurr
 
   useEffect(() => {
     setCurrentPortion(Math.ceil(page / portionSize));
+    // eslint-disable-next-line
   }, []);
 
   return (

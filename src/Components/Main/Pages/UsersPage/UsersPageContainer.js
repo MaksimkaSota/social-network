@@ -38,7 +38,8 @@ const UsersPageContainer = () => {
 
   useEffect(() => {
     dispatch(getUsers(page, pageSize));
-  }, []);
+    // eslint-disable-next-line
+  }, [dispatch]);
 
   return (
     mounted && (

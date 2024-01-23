@@ -26,7 +26,8 @@ export const ProfilePageContainer = () => {
     } else {
       navigate('/login');
     }
-  }, [paramId]);
+    // eslint-disable-next-line
+  }, [dispatch, paramId]);
 
   const isOwner = paramId === authorizedUserId;
 
