@@ -1,6 +1,5 @@
 import {
   AuthActionType,
-  Error,
   resetAuthDataAction,
   SetAuthFailureAction,
   SetAuthRequestAction,
@@ -12,6 +11,7 @@ import {
   setLogoutErrorAction,
 } from '../types/auth';
 import { IAuthData } from '../../api/types/auth';
+import { ErrorType } from '../types/error';
 
 export const setAuthRequest = (): SetAuthRequestAction => ({ type: AuthActionType.SET_AUTH_REQUEST });
 export const setAuthSuccessCorrect = (data: IAuthData): SetAuthSuccessCorrectAction => ({
@@ -56,7 +56,7 @@ export const setCaptchaUrl = (captchaUrl: string): setCaptchaUrlAction => ({
   type: AuthActionType.SET_AUTH_CAPTCHA_URL,
   payload: captchaUrl,
 });
-export const setLogoutError = (error: Error): setLogoutErrorAction => ({
+export const setLogoutError = (error: ErrorType): setLogoutErrorAction => ({
   type: AuthActionType.SET_AUTH_LOGOUT_ERROR,
   payload: error,
 });

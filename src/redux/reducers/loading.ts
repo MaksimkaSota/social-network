@@ -1,4 +1,6 @@
-const initialState = {
+import { LoadingAction, LoadingState } from '../types/loading';
+
+const initialState: LoadingState = {
   SET_USERS: false,
   SET_PROFILE: false,
   SET_PROFILE_STATUS: false,
@@ -7,7 +9,7 @@ const initialState = {
   SET_AUTH: true,
 };
 
-export const loadingReducer = (state = initialState, action) => {
+export const loadingReducer = (state: LoadingState = initialState, action: LoadingAction): LoadingState => {
   const matches = /(.*)_(REQUEST|SUCCESS_CORRECT|SUCCESS_INCORRECT|SUCCESS|FAILURE)/.exec(action.type);
 
   if (!matches) return state;

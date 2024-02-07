@@ -1,9 +1,5 @@
 import { IAuthData } from '../../api/types/auth';
-
-export type Error = {
-  code: number;
-  message: string;
-};
+import { ErrorType } from './error';
 
 export type AuthState = {
   id: number | null;
@@ -11,10 +7,10 @@ export type AuthState = {
   login: string | null;
   isAuth: boolean;
   authUserPhoto: string;
-  authUserPhotoError: Error | null;
+  authUserPhotoError: ErrorType | null;
   incorrectAuthText: string;
   captchaUrl: string;
-  logoutError: Error | null;
+  logoutError: ErrorType | null;
 };
 
 export enum AuthActionType {
@@ -32,9 +28,9 @@ export enum AuthActionType {
 export type SetAuthRequestAction = { type: AuthActionType.SET_AUTH_REQUEST };
 export type SetAuthSuccessCorrectAction = { type: AuthActionType.SET_AUTH_SUCCESS_CORRECT; payload: IAuthData };
 export type SetAuthSuccessIncorrectAction = { type: AuthActionType.SET_AUTH_SUCCESS_INCORRECT; payload: string };
-export type SetAuthFailureAction = { type: AuthActionType.SET_AUTH_FAILURE; payload: Error };
+export type SetAuthFailureAction = { type: AuthActionType.SET_AUTH_FAILURE; payload: ErrorType };
 export type SetAuthUserPhotoAction = { type: AuthActionType.SET_AUTH_PHOTO; payload: string };
-export type setAuthUserPhotoErrorAction = { type: AuthActionType.SET_AUTH_PHOTO_ERROR; payload: Error };
+export type setAuthUserPhotoErrorAction = { type: AuthActionType.SET_AUTH_PHOTO_ERROR; payload: ErrorType };
 type ResetData = {
   id: null;
   email: null;
@@ -45,7 +41,7 @@ type ResetData = {
 };
 export type resetAuthDataAction = { type: AuthActionType.RESET_AUTH_DATA; payload: ResetData };
 export type setCaptchaUrlAction = { type: AuthActionType.SET_AUTH_CAPTCHA_URL; payload: string };
-export type setLogoutErrorAction = { type: AuthActionType.SET_AUTH_LOGOUT_ERROR; payload: Error };
+export type setLogoutErrorAction = { type: AuthActionType.SET_AUTH_LOGOUT_ERROR; payload: ErrorType };
 
 export type AuthAction =
   | SetAuthRequestAction
