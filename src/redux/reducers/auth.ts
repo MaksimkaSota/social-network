@@ -1,14 +1,6 @@
-import {
-  SET_AUTH_SUCCESS_CORRECT,
-  SET_AUTH_SUCCESS_INCORRECT,
-  RESET_AUTH_DATA,
-  SET_AUTH_PHOTO,
-  SET_AUTH_PHOTO_ERROR,
-  SET_AUTH_CAPTCHA_URL,
-  SET_AUTH_LOGOUT_ERROR,
-} from '../types/auth';
+import { AuthState, AuthActionType, AuthAction } from '../types/auth';
 
-const initialState = {
+const initialState: AuthState = {
   id: null,
   email: null,
   login: null,
@@ -20,40 +12,40 @@ const initialState = {
   logoutError: null,
 };
 
-export const authReducer = (state = initialState, action) => {
+export const authReducer = (state: AuthState = initialState, action: AuthAction): AuthState => {
   switch (action.type) {
-    case SET_AUTH_SUCCESS_CORRECT:
+    case AuthActionType.SET_AUTH_SUCCESS_CORRECT:
       return {
         ...state,
         ...action.payload,
         isAuth: true,
       };
-    case SET_AUTH_SUCCESS_INCORRECT:
+    case AuthActionType.SET_AUTH_SUCCESS_INCORRECT:
       return {
         ...state,
         incorrectAuthText: action.payload,
       };
-    case SET_AUTH_PHOTO:
+    case AuthActionType.SET_AUTH_PHOTO:
       return {
         ...state,
         authUserPhoto: action.payload,
       };
-    case SET_AUTH_PHOTO_ERROR:
+    case AuthActionType.SET_AUTH_PHOTO_ERROR:
       return {
         ...state,
         authUserPhotoError: action.payload,
       };
-    case RESET_AUTH_DATA:
+    case AuthActionType.RESET_AUTH_DATA:
       return {
         ...state,
         ...action.payload,
       };
-    case SET_AUTH_CAPTCHA_URL:
+    case AuthActionType.SET_AUTH_CAPTCHA_URL:
       return {
         ...state,
         captchaUrl: action.payload,
       };
-    case SET_AUTH_LOGOUT_ERROR:
+    case AuthActionType.SET_AUTH_LOGOUT_ERROR:
       return {
         ...state,
         logoutError: action.payload,
