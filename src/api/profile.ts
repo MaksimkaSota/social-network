@@ -1,6 +1,6 @@
 import { http } from './http';
 import { IPhotoData, IRequestProfile, IResponseProfile, UrlString } from './types/profile';
-import { IResponse } from './types/http';
+import { HeaderValue, IResponse } from './types/http';
 
 export const getProfileAPI = async (id: number): Promise<IResponseProfile> => {
   const response = await http.get(UrlString.profile + id);
@@ -22,7 +22,7 @@ export const updatePhotoAPI = async (photo: File): Promise<IResponse<IPhotoData>
   formData.append('image', photo);
   const response = await http.put(UrlString.photo, formData, {
     headers: {
-      'Content-Type': 'multipart/form-data',
+      'Content-Type': HeaderValue.multipart_form_data,
     },
   });
   return response.data;

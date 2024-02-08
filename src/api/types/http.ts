@@ -1,3 +1,11 @@
+export enum UrlString {
+  social_network = 'https://social-network.samuraijs.com/api/1.0/',
+}
+
+export enum HeaderValue {
+  multipart_form_data = 'multipart/form-data',
+}
+
 export interface IResponse<D = {}> {
   data: D;
   messages: Array<string>;

@@ -1,4 +1,4 @@
-import { ErrorAction, ErrorState } from '../types/error';
+import { ErrorState } from '../types/error';
 
 const initialState: ErrorState = {
   SET_USERS: null,
@@ -9,7 +9,7 @@ const initialState: ErrorState = {
   SET_AUTH: null,
 };
 
-export const errorReducer = (state: ErrorState = initialState, action: ErrorAction): ErrorState => {
+export const errorReducer = (state: ErrorState = initialState, action: any): ErrorState => {
   const matches = /(.*)_(REQUEST|FAILURE)/.exec(action.type);
 
   if (!matches) return state;
