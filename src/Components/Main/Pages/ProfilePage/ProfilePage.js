@@ -5,7 +5,7 @@ import { Preloader } from '../../../Common/Preloader/Preloader';
 import { Error } from '../../../Common/Error/Error';
 
 export const ProfilePage = ({ isFetchingProfile, profileError, profile, isOwner }) => {
-  if (isFetchingProfile && !Object.keys(profile).length) {
+  if (isFetchingProfile && !profile) {
     return <Preloader />;
   }
 

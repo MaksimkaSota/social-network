@@ -1,5 +1,5 @@
 import { http } from './http';
-import { IAuthData, ICaptchaData, ILoginData, UrlString } from './types/auth';
+import { IAuthData, ICaptcha, ILoginData, UrlString } from './types/auth';
 import { IResponse } from './types/http';
 
 export const getAuthAPI = async (): Promise<IResponse<IAuthData>> => {
@@ -22,7 +22,7 @@ export const logoutAPI = async (): Promise<IResponse> => {
   return response.data;
 };
 
-export const getCaptchaUrlAPI = async (): Promise<ICaptchaData> => {
+export const getCaptchaUrlAPI = async (): Promise<ICaptcha> => {
   const response = await http.get(UrlString.captcha);
   return response.data;
 };

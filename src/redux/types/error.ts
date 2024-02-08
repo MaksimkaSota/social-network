@@ -1,4 +1,10 @@
 import { SetAuthFailureAction } from './auth';
+import {
+  SetDataFailureAction,
+  SetPhotoFailureAction,
+  SetProfileFailureAction,
+  SetStatusFailureAction,
+} from './profile';
 
 export type ErrorType = {
   code: number;
@@ -14,4 +20,9 @@ export type ErrorState = {
   SET_AUTH: ErrorType | null;
 };
 
-export type ErrorAction = SetAuthFailureAction;
+export type ErrorAction =
+  | SetAuthFailureAction
+  | SetProfileFailureAction
+  | SetStatusFailureAction
+  | SetPhotoFailureAction
+  | SetDataFailureAction;

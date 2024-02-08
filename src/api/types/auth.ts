@@ -1,7 +1,7 @@
 export enum UrlString {
-  me = 'auth/me',
-  login_logout = 'auth/login',
-  captcha = 'security/get-captcha-url',
+  me = 'auth/me/',
+  login_logout = 'auth/login/',
+  captcha = 'security/get-captcha-url/',
 }
 
 export interface IAuthData {
@@ -14,6 +14,6 @@ export interface ILoginData {
   userId: number;
 }
 
-export interface ICaptchaData {
+export interface ICaptcha {
   url: string;
 }
