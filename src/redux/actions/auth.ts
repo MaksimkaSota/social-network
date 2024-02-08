@@ -1,5 +1,6 @@
 import {
   AuthActionType,
+  AuthData,
   resetAuthDataAction,
   SetAuthFailureAction,
   SetAuthRequestAction,
@@ -41,14 +42,7 @@ export const resetAuthData = ({
   isAuth,
   authUserPhoto,
   captchaUrl,
-}: {
-  id: null;
-  email: null;
-  login: null;
-  isAuth: boolean;
-  authUserPhoto: string;
-  captchaUrl: string;
-}): resetAuthDataAction => ({
+}: AuthData): resetAuthDataAction => ({
   type: AuthActionType.RESET_AUTH_DATA,
   payload: { id, email, login, isAuth, authUserPhoto, captchaUrl },
 });

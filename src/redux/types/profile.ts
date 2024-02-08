@@ -1,5 +1,6 @@
-import { IPhotos, IResponseProfile } from '../../api/types/profile';
+import { IResponseProfile } from '../../api/types/profile';
 import { ErrorType } from './error';
+import { IPhotos } from '../../api/types/http';
 
 export type ProfileState = {
   profile: IResponseProfile | null;

@@ -1,3 +1,5 @@
+import { IPhotos } from './http';
+
 export enum UrlString {
   profile = 'profile/',
   status = 'profile/status/',
@@ -13,11 +15,6 @@ interface IContacts {
   website: string;
   youtube: string;
   mainLink: string;
-}
-
-export interface IPhotos {
-  small: string | null;
-  large: string | null;
 }
 
 export interface IResponseProfile {

@@ -1,16 +1,7 @@
-import {
-  SET_USERS_SUCCESS,
-  FOLLOW_USERS_USER,
-  SET_USERS_FOLLOW_ERRORS,
-  UNFOLLOW_USERS_USER,
-  SET_USERS_UNFOLLOW_ERRORS,
-  SET_USERS_PAGE,
-  SET_USERS_TOTAL_COUNT,
-  SET_USERS_SUBSCRIBERS_ID,
-} from '../types/users';
+import { UsersAction, UsersActionType, UsersState } from '../types/users';
 import { updateObjectInArray } from '../../utils/helpers/reducersHelpers';
 
-const initialState = {
+const initialState: UsersState = {
   users: [],
   page: 1,
   pageSize: 10,
@@ -20,44 +11,44 @@ const initialState = {
   unfollowErrors: [],
 };
 
-export const usersReducer = (state = initialState, action) => {
+export const usersReducer = (state: UsersState = initialState, action: UsersAction): UsersState => {
   switch (action.type) {
-    case SET_USERS_SUCCESS:
+    case UsersActionType.SET_USERS_SUCCESS:
       return {
         ...state,
         users: action.payload,
       };
-    case FOLLOW_USERS_USER:
+    case UsersActionType.FOLLOW_USERS_USER:
       return {
         ...state,
         users: updateObjectInArray(state.users, action.payload, { followed: true }),
       };
-    case UNFOLLOW_USERS_USER:
+    case UsersActionType.UNFOLLOW_USERS_USER:
       return {
         ...state,
         users: updateObjectInArray(state.users, action.payload, { followed: false }),
       };
-    case SET_USERS_FOLLOW_ERRORS:
+    case UsersActionType.SET_USERS_FOLLOW_ERRORS:
       return {
         ...state,
         followErrors: [...state.followErrors, action.payload],
       };
-    case SET_USERS_UNFOLLOW_ERRORS:
+    case UsersActionType.SET_USERS_UNFOLLOW_ERRORS:
       return {
         ...state,
         unfollowErrors: [...state.unfollowErrors, action.payload],
       };
-    case SET_USERS_PAGE:
+    case UsersActionType.SET_USERS_PAGE:
       return {
         ...state,
         page: action.payload,
       };
-    case SET_USERS_TOTAL_COUNT:
+    case UsersActionType.SET_USERS_TOTAL_COUNT:
       return {
         ...state,
         totalCount: action.payload,
       };
-    case SET_USERS_SUBSCRIBERS_ID:
+    case UsersActionType.SET_USERS_SUBSCRIBERS_ID:
       return {
         ...state,
         subscribersId: action.payload.isFetching

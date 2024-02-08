@@ -18,6 +18,7 @@ import {
   SetStatusRequestAction,
   SetStatusSuccessAction,
 } from './profile';
+import { SetUsersFailureAction, SetUsersRequestAction, SetUsersSuccessAction } from './users';
 
 export type LoadingState = {
   SET_USERS: boolean;
@@ -44,4 +45,7 @@ export type LoadingAction =
   | SetPhotoFailureAction
   | SetDataRequestAction
   | SetDataSuccessAction
-  | SetDataFailureAction;
+  | SetDataFailureAction
+  | SetUsersRequestAction
+  | SetUsersSuccessAction
+  | SetUsersFailureAction;

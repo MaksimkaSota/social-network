@@ -31,7 +31,7 @@ export type SetAuthSuccessIncorrectAction = { type: AuthActionType.SET_AUTH_SUCC
 export type SetAuthFailureAction = { type: AuthActionType.SET_AUTH_FAILURE; payload: ErrorType };
 export type SetAuthUserPhotoAction = { type: AuthActionType.SET_AUTH_PHOTO; payload: string };
 export type setAuthUserPhotoErrorAction = { type: AuthActionType.SET_AUTH_PHOTO_ERROR; payload: ErrorType };
-type ResetData = {
+export type AuthData = {
   id: null;
   email: null;
   login: null;
@@ -39,7 +39,7 @@ type ResetData = {
   authUserPhoto: string;
   captchaUrl: string;
 };
-export type resetAuthDataAction = { type: AuthActionType.RESET_AUTH_DATA; payload: ResetData };
+export type resetAuthDataAction = { type: AuthActionType.RESET_AUTH_DATA; payload: AuthData };
 export type setCaptchaUrlAction = { type: AuthActionType.SET_AUTH_CAPTCHA_URL; payload: string };
 export type setLogoutErrorAction = { type: AuthActionType.SET_AUTH_LOGOUT_ERROR; payload: ErrorType };
 

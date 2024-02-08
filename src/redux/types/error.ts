@@ -5,6 +5,7 @@ import {
   SetProfileFailureAction,
   SetStatusFailureAction,
 } from './profile';
+import { SetUsersFailureAction } from './users';
 
 export type ErrorType = {
   code: number;
@@ -25,4 +26,5 @@ export type ErrorAction =
   | SetProfileFailureAction
   | SetStatusFailureAction
   | SetPhotoFailureAction
-  | SetDataFailureAction;
+  | SetDataFailureAction
+  | SetUsersFailureAction;
