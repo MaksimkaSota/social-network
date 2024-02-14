@@ -3,8 +3,27 @@ import { User } from './User/User';
 import { Paginator } from '../../../Common/Paginator/Paginator';
 import { Preloader } from '../../../Common/Preloader/Preloader';
 import { Error } from '../../../Common/Error/Error';
+import { FC, ReactElement } from 'react';
+import { IUser } from '../../../../api/types/users';
+import { ErrorType } from '../../../../redux/types/error';
+import { FollowUnfollowErrorType } from '../../../../redux/types/users';
 
-export const UsersPage = ({
+type PropsType = {
+  users: Array<IUser>;
+  page: number;
+  pageSize: number;
+  totalCount: number;
+  isFetchingUsers: boolean;
+  usersError: ErrorType;
+  subscribersId: Array<number>;
+  followErrors: Array<FollowUnfollowErrorType>;
+  unfollowErrors: Array<FollowUnfollowErrorType>;
+  getUsers: (currentPage: number, currentPageSize: number) => void;
+  followUser: (id: number) => void;
+  unfollowUser: (id: number) => void;
+};
+
+export const UsersPage: FC<PropsType> = ({
   users,
   page,
   pageSize,
@@ -17,7 +36,7 @@ export const UsersPage = ({
   getUsers,
   followUser,
   unfollowUser,
-}) => {
+}): ReactElement => {
   if (isFetchingUsers && !users.length) {
     return <Preloader />;
   }
@@ -36,7 +55,7 @@ export const UsersPage = ({
         isFetching={isFetchingUsers}
       />
       <div>
-        {users.map((user) => (
+        {users.map((user: IUser) => (
           <User
             key={user.id}
             user={user}

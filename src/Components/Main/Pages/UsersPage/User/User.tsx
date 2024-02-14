@@ -3,12 +3,31 @@ import classes from './User.module.scss';
 import userPhoto from '../../../../../assets/images/user.png';
 import { Button } from '../../../../Common/Button/Button';
 import { FollowUnfollowError } from '../FollowUnfollowError/FollowUnfollowError';
+import { FC, ReactElement } from 'react';
+import { IUser } from '../../../../../api/types/users';
+import { FollowUnfollowErrorType } from '../../../../../redux/types/users';
 
-export const User = ({ user, subscribersId, followErrors, unfollowErrors, followUser, unfollowUser }) => {
-  const onFollow = (id) => () => {
+type PropsType = {
+  user: IUser;
+  subscribersId: Array<number>;
+  followErrors: Array<FollowUnfollowErrorType>;
+  unfollowErrors: Array<FollowUnfollowErrorType>;
+  followUser: (id: number) => void;
+  unfollowUser: (id: number) => void;
+};
+
+export const User: FC<PropsType> = ({
+  user,
+  subscribersId,
+  followErrors,
+  unfollowErrors,
+  followUser,
+  unfollowUser,
+}): ReactElement => {
+  const onFollow = (id: number) => (): void => {
     followUser(id);
   };
-  const onUnfollow = (id) => () => {
+  const onUnfollow = (id: number) => (): void => {
     unfollowUser(id);
   };
 
