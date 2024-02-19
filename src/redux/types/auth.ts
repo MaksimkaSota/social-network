@@ -1,16 +1,17 @@
 import { IAuthData } from '../../api/types/auth';
 import { ErrorType } from './error';
+import { Nullable } from '../../utils/types/common';
 
 export type AuthState = {
-  id: number | null;
-  email: string | null;
-  login: string | null;
+  id: Nullable<number>;
+  email: Nullable<string>;
+  login: Nullable<string>;
   isAuth: boolean;
   authUserPhoto: string;
-  authUserPhotoError: ErrorType | null;
+  authUserPhotoError: Nullable<ErrorType>;
   incorrectAuthText: string;
   captchaUrl: string;
-  logoutError: ErrorType | null;
+  logoutError: Nullable<ErrorType>;
 };
 
 export enum AuthActionType {

@@ -1,3 +1,5 @@
+import { Nullable } from '../../utils/types/common';
+
 export enum UrlString {
   social_network = 'https://social-network.samuraijs.com/api/1.0/',
 }
@@ -13,6 +15,6 @@ export interface IResponse<D = {}> {
 }
 
 export interface IPhotos {
-  small: string | null;
-  large: string | null;
+  small: Nullable<string>;
+  large: Nullable<string>;
 }

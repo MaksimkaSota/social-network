@@ -1,4 +1,5 @@
 import { IPhotos } from './http';
+import { Nullable } from '../../utils/types/common';
 
 export enum UrlString {
   follow = 'follow/',
@@ -7,7 +8,7 @@ export enum UrlString {
 export interface IUser {
   id: number;
   name: string;
-  status: string | null;
+  status: Nullable<string>;
   photos: IPhotos;
   followed: boolean;
 }
@@ -15,5 +16,5 @@ export interface IUser {
 export interface IUsers {
   items: Array<IUser>;
   totalCount: number;
-  error: string | null;
+  error: Nullable<string>;
 }

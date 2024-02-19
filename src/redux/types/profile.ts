@@ -1,9 +1,10 @@
 import { IResponseProfile } from '../../api/types/profile';
 import { ErrorType } from './error';
 import { IPhotos } from '../../api/types/http';
+import { Nullable } from '../../utils/types/common';
 
 export type ProfileState = {
-  profile: IResponseProfile | null;
+  profile: Nullable<IResponseProfile>;
   status: string;
 };
 
