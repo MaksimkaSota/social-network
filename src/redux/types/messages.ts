@@ -1,16 +1,16 @@
-type Dialog = {
+export type DialogType = {
   id: number;
   name: string;
 };
 
-type Message = {
+export type MessageType = {
   id: number;
   messageText: string;
 };
 
 export type MessagesState = {
-  dialogs: Array<Dialog>;
-  messages: Array<Message>;
+  dialogs: Array<DialogType>;
+  messages: Array<MessageType>;
 };
 
 export enum MessagesActionType {

@@ -1,7 +1,8 @@
 import { addPost, deletePost } from '../../redux/actions/posts';
 import { postsReducer } from '../../redux/reducers/posts';
+import { PostsState } from '../../redux/types/posts';
 
-const state = {
+const state: PostsState = {
   posts: [
     { id: 1, postText: 'Hi, Max' },
     { id: 2, postText: 'Hi, Eugene' },

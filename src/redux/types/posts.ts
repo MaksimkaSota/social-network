@@ -1,10 +1,10 @@
-type Post = {
+export type PostType = {
   id: number;
   postText: string;
 };
 
 export type PostsState = {
-  posts: Array<Post>;
+  posts: Array<PostType>;
 };
 
 export enum PostsActionType {

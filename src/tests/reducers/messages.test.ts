@@ -1,7 +1,15 @@
 import { addMessage, deleteMessage } from '../../redux/actions/messages';
 import { messagesReducer } from '../../redux/reducers/messages';
+import { MessagesState } from '../../redux/types/messages';
 
-const state = {
+const state: MessagesState = {
+  dialogs: [
+    { id: 1, name: 'Max' },
+    { id: 2, name: 'Eugene' },
+    { id: 3, name: 'Yuri' },
+    { id: 4, name: 'Alexei' },
+    { id: 5, name: 'Andrey' },
+  ],
   messages: [
     { id: 1, messageText: 'Hi' },
     { id: 2, messageText: 'Hey' },
