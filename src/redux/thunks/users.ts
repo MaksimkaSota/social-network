@@ -12,16 +12,13 @@ import {
 } from '../actions/users';
 import { followAPI, getUsersAPI, unfollowAPI } from '../../api/users';
 import { getErrorMessage } from '../../utils/helpers/thunksHelpers';
-import { ThunkAction } from 'redux-thunk';
-import { AppState } from '../reducers/reducers';
 import { FollowAction, UnfollowAction, UsersAction } from '../types/users';
 import { isAxiosError } from 'axios';
 import { Dispatch } from 'redux';
 import { IResponse } from '../../api/types/http';
+import { ThunkType } from "../../utils/types/common";
 
-type ThunkType = ThunkAction<Promise<void>, AppState, unknown, UsersAction>;
-
-export const getUsers = (page: number, pageSize: number): ThunkType => {
+export const getUsers = (page: number, pageSize: number): ThunkType<UsersAction> => {
   return async (dispatch) => {
     try {
       dispatch(setUsersRequest());
@@ -50,7 +47,7 @@ const followUnfollowUser = async (
     dispatch(actionCreator(id));
   }
 };
-export const followUser = (id: number): ThunkType => {
+export const followUser = (id: number): ThunkType<UsersAction> => {
   return async (dispatch) => {
     try {
       await followUnfollowUser(dispatch, id, followAPI, follow);
@@ -61,7 +58,7 @@ export const followUser = (id: number): ThunkType => {
     }
   };
 };
-export const unfollowUser = (id: number): ThunkType => {
+export const unfollowUser = (id: number): ThunkType<UsersAction> => {
   return async (dispatch) => {
     try {
       await followUnfollowUser(dispatch, id, unfollowAPI, unfollow);
