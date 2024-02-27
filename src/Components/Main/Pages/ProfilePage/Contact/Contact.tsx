@@ -1,6 +1,12 @@
 import classes from './Contact.module.scss';
+import { FC, ReactElement } from 'react';
 
-export const Contact = ({ title, text }) => {
+type PropsType = {
+  title: string;
+  text: string;
+};
+
+export const Contact: FC<PropsType> = ({ title, text }): ReactElement => {
   return (
     <div className={classes.contact}>
       <b className={classes.title}>{title}:</b>

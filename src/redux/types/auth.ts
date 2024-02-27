@@ -7,7 +7,7 @@ export type AuthState = {
   email: Nullable<string>;
   login: Nullable<string>;
   isAuth: boolean;
-  authUserPhoto: string;
+  authUserPhoto: Nullable<string>;
   authUserPhotoError: Nullable<ErrorType>;
   incorrectAuthText: string;
   captchaUrl: string;
@@ -30,7 +30,7 @@ export type SetAuthRequestAction = { type: AuthActionType.SET_AUTH_REQUEST };
 export type SetAuthSuccessCorrectAction = { type: AuthActionType.SET_AUTH_SUCCESS_CORRECT; payload: IAuthData };
 export type SetAuthSuccessIncorrectAction = { type: AuthActionType.SET_AUTH_SUCCESS_INCORRECT; payload: string };
 export type SetAuthFailureAction = { type: AuthActionType.SET_AUTH_FAILURE; payload: ErrorType };
-export type SetAuthUserPhotoAction = { type: AuthActionType.SET_AUTH_PHOTO; payload: string };
+export type SetAuthUserPhotoAction = { type: AuthActionType.SET_AUTH_PHOTO; payload: Nullable<string> };
 export type setAuthUserPhotoErrorAction = { type: AuthActionType.SET_AUTH_PHOTO_ERROR; payload: ErrorType };
 export type AuthData = {
   id: null;

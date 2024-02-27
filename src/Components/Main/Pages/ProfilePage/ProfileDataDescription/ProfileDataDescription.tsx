@@ -1,8 +1,18 @@
 import classes from './ProfileDataDescription.module.scss';
 import { Preloader } from '../../../../Common/Preloader/Preloader';
 import { Contacts } from '../Contacts/Contacts';
+import { IRequestProfile } from '../../../../../api/types/profile';
+import { Nullable } from '../../../../../utils/types/common';
+import { ErrorType } from '../../../../../redux/types/error';
+import { FC, ReactElement } from 'react';
 
-export const ProfileDataDescription = ({ data, isFetchingData, dataError }) => {
+type PropsType = {
+  data: IRequestProfile;
+  isFetchingData: boolean;
+  dataError: Nullable<ErrorType>;
+};
+
+export const ProfileDataDescription: FC<PropsType> = ({ data, isFetchingData, dataError }): ReactElement => {
   if (isFetchingData) {
     return (
       <div className={classes.dataPreloaderWrapper}>

@@ -3,8 +3,19 @@ import { PostsContainer } from './Posts/PostsContainer';
 import { ProfileInfoContainer } from './ProfileInfo/ProfileInfoContainer';
 import { Preloader } from '../../../Common/Preloader/Preloader';
 import { Error } from '../../../Common/Error/Error';
+import { FC, ReactElement } from 'react';
+import { ErrorType } from '../../../../redux/types/error';
+import { IResponseProfile } from '../../../../api/types/profile';
+import { Nullable } from '../../../../utils/types/common';
 
-export const ProfilePage = ({ isFetchingProfile, profileError, profile, isOwner }) => {
+type PropsType = {
+  isFetchingProfile: boolean;
+  profileError: Nullable<ErrorType>;
+  profile: Nullable<IResponseProfile>;
+  isOwner: boolean;
+};
+
+export const ProfilePage: FC<PropsType> = ({ isFetchingProfile, profileError, profile, isOwner }): ReactElement => {
   if (isFetchingProfile && !profile) {
     return <Preloader />;
   }

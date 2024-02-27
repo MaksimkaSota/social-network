@@ -17,13 +17,14 @@ import { isAxiosError } from 'axios';
 import { Dispatch } from 'redux';
 import { IResponse } from '../../api/types/http';
 import { ThunkType } from "../../utils/types/common";
+import { IUsers } from '../../api/types/users';
 
 export const getUsers = (page: number, pageSize: number): ThunkType<UsersAction> => {
   return async (dispatch) => {
     try {
       dispatch(setUsersRequest());
       dispatch(setPage(page));
-      const data = await getUsersAPI(page, pageSize);
+      const data: IUsers = await getUsersAPI(page, pageSize);
       dispatch(setUsersSuccess(data.items));
       dispatch(setTotalCount(data.totalCount));
     } catch (error) {
@@ -41,7 +42,7 @@ const followUnfollowUser = async (
   actionCreator: (id: number) => FollowAction | UnfollowAction
 ) => {
   dispatch(setSubscribersId(true, id));
-  const data = await apiMethod(id);
+  const data: IResponse = await apiMethod(id);
   dispatch(setSubscribersId(false, id));
   if (data.resultCode === 0) {
     dispatch(actionCreator(id));

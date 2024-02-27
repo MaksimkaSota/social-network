@@ -6,7 +6,7 @@ export enum UrlString {
   photo = 'profile/photo/',
 }
 
-interface IContacts {
+export interface IContacts {
   github: string;
   vk: string;
   facebook: string;
@@ -31,4 +31,4 @@ export interface IPhotoData {
   photos: IPhotos;
 }
 
-export type IRequestProfile = Omit<IResponseProfile, 'userId | photos'>;
+export type IRequestProfile = Omit<IResponseProfile, "userId" | "photos">;

@@ -13,6 +13,7 @@ import {
 } from '../types/auth';
 import { IAuthData } from '../../api/types/auth';
 import { ErrorType } from '../types/error';
+import { Nullable } from '../../utils/types/common';
 
 export const setAuthRequest = (): SetAuthRequestAction => ({ type: AuthActionType.SET_AUTH_REQUEST });
 export const setAuthSuccessCorrect = (data: IAuthData): SetAuthSuccessCorrectAction => ({
@@ -27,7 +28,7 @@ export const setAuthFailure = (code: number, message: string): SetAuthFailureAct
   type: AuthActionType.SET_AUTH_FAILURE,
   payload: { code, message },
 });
-export const setAuthUserPhoto = (photo: string): SetAuthUserPhotoAction => ({
+export const setAuthUserPhoto = (photo: Nullable<string>): SetAuthUserPhotoAction => ({
   type: AuthActionType.SET_AUTH_PHOTO,
   payload: photo,
 });

@@ -21,7 +21,7 @@ export const setProfileSuccess = (profile: IResponseProfile): SetProfileSuccessA
   type: ProfileActionType.SET_PROFILE_SUCCESS,
   payload: profile,
 });
-export const setProfileFailure = (code: number, message: string): SetProfileFailureAction => ({
+export const setProfileFailure = (code: number | undefined, message: string): SetProfileFailureAction => ({
   type: ProfileActionType.SET_PROFILE_FAILURE,
   payload: { code, message },
 });
@@ -30,7 +30,7 @@ export const setStatusSuccess = (status: string): SetStatusSuccessAction => ({
   type: ProfileActionType.SET_PROFILE_STATUS_SUCCESS,
   payload: status,
 });
-export const setStatusFailure = (code: number, message: string): SetStatusFailureAction => ({
+export const setStatusFailure = (code: number | undefined, message: string): SetStatusFailureAction => ({
   type: ProfileActionType.SET_PROFILE_STATUS_FAILURE,
   payload: { code, message },
 });
@@ -39,13 +39,13 @@ export const setPhotoSuccess = (photo: IPhotos): SetPhotoSuccessAction => ({
   type: ProfileActionType.SET_PROFILE_PHOTO_SUCCESS,
   payload: photo,
 });
-export const setPhotoFailure = (code: number, message: string): SetPhotoFailureAction => ({
+export const setPhotoFailure = (code: number | undefined, message: string): SetPhotoFailureAction => ({
   type: ProfileActionType.SET_PROFILE_PHOTO_FAILURE,
   payload: { code, message },
 });
 export const setDataRequest = (): SetDataRequestAction => ({ type: ProfileActionType.SET_PROFILE_DATA_REQUEST });
 export const setDataSuccess = (): SetDataSuccessAction => ({ type: ProfileActionType.SET_PROFILE_DATA_SUCCESS });
-export const setDataFailure = (code: number, message: string): SetDataFailureAction => ({
+export const setDataFailure = (code: number | undefined, message: string): SetDataFailureAction => ({
   type: ProfileActionType.SET_PROFILE_DATA_FAILURE,
   payload: { code, message },
 });

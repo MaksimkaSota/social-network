@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { FC, ReactElement, useCallback, useEffect } from 'react';
 import { UsersPage } from './UsersPage';
 import { useMounted } from '../../../../hooks/useMounted';
 import { followUser, getUsers, unfollowUser } from '../../../../redux/thunks/users';
@@ -16,7 +16,7 @@ import {
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { useTypedDispatch } from '../../../../hooks/useTypedDispatch';
 
-const UsersPageContainer = () => {
+const UsersPageContainer: FC = (): ReactElement | boolean => {
   const users = useTypedSelector(usersSelector);
   const page = useTypedSelector(pageSelector);
   const pageSize = useTypedSelector(pageSizeSelector);

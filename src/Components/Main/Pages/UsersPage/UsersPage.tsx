@@ -7,6 +7,7 @@ import { FC, ReactElement } from 'react';
 import { IUser } from '../../../../api/types/users';
 import { ErrorType } from '../../../../redux/types/error';
 import { FollowUnfollowErrorType } from '../../../../redux/types/users';
+import { Nullable } from '../../../../utils/types/common';
 
 type PropsType = {
   users: Array<IUser>;
@@ -14,7 +15,7 @@ type PropsType = {
   pageSize: number;
   totalCount: number;
   isFetchingUsers: boolean;
-  usersError: ErrorType;
+  usersError: Nullable<ErrorType>;
   subscribersId: Array<number>;
   followErrors: Array<FollowUnfollowErrorType>;
   unfollowErrors: Array<FollowUnfollowErrorType>;
