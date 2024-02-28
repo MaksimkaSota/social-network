@@ -32,7 +32,7 @@ export const getProfile = (id: number): ThunkType<ProfileAction> => {
       dispatch(setProfileSuccess(data));
     } catch (error) {
       if (isAxiosError(error)) {
-        dispatch(setProfileFailure(error.response?.status, getErrorMessage(error)));
+        dispatch(setProfileFailure(getErrorMessage(error), error.response?.status));
       }
     }
   };
@@ -46,7 +46,7 @@ export const getStatus = (id: number): ThunkType<ProfileAction> => {
       dispatch(setStatusSuccess(data));
     } catch (error) {
       if (isAxiosError(error)) {
-        dispatch(setStatusFailure(error.response?.status, getErrorMessage(error)));
+        dispatch(setStatusFailure(getErrorMessage(error), error.response?.status));
       }
     }
   };
@@ -70,7 +70,7 @@ export const updateStatus = (status: string): ThunkType<ProfileAction> => {
       }
     } catch (error) {
       if (isAxiosError(error)) {
-        dispatch(setStatusFailure(error.response?.status, getErrorMessage(error)));
+        dispatch(setStatusFailure(getErrorMessage(error), error.response?.status));
       }
     }
   };
@@ -87,7 +87,7 @@ export const updatePhoto = (photo: File): ThunkType<ProfileAction | SetAuthUserP
       }
     } catch (error) {
       if (isAxiosError(error)) {
-        dispatch(setPhotoFailure(error.response?.status, getErrorMessage(error)));
+        dispatch(setPhotoFailure(getErrorMessage(error), error.response?.status));
       }
     }
   };
@@ -138,7 +138,7 @@ export const updateData = (
     } catch (error) {
       setEditModeData(false);
       if (isAxiosError(error)) {
-        dispatch(setDataFailure(error.response?.status, getErrorMessage(error)));
+        dispatch(setDataFailure(getErrorMessage(error), error.response?.status));
       }
     }
     setSubmitting(false);

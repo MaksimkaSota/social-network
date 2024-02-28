@@ -29,7 +29,7 @@ export const getUsers = (page: number, pageSize: number): ThunkType<UsersAction>
       dispatch(setTotalCount(data.totalCount));
     } catch (error) {
       if (isAxiosError(error)) {
-        dispatch(setUsersFailure(error.response?.status, getErrorMessage(error)));
+        dispatch(setUsersFailure(getErrorMessage(error), error.response?.status));
       }
     }
   };

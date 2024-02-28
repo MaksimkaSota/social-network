@@ -19,7 +19,7 @@ export const setUsersSuccess = (users: Array<IUser>): SetUsersSuccessAction => (
   type: UsersActionType.SET_USERS_SUCCESS,
   payload: users,
 });
-export const setUsersFailure = (code: number | undefined, message: string): SetUsersFailureAction => ({
+export const setUsersFailure = (message: string, code?: number): SetUsersFailureAction => ({
   type: UsersActionType.SET_USERS_FAILURE,
   payload: { code, message },
 });

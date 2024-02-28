@@ -32,7 +32,7 @@ export const getAuth = (): ThunkType<AuthAction> => {
           dispatch(setAuthUserPhoto(dataProfile.photos.small));
         } catch (error) {
           if (isAxiosError(error)) {
-            dispatch(setAuthUserPhotoError(error.response?.status, getErrorMessage(error)));
+            dispatch(setAuthUserPhotoError(getErrorMessage(error), error.response?.status));
           }
         }
       } else if (dataAuth.resultCode === 1) {
@@ -40,7 +40,7 @@ export const getAuth = (): ThunkType<AuthAction> => {
       }
     } catch (error) {
       if (isAxiosError(error)) {
-        dispatch(setAuthFailure(error.response?.status, getErrorMessage(error)));
+        dispatch(setAuthFailure(getErrorMessage(error), error.response?.status));
       }
     }
   };

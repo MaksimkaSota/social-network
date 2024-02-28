@@ -17,15 +17,15 @@ export class ErrorCatcher extends Component<PropsType, StateType> {
 
   static getDerivedStateFromError() {
     return { errorMessage: 'Some UI Error! We are sorry... Fix it soon!' };
-  };
+  }
 
   componentDidMount(): void {
     window.addEventListener('unhandledrejection', this.catchUnhandledPromiseErrors);
-  };
+  }
 
   componentWillUnmount(): void {
     window.removeEventListener('unhandledrejection', this.catchUnhandledPromiseErrors);
-  };
+  }
 
   catchUnhandledPromiseErrors = (event: PromiseRejectionEvent): void => {
     const error = {

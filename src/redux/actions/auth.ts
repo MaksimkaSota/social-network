@@ -24,7 +24,7 @@ export const setAuthSuccessIncorrect = (incorrectAuthText: string): SetAuthSucce
   type: AuthActionType.SET_AUTH_SUCCESS_INCORRECT,
   payload: incorrectAuthText,
 });
-export const setAuthFailure = (code: number | undefined, message: string): SetAuthFailureAction => ({
+export const setAuthFailure = (message: string, code?: number): SetAuthFailureAction => ({
   type: AuthActionType.SET_AUTH_FAILURE,
   payload: { code, message },
 });
@@ -32,7 +32,7 @@ export const setAuthUserPhoto = (photo: Nullable<string>): SetAuthUserPhotoActio
   type: AuthActionType.SET_AUTH_PHOTO,
   payload: photo,
 });
-export const setAuthUserPhotoError = (code: number | undefined, message: string): setAuthUserPhotoErrorAction => ({
+export const setAuthUserPhotoError = (message: string, code?: number): setAuthUserPhotoErrorAction => ({
   type: AuthActionType.SET_AUTH_PHOTO_ERROR,
   payload: { code, message },
 });
