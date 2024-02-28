@@ -14,8 +14,7 @@ export const ErrorPopup: FC<PropsType> = ({ errorObject, resetError }): ReactEle
   const errorPopup = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!errorPopup.current) return;
-    errorPopup.current.focus();
+    errorPopup.current?.focus();
   }, []);
 
   const onButtonClick = (): void => {
@@ -23,8 +22,7 @@ export const ErrorPopup: FC<PropsType> = ({ errorObject, resetError }): ReactEle
   };
 
   const onPopupMouseClick = (event: MouseEvent<HTMLDivElement>): void => {
-    if (!errorPopup.current) return;
-    if ((event.target as Element).className === errorPopup.current.className) {
+    if ((event.target as Element).className === errorPopup.current?.className) {
       resetError(null);
     }
   };

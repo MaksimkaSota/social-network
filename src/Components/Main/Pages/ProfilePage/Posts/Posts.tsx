@@ -17,7 +17,6 @@ export const Posts: FC<PropsType> = ({ posts, addPost, isAuth }): ReactElement |
     isAuth && (
       <div className={classes.postsBlock}>
         <h3 className={classes.title}>Posts</h3>
-        {/* @ts-ignore*/}
         <PostFormContainer addPost={addPost} />
         <div className={classes.posts}>{postsElements}</div>
       </div>

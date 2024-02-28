@@ -4,8 +4,26 @@ import classes from './LoginForm.module.scss';
 import { Button } from '../../../../Common/Button/Button';
 import { FormField } from '../../../../Common/FormField/FormField';
 import { FormServerError } from '../../../../Common/FormServerError/FormServerError';
+import { FormikErrorsType, FormikTouchedType, HandleChangeType } from '../../../../../utils/types/formik';
+import { FC, ReactElement } from 'react';
 
-export const LoginForm = ({ isSubmitting, status, handleChange, errors, touched, captchaUrl }) => {
+type PropsType = {
+  isSubmitting: boolean;
+  status: any;
+  handleChange: HandleChangeType;
+  errors: FormikErrorsType;
+  touched: FormikTouchedType;
+  captchaUrl: string;
+};
+
+export const LoginForm: FC<PropsType> = ({
+  isSubmitting,
+  status,
+  handleChange,
+  errors,
+  touched,
+  captchaUrl,
+}): ReactElement => {
   return (
     <Form className={cn(classes.loginForm, { [classes.loginFormError]: status })}>
       <FormField

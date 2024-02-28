@@ -11,8 +11,7 @@ export const InputFile: FC<PropsType> = ({ actionFile }): ReactElement => {
   const inputFile = useRef<HTMLInputElement>(null);
 
   const onChangeInputFile = (event: ChangeEvent<HTMLInputElement>): void => {
-    if (!event.target.files) return;
-    if (event.target.files.length) {
+    if (event.target.files?.length) {
       setFileInfo(event.target.files[0].name);
       actionFile(event.target.files[0]);
     } else {
@@ -21,8 +20,7 @@ export const InputFile: FC<PropsType> = ({ actionFile }): ReactElement => {
   };
 
   const autoClick = (): void => {
-    if (!inputFile.current) return;
-    inputFile.current.click();
+    inputFile.current?.click();
   };
 
   return (

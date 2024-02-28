@@ -2,8 +2,17 @@ import cn from 'classnames';
 import classes from './ContactForm.module.scss';
 import { FormField } from '../../../../Common/FormField/FormField';
 import { FormServerError } from '../../../../Common/FormServerError/FormServerError';
+import { HandleChangeType } from '../../../../../utils/types/formik';
+import { FC, ReactElement } from 'react';
 
-export const ContactForm = ({ title, name, status, handleChange }) => {
+type PropsType = {
+  title: string;
+  name: string;
+  status: any;
+  handleChange: HandleChangeType;
+};
+
+export const ContactForm: FC<PropsType> = ({ title, name, status, handleChange }): ReactElement => {
   return (
     <div className={classes.contactBlock}>
       <div className={classes.contact}>

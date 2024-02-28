@@ -1,16 +1,34 @@
 import { Form } from 'formik';
-import { useState } from 'react';
+import { ChangeEvent, FC, ReactElement, useState } from 'react';
 import cn from 'classnames';
 import classes from './ProfileDataForm.module.scss';
 import { FormField } from '../../../../Common/FormField/FormField';
 import { Button } from '../../../../Common/Button/Button';
 import { FormServerError } from '../../../../Common/FormServerError/FormServerError';
 import { ContactsForm } from '../ContactsForm/ContactsForm';
+import { FormikErrorsType, HandleChangeType, SetFieldValueType } from '../../../../../utils/types/formik';
+import { IRequestProfile } from '../../../../../api/types/profile';
 
-export const ProfileDataForm = ({ data, isSubmitting, status, handleChange, setFieldValue, errors }) => {
-  const [editModeSkills, setEditModeSkills] = useState(data.lookingForAJob);
+type PropsType = {
+  data: IRequestProfile;
+  isSubmitting: boolean;
+  status: any;
+  handleChange: HandleChangeType;
+  setFieldValue: SetFieldValueType;
+  errors: FormikErrorsType;
+};
 
-  const onToggleEditModeSkills = (event) => {
+export const ProfileDataForm: FC<PropsType> = ({
+  data,
+  isSubmitting,
+  status,
+  handleChange,
+  setFieldValue,
+  errors,
+}): ReactElement => {
+  const [editModeSkills, setEditModeSkills] = useState<boolean>(data.lookingForAJob);
+
+  const onToggleEditModeSkills = (event: ChangeEvent<any>): void => {
     setFieldValue('lookingForAJob', event.target.checked);
     setEditModeSkills(event.target.checked);
   };

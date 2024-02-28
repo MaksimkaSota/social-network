@@ -1,11 +1,20 @@
 import { ContactForm } from '../ContactForm/ContactForm';
 import classes from '../Contacts/Contacts.module.scss';
+import { IRequestProfile } from '../../../../../api/types/profile';
+import { HandleChangeType } from '../../../../../utils/types/formik';
+import { FC, ReactElement } from 'react';
 
-export const ContactsForm = ({ data, status, handleChange }) => {
+type PropsType = {
+  data: IRequestProfile;
+  status: any;
+  handleChange: HandleChangeType;
+};
+
+export const ContactsForm: FC<PropsType> = ({ data, status, handleChange }): ReactElement => {
   return (
     <div className={classes.contactsBlock}>
       <h5 className={classes.title}>Contacts:</h5>
-      {Object.keys(data.contacts).map((contact, index) => {
+      {Object.keys(data.contacts).map((contact: string, index: number) => {
         return (
           <ContactForm
             title={contact}

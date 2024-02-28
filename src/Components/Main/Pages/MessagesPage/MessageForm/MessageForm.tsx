@@ -2,8 +2,17 @@ import { Form } from 'formik';
 import classes from './MessageForm.module.scss';
 import { Button } from '../../../../Common/Button/Button';
 import { FormField } from '../../../../Common/FormField/FormField';
+import { FormikErrorsType, FormikTouchedType, HandleChangeType } from '../../../../../utils/types/formik';
+import { FC, ReactElement } from 'react';
 
-export const MessageForm = ({ handleChange, errors, touched, disabled }) => {
+type PropsType = {
+  handleChange: HandleChangeType;
+  errors: FormikErrorsType;
+  touched: FormikTouchedType;
+  disabled: boolean;
+};
+
+export const MessageForm: FC<PropsType> = ({ handleChange, errors, touched, disabled }): ReactElement => {
   return (
     <Form className={classes.addMessageBlock}>
       <FormField

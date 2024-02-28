@@ -17,7 +17,6 @@ export const Messages: FC<PropsType> = ({ messages, addMessage }): ReactElement 
   return (
     <div className={classes.messagesBlock}>
       <h3 className={classes.title}>Messages</h3>
-      {/* @ts-ignore*/}
       <MessageFormContainer addMessage={addMessage} />
       <div className={classes.messages}>{messagesElements}</div>
     </div>
