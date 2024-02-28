@@ -2,8 +2,22 @@ import classes from './Header.module.scss';
 import logo from '../../assets/images/logo.png';
 import { HeaderAuthInfo } from './HeaderAuthInfo/HeaderAuthInfo';
 import { HeaderNotAuthInfo } from './HeaderNotAuthInfo/HeaderNotAuthInfo';
+import { Nullable } from '../../utils/types/common';
+import { ErrorType } from '../../redux/types/error';
+import { FC, ReactElement } from 'react';
 
-export const Header = ({
+type PropsType = {
+  isAuth: boolean;
+  loginName: Nullable<string>;
+  authUserPhoto: Nullable<string>;
+  isFetchingAuthUserPhoto: boolean;
+  authUserPhotoError: Nullable<ErrorType>;
+  updateUserPhotoError: Nullable<ErrorType>;
+  logout: () => void;
+  incorrectAuthText: string;
+}
+
+export const Header: FC<PropsType> = ({
   isAuth,
   loginName,
   authUserPhoto,
@@ -12,7 +26,7 @@ export const Header = ({
   updateUserPhotoError,
   logout,
   incorrectAuthText,
-}) => {
+}): ReactElement => {
   return (
     <header className={classes.header}>
       <div className={classes.logoContainer}>

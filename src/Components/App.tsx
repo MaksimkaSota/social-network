@@ -5,8 +5,18 @@ import { Footer } from './Footer/Footer';
 import { Preloader } from './Common/Preloader/Preloader';
 import { Error } from './Common/Error/Error';
 import { ErrorPopup } from './Common/ErrorPopup/ErrorPopup';
+import { Nullable } from '../utils/types/common';
+import { ErrorType } from '../redux/types/error';
+import { FC, ReactElement } from 'react';
 
-export const App = ({ isFetchingAuth, authError, logoutError, setLogoutError }) => {
+type PropsType = {
+  isFetchingAuth: boolean;
+  authError: Nullable<ErrorType>;
+  logoutError: Nullable<ErrorType>;
+  setLogoutError: (error: Nullable<ErrorType>) => void;
+};
+
+export const App: FC<PropsType> = ({ isFetchingAuth, authError, logoutError, setLogoutError }): ReactElement => {
   if (isFetchingAuth) {
     return (
       <div className={classes.preloaderWrapper}>

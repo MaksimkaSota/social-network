@@ -6,7 +6,7 @@ type PropsType = {
   text: number | string;
   type?: 'button' | 'submit' | 'reset';
   className?: string;
-  onClick: () => void;
+  onClick?: () => void;
   disabled?: boolean;
 };
 

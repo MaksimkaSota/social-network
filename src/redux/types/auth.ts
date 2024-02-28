@@ -42,7 +42,7 @@ export type AuthData = {
 };
 export type resetAuthDataAction = { type: AuthActionType.RESET_AUTH_DATA; payload: AuthData };
 export type setCaptchaUrlAction = { type: AuthActionType.SET_AUTH_CAPTCHA_URL; payload: string };
-export type setLogoutErrorAction = { type: AuthActionType.SET_AUTH_LOGOUT_ERROR; payload: ErrorType };
+export type setLogoutErrorAction = { type: AuthActionType.SET_AUTH_LOGOUT_ERROR; payload: Nullable<ErrorType> };
 
 export type AuthAction =
   | SetAuthRequestAction

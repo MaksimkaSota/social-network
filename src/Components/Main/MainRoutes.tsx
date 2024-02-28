@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { FC, ReactElement, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { NewsPage } from './Pages/NewsPage/NewsPage';
 import { MusicsPage } from './Pages/MusicsPage/MusicsPage';
@@ -12,7 +12,7 @@ const MessagesPageContainer = React.lazy(() => import('./Pages/MessagesPage/Mess
 const UsersPageContainer = React.lazy(() => import('./Pages/UsersPage/UsersPageContainer'));
 const LoginPageContainer = React.lazy(() => import('./Pages/LoginPage/LoginPageContainer'));
 
-export const MainRoutes = () => {
+export const MainRoutes: FC = (): ReactElement => {
   const authProfilePage = useAuthRedirect(<ProfilePageContainer />);
   const authMessagesPage = useAuthRedirect(<MessagesPageContainer />);
 

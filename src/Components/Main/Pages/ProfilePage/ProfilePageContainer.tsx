@@ -22,8 +22,8 @@ export const ProfilePageContainer: FC = (): ReactElement => {
 
   useEffect(() => {
     if (paramId) {
-      dispatch(getProfile(paramId));
-      dispatch(getStatus(paramId));
+      dispatch(getProfile(+paramId));
+      dispatch(getStatus(+paramId));
     } else {
       navigate('/login');
     }

@@ -1,7 +1,8 @@
 import classes from './Footer.module.scss';
 import email from '../../assets/images/email.png';
+import { FC, ReactElement } from 'react';
 
-export const Footer = () => {
+export const Footer: FC = (): ReactElement => {
   return (
     <footer className={classes.footer}>
       <div className={classes.mailContainer}>
