@@ -1,16 +1,21 @@
 import { Navigate } from 'react-router-dom';
 import { LoginFormContainer } from './LoginPageForm/LoginFormContainer';
 import classes from './LoginPage.module.scss';
-import { FormikErrors } from 'formik';
 import { FC, ReactElement } from 'react';
+import {
+  SetFieldTouchedType,
+  SetFieldValueType,
+  SetStatusType,
+  SetSubmittingType
+} from '../../../../utils/types/formik';
 
 type PropsType = {
   login: (
     loginData: { email: string; password: string; rememberMe: boolean; captcha: string },
-    setStatus: (status?: any) => void,
-    setSubmitting: (isSubmitting: boolean) => void,
-    setFieldValue: (field: string, value: any, shouldValidate?: boolean) => Promise<void | FormikErrors<any>>,
-    setFieldTouched: (field: string, isTouched?: boolean, shouldValidate?: boolean) => Promise<void | FormikErrors<any>>
+    setStatus: SetStatusType,
+    setSubmitting: SetSubmittingType,
+    setFieldValue: SetFieldValueType,
+    setFieldTouched: SetFieldTouchedType
   ) => void;
   isAuth: boolean;
   incorrectAuthText: string;

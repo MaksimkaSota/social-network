@@ -22,6 +22,7 @@ import { SetAuthUserPhotoAction } from '../types/auth';
 import { IPhotoData, IRequestProfile, IResponseProfile } from '../../api/types/profile';
 import { Dispatch, SetStateAction } from 'react';
 import { IResponse } from '../../api/types/http';
+import { SetStatusType, SetSubmittingType } from '../../utils/types/formik';
 
 export const getProfile = (id: number): ThunkType<ProfileAction> => {
   return async (dispatch) => {
@@ -94,8 +95,8 @@ export const updatePhoto = (photo: File): ThunkType<ProfileAction | SetAuthUserP
 
 export const updateData = (
   profileData: IRequestProfile,
-  setStatus: (status?: any) => void,
-  setSubmitting: (isSubmitting: boolean) => void,
+  setStatus: SetStatusType,
+  setSubmitting: SetSubmittingType,
   setEditModeData: Dispatch<SetStateAction<boolean>>
 ): ThunkType<ProfileAction> => {
   return async (dispatch, getState) => {

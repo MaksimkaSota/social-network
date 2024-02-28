@@ -4,7 +4,12 @@ import { login } from '../../../../redux/thunks/auth';
 import { captchaUrlSelector, incorrectAuthTextSelector, isAuthSelector } from '../../../../redux/selectors/auth';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { useTypedDispatch } from '../../../../hooks/useTypedDispatch';
-import { FormikErrors } from 'formik';
+import {
+  SetFieldTouchedType,
+  SetFieldValueType,
+  SetStatusType,
+  SetSubmittingType,
+} from '../../../../utils/types/formik';
 
 const LoginPageContainer = () => {
   const isAuth = useTypedSelector(isAuthSelector);
@@ -15,14 +20,10 @@ const LoginPageContainer = () => {
   const loginCallback = useCallback(
     (
       loginData: { email: string; password: string; rememberMe: boolean; captcha: string },
-      setStatus: (status?: any) => void,
-      setSubmitting: (isSubmitting: boolean) => void,
-      setFieldValue: (field: string, value: any, shouldValidate?: boolean) => Promise<void | FormikErrors<any>>,
-      setFieldTouched: (
-        field: string,
-        isTouched?: boolean,
-        shouldValidate?: boolean
-      ) => Promise<void | FormikErrors<any>>
+      setStatus: SetStatusType,
+      setSubmitting: SetSubmittingType,
+      setFieldValue: SetFieldValueType,
+      setFieldTouched: SetFieldTouchedType
     ) => {
       dispatch(login(loginData, setStatus, setSubmitting, setFieldValue, setFieldTouched));
     },

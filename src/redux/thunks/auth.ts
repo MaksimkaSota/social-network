@@ -17,7 +17,7 @@ import { AuthAction } from '../types/auth';
 import { isAxiosError } from 'axios';
 import { IResponse } from '../../api/types/http';
 import { IAuthData, ICaptcha } from '../../api/types/auth';
-import { FormikErrors } from 'formik';
+import { SetFieldTouchedType, SetFieldValueType, SetStatusType, SetSubmittingType } from '../../utils/types/formik';
 
 export const getAuth = (): ThunkType<AuthAction> => {
   return async (dispatch) => {
@@ -55,10 +55,10 @@ export const getCaptchaUrl = (): ThunkType<AuthAction> => {
 
 export const login = (
   loginData: { email: string; password: string; rememberMe: boolean; captcha: string },
-  setStatus: (status?: any) => void,
-  setSubmitting: (isSubmitting: boolean) => void,
-  setFieldValue: (field: string, value: any, shouldValidate?: boolean) => Promise<void | FormikErrors<any>>,
-  setFieldTouched: (field: string, isTouched?: boolean, shouldValidate?: boolean) => Promise<void | FormikErrors<any>>
+  setStatus: SetStatusType,
+  setSubmitting: SetSubmittingType,
+  setFieldValue: SetFieldValueType,
+  setFieldTouched: SetFieldTouchedType
 ): ThunkType<AuthAction> => {
   return async (dispatch) => {
     try {

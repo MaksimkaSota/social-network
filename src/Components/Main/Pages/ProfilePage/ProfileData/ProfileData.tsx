@@ -6,14 +6,15 @@ import { ProfileDataDescription } from '../ProfileDataDescription/ProfileDataDes
 import { IRequestProfile } from '../../../../../api/types/profile';
 import { Nullable } from '../../../../../utils/types/common';
 import { ErrorType } from '../../../../../redux/types/error';
+import { SetStatusType, SetSubmittingType } from '../../../../../utils/types/formik';
 
 type PropsType = {
   isOwner: boolean;
   data: IRequestProfile;
   updateData: (
     profileData: IRequestProfile,
-    setStatus: (status?: any) => void,
-    setSubmitting: (isSubmitting: boolean) => void,
+    setStatus: SetStatusType,
+    setSubmitting: SetSubmittingType,
     setEditModeData: Dispatch<SetStateAction<boolean>>
   ) => void;
   isFetchingData: boolean;

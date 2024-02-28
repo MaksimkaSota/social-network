@@ -13,6 +13,7 @@ import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
 import { useTypedDispatch } from '../../../../../hooks/useTypedDispatch';
 import { Nullable } from '../../../../../utils/types/common';
 import { IRequestProfile, IResponseProfile } from '../../../../../api/types/profile';
+import { SetStatusType, SetSubmittingType } from '../../../../../utils/types/formik';
 
 type PropsType = {
   profile: Nullable<IResponseProfile>;
@@ -34,8 +35,8 @@ export const ProfileInfoContainer: FC<PropsType> = ({ profile, isOwner }): React
   const updateDataCallback = useCallback(
     (
       profileData: IRequestProfile,
-      setStatus: (status?: any) => void,
-      setSubmitting: (isSubmitting: boolean) => void,
+      setStatus: SetStatusType,
+      setSubmitting: SetSubmittingType,
       setEditModeData: Dispatch<SetStateAction<boolean>>
     ) => {
       dispatch(updateData(profileData, setStatus, setSubmitting, setEditModeData));

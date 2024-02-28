@@ -6,6 +6,7 @@ import { Nullable } from '../../../../../utils/types/common';
 import { IRequestProfile, IResponseProfile } from '../../../../../api/types/profile';
 import { Dispatch, FC, SetStateAction } from 'react';
 import { ErrorType } from '../../../../../redux/types/error';
+import { SetStatusType, SetSubmittingType } from '../../../../../utils/types/formik';
 
 type PropsType = {
   isOwner: boolean;
@@ -19,8 +20,8 @@ type PropsType = {
   photoError: Nullable<ErrorType>;
   updateData: (
     profileData: IRequestProfile,
-    setStatus: (status?: any) => void,
-    setSubmitting: (isSubmitting: boolean) => void,
+    setStatus: SetStatusType,
+    setSubmitting: SetSubmittingType,
     setEditModeData: Dispatch<SetStateAction<boolean>>
   ) => void;
   isFetchingData: boolean;
