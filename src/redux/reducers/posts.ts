@@ -1,4 +1,4 @@
-import { PostsAction, PostsActionType, PostsState } from '../types/posts';
+import { PostsAction, PostsActionType, PostsState, PostType } from '../types/posts';
 
 const initialState: PostsState = {
   posts: [
@@ -26,7 +26,7 @@ export const postsReducer = (state: PostsState = initialState, action: PostsActi
     case PostsActionType.DELETE_POSTS_POST:
       return {
         ...state,
-        posts: state.posts.filter((post) => post.id !== action.payload),
+        posts: state.posts.filter((post: PostType): boolean => post.id !== action.payload),
       };
     default:
       return state;

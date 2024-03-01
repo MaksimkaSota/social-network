@@ -14,7 +14,7 @@ export const ContactsForm: FC<PropsType> = ({ data, status, handleChange }): Rea
   return (
     <div className={classes.contactsBlock}>
       <h5 className={classes.title}>Contacts:</h5>
-      {Object.keys(data.contacts).map((contact: string, index: number) => {
+      {Object.keys(data.contacts).map((contact: string, index: number): ReactElement => {
         return (
           <ContactForm
             title={contact}

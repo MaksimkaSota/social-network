@@ -125,7 +125,7 @@ export const updateData = (
               key = 'Job';
             }
             if (key === 'contacts') {
-              contactsDataKeys.forEach((contactsDataKey) => {
+              contactsDataKeys.forEach((contactsDataKey: string): void => {
                 fillErrorsObject(errors.contacts, contactsDataKey, message);
               });
             } else {

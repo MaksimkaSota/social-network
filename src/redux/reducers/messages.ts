@@ -1,4 +1,4 @@
-import { MessagesAction, MessagesActionType, MessagesState } from '../types/messages';
+import { MessagesAction, MessagesActionType, MessagesState, MessageType } from '../types/messages';
 
 const initialState: MessagesState = {
   dialogs: [
@@ -31,7 +31,7 @@ export const messagesReducer = (state: MessagesState = initialState, action: Mes
     case MessagesActionType.DELETE_MESSAGES_MESSAGE:
       return {
         ...state,
-        messages: state.messages.filter((message) => message.id !== action.payload),
+        messages: state.messages.filter((message: MessageType): boolean => message.id !== action.payload),
       };
     default:
       return state;

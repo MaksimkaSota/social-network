@@ -56,7 +56,7 @@ export const UsersPage: FC<PropsType> = ({
         isFetching={isFetchingUsers}
       />
       <div>
-        {users.map((user: IUser) => (
+        {users.map((user: IUser): ReactElement => (
           <User
             key={user.id}
             user={user}

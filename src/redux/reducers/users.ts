@@ -53,7 +53,7 @@ export const usersReducer = (state: UsersState = initialState, action: UsersActi
         ...state,
         subscribersId: action.payload.isFetching
           ? [...state.subscribersId, action.payload.id]
-          : state.subscribersId.filter((id) => id !== action.payload.id),
+          : state.subscribersId.filter((id: number): boolean => id !== action.payload.id),
       };
     default:
       return state;
