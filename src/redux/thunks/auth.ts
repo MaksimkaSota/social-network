@@ -12,19 +12,19 @@ import {
 } from '../actions/auth';
 import { getProfileAPI } from '../../api/profile';
 import { getErrorMessage } from '../../utils/helpers/thunksHelpers';
-import { ThunkType } from '../../utils/types/common';
+import { StatusCode, ThunkType } from '../../utils/types/common';
 import { AuthAction } from '../types/auth';
 import { isAxiosError } from 'axios';
 import { IResponse } from '../../api/types/http';
 import { IAuthData, ICaptcha } from '../../api/types/auth';
-import { SetFieldTouchedType, SetFieldValueType, SetStatusType, SetSubmittingType } from '../../utils/types/formik';
+import { SetFieldTouchedType, SetFieldValueType, SetStatusType, SetSubmittingType } from '../../utils/types/form';
 
 export const getAuth = (): ThunkType<AuthAction> => {
   return async (dispatch) => {
     try {
       dispatch(setAuthRequest());
       const dataAuth: IResponse<IAuthData> = await getAuthAPI();
-      if (dataAuth.resultCode === 0) {
+      if (dataAuth.resultCode === StatusCode.success) {
         dispatch(setAuthSuccessCorrect(dataAuth.data));
         dispatch(setAuthSuccessIncorrect(''));
         try {
@@ -35,7 +35,7 @@ export const getAuth = (): ThunkType<AuthAction> => {
             dispatch(setAuthUserPhotoError(getErrorMessage(error), error.response?.status));
           }
         }
-      } else if (dataAuth.resultCode === 1) {
+      } else if (dataAuth.resultCode === StatusCode.failure) {
         dispatch(setAuthSuccessIncorrect(dataAuth.messages[0]));
       }
     } catch (error) {
@@ -63,10 +63,10 @@ export const login = (
   return async (dispatch) => {
     try {
       const data = await loginAPI(loginData.email, loginData.password, loginData.rememberMe, loginData.captcha);
-      if (data.resultCode === 0) {
+      if (data.resultCode === StatusCode.success) {
         await dispatch(getAuth());
       } else {
-        if (data.resultCode === 10) {
+        if (data.resultCode === StatusCode.required_captcha) {
           await dispatch(getCaptchaUrl());
           await setFieldValue('isCaptcha', true);
           await setFieldTouched('captcha', false);
@@ -88,7 +88,7 @@ export const logout = (): ThunkType<AuthAction> => {
   return async (dispatch) => {
     try {
       const data = await logoutAPI();
-      if (data.resultCode === 0) {
+      if (data.resultCode === StatusCode.success) {
         dispatch(
           resetAuthData({
             id: null,

@@ -1,4 +1,5 @@
 import { ErrorState } from '../types/error';
+import { RequestState } from '../../utils/types/common';
 
 const initialState: ErrorState = {
   SET_USERS: null,
@@ -18,6 +19,6 @@ export const errorReducer = (state: ErrorState = initialState, action: any): Err
 
   return {
     ...state,
-    [requestName]: requestState === 'FAILURE' ? action.payload : null,
+    [requestName]: requestState === RequestState.failure ? action.payload : null,
   };
 };

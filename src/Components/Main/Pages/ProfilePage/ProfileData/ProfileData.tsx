@@ -6,7 +6,7 @@ import { ProfileDataDescription } from '../ProfileDataDescription/ProfileDataDes
 import { IRequestProfile } from '../../../../../api/types/profile';
 import { Nullable } from '../../../../../utils/types/common';
 import { ErrorType } from '../../../../../redux/types/error';
-import { SetStatusType, SetSubmittingType } from '../../../../../utils/types/formik';
+import { SetStatusType, SetSubmittingType } from '../../../../../utils/types/form';
 
 type PropsType = {
   isOwner: boolean;

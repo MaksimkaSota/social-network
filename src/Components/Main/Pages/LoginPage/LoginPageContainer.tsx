@@ -9,7 +9,7 @@ import {
   SetFieldValueType,
   SetStatusType,
   SetSubmittingType,
-} from '../../../../utils/types/formik';
+} from '../../../../utils/types/form';
 
 const LoginPageContainer = () => {
   const isAuth = useTypedSelector(isAuthSelector);

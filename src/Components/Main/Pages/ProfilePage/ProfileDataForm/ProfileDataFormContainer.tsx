@@ -2,7 +2,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { ProfileDataForm } from './ProfileDataForm';
 import { IRequestProfile } from '../../../../../api/types/profile';
-import { SetStatusType, SetSubmittingType } from '../../../../../utils/types/formik';
+import { SetStatusType, SetSubmittingType } from '../../../../../utils/types/form';
 import { Dispatch, FC, ReactElement, SetStateAction } from 'react';
 
 const validationSchema = Yup.object().shape({

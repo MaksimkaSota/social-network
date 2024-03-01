@@ -13,7 +13,7 @@ import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
 import { useTypedDispatch } from '../../../../../hooks/useTypedDispatch';
 import { Nullable } from '../../../../../utils/types/common';
 import { IRequestProfile, IResponseProfile } from '../../../../../api/types/profile';
-import { SetStatusType, SetSubmittingType } from '../../../../../utils/types/formik';
+import { SetStatusType, SetSubmittingType } from '../../../../../utils/types/form';
 
 type PropsType = {
   profile: Nullable<IResponseProfile>;

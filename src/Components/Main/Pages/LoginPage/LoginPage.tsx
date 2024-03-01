@@ -7,7 +7,8 @@ import {
   SetFieldValueType,
   SetStatusType,
   SetSubmittingType
-} from '../../../../utils/types/formik';
+} from '../../../../utils/types/form';
+import { RoutePath } from '../../../../utils/types/common';
 
 type PropsType = {
   login: (
@@ -24,7 +25,7 @@ type PropsType = {
 
 export const LoginPage: FC<PropsType> = ({ login, isAuth, incorrectAuthText, captchaUrl }): ReactElement => {
   return isAuth ? (
-    <Navigate to="/profile" />
+    <Navigate to={RoutePath.profile} />
   ) : (
     <div className={classes.loginPageBlock}>
       <h3 className={classes.title}>Login</h3>

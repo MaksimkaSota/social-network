@@ -6,7 +6,7 @@ import {
   SetFieldValueType,
   SetStatusType,
   SetSubmittingType,
-} from '../../../../../utils/types/formik';
+} from '../../../../../utils/types/form';
 import { FC, ReactElement } from 'react';
 
 const validationSchema = Yup.object().shape({

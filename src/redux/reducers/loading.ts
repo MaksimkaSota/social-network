@@ -1,4 +1,5 @@
 import { LoadingState } from '../types/loading';
+import { RequestState } from '../../utils/types/common';
 
 const initialState: LoadingState = {
   SET_USERS: false,
@@ -18,6 +19,6 @@ export const loadingReducer = (state: LoadingState = initialState, action: any):
 
   return {
     ...state,
-    [requestName]: requestState === 'REQUEST',
+    [requestName]: requestState === RequestState.request,
   };
 };

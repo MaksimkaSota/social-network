@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { MessageForm } from './MessageForm';
-import { ResetFormType } from '../../../../../utils/types/formik';
+import { ResetFormType } from '../../../../../utils/types/form';
 
 const validationSchema = Yup.object().shape({
   text: Yup.string().max(100, 'Must be not more than 100 characters').required('Required'),

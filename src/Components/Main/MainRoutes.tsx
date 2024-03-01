@@ -7,6 +7,7 @@ import { useAuthRedirect } from '../../hooks/useRedirect';
 import { ProfilePageContainer } from './Pages/ProfilePage/ProfilePageContainer';
 import { Preloader } from '../Common/Preloader/Preloader';
 import { NotFoundPage } from './Pages/NotFoundPage/NotFoundPage';
+import { RoutePath } from '../../utils/types/common';
 
 const MessagesPageContainer = React.lazy(() => import('./Pages/MessagesPage/MessagesPageContainer'));
 const UsersPageContainer = React.lazy(() => import('./Pages/UsersPage/UsersPageContainer'));
@@ -19,16 +20,16 @@ export const MainRoutes: FC = (): ReactElement => {
   return (
     <Suspense fallback={<Preloader />}>
       <Routes>
-        <Route path="*" element={<NotFoundPage />} />
-        <Route path="/" element={<Navigate to="/profile" />} />
-        <Route path="/profile" element={authProfilePage} />
-        <Route path="/profile/:id?" element={<ProfilePageContainer />} />
-        <Route path="/messages/*" element={authMessagesPage} />
-        <Route path="/users" element={<UsersPageContainer />} />
-        <Route path="/news" element={<NewsPage />} />
-        <Route path="/musics" element={<MusicsPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
-        <Route path="/login" element={<LoginPageContainer />} />
+        <Route path={RoutePath.not_found} element={<NotFoundPage />} />
+        <Route path={RoutePath.main} element={<Navigate to={RoutePath.profile} />} />
+        <Route path={RoutePath.profile} element={authProfilePage} />
+        <Route path={RoutePath.profile + '/:id?'} element={<ProfilePageContainer />} />
+        <Route path={RoutePath.messages + '/*'} element={authMessagesPage} />
+        <Route path={RoutePath.users} element={<UsersPageContainer />} />
+        <Route path={RoutePath.news} element={<NewsPage />} />
+        <Route path={RoutePath.musics} element={<MusicsPage />} />
+        <Route path={RoutePath.settings} element={<SettingsPage />} />
+        <Route path={RoutePath.login} element={<LoginPageContainer />} />
       </Routes>
     </Suspense>
   );

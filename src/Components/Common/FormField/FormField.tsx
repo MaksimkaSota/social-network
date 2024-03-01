@@ -1,7 +1,7 @@
 import { ErrorMessage, Field } from 'formik';
 import cn from 'classnames';
 import classes from './FormField.module.scss';
-import { FormikErrorsType, FormikTouchedType, HandleChangeType } from '../../../utils/types/formik';
+import { FormikErrorsType, FormikTouchedType, HandleChangeType } from '../../../utils/types/form';
 import { FC, ReactElement } from 'react';
 
 type PropsType = {

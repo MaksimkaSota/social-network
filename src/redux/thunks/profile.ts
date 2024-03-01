@@ -15,14 +15,14 @@ import {
 import { getProfileAPI, getStatusAPI, updateStatusAPI, updatePhotoAPI, updateProfileAPI } from '../../api/profile';
 import { fillErrorsObject, getErrorMessage } from '../../utils/helpers/thunksHelpers';
 import { setAuthUserPhoto } from '../actions/auth';
-import { Nullable, ThunkType } from '../../utils/types/common';
+import { Nullable, StatusCode, ThunkType } from '../../utils/types/common';
 import { ProfileAction } from '../types/profile';
 import { isAxiosError } from 'axios';
 import { SetAuthUserPhotoAction } from '../types/auth';
 import { IPhotoData, IRequestProfile, IResponseProfile } from '../../api/types/profile';
 import { Dispatch, SetStateAction } from 'react';
 import { IResponse } from '../../api/types/http';
-import { SetStatusType, SetSubmittingType } from '../../utils/types/formik';
+import { SetStatusType, SetSubmittingType } from '../../utils/types/form';
 
 export const getProfile = (id: number): ThunkType<ProfileAction> => {
   return async (dispatch) => {
@@ -81,7 +81,7 @@ export const updatePhoto = (photo: File): ThunkType<ProfileAction | SetAuthUserP
     try {
       dispatch(setPhotoRequest());
       const data: IResponse<IPhotoData> = await updatePhotoAPI(photo);
-      if (data.resultCode === 0) {
+      if (data.resultCode === StatusCode.success) {
         dispatch(setPhotoSuccess(data.data.photos));
         dispatch(setAuthUserPhoto(data.data.photos.small));
       }
@@ -105,7 +105,7 @@ export const updateData = (
       const contactsDataKeys: Array<string> = Object.keys(profileData.contacts);
 
       const data: IResponse = await updateProfileAPI(profileData);
-      if (data.resultCode === 0) {
+      if (data.resultCode === StatusCode.success) {
         setEditModeData(false);
         dispatch(setDataRequest());
         const id: Nullable<number> = getState().auth.id;

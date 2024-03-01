@@ -4,7 +4,7 @@ import classes from './LoginForm.module.scss';
 import { Button } from '../../../../Common/Button/Button';
 import { FormField } from '../../../../Common/FormField/FormField';
 import { FormServerError } from '../../../../Common/FormServerError/FormServerError';
-import { FormikErrorsType, FormikTouchedType, HandleChangeType } from '../../../../../utils/types/formik';
+import { FormikErrorsType, FormikTouchedType, FormName, HandleChangeType } from '../../../../../utils/types/form';
 import { FC, ReactElement } from 'react';
 
 type PropsType = {
@@ -29,7 +29,7 @@ export const LoginForm: FC<PropsType> = ({
       <FormField
         classNameFormField={classes.fieldBlock}
         classNameField={classes.field}
-        name="email"
+        name={FormName.email}
         type="email"
         placeholder="Email"
         onChange={handleChange}
@@ -39,7 +39,7 @@ export const LoginForm: FC<PropsType> = ({
       <FormField
         classNameFormField={classes.fieldBlock}
         classNameField={classes.field}
-        name="password"
+        name={FormName.password}
         type="password"
         placeholder="Password"
         props={{ autoComplete: 'on' }}
@@ -51,7 +51,7 @@ export const LoginForm: FC<PropsType> = ({
         classNameFormField={classes.toggleBlock}
         classNameField={classes.checkbox}
         classNameLabel={classes.label}
-        name="rememberMe"
+        name={FormName.remember_me}
         type="checkbox"
         text="Remember me"
         props={{ id: 'rememberMe' }}
@@ -63,7 +63,7 @@ export const LoginForm: FC<PropsType> = ({
           <FormField
             classNameFormField={classes.fieldBlock}
             classNameField={classes.field}
-            name="captcha"
+            name={FormName.captcha}
             type="text"
             placeholder="Symbols from image"
             onChange={handleChange}

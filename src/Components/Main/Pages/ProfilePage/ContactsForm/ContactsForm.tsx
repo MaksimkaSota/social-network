@@ -1,7 +1,7 @@
 import { ContactForm } from '../ContactForm/ContactForm';
 import classes from '../Contacts/Contacts.module.scss';
 import { IRequestProfile } from '../../../../../api/types/profile';
-import { HandleChangeType } from '../../../../../utils/types/formik';
+import { HandleChangeType } from '../../../../../utils/types/form';
 import { FC, ReactElement } from 'react';
 
 type PropsType = {

@@ -16,7 +16,7 @@ import { FollowAction, UnfollowAction, UsersAction } from '../types/users';
 import { isAxiosError } from 'axios';
 import { Dispatch } from 'redux';
 import { IResponse } from '../../api/types/http';
-import { ThunkType } from "../../utils/types/common";
+import { StatusCode, ThunkType } from '../../utils/types/common';
 import { IUsers } from '../../api/types/users';
 
 export const getUsers = (page: number, pageSize: number): ThunkType<UsersAction> => {
@@ -44,7 +44,7 @@ const followUnfollowUser = async (
   dispatch(setSubscribersId(true, id));
   const data: IResponse = await apiMethod(id);
   dispatch(setSubscribersId(false, id));
-  if (data.resultCode === 0) {
+  if (data.resultCode === StatusCode.success) {
     dispatch(actionCreator(id));
   }
 };

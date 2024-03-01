@@ -6,7 +6,7 @@ import { Nullable } from '../../../../../utils/types/common';
 import { IRequestProfile, IResponseProfile } from '../../../../../api/types/profile';
 import { Dispatch, FC, SetStateAction } from 'react';
 import { ErrorType } from '../../../../../redux/types/error';
-import { SetStatusType, SetSubmittingType } from '../../../../../utils/types/formik';
+import { SetStatusType, SetSubmittingType } from '../../../../../utils/types/form';
 
 type PropsType = {
   isOwner: boolean;

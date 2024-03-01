@@ -6,6 +6,7 @@ import { FollowUnfollowError } from '../FollowUnfollowError/FollowUnfollowError'
 import { FC, ReactElement } from 'react';
 import { IUser } from '../../../../../api/types/users';
 import { FollowUnfollowErrorType } from '../../../../../redux/types/users';
+import { RoutePath } from '../../../../../utils/types/common';
 
 type PropsType = {
   user: IUser;
@@ -35,7 +36,7 @@ export const User: FC<PropsType> = ({
     <div className={classes.user}>
       <div className={classes.userMainBlock}>
         <div className={classes.userPhotoBlock}>
-          <NavLink to={`/profile/${user.id}`}>
+          <NavLink to={RoutePath.profile + `/${user.id}`}>
             <img className={classes.userPhoto} src={user.photos.small || userPhoto} alt="avatar" />
           </NavLink>
         </div>
