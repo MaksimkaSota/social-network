@@ -1,3 +1,4 @@
+import { FC, ReactElement } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { LoginForm } from './LoginForm';
@@ -7,7 +8,6 @@ import {
   SetStatusType,
   SetSubmittingType,
 } from '../../../../../utils/types/form';
-import { FC, ReactElement } from 'react';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email address').required('Required email address'),

@@ -1,6 +1,6 @@
+import { FC, ReactElement } from 'react';
 import cn from 'classnames';
 import classes from './Button.module.scss';
-import { FC, ReactElement } from 'react';
 
 type PropsType = {
   text: number | string;

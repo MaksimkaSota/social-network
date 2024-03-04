@@ -1,5 +1,5 @@
-import classes from './Message.module.scss';
 import { FC, ReactElement } from 'react';
+import classes from './Message.module.scss';
 
 type PropsType = {
   messageText: string;

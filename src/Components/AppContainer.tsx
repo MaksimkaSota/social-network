@@ -17,7 +17,10 @@ export const AppContainer: FC = (): ReactElement => {
   const logoutError = useTypedSelector(logoutErrorSelector);
 
   const dispatch = useTypedDispatch();
-  const setLogoutErrorCallback = useCallback((error: Nullable<ErrorType>) => dispatch(setLogoutError(error)), [dispatch]);
+  const setLogoutErrorCallback = useCallback(
+    (error: Nullable<ErrorType>) => dispatch(setLogoutError(error)),
+    [dispatch]
+  );
 
   useEffect(() => {
     dispatch(getAuth());

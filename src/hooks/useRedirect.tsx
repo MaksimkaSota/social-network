@@ -1,6 +1,6 @@
+import { ReactElement } from 'react';
 import { Navigate } from 'react-router-dom';
 import { isAuthSelector } from '../redux/selectors/auth';
-import { ReactElement } from 'react';
 import { useTypedSelector } from './useTypedSelector';
 import { RoutePath } from '../utils/types/common';
 

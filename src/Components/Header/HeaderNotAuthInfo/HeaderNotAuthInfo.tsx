@@ -1,9 +1,9 @@
+import { FC, ReactElement } from 'react';
 import cn from 'classnames';
 import { NavLink } from 'react-router-dom';
 import classes from './HeaderNotAuthInfo.module.scss';
 import userPhoto from '../../../assets/images/user.png';
 import { Button } from '../../Common/Button/Button';
-import { FC, ReactElement } from 'react';
 import { RoutePath } from '../../../utils/types/common';
 
 type PropsType = {

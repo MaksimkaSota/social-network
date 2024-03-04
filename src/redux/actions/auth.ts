@@ -1,15 +1,15 @@
 import {
   AuthActionType,
   AuthData,
-  resetAuthDataAction,
+  ResetAuthDataAction,
   SetAuthFailureAction,
   SetAuthRequestAction,
   SetAuthSuccessCorrectAction,
   SetAuthSuccessIncorrectAction,
   SetAuthUserPhotoAction,
-  setAuthUserPhotoErrorAction,
-  setCaptchaUrlAction,
-  setLogoutErrorAction,
+  SetAuthUserPhotoErrorAction,
+  SetCaptchaUrlAction,
+  SetLogoutErrorAction,
 } from '../types/auth';
 import { IAuthData } from '../../api/types/auth';
 import { ErrorType } from '../types/error';
@@ -32,7 +32,7 @@ export const setAuthUserPhoto = (photo: Nullable<string>): SetAuthUserPhotoActio
   type: AuthActionType.SET_AUTH_PHOTO,
   payload: photo,
 });
-export const setAuthUserPhotoError = (message: string, code?: number): setAuthUserPhotoErrorAction => ({
+export const setAuthUserPhotoError = (message: string, code?: number): SetAuthUserPhotoErrorAction => ({
   type: AuthActionType.SET_AUTH_PHOTO_ERROR,
   payload: { code, message },
 });
@@ -43,15 +43,15 @@ export const resetAuthData = ({
   isAuth,
   authUserPhoto,
   captchaUrl,
-}: AuthData): resetAuthDataAction => ({
+}: AuthData): ResetAuthDataAction => ({
   type: AuthActionType.RESET_AUTH_DATA,
   payload: { id, email, login, isAuth, authUserPhoto, captchaUrl },
 });
-export const setCaptchaUrl = (captchaUrl: string): setCaptchaUrlAction => ({
+export const setCaptchaUrl = (captchaUrl: string): SetCaptchaUrlAction => ({
   type: AuthActionType.SET_AUTH_CAPTCHA_URL,
   payload: captchaUrl,
 });
-export const setLogoutError = (error: Nullable<ErrorType>): setLogoutErrorAction => ({
+export const setLogoutError = (error: Nullable<ErrorType>): SetLogoutErrorAction => ({
   type: AuthActionType.SET_AUTH_LOGOUT_ERROR,
   payload: error,
 });

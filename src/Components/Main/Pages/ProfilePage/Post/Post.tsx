@@ -1,5 +1,5 @@
-import classes from './Post.module.scss';
 import { FC, ReactElement } from 'react';
+import classes from './Post.module.scss';
 
 type PropsType = {
   postText: string;

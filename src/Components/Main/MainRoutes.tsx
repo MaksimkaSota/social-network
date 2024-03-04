@@ -23,8 +23,8 @@ export const MainRoutes: FC = (): ReactElement => {
         <Route path={RoutePath.not_found} element={<NotFoundPage />} />
         <Route path={RoutePath.main} element={<Navigate to={RoutePath.profile} />} />
         <Route path={RoutePath.profile} element={authProfilePage} />
-        <Route path={RoutePath.profile + '/:id?'} element={<ProfilePageContainer />} />
-        <Route path={RoutePath.messages + '/*'} element={authMessagesPage} />
+        <Route path={`${RoutePath.profile}/:id?`} element={<ProfilePageContainer />} />
+        <Route path={`${RoutePath.messages}/*`} element={authMessagesPage} />
         <Route path={RoutePath.users} element={<UsersPageContainer />} />
         <Route path={RoutePath.news} element={<NewsPage />} />
         <Route path={RoutePath.musics} element={<MusicsPage />} />

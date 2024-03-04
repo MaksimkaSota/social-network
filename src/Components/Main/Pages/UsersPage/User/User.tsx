@@ -1,9 +1,9 @@
+import { FC, ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import classes from './User.module.scss';
 import userPhoto from '../../../../../assets/images/user.png';
 import { Button } from '../../../../Common/Button/Button';
 import { FollowUnfollowError } from '../FollowUnfollowError/FollowUnfollowError';
-import { FC, ReactElement } from 'react';
 import { IUser } from '../../../../../api/types/users';
 import { FollowUnfollowErrorType } from '../../../../../redux/types/users';
 import { RoutePath } from '../../../../../utils/types/common';
@@ -36,7 +36,7 @@ export const User: FC<PropsType> = ({
     <div className={classes.user}>
       <div className={classes.userMainBlock}>
         <div className={classes.userPhotoBlock}>
-          <NavLink to={RoutePath.profile + `/${user.id}`}>
+          <NavLink to={`${RoutePath.profile}/${user.id}`}>
             <img className={classes.userPhoto} src={user.photos.small || userPhoto} alt="avatar" />
           </NavLink>
         </div>

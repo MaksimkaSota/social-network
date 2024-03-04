@@ -31,4 +31,4 @@ export interface IPhotoData {
   photos: IPhotos;
 }
 
-export type IRequestProfile = Omit<IResponseProfile, "userId" | "photos">;
+export type IRequestProfile = Omit<IResponseProfile, 'userId' | 'photos'>;

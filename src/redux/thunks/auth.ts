@@ -1,3 +1,4 @@
+import { isAxiosError } from 'axios';
 import { getAuthAPI, getCaptchaUrlAPI, loginAPI, logoutAPI } from '../../api/auth';
 import {
   setAuthRequest,
@@ -14,7 +15,6 @@ import { getProfileAPI } from '../../api/profile';
 import { getErrorMessage } from '../../utils/helpers/thunksHelpers';
 import { StatusCode, ThunkType } from '../../utils/types/common';
 import { AuthAction } from '../types/auth';
-import { isAxiosError } from 'axios';
 import { IResponse } from '../../api/types/http';
 import { IAuthData, ICaptcha } from '../../api/types/auth';
 import { SetFieldTouchedType, SetFieldValueType, SetStatusType, SetSubmittingType } from '../../utils/types/form';

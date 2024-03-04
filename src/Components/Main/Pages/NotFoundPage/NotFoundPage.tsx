@@ -1,6 +1,6 @@
+import { FC, ReactElement } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Error } from '../../../Common/Error/Error';
-import { FC, ReactElement } from 'react';
 
 export const NotFoundPage: FC = (): ReactElement => {
   const { pathname } = useLocation();

@@ -4,12 +4,7 @@ import { login } from '../../../../redux/thunks/auth';
 import { captchaUrlSelector, incorrectAuthTextSelector, isAuthSelector } from '../../../../redux/selectors/auth';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { useTypedDispatch } from '../../../../hooks/useTypedDispatch';
-import {
-  SetFieldTouchedType,
-  SetFieldValueType,
-  SetStatusType,
-  SetSubmittingType,
-} from '../../../../utils/types/form';
+import { SetFieldTouchedType, SetFieldValueType, SetStatusType, SetSubmittingType } from '../../../../utils/types/form';
 
 const LoginPageContainer = () => {
   const isAuth = useTypedSelector(isAuthSelector);

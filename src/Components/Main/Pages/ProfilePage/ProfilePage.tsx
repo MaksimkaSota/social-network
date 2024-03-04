@@ -1,9 +1,9 @@
+import { FC, ReactElement } from 'react';
 import classes from './ProfilePage.module.scss';
 import { PostsContainer } from './Posts/PostsContainer';
 import { ProfileInfoContainer } from './ProfileInfo/ProfileInfoContainer';
 import { Preloader } from '../../../Common/Preloader/Preloader';
 import { Error } from '../../../Common/Error/Error';
-import { FC, ReactElement } from 'react';
 import { ErrorType } from '../../../../redux/types/error';
 import { IResponseProfile } from '../../../../api/types/profile';
 import { Nullable } from '../../../../utils/types/common';

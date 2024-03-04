@@ -1,10 +1,10 @@
+import { FC, ReactElement } from 'react';
 import classes from './Header.module.scss';
 import logo from '../../assets/images/logo.png';
 import { HeaderAuthInfo } from './HeaderAuthInfo/HeaderAuthInfo';
 import { HeaderNotAuthInfo } from './HeaderNotAuthInfo/HeaderNotAuthInfo';
 import { Nullable } from '../../utils/types/common';
 import { ErrorType } from '../../redux/types/error';
-import { FC, ReactElement } from 'react';
 
 type PropsType = {
   isAuth: boolean;
@@ -15,7 +15,7 @@ type PropsType = {
   updateUserPhotoError: Nullable<ErrorType>;
   logout: () => void;
   incorrectAuthText: string;
-}
+};
 
 export const Header: FC<PropsType> = ({
   isAuth,

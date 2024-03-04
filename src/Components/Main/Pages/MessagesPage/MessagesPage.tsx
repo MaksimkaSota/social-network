@@ -1,7 +1,7 @@
+import { FC, ReactElement } from 'react';
 import classes from './MessagesPage.module.scss';
 import { Dialogs } from './Dialogs/Dialogs';
 import { Messages } from './Messages/Messages';
-import { FC, ReactElement } from 'react';
 import { DialogType, MessageType } from '../../../../redux/types/messages';
 
 type PropsType = {

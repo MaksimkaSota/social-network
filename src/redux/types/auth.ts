@@ -31,7 +31,7 @@ export type SetAuthSuccessCorrectAction = { type: AuthActionType.SET_AUTH_SUCCES
 export type SetAuthSuccessIncorrectAction = { type: AuthActionType.SET_AUTH_SUCCESS_INCORRECT; payload: string };
 export type SetAuthFailureAction = { type: AuthActionType.SET_AUTH_FAILURE; payload: ErrorType };
 export type SetAuthUserPhotoAction = { type: AuthActionType.SET_AUTH_PHOTO; payload: Nullable<string> };
-export type setAuthUserPhotoErrorAction = { type: AuthActionType.SET_AUTH_PHOTO_ERROR; payload: ErrorType };
+export type SetAuthUserPhotoErrorAction = { type: AuthActionType.SET_AUTH_PHOTO_ERROR; payload: ErrorType };
 export type AuthData = {
   id: null;
   email: null;
@@ -40,9 +40,9 @@ export type AuthData = {
   authUserPhoto: string;
   captchaUrl: string;
 };
-export type resetAuthDataAction = { type: AuthActionType.RESET_AUTH_DATA; payload: AuthData };
-export type setCaptchaUrlAction = { type: AuthActionType.SET_AUTH_CAPTCHA_URL; payload: string };
-export type setLogoutErrorAction = { type: AuthActionType.SET_AUTH_LOGOUT_ERROR; payload: Nullable<ErrorType> };
+export type ResetAuthDataAction = { type: AuthActionType.RESET_AUTH_DATA; payload: AuthData };
+export type SetCaptchaUrlAction = { type: AuthActionType.SET_AUTH_CAPTCHA_URL; payload: string };
+export type SetLogoutErrorAction = { type: AuthActionType.SET_AUTH_LOGOUT_ERROR; payload: Nullable<ErrorType> };
 
 export type AuthAction =
   | SetAuthRequestAction
@@ -50,7 +50,7 @@ export type AuthAction =
   | SetAuthSuccessIncorrectAction
   | SetAuthFailureAction
   | SetAuthUserPhotoAction
-  | setAuthUserPhotoErrorAction
-  | resetAuthDataAction
-  | setCaptchaUrlAction
-  | setLogoutErrorAction;
+  | SetAuthUserPhotoErrorAction
+  | ResetAuthDataAction
+  | SetCaptchaUrlAction
+  | SetLogoutErrorAction;

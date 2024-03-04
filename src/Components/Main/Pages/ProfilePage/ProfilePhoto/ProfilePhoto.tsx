@@ -1,10 +1,10 @@
+import React, { ReactElement } from 'react';
 import classes from './ProfilePhoto.module.scss';
 import userPhoto from '../../../../../assets/images/user.png';
 import { InputFile } from '../../../../Common/InputFile/InputFile';
 import { Preloader } from '../../../../Common/Preloader/Preloader';
 import { Nullable } from '../../../../../utils/types/common';
 import { ErrorType } from '../../../../../redux/types/error';
-import React, { ReactElement } from 'react';
 
 type PropsType = {
   isOwner: boolean;

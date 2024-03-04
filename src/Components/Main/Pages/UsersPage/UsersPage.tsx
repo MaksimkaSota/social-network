@@ -1,9 +1,9 @@
+import { FC, ReactElement } from 'react';
 import classes from './UsersPage.module.scss';
 import { User } from './User/User';
 import { Paginator } from '../../../Common/Paginator/Paginator';
 import { Preloader } from '../../../Common/Preloader/Preloader';
 import { Error } from '../../../Common/Error/Error';
-import { FC, ReactElement } from 'react';
 import { IUser } from '../../../../api/types/users';
 import { ErrorType } from '../../../../redux/types/error';
 import { FollowUnfollowErrorType } from '../../../../redux/types/users';
@@ -56,17 +56,19 @@ export const UsersPage: FC<PropsType> = ({
         isFetching={isFetchingUsers}
       />
       <div>
-        {users.map((user: IUser): ReactElement => (
-          <User
-            key={user.id}
-            user={user}
-            subscribersId={subscribersId}
-            followErrors={followErrors}
-            unfollowErrors={unfollowErrors}
-            followUser={followUser}
-            unfollowUser={unfollowUser}
-          />
-        ))}
+        {users.map(
+          (user: IUser): ReactElement => (
+            <User
+              key={user.id}
+              user={user}
+              subscribersId={subscribersId}
+              followErrors={followErrors}
+              unfollowErrors={unfollowErrors}
+              followUser={followUser}
+              unfollowUser={unfollowUser}
+            />
+          )
+        )}
       </div>
     </div>
   );

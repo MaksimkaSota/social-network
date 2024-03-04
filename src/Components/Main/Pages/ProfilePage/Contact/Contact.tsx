@@ -1,5 +1,5 @@
-import classes from './Contact.module.scss';
 import { FC, ReactElement } from 'react';
+import classes from './Contact.module.scss';
 
 type PropsType = {
   title: string;

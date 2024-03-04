@@ -1,7 +1,7 @@
+import { FC, ReactElement } from 'react';
 import cn from 'classnames';
 import { NavLink } from 'react-router-dom';
 import classes from './Navigation.module.scss';
-import { FC, ReactElement } from 'react';
 import { RoutePath } from '../../../utils/types/common';
 
 export const Navigation: FC = (): ReactElement => {

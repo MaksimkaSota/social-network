@@ -1,3 +1,4 @@
+import { FC, ReactElement } from 'react';
 import classes from './App.module.scss';
 import { HeaderContainer } from './Header/HeaderContainer';
 import { Main } from './Main/Main';
@@ -7,7 +8,6 @@ import { Error } from './Common/Error/Error';
 import { ErrorPopup } from './Common/ErrorPopup/ErrorPopup';
 import { Nullable } from '../utils/types/common';
 import { ErrorType } from '../redux/types/error';
-import { FC, ReactElement } from 'react';
 
 type PropsType = {
   isFetchingAuth: boolean;

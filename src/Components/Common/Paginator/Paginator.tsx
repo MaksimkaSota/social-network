@@ -53,7 +53,9 @@ export const Paginator: FC<PropsType> = ({
       {currentPortion > 1 && <Button className={classes.paginatorButton} text="Prev" onClick={onPrevButton} />}
       <div className={classes.paginatorBlock}>
         {currentPages
-          .filter((currentPage: number): boolean => currentPage >= leftBorderPortion && currentPage <= rightBorderPortion)
+          .filter(
+            (currentPage: number): boolean => currentPage >= leftBorderPortion && currentPage <= rightBorderPortion
+          )
           .map((currentPage: number): ReactElement => {
             return (
               <Button

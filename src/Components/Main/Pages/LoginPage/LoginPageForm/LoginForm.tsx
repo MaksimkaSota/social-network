@@ -1,3 +1,4 @@
+import { FC, ReactElement } from 'react';
 import { Form } from 'formik';
 import cn from 'classnames';
 import classes from './LoginForm.module.scss';
@@ -5,7 +6,6 @@ import { Button } from '../../../../Common/Button/Button';
 import { FormField } from '../../../../Common/FormField/FormField';
 import { FormServerError } from '../../../../Common/FormServerError/FormServerError';
 import { FormikErrorsType, FormikTouchedType, FormName, HandleChangeType } from '../../../../../utils/types/form';
-import { FC, ReactElement } from 'react';
 
 type PropsType = {
   isSubmitting: boolean;

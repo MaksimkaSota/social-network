@@ -31,7 +31,7 @@ export const ProfileStatus = React.memo<PropsType>(
       updateStatus(localStatus);
     };
 
-    const onChangeLocalStatus = (event: ChangeEvent<HTMLTextAreaElement> ): void => {
+    const onChangeLocalStatus = (event: ChangeEvent<HTMLTextAreaElement>): void => {
       setLocalStatus(event.target.value);
     };
 

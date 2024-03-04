@@ -1,6 +1,6 @@
+import { FC, ReactElement } from 'react';
 import classes from './Dialogs.module.scss';
 import { Dialog } from '../Dialog/Dialog';
-import { FC, ReactElement } from 'react';
 import { DialogType } from '../../../../../redux/types/messages';
 
 type PropsType = {
@@ -8,9 +8,9 @@ type PropsType = {
 };
 
 export const Dialogs: FC<PropsType> = ({ dialogs }): ReactElement => {
-  const dialogsElements = dialogs.map((dialog: DialogType): ReactElement => (
-    <Dialog name={dialog.name} id={dialog.id} key={dialog.id} />
-  ));
+  const dialogsElements = dialogs.map(
+    (dialog: DialogType): ReactElement => <Dialog name={dialog.name} id={dialog.id} key={dialog.id} />
+  );
 
   return (
     <div className={classes.dialogsBlock}>

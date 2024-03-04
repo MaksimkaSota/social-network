@@ -1,10 +1,10 @@
+import { FC, ReactElement } from 'react';
 import classes from './HeaderAuthInfo.module.scss';
 import userPhoto from '../../../assets/images/user.png';
 import { Preloader } from '../../Common/Preloader/Preloader';
 import { Button } from '../../Common/Button/Button';
 import { Nullable } from '../../../utils/types/common';
 import { ErrorType } from '../../../redux/types/error';
-import { FC, ReactElement } from 'react';
 
 type PropsType = {
   loginName: Nullable<string>;
@@ -13,7 +13,7 @@ type PropsType = {
   authUserPhotoError: Nullable<ErrorType>;
   updateUserPhotoError: Nullable<ErrorType>;
   logout: () => void;
-}
+};
 
 export const HeaderAuthInfo: FC<PropsType> = ({
   loginName,

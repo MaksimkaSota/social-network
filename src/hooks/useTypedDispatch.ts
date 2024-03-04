@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux/reducers/reducers';
 

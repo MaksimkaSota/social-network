@@ -1,8 +1,8 @@
+import { FC, ReactElement } from 'react';
 import classes from './Posts.module.scss';
 import { Post } from '../Post/Post';
 import { PostFormContainer } from '../PostForm/PostFormContainer';
 import { PostType } from '../../../../../redux/types/posts';
-import { FC, ReactElement } from 'react';
 
 type PropsType = {
   posts: Array<PostType>;

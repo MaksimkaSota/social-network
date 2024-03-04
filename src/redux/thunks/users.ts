@@ -1,3 +1,5 @@
+import { Dispatch } from 'redux';
+import { isAxiosError } from 'axios';
 import {
   setUsersRequest,
   setUsersSuccess,
@@ -13,8 +15,6 @@ import {
 import { followAPI, getUsersAPI, unfollowAPI } from '../../api/users';
 import { getErrorMessage } from '../../utils/helpers/thunksHelpers';
 import { FollowAction, UnfollowAction, UsersAction } from '../types/users';
-import { isAxiosError } from 'axios';
-import { Dispatch } from 'redux';
 import { IResponse } from '../../api/types/http';
 import { StatusCode, ThunkType } from '../../utils/types/common';
 import { IUsers } from '../../api/types/users';

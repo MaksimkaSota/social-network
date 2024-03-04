@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+import { isAxiosError } from 'axios';
 import {
   setProfileRequest,
   setProfileSuccess,
@@ -17,10 +19,8 @@ import { fillErrorsObject, getErrorMessage } from '../../utils/helpers/thunksHel
 import { setAuthUserPhoto } from '../actions/auth';
 import { Nullable, StatusCode, ThunkType } from '../../utils/types/common';
 import { ProfileAction } from '../types/profile';
-import { isAxiosError } from 'axios';
 import { SetAuthUserPhotoAction } from '../types/auth';
 import { IPhotoData, IRequestProfile, IResponseProfile } from '../../api/types/profile';
-import { Dispatch, SetStateAction } from 'react';
 import { IResponse } from '../../api/types/http';
 import { SetStatusType, SetSubmittingType } from '../../utils/types/form';
 
