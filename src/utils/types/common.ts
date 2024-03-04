@@ -1,11 +1,6 @@
 import { ThunkAction } from 'redux-thunk';
 import { AppState } from '../../redux/reducers/reducers';
 import { Action } from 'redux';
-import { Route } from 'react-router-dom';
-import { NewsPage } from '../../Components/Main/Pages/NewsPage/NewsPage';
-import { MusicsPage } from '../../Components/Main/Pages/MusicsPage/MusicsPage';
-import { SettingsPage } from '../../Components/Main/Pages/SettingsPage/SettingsPage';
-import React from 'react';
 
 export type Nullable<T> = T | null;
 export type ThunkType<T extends Action> = ThunkAction<Promise<void>, AppState, unknown, T>;
