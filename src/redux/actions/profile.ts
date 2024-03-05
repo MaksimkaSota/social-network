@@ -13,8 +13,7 @@ import {
   SetStatusRequestAction,
   SetStatusSuccessAction,
 } from '../types/profile';
-import { IResponseProfile } from '../../api/types/profile';
-import { IPhotos } from '../../api/types/http';
+import { IPhotos, IResponseProfile } from '../../utils/types/api';
 
 export const setProfileRequest = (): SetProfileRequestAction => ({ type: ProfileActionType.SET_PROFILE_REQUEST });
 export const setProfileSuccess = (profile: IResponseProfile): SetProfileSuccessAction => ({

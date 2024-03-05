@@ -6,8 +6,7 @@ import { Footer } from './Footer/Footer';
 import { Preloader } from './Common/Preloader/Preloader';
 import { Error } from './Common/Error/Error';
 import { ErrorPopup } from './Common/ErrorPopup/ErrorPopup';
-import { Nullable } from '../utils/types/common';
-import { ErrorType } from '../redux/types/error';
+import { ErrorType, Nullable } from '../utils/types/common';
 
 type PropsType = {
   isFetchingAuth: boolean;

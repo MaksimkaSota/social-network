@@ -1,5 +1,5 @@
 import { ErrorState } from '../types/error';
-import { RequestState } from '../../utils/types/common';
+import { RequestState } from '../../utils/types/enums';
 
 const initialState: ErrorState = {
   SET_USERS: null,

@@ -1,6 +1,5 @@
 import {
   FollowAction,
-  FollowUnfollowErrorType,
   SetFollowErrorsAction,
   SetPageAction,
   SetSubscribersIdAction,
@@ -12,7 +11,8 @@ import {
   UnfollowAction,
   UsersActionType,
 } from '../types/users';
-import { IUser } from '../../api/types/users';
+import { IUser } from '../../utils/types/api';
+import { FollowUnfollowErrorType } from '../../utils/types/common';
 
 export const setUsersRequest = (): SetUsersRequestAction => ({ type: UsersActionType.SET_USERS_REQUEST });
 export const setUsersSuccess = (users: Array<IUser>): SetUsersSuccessAction => ({

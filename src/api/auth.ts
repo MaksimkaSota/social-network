@@ -1,9 +1,9 @@
 import { http } from './http';
-import { IAuthData, ICaptcha, ILoginData, UrlString } from './types/auth';
-import { IResponse } from './types/http';
+import { UrlSubString } from '../utils/types/enums';
+import { IAuthData, ICaptcha, ILoginData, IResponse } from '../utils/types/api';
 
 export const getAuthAPI = async (): Promise<IResponse<IAuthData>> => {
-  const response = await http.get(UrlString.me);
+  const response = await http.get(UrlSubString.me);
   return response.data;
 };
 
@@ -13,16 +13,16 @@ export const loginAPI = async (
   rememberMe: boolean,
   captcha: string
 ): Promise<IResponse<ILoginData>> => {
-  const response = await http.post(UrlString.login_logout, { email, password, rememberMe, captcha });
+  const response = await http.post(UrlSubString.login_logout, { email, password, rememberMe, captcha });
   return response.data;
 };
 
 export const logoutAPI = async (): Promise<IResponse> => {
-  const response = await http.delete(UrlString.login_logout);
+  const response = await http.delete(UrlSubString.login_logout);
   return response.data;
 };
 
 export const getCaptchaUrlAPI = async (): Promise<ICaptcha> => {
-  const response = await http.get(UrlString.captcha);
+  const response = await http.get(UrlSubString.captcha);
   return response.data;
 };

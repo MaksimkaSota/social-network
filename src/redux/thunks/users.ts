@@ -15,9 +15,9 @@ import {
 import { followAPI, getUsersAPI, unfollowAPI } from '../../api/users';
 import { getErrorMessage } from '../../utils/helpers/thunksHelpers';
 import { FollowAction, UnfollowAction, UsersAction } from '../types/users';
-import { IResponse } from '../../api/types/http';
-import { StatusCode, ThunkType } from '../../utils/types/common';
-import { IUsers } from '../../api/types/users';
+import { ThunkType } from '../../utils/types/common';
+import { StatusCode } from '../../utils/types/enums';
+import { IResponse, IUsers } from '../../utils/types/api';
 
 export const getUsers = (page: number, pageSize: number): ThunkType<UsersAction> => {
   return async (dispatch) => {

@@ -5,25 +5,32 @@ import { AppState } from '../../redux/reducers/reducers';
 export type Nullable<T> = T | null;
 export type ThunkType<T extends Action> = ThunkAction<Promise<void>, AppState, unknown, T>;
 
-export enum StatusCode {
-  success = 0,
-  failure = 1,
-  required_captcha = 10,
-}
-
-export enum RequestState {
-  request = 'REQUEST',
-  failure = 'FAILURE',
-}
-
-export enum RoutePath {
-  not_found = '*',
-  main = '/',
-  profile = '/profile',
-  messages = '/messages',
-  users = '/users',
-  news = '/news',
-  musics = '/musics',
-  settings = '/settings',
-  login = '/login',
-}
+export type AuthData = {
+  id: null;
+  email: null;
+  login: null;
+  isAuth: boolean;
+  authUserPhoto: string;
+  captchaUrl: string;
+};
+export type ErrorType = {
+  code?: number;
+  message: string;
+};
+export type DialogType = {
+  id: number;
+  name: string;
+};
+export type MessageType = {
+  id: number;
+  messageText: string;
+};
+export type PostType = {
+  id: number;
+  postText: string;
+};
+export type FollowUnfollowErrorType = ErrorType & { id: number };
+export type SubscribersId = {
+  isFetching: boolean;
+  id: number;
+};

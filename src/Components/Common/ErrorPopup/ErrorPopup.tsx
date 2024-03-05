@@ -2,8 +2,7 @@ import { FC, ReactElement, MouseEvent, KeyboardEvent, useEffect, useRef } from '
 import classes from './ErrorPopup.module.scss';
 import { Error } from '../Error/Error';
 import { Button } from '../Button/Button';
-import { Nullable } from '../../../utils/types/common';
-import { ErrorType } from '../../../redux/types/error';
+import { ErrorType, Nullable } from '../../../utils/types/common';
 
 type PropsType = {
   errorObject: Nullable<ErrorType>;

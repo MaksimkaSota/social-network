@@ -2,8 +2,7 @@ import React, { ChangeEvent, ReactElement, useEffect, useState } from 'react';
 import classes from './ProfileStatus.module.scss';
 import { ProfileStatusText } from '../ProfileStatusText/ProfileStatusText';
 import { Button } from '../../../../Common/Button/Button';
-import { Nullable } from '../../../../../utils/types/common';
-import { ErrorType } from '../../../../../redux/types/error';
+import { ErrorType, Nullable } from '../../../../../utils/types/common';
 
 type PropsType = {
   isOwner: boolean;

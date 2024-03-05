@@ -8,8 +8,7 @@ import { setLogoutError } from '../redux/actions/auth';
 import { ErrorCatcher } from './Common/ErrorCatcher/ErrorCatcher';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { useTypedDispatch } from '../hooks/useTypedDispatch';
-import { ErrorType } from '../redux/types/error';
-import { Nullable } from '../utils/types/common';
+import { ErrorType, Nullable } from '../utils/types/common';
 
 export const AppContainer: FC = (): ReactElement => {
   const isFetchingAuth = useTypedSelector(isFetchingAuthSelector);

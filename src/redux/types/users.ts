@@ -1,7 +1,5 @@
-import { ErrorType } from './error';
-import { IUser } from '../../api/types/users';
-
-export type FollowUnfollowErrorType = ErrorType & { id: number };
+import { IUser } from '../../utils/types/api';
+import { ErrorType, FollowUnfollowErrorType, SubscribersId } from '../../utils/types/common';
 
 export type UsersState = {
   users: Array<IUser>;
@@ -38,10 +36,6 @@ export type SetUnfollowErrorsAction = {
 };
 export type SetPageAction = { type: UsersActionType.SET_USERS_PAGE; payload: number };
 export type SetTotalCountAction = { type: UsersActionType.SET_USERS_TOTAL_COUNT; payload: number };
-type SubscribersId = {
-  isFetching: boolean;
-  id: number;
-};
 export type SetSubscribersIdAction = { type: UsersActionType.SET_USERS_SUBSCRIBERS_ID; payload: SubscribersId };
 
 export type UsersAction =

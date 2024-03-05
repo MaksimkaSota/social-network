@@ -1,5 +1,5 @@
 import { LoadingState } from '../types/loading';
-import { RequestState } from '../../utils/types/common';
+import { RequestState } from '../../utils/types/enums';
 
 const initialState: LoadingState = {
   SET_USERS: false,

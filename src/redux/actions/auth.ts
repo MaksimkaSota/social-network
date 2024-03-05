@@ -1,6 +1,5 @@
 import {
   AuthActionType,
-  AuthData,
   ResetAuthDataAction,
   SetAuthFailureAction,
   SetAuthRequestAction,
@@ -11,9 +10,8 @@ import {
   SetCaptchaUrlAction,
   SetLogoutErrorAction,
 } from '../types/auth';
-import { IAuthData } from '../../api/types/auth';
-import { ErrorType } from '../types/error';
-import { Nullable } from '../../utils/types/common';
+import { AuthData, ErrorType, Nullable } from '../../utils/types/common';
+import { IAuthData } from '../../utils/types/api';
 
 export const setAuthRequest = (): SetAuthRequestAction => ({ type: AuthActionType.SET_AUTH_REQUEST });
 export const setAuthSuccessCorrect = (data: IAuthData): SetAuthSuccessCorrectAction => ({

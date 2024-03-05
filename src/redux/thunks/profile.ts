@@ -17,12 +17,12 @@ import {
 import { getProfileAPI, getStatusAPI, updateStatusAPI, updatePhotoAPI, updateProfileAPI } from '../../api/profile';
 import { fillErrorsObject, getErrorMessage } from '../../utils/helpers/thunksHelpers';
 import { setAuthUserPhoto } from '../actions/auth';
-import { Nullable, StatusCode, ThunkType } from '../../utils/types/common';
+import { Nullable, ThunkType } from '../../utils/types/common';
 import { ProfileAction } from '../types/profile';
 import { SetAuthUserPhotoAction } from '../types/auth';
-import { IPhotoData, IRequestProfile, IResponseProfile } from '../../api/types/profile';
-import { IResponse } from '../../api/types/http';
 import { SetStatusType, SetSubmittingType } from '../../utils/types/form';
+import { StatusCode } from '../../utils/types/enums';
+import { IPhotoData, IRequestProfile, IResponse, IResponseProfile } from '../../utils/types/api';
 
 export const getProfile = (id: number): ThunkType<ProfileAction> => {
   return async (dispatch) => {

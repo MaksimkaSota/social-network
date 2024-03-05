@@ -2,7 +2,7 @@ import { FC, ReactElement } from 'react';
 import classes from './MessagesPage.module.scss';
 import { Dialogs } from './Dialogs/Dialogs';
 import { Messages } from './Messages/Messages';
-import { DialogType, MessageType } from '../../../../redux/types/messages';
+import { DialogType, MessageType } from '../../../../utils/types/common';
 
 type PropsType = {
   dialogs: Array<DialogType>;

@@ -13,11 +13,11 @@ import {
 } from '../actions/auth';
 import { getProfileAPI } from '../../api/profile';
 import { getErrorMessage } from '../../utils/helpers/thunksHelpers';
-import { StatusCode, ThunkType } from '../../utils/types/common';
+import { ThunkType } from '../../utils/types/common';
 import { AuthAction } from '../types/auth';
-import { IResponse } from '../../api/types/http';
-import { IAuthData, ICaptcha } from '../../api/types/auth';
 import { SetFieldTouchedType, SetFieldValueType, SetStatusType, SetSubmittingType } from '../../utils/types/form';
+import { StatusCode } from '../../utils/types/enums';
+import { IAuthData, ICaptcha, IResponse } from '../../utils/types/api';
 
 export const getAuth = (): ThunkType<AuthAction> => {
   return async (dispatch) => {

@@ -1,7 +1,7 @@
 import { FC, ReactElement } from 'react';
 import classes from './Contacts.module.scss';
 import { Contact } from '../Contact/Contact';
-import { IContacts } from '../../../../../api/types/profile';
+import { IContacts } from '../../../../../utils/types/api';
 
 type PropsType = {
   contacts: IContacts;

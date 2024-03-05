@@ -3,8 +3,7 @@ import classes from './HeaderAuthInfo.module.scss';
 import userPhoto from '../../../assets/images/user.png';
 import { Preloader } from '../../Common/Preloader/Preloader';
 import { Button } from '../../Common/Button/Button';
-import { Nullable } from '../../../utils/types/common';
-import { ErrorType } from '../../../redux/types/error';
+import { ErrorType, Nullable } from '../../../utils/types/common';
 
 type PropsType = {
   loginName: Nullable<string>;

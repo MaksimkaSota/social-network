@@ -2,7 +2,7 @@ import { FC, ReactElement } from 'react';
 import classes from './Messages.module.scss';
 import { Message } from '../Message/Message';
 import { MessageFormContainer } from '../MessageForm/MessageFormContainer';
-import { MessageType } from '../../../../../redux/types/messages';
+import { MessageType } from '../../../../../utils/types/common';
 
 type PropsType = {
   messages: Array<MessageType>;

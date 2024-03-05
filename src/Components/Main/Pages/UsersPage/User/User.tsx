@@ -4,9 +4,9 @@ import classes from './User.module.scss';
 import userPhoto from '../../../../../assets/images/user.png';
 import { Button } from '../../../../Common/Button/Button';
 import { FollowUnfollowError } from '../FollowUnfollowError/FollowUnfollowError';
-import { IUser } from '../../../../../api/types/users';
-import { FollowUnfollowErrorType } from '../../../../../redux/types/users';
-import { RoutePath } from '../../../../../utils/types/common';
+import { RoutePath } from '../../../../../utils/types/enums';
+import { IUser } from '../../../../../utils/types/api';
+import { FollowUnfollowErrorType } from '../../../../../utils/types/common';
 
 type PropsType = {
   user: IUser;

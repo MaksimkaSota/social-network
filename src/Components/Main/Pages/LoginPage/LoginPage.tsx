@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { LoginFormContainer } from './LoginPageForm/LoginFormContainer';
 import classes from './LoginPage.module.scss';
 import { SetFieldTouchedType, SetFieldValueType, SetStatusType, SetSubmittingType } from '../../../../utils/types/form';
-import { RoutePath } from '../../../../utils/types/common';
+import { RoutePath } from '../../../../utils/types/enums';
 
 type PropsType = {
   login: (

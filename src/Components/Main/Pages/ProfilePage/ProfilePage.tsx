@@ -4,9 +4,8 @@ import { PostsContainer } from './Posts/PostsContainer';
 import { ProfileInfoContainer } from './ProfileInfo/ProfileInfoContainer';
 import { Preloader } from '../../../Common/Preloader/Preloader';
 import { Error } from '../../../Common/Error/Error';
-import { ErrorType } from '../../../../redux/types/error';
-import { IResponseProfile } from '../../../../api/types/profile';
-import { Nullable } from '../../../../utils/types/common';
+import { ErrorType, Nullable } from '../../../../utils/types/common';
+import { IResponseProfile } from '../../../../utils/types/api';
 
 type PropsType = {
   isFetchingProfile: boolean;

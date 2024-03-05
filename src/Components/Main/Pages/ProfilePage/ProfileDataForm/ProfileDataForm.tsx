@@ -6,8 +6,9 @@ import { FormField } from '../../../../Common/FormField/FormField';
 import { Button } from '../../../../Common/Button/Button';
 import { FormServerError } from '../../../../Common/FormServerError/FormServerError';
 import { ContactsForm } from '../ContactsForm/ContactsForm';
-import { FormikErrorsType, FormName, HandleChangeType, SetFieldValueType } from '../../../../../utils/types/form';
-import { IRequestProfile } from '../../../../../api/types/profile';
+import { FormikErrorsType, HandleChangeType, SetFieldValueType } from '../../../../../utils/types/form';
+import { IRequestProfile } from '../../../../../utils/types/api';
+import { FormName } from '../../../../../utils/types/enums';
 
 type PropsType = {
   data: IRequestProfile;

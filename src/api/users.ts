@@ -1,6 +1,6 @@
 import { http } from './http';
-import { IUsers, UrlString } from './types/users';
-import { IResponse } from './types/http';
+import { UrlSubString } from '../utils/types/enums';
+import { IResponse, IUsers } from '../utils/types/api';
 
 export const getUsersAPI = async (page: number, pageSize: number): Promise<IUsers> => {
   const response = await http.get(`users?page=${page}&count=${pageSize}`);
@@ -8,11 +8,11 @@ export const getUsersAPI = async (page: number, pageSize: number): Promise<IUser
 };
 
 export const followAPI = async (id: number): Promise<IResponse> => {
-  const response = await http.post(UrlString.follow + id);
+  const response = await http.post(UrlSubString.follow + id);
   return response.data;
 };
 
 export const unfollowAPI = async (id: number): Promise<IResponse> => {
-  const response = await http.delete(UrlString.follow + id);
+  const response = await http.delete(UrlSubString.follow + id);
   return response.data;
 };

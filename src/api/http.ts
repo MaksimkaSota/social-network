@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
-import { UrlString } from './types/http';
+import { UrlString } from '../utils/types/enums';
 
 export const http: AxiosInstance = axios.create({
   withCredentials: true,

@@ -2,9 +2,8 @@ import { FC, ReactElement } from 'react';
 import classes from './ProfileDataDescription.module.scss';
 import { Preloader } from '../../../../Common/Preloader/Preloader';
 import { Contacts } from '../Contacts/Contacts';
-import { IRequestProfile } from '../../../../../api/types/profile';
-import { Nullable } from '../../../../../utils/types/common';
-import { ErrorType } from '../../../../../redux/types/error';
+import { ErrorType, Nullable } from '../../../../../utils/types/common';
+import { IRequestProfile } from '../../../../../utils/types/api';
 
 type PropsType = {
   data: IRequestProfile;

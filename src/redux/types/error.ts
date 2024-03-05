@@ -1,9 +1,4 @@
-import { Nullable } from '../../utils/types/common';
-
-export type ErrorType = {
-  code?: number;
-  message: string;
-};
+import { ErrorType, Nullable } from '../../utils/types/common';
 
 export type ErrorState = {
   SET_USERS: Nullable<ErrorType>;

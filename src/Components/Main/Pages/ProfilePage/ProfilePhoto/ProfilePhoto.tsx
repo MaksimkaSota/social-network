@@ -3,8 +3,7 @@ import classes from './ProfilePhoto.module.scss';
 import userPhoto from '../../../../../assets/images/user.png';
 import { InputFile } from '../../../../Common/InputFile/InputFile';
 import { Preloader } from '../../../../Common/Preloader/Preloader';
-import { Nullable } from '../../../../../utils/types/common';
-import { ErrorType } from '../../../../../redux/types/error';
+import { ErrorType, Nullable } from '../../../../../utils/types/common';
 
 type PropsType = {
   isOwner: boolean;

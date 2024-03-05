@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import classes from './HeaderNotAuthInfo.module.scss';
 import userPhoto from '../../../assets/images/user.png';
 import { Button } from '../../Common/Button/Button';
-import { RoutePath } from '../../../utils/types/common';
+import { RoutePath } from '../../../utils/types/enums';
 
 type PropsType = {
   incorrectAuthText: string;

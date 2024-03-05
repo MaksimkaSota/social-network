@@ -3,10 +3,9 @@ import classes from './ProfileData.module.scss';
 import { Button } from '../../../../Common/Button/Button';
 import { ProfileDataFormContainer } from '../ProfileDataForm/ProfileDataFormContainer';
 import { ProfileDataDescription } from '../ProfileDataDescription/ProfileDataDescription';
-import { IRequestProfile } from '../../../../../api/types/profile';
-import { Nullable } from '../../../../../utils/types/common';
-import { ErrorType } from '../../../../../redux/types/error';
+import { ErrorType, Nullable } from '../../../../../utils/types/common';
 import { SetStatusType, SetSubmittingType } from '../../../../../utils/types/form';
+import { IRequestProfile } from '../../../../../utils/types/api';
 
 type PropsType = {
   isOwner: boolean;

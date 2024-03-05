@@ -1,4 +1,5 @@
-import { MessagesAction, MessagesActionType, MessagesState, MessageType } from '../types/messages';
+import { MessagesAction, MessagesActionType, MessagesState } from '../types/messages';
+import { MessageType } from '../../utils/types/common';
 
 const initialState: MessagesState = {
   dialogs: [

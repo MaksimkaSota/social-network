@@ -1,8 +1,7 @@
 import { FC, ReactElement } from 'react';
 import classes from './ProfileStatusText.module.scss';
 import { Preloader } from '../../../../Common/Preloader/Preloader';
-import { Nullable } from '../../../../../utils/types/common';
-import { ErrorType } from '../../../../../redux/types/error';
+import { ErrorType, Nullable } from '../../../../../utils/types/common';
 
 type PropsType = {
   status: string;

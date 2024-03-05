@@ -1,7 +1,4 @@
-export type PostType = {
-  id: number;
-  postText: string;
-};
+import { PostType } from '../../utils/types/common';
 
 export type PostsState = {
   posts: Array<PostType>;

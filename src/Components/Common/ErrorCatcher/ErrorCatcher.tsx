@@ -1,7 +1,7 @@
 import { Component, Dispatch, ReactElement, ReactNode, SetStateAction } from 'react';
 import { Error } from '../Error/Error';
 import { ErrorPopup } from '../ErrorPopup/ErrorPopup';
-import { ErrorType } from '../../../redux/types/error';
+import { ErrorType } from '../../../utils/types/common';
 
 type PropsType = {
   children: ReactNode;

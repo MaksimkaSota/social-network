@@ -1,6 +1,6 @@
 import { FC, ReactElement } from 'react';
 import classes from './FollowUnfollowError.module.scss';
-import { FollowUnfollowErrorType } from '../../../../../redux/types/users';
+import { FollowUnfollowErrorType } from '../../../../../utils/types/common';
 
 type PropsType = {
   errors: Array<FollowUnfollowErrorType>;

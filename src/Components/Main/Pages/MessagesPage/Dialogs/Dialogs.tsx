@@ -1,7 +1,7 @@
 import { FC, ReactElement } from 'react';
 import classes from './Dialogs.module.scss';
 import { Dialog } from '../Dialog/Dialog';
-import { DialogType } from '../../../../../redux/types/messages';
+import { DialogType } from '../../../../../utils/types/common';
 
 type PropsType = {
   dialogs: Array<DialogType>;

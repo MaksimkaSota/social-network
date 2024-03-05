@@ -4,10 +4,8 @@ import { User } from './User/User';
 import { Paginator } from '../../../Common/Paginator/Paginator';
 import { Preloader } from '../../../Common/Preloader/Preloader';
 import { Error } from '../../../Common/Error/Error';
-import { IUser } from '../../../../api/types/users';
-import { ErrorType } from '../../../../redux/types/error';
-import { FollowUnfollowErrorType } from '../../../../redux/types/users';
-import { Nullable } from '../../../../utils/types/common';
+import { ErrorType, FollowUnfollowErrorType, Nullable } from '../../../../utils/types/common';
+import { IUser } from '../../../../utils/types/api';
 
 type PropsType = {
   users: Array<IUser>;

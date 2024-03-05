@@ -12,8 +12,8 @@ import { statusErrorSelector, photoErrorSelector, dataErrorSelector } from '../.
 import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
 import { useTypedDispatch } from '../../../../../hooks/useTypedDispatch';
 import { Nullable } from '../../../../../utils/types/common';
-import { IRequestProfile, IResponseProfile } from '../../../../../api/types/profile';
 import { SetStatusType, SetSubmittingType } from '../../../../../utils/types/form';
+import { IRequestProfile, IResponseProfile } from '../../../../../utils/types/api';
 
 type PropsType = {
   profile: Nullable<IResponseProfile>;

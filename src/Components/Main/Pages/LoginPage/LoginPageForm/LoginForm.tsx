@@ -5,7 +5,8 @@ import classes from './LoginForm.module.scss';
 import { Button } from '../../../../Common/Button/Button';
 import { FormField } from '../../../../Common/FormField/FormField';
 import { FormServerError } from '../../../../Common/FormServerError/FormServerError';
-import { FormikErrorsType, FormikTouchedType, FormName, HandleChangeType } from '../../../../../utils/types/form';
+import { FormikErrorsType, FormikTouchedType, HandleChangeType } from '../../../../../utils/types/form';
+import { FormName } from '../../../../../utils/types/enums';
 
 type PropsType = {
   isSubmitting: boolean;

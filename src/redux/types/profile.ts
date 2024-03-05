@@ -1,7 +1,5 @@
-import { IResponseProfile } from '../../api/types/profile';
-import { ErrorType } from './error';
-import { IPhotos } from '../../api/types/http';
-import { Nullable } from '../../utils/types/common';
+import { ErrorType, Nullable } from '../../utils/types/common';
+import { IPhotos, IResponseProfile } from '../../utils/types/api';
 
 export type ProfileState = {
   profile: Nullable<IResponseProfile>;

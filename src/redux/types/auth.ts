@@ -1,6 +1,5 @@
-import { IAuthData } from '../../api/types/auth';
-import { ErrorType } from './error';
-import { Nullable } from '../../utils/types/common';
+import { AuthData, ErrorType, Nullable } from '../../utils/types/common';
+import { IAuthData } from '../../utils/types/api';
 
 export type AuthState = {
   id: Nullable<number>;
@@ -32,14 +31,6 @@ export type SetAuthSuccessIncorrectAction = { type: AuthActionType.SET_AUTH_SUCC
 export type SetAuthFailureAction = { type: AuthActionType.SET_AUTH_FAILURE; payload: ErrorType };
 export type SetAuthUserPhotoAction = { type: AuthActionType.SET_AUTH_PHOTO; payload: Nullable<string> };
 export type SetAuthUserPhotoErrorAction = { type: AuthActionType.SET_AUTH_PHOTO_ERROR; payload: ErrorType };
-export type AuthData = {
-  id: null;
-  email: null;
-  login: null;
-  isAuth: boolean;
-  authUserPhoto: string;
-  captchaUrl: string;
-};
 export type ResetAuthDataAction = { type: AuthActionType.RESET_AUTH_DATA; payload: AuthData };
 export type SetCaptchaUrlAction = { type: AuthActionType.SET_AUTH_CAPTCHA_URL; payload: string };
 export type SetLogoutErrorAction = { type: AuthActionType.SET_AUTH_LOGOUT_ERROR; payload: Nullable<ErrorType> };

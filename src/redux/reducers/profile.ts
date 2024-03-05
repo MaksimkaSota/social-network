@@ -1,5 +1,5 @@
 import { ProfileAction, ProfileActionType, ProfileState } from '../types/profile';
-import { IResponseProfile } from '../../api/types/profile';
+import { IResponseProfile } from '../../utils/types/api';
 
 const initialState: ProfileState = {
   profile: null,

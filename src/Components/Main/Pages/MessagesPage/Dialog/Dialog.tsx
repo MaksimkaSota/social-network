@@ -2,7 +2,7 @@ import { FC, ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
 import classes from './Dialog.module.scss';
-import { RoutePath } from '../../../../../utils/types/common';
+import { RoutePath } from '../../../../../utils/types/enums';
 
 type PropsType = {
   name: string;

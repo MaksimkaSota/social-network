@@ -7,7 +7,7 @@ import { useAuthRedirect } from '../../hooks/useRedirect';
 import { ProfilePageContainer } from './Pages/ProfilePage/ProfilePageContainer';
 import { Preloader } from '../Common/Preloader/Preloader';
 import { NotFoundPage } from './Pages/NotFoundPage/NotFoundPage';
-import { RoutePath } from '../../utils/types/common';
+import { RoutePath } from '../../utils/types/enums';
 
 const MessagesPageContainer = React.lazy(() => import('./Pages/MessagesPage/MessagesPageContainer'));
 const UsersPageContainer = React.lazy(() => import('./Pages/UsersPage/UsersPageContainer'));

@@ -1,12 +1,4 @@
-export type DialogType = {
-  id: number;
-  name: string;
-};
-
-export type MessageType = {
-  id: number;
-  messageText: string;
-};
+import { DialogType, MessageType } from '../../utils/types/common';
 
 export type MessagesState = {
   dialogs: Array<DialogType>;
