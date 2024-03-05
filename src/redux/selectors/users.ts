@@ -1,4 +1,4 @@
-import { AppState } from '../reducers/reducers';
+import type { AppState } from '../reducers/reducers';
 
 export const usersSelector = (state: AppState) => state.users.users;
 export const pageSelector = (state: AppState) => state.users.page;

@@ -1,7 +1,8 @@
-import { Component, Dispatch, ReactElement, ReactNode, SetStateAction } from 'react';
+import type { Dispatch, ReactElement, ReactNode, SetStateAction } from 'react';
+import { Component } from 'react';
 import { Error } from '../Error/Error';
 import { ErrorPopup } from '../ErrorPopup/ErrorPopup';
-import { ErrorType } from '../../../utils/types/common';
+import type { ErrorType } from '../../../utils/types/common';
 
 type PropsType = {
   children: ReactNode;

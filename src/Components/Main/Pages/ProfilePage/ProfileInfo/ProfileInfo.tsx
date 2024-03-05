@@ -1,11 +1,11 @@
-import { Dispatch, FC, SetStateAction } from 'react';
+import type { Dispatch, FC, SetStateAction } from 'react';
 import classes from './ProfileInfo.module.scss';
 import { ProfileStatus } from '../ProfileStatus/ProfileStatus';
 import { ProfilePhoto } from '../ProfilePhoto/ProfilePhoto';
 import { ProfileData } from '../ProfileData/ProfileData';
-import { ErrorType, Nullable } from '../../../../../utils/types/common';
-import { SetStatusType, SetSubmittingType } from '../../../../../utils/types/form';
-import { IRequestProfile, IResponseProfile } from '../../../../../utils/types/api';
+import type { ErrorType, Nullable } from '../../../../../utils/types/common';
+import type { SetStatusType, SetSubmittingType } from '../../../../../utils/types/form';
+import type { IRequestProfile, IResponseProfile } from '../../../../../utils/types/api';
 
 type PropsType = {
   isOwner: boolean;

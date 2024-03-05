@@ -1,4 +1,4 @@
-import { AppState } from '../reducers/reducers';
+import type { AppState } from '../reducers/reducers';
 
 export const isFetchingUsersSelector = (state: AppState) => state.loading.SET_USERS;
 export const isFetchingProfileSelector = (state: AppState) => state.loading.SET_PROFILE;

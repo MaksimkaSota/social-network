@@ -1,4 +1,4 @@
-import { FC, ReactElement } from 'react';
+import type { FC, ReactElement } from 'react';
 import classes from './Main.module.scss';
 import { Navigation } from './Navigation/Navigation';
 import { MainRoutes } from './MainRoutes';

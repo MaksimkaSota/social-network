@@ -1,11 +1,11 @@
-import { FC, ReactElement } from 'react';
+import type { FC, ReactElement } from 'react';
 import classes from './UsersPage.module.scss';
 import { User } from './User/User';
 import { Paginator } from '../../../Common/Paginator/Paginator';
 import { Preloader } from '../../../Common/Preloader/Preloader';
 import { Error } from '../../../Common/Error/Error';
-import { ErrorType, FollowUnfollowErrorType, Nullable } from '../../../../utils/types/common';
-import { IUser } from '../../../../utils/types/api';
+import type { ErrorType, FollowUnfollowErrorType, Nullable } from '../../../../utils/types/common';
+import type { IUser } from '../../../../utils/types/api';
 
 type PropsType = {
   users: Array<IUser>;

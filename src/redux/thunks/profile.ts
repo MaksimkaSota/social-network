@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import { isAxiosError } from 'axios';
 import {
   setProfileRequest,
@@ -17,12 +17,12 @@ import {
 import { getProfileAPI, getStatusAPI, updateStatusAPI, updatePhotoAPI, updateProfileAPI } from '../../api/profile';
 import { fillErrorsObject, getErrorMessage } from '../../utils/helpers/thunksHelpers';
 import { setAuthUserPhoto } from '../actions/auth';
-import { Nullable, ThunkType } from '../../utils/types/common';
-import { ProfileAction } from '../types/profile';
-import { SetAuthUserPhotoAction } from '../types/auth';
-import { SetStatusType, SetSubmittingType } from '../../utils/types/form';
+import type { Nullable, ThunkType } from '../../utils/types/common';
+import type { ProfileAction } from '../types/profile';
+import type { SetAuthUserPhotoAction } from '../types/auth';
+import type { SetStatusType, SetSubmittingType } from '../../utils/types/form';
+import type { IPhotoData, IRequestProfile, IResponse, IResponseProfile } from '../../utils/types/api';
 import { StatusCode } from '../../utils/types/enums';
-import { IPhotoData, IRequestProfile, IResponse, IResponseProfile } from '../../utils/types/api';
 
 export const getProfile = (id: number): ThunkType<ProfileAction> => {
   return async (dispatch) => {

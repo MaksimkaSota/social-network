@@ -1,4 +1,5 @@
-import {
+import { UsersActionType } from '../types/users';
+import type {
   FollowAction,
   SetFollowErrorsAction,
   SetPageAction,
@@ -9,10 +10,9 @@ import {
   SetUsersRequestAction,
   SetUsersSuccessAction,
   UnfollowAction,
-  UsersActionType,
 } from '../types/users';
-import { IUser } from '../../utils/types/api';
-import { FollowUnfollowErrorType } from '../../utils/types/common';
+import type { IUser } from '../../utils/types/api';
+import type { FollowUnfollowErrorType } from '../../utils/types/common';
 
 export const setUsersRequest = (): SetUsersRequestAction => ({ type: UsersActionType.SET_USERS_REQUEST });
 export const setUsersSuccess = (users: Array<IUser>): SetUsersSuccessAction => ({

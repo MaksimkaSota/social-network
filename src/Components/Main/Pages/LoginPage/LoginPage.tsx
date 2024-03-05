@@ -1,8 +1,13 @@
-import { FC, ReactElement } from 'react';
+import type { FC, ReactElement } from 'react';
 import { Navigate } from 'react-router-dom';
 import { LoginFormContainer } from './LoginPageForm/LoginFormContainer';
 import classes from './LoginPage.module.scss';
-import { SetFieldTouchedType, SetFieldValueType, SetStatusType, SetSubmittingType } from '../../../../utils/types/form';
+import type {
+  SetFieldTouchedType,
+  SetFieldValueType,
+  SetStatusType,
+  SetSubmittingType,
+} from '../../../../utils/types/form';
 import { RoutePath } from '../../../../utils/types/enums';
 
 type PropsType = {

@@ -1,4 +1,4 @@
-import { ErrorType, Nullable } from '../../utils/types/common';
+import type { ErrorType, Nullable } from '../../utils/types/common';
 
 export type ErrorState = {
   SET_USERS: Nullable<ErrorType>;

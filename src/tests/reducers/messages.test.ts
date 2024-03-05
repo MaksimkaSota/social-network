@@ -1,6 +1,6 @@
 import { addMessage, deleteMessage } from '../../redux/actions/messages';
 import { messagesReducer } from '../../redux/reducers/messages';
-import { MessagesState } from '../../redux/types/messages';
+import type { MessagesState } from '../../redux/types/messages';
 
 const state: MessagesState = {
   dialogs: [

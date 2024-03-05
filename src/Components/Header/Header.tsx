@@ -1,9 +1,9 @@
-import { FC, ReactElement } from 'react';
+import type { FC, ReactElement } from 'react';
 import classes from './Header.module.scss';
 import logo from '../../assets/images/logo.png';
 import { HeaderAuthInfo } from './HeaderAuthInfo/HeaderAuthInfo';
 import { HeaderNotAuthInfo } from './HeaderNotAuthInfo/HeaderNotAuthInfo';
-import { ErrorType, Nullable } from '../../utils/types/common';
+import type { ErrorType, Nullable } from '../../utils/types/common';
 
 type PropsType = {
   isAuth: boolean;

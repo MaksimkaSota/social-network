@@ -1,4 +1,5 @@
-import React, { FC, ReactElement, Suspense } from 'react';
+import type { FC, ReactElement } from 'react';
+import React, { Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { NewsPage } from './Pages/NewsPage/NewsPage';
 import { MusicsPage } from './Pages/MusicsPage/MusicsPage';

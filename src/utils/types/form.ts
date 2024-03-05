@@ -1,5 +1,5 @@
-import { FormikErrors, FormikState } from 'formik';
-import { ChangeEvent } from 'react';
+import type { ChangeEvent } from 'react';
+import type { FormikErrors, FormikState } from 'formik';
 
 export type SetStatusType = (status?: any) => void;
 export type SetSubmittingType = (isSubmitting: boolean) => void;

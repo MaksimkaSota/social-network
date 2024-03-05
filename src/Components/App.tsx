@@ -1,4 +1,4 @@
-import { FC, ReactElement } from 'react';
+import type { FC, ReactElement } from 'react';
 import classes from './App.module.scss';
 import { HeaderContainer } from './Header/HeaderContainer';
 import { Main } from './Main/Main';
@@ -6,7 +6,7 @@ import { Footer } from './Footer/Footer';
 import { Preloader } from './Common/Preloader/Preloader';
 import { Error } from './Common/Error/Error';
 import { ErrorPopup } from './Common/ErrorPopup/ErrorPopup';
-import { ErrorType, Nullable } from '../utils/types/common';
+import type { ErrorType, Nullable } from '../utils/types/common';
 
 type PropsType = {
   isFetchingAuth: boolean;

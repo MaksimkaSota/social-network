@@ -1,4 +1,5 @@
-import { FC, ReactElement, useCallback } from 'react';
+import type { FC, ReactElement } from 'react';
+import { useCallback } from 'react';
 import { Header } from './Header';
 import { logout } from '../../redux/thunks/auth';
 import {

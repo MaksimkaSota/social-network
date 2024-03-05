@@ -1,8 +1,8 @@
-import { FC, ReactElement } from 'react';
+import type { FC, ReactElement } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { LoginForm } from './LoginForm';
-import {
+import type {
   SetFieldTouchedType,
   SetFieldValueType,
   SetStatusType,

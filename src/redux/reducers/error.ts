@@ -1,4 +1,4 @@
-import { ErrorState } from '../types/error';
+import type { ErrorState } from '../types/error';
 import { RequestState } from '../../utils/types/enums';
 
 const initialState: ErrorState = {

@@ -1,4 +1,4 @@
-import { AppState } from '../reducers/reducers';
+import type { AppState } from '../reducers/reducers';
 
 export const idSelector = (state: AppState) => state.auth.id;
 export const loginSelector = (state: AppState) => state.auth.login;

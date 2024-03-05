@@ -1,9 +1,9 @@
-import { Dispatch, FC, ReactElement, SetStateAction } from 'react';
+import type { Dispatch, FC, ReactElement, SetStateAction } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { ProfileDataForm } from './ProfileDataForm';
-import { SetStatusType, SetSubmittingType } from '../../../../../utils/types/form';
-import { IRequestProfile } from '../../../../../utils/types/api';
+import type { SetStatusType, SetSubmittingType } from '../../../../../utils/types/form';
+import type { IRequestProfile } from '../../../../../utils/types/api';
 
 const validationSchema = Yup.object().shape({
   fullName: Yup.string()

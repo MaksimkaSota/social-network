@@ -1,4 +1,5 @@
-import { UsersAction, UsersActionType, UsersState } from '../types/users';
+import { UsersActionType } from '../types/users';
+import type { UsersAction, UsersState } from '../types/users';
 import { updateObjectInArray } from '../../utils/helpers/reducersHelpers';
 
 const initialState: UsersState = {

@@ -1,5 +1,6 @@
-import { PostsAction, PostsActionType, PostsState } from '../types/posts';
-import { PostType } from '../../utils/types/common';
+import { PostsActionType } from '../types/posts';
+import type { PostsAction, PostsState } from '../types/posts';
+import type { PostType } from '../../utils/types/common';
 
 const initialState: PostsState = {
   posts: [

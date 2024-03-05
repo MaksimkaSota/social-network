@@ -1,4 +1,5 @@
-import React, { ReactElement, useCallback } from 'react';
+import type { ReactElement } from 'react';
+import React, { useCallback } from 'react';
 import { addPost } from '../../../../../redux/actions/posts';
 import { Posts } from './Posts';
 import { postsSelector } from '../../../../../redux/selectors/posts';

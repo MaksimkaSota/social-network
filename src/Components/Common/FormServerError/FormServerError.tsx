@@ -1,4 +1,4 @@
-import { FC, ReactElement } from 'react';
+import type { FC, ReactElement } from 'react';
 import cn from 'classnames';
 import classes from './FormServerError.module.scss';
 

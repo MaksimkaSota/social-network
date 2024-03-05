@@ -1,5 +1,5 @@
-import { AuthData, ErrorType, Nullable } from '../../utils/types/common';
-import { IAuthData } from '../../utils/types/api';
+import type { AuthData, ErrorType, Nullable } from '../../utils/types/common';
+import type { IAuthData } from '../../utils/types/api';
 
 export type AuthState = {
   id: Nullable<number>;

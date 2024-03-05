@@ -1,4 +1,4 @@
-import { FC, ReactElement } from 'react';
+import type { FC, ReactElement } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Error } from '../../../Common/Error/Error';
 

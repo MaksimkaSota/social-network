@@ -1,8 +1,9 @@
-import { FC, ReactElement, MouseEvent, KeyboardEvent, useEffect, useRef } from 'react';
+import type { FC, ReactElement, MouseEvent, KeyboardEvent } from 'react';
+import { useEffect, useRef } from 'react';
 import classes from './ErrorPopup.module.scss';
 import { Error } from '../Error/Error';
 import { Button } from '../Button/Button';
-import { ErrorType, Nullable } from '../../../utils/types/common';
+import type { ErrorType, Nullable } from '../../../utils/types/common';
 
 type PropsType = {
   errorObject: Nullable<ErrorType>;

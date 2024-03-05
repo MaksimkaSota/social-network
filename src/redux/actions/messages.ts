@@ -1,4 +1,5 @@
-import { AddMessageAction, DeleteMessageAction, MessagesActionType } from '../types/messages';
+import { MessagesActionType } from '../types/messages';
+import type { AddMessageAction, DeleteMessageAction } from '../types/messages';
 
 export const addMessage = (text: string): AddMessageAction => ({
   type: MessagesActionType.ADD_MESSAGES_MESSAGE,

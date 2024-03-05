@@ -1,4 +1,4 @@
-import { AppState } from '../reducers/reducers';
+import type { AppState } from '../reducers/reducers';
 
 export const usersErrorSelector = (state: AppState) => state.error.SET_USERS;
 export const profileErrorSelector = (state: AppState) => state.error.SET_PROFILE;

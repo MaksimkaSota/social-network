@@ -1,5 +1,5 @@
-import {
-  ProfileActionType,
+import { ProfileActionType } from '../types/profile';
+import type {
   SetDataFailureAction,
   SetDataRequestAction,
   SetDataSuccessAction,
@@ -13,7 +13,7 @@ import {
   SetStatusRequestAction,
   SetStatusSuccessAction,
 } from '../types/profile';
-import { IPhotos, IResponseProfile } from '../../utils/types/api';
+import type { IPhotos, IResponseProfile } from '../../utils/types/api';
 
 export const setProfileRequest = (): SetProfileRequestAction => ({ type: ProfileActionType.SET_PROFILE_REQUEST });
 export const setProfileSuccess = (profile: IResponseProfile): SetProfileSuccessAction => ({

@@ -1,8 +1,8 @@
-import { FC, ReactElement } from 'react';
+import type { FC, ReactElement } from 'react';
 import classes from './MessagesPage.module.scss';
 import { Dialogs } from './Dialogs/Dialogs';
 import { Messages } from './Messages/Messages';
-import { DialogType, MessageType } from '../../../../utils/types/common';
+import type { DialogType, MessageType } from '../../../../utils/types/common';
 
 type PropsType = {
   dialogs: Array<DialogType>;

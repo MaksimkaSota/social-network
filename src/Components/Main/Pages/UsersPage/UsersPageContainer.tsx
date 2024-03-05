@@ -1,4 +1,5 @@
-import { FC, ReactElement, useCallback, useEffect } from 'react';
+import type { FC, ReactElement } from 'react';
+import { useCallback, useEffect } from 'react';
 import { UsersPage } from './UsersPage';
 import { useMounted } from '../../../../hooks/useMounted';
 import { followUser, getUsers, unfollowUser } from '../../../../redux/thunks/users';

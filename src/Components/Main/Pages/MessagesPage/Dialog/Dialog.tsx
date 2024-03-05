@@ -1,4 +1,4 @@
-import { FC, ReactElement } from 'react';
+import type { FC, ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
 import classes from './Dialog.module.scss';

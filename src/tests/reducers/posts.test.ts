@@ -1,6 +1,6 @@
 import { addPost, deletePost } from '../../redux/actions/posts';
 import { postsReducer } from '../../redux/reducers/posts';
-import { PostsState } from '../../redux/types/posts';
+import type { PostsState } from '../../redux/types/posts';
 
 const state: PostsState = {
   posts: [

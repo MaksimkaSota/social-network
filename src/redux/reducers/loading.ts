@@ -1,4 +1,4 @@
-import { LoadingState } from '../types/loading';
+import type { LoadingState } from '../types/loading';
 import { RequestState } from '../../utils/types/enums';
 
 const initialState: LoadingState = {

@@ -1,4 +1,5 @@
-import { FC, ReactElement, useCallback } from 'react';
+import type { FC, ReactElement } from 'react';
+import { useCallback } from 'react';
 import { dialogsSelector, messagesSelector } from '../../../../redux/selectors/messages';
 import { MessagesPage } from './MessagesPage';
 import { addMessage } from '../../../../redux/actions/messages';

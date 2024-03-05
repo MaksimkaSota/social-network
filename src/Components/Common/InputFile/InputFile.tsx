@@ -1,4 +1,5 @@
-import { ChangeEvent, FC, ReactElement, useRef, useState } from 'react';
+import type { ChangeEvent, FC, ReactElement } from 'react';
+import { useRef, useState } from 'react';
 import { Button } from '../Button/Button';
 import classes from './InputFile.module.scss';
 

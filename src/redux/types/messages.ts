@@ -1,4 +1,4 @@
-import { DialogType, MessageType } from '../../utils/types/common';
+import type { DialogType, MessageType } from '../../utils/types/common';
 
 export type MessagesState = {
   dialogs: Array<DialogType>;

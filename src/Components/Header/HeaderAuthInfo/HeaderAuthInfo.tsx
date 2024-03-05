@@ -1,9 +1,9 @@
-import { FC, ReactElement } from 'react';
+import type { FC, ReactElement } from 'react';
 import classes from './HeaderAuthInfo.module.scss';
 import userPhoto from '../../../assets/images/user.png';
 import { Preloader } from '../../Common/Preloader/Preloader';
 import { Button } from '../../Common/Button/Button';
-import { ErrorType, Nullable } from '../../../utils/types/common';
+import type { ErrorType, Nullable } from '../../../utils/types/common';
 
 type PropsType = {
   loginName: Nullable<string>;

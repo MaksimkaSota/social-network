@@ -1,4 +1,5 @@
-import { FC, ReactElement, useEffect, useState } from 'react';
+import type { FC, ReactElement } from 'react';
+import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import classes from './Paginator.module.scss';
 import { Button } from '../Button/Button';

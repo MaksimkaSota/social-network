@@ -1,8 +1,9 @@
-import React, { ChangeEvent, ReactElement, useEffect, useState } from 'react';
+import type { ChangeEvent, ReactElement } from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './ProfileStatus.module.scss';
 import { ProfileStatusText } from '../ProfileStatusText/ProfileStatusText';
 import { Button } from '../../../../Common/Button/Button';
-import { ErrorType, Nullable } from '../../../../../utils/types/common';
+import type { ErrorType, Nullable } from '../../../../../utils/types/common';
 
 type PropsType = {
   isOwner: boolean;

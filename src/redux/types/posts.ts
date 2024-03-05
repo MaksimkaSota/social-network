@@ -1,4 +1,4 @@
-import { PostType } from '../../utils/types/common';
+import type { PostType } from '../../utils/types/common';
 
 export type PostsState = {
   posts: Array<PostType>;

@@ -1,4 +1,5 @@
-import { FC, ReactElement, useEffect } from 'react';
+import type { FC, ReactElement } from 'react';
+import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getProfile, getStatus } from '../../../../redux/thunks/profile';
 import { ProfilePage } from './ProfilePage';

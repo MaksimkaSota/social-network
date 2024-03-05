@@ -1,11 +1,11 @@
-import { FC, ReactElement } from 'react';
+import type { FC, ReactElement } from 'react';
 import { Form } from 'formik';
 import cn from 'classnames';
 import classes from './LoginForm.module.scss';
 import { Button } from '../../../../Common/Button/Button';
 import { FormField } from '../../../../Common/FormField/FormField';
 import { FormServerError } from '../../../../Common/FormServerError/FormServerError';
-import { FormikErrorsType, FormikTouchedType, HandleChangeType } from '../../../../../utils/types/form';
+import type { FormikErrorsType, FormikTouchedType, HandleChangeType } from '../../../../../utils/types/form';
 import { FormName } from '../../../../../utils/types/enums';
 
 type PropsType = {

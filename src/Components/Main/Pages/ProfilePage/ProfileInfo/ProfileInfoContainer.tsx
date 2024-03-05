@@ -1,4 +1,5 @@
-import { Dispatch, FC, ReactElement, SetStateAction, useCallback } from 'react';
+import type { Dispatch, FC, ReactElement, SetStateAction } from 'react';
+import { useCallback } from 'react';
 import { ProfileInfo } from './ProfileInfo';
 import { useMounted } from '../../../../../hooks/useMounted';
 import { updateData, updateStatus, updatePhoto } from '../../../../../redux/thunks/profile';
@@ -11,9 +12,9 @@ import {
 import { statusErrorSelector, photoErrorSelector, dataErrorSelector } from '../../../../../redux/selectors/error';
 import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
 import { useTypedDispatch } from '../../../../../hooks/useTypedDispatch';
-import { Nullable } from '../../../../../utils/types/common';
-import { SetStatusType, SetSubmittingType } from '../../../../../utils/types/form';
-import { IRequestProfile, IResponseProfile } from '../../../../../utils/types/api';
+import type { Nullable } from '../../../../../utils/types/common';
+import type { SetStatusType, SetSubmittingType } from '../../../../../utils/types/form';
+import type { IRequestProfile, IResponseProfile } from '../../../../../utils/types/api';
 
 type PropsType = {
   profile: Nullable<IResponseProfile>;

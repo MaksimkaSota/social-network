@@ -1,8 +1,8 @@
-import { FC, ReactElement } from 'react';
+import type { FC, ReactElement } from 'react';
 import classes from './Messages.module.scss';
 import { Message } from '../Message/Message';
 import { MessageFormContainer } from '../MessageForm/MessageFormContainer';
-import { MessageType } from '../../../../../utils/types/common';
+import type { MessageType } from '../../../../../utils/types/common';
 
 type PropsType = {
   messages: Array<MessageType>;

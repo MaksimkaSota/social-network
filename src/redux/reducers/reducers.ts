@@ -1,5 +1,6 @@
-import { combineReducers, AnyAction } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
+import { combineReducers } from 'redux';
+import type { AnyAction } from 'redux';
+import type { ThunkDispatch } from 'redux-thunk';
 import { profileReducer } from './profile';
 import { messagesReducer } from './messages';
 import { postsReducer } from './posts';

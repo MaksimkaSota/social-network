@@ -1,11 +1,11 @@
-import { FC, ReactElement } from 'react';
+import type { FC, ReactElement } from 'react';
 import classes from './ProfilePage.module.scss';
 import { PostsContainer } from './Posts/PostsContainer';
 import { ProfileInfoContainer } from './ProfileInfo/ProfileInfoContainer';
 import { Preloader } from '../../../Common/Preloader/Preloader';
 import { Error } from '../../../Common/Error/Error';
-import { ErrorType, Nullable } from '../../../../utils/types/common';
-import { IResponseProfile } from '../../../../utils/types/api';
+import type { ErrorType, Nullable } from '../../../../utils/types/common';
+import type { IResponseProfile } from '../../../../utils/types/api';
 
 type PropsType = {
   isFetchingProfile: boolean;

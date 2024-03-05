@@ -1,9 +1,9 @@
-import { FC, ReactElement } from 'react';
+import type { FC, ReactElement } from 'react';
 import cn from 'classnames';
 import classes from './ContactForm.module.scss';
 import { FormField } from '../../../../Common/FormField/FormField';
 import { FormServerError } from '../../../../Common/FormServerError/FormServerError';
-import { HandleChangeType } from '../../../../../utils/types/form';
+import type { HandleChangeType } from '../../../../../utils/types/form';
 
 type PropsType = {
   title: string;

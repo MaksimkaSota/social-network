@@ -1,4 +1,4 @@
-import { FC, ReactElement } from 'react';
+import type { FC, ReactElement } from 'react';
 import classes from './Footer.module.scss';
 import email from '../../assets/images/email.png';
 

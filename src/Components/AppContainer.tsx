@@ -1,4 +1,5 @@
-import { FC, ReactElement, useCallback, useEffect, useState } from 'react';
+import type { FC, ReactElement } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { App } from './App';
 import { getAuth } from '../redux/thunks/auth';
 import { isFetchingAuthSelector } from '../redux/selectors/loading';
@@ -8,7 +9,7 @@ import { setLogoutError } from '../redux/actions/auth';
 import { ErrorCatcher } from './Common/ErrorCatcher/ErrorCatcher';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { useTypedDispatch } from '../hooks/useTypedDispatch';
-import { ErrorType, Nullable } from '../utils/types/common';
+import type { ErrorType, Nullable } from '../utils/types/common';
 
 export const AppContainer: FC = (): ReactElement => {
   const isFetchingAuth = useTypedSelector(isFetchingAuthSelector);

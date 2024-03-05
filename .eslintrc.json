@@ -90,6 +90,7 @@
     ],
 
     "@typescript-eslint/default-param-last": "off",
+    "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/no-restricted-imports": [
       "warn",
       {

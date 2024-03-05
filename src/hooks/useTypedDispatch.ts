@@ -1,5 +1,5 @@
 // eslint-disable-next-line
 import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../redux/reducers/reducers';
+import type { AppDispatch } from '../redux/reducers/reducers';
 
 export const useTypedDispatch: () => AppDispatch = useDispatch;

@@ -1,5 +1,5 @@
-import { IUser } from '../../utils/types/api';
-import { ErrorType, FollowUnfollowErrorType, SubscribersId } from '../../utils/types/common';
+import type { IUser } from '../../utils/types/api';
+import type { ErrorType, FollowUnfollowErrorType, SubscribersId } from '../../utils/types/common';
 
 export type UsersState = {
   users: Array<IUser>;

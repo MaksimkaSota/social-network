@@ -1,4 +1,4 @@
-import { AxiosError } from 'axios';
+import type { AxiosError } from 'axios';
 
 type ObjectType = { [field: string]: string | ObjectType };
 
