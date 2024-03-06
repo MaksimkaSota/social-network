@@ -15,7 +15,7 @@
   "plugins": ["react", "import", "react-hooks", "jsx-a11y", "@typescript-eslint"],
   "settings": {
     "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
-    "import/resolver": { "typescript":  true, "node":  true }
+    "import/resolver": { "typescript": true, "node": true }
   },
   "rules": {
     "prettier/prettier": ["error", { "endOfLine": "auto" }],
