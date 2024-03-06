@@ -1,5 +1,5 @@
+import type { FC, ReactElement } from 'react';
 import { useCallback, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { App } from './App';
 import { getAuth } from '../redux/thunks/auth';
 import { isFetchingAuthSelector } from '../redux/selectors/loading';
@@ -7,20 +7,26 @@ import { authErrorSelector } from '../redux/selectors/error';
 import { logoutErrorSelector } from '../redux/selectors/auth';
 import { setLogoutError } from '../redux/actions/auth';
 import { ErrorCatcher } from './Common/ErrorCatcher/ErrorCatcher';
+import { useTypedSelector } from '../hooks/useTypedSelector';
+import { useTypedDispatch } from '../hooks/useTypedDispatch';
+import type { ErrorType, Nullable } from '../utils/types/common';
 
-export const AppContainer = () => {
-  const isFetchingAuth = useSelector(isFetchingAuthSelector);
-  const authError = useSelector(authErrorSelector);
-  const logoutError = useSelector(logoutErrorSelector);
+export const AppContainer: FC = (): ReactElement => {
+  const isFetchingAuth = useTypedSelector(isFetchingAuthSelector);
+  const authError = useTypedSelector(authErrorSelector);
+  const logoutError = useTypedSelector(logoutErrorSelector);
 
-  const dispatch = useDispatch();
-  const setLogoutErrorCallback = useCallback((error) => dispatch(setLogoutError(error)), [dispatch]);
+  const dispatch = useTypedDispatch();
+  const setLogoutErrorCallback = useCallback(
+    (error: Nullable<ErrorType>) => dispatch(setLogoutError(error)),
+    [dispatch]
+  );
 
   useEffect(() => {
     dispatch(getAuth());
   }, [dispatch]);
 
-  const [globalError, setGlobalError] = useState(null);
+  const [globalError, setGlobalError] = useState<ErrorType | null>(null);
 
   return (
     <ErrorCatcher globalError={globalError} setGlobalError={setGlobalError}>

@@ -1,12 +1,11 @@
+import type { AxiosInstance } from 'axios';
 import axios from 'axios';
+import { UrlString } from '../utils/types/enums';
 
-const URL = 'https://social-network.samuraijs.com/api/1.0/';
-const KEY = process.env.KEY;
-
-export const http = axios.create({
+export const http: AxiosInstance = axios.create({
   withCredentials: true,
-  baseURL: URL,
+  baseURL: UrlString.social_network,
   headers: {
-    'API-KEY': KEY,
+    'API-KEY': process.env.KEY,
   },
 });

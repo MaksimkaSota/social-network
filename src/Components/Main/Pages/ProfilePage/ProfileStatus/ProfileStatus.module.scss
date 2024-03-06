@@ -13,7 +13,7 @@
   }
   .updateButtonBlock {
     width: 30%;
-    .button {
+    .statusButton {
       @include position(100%, 0);
       padding: 5px $padding;
     }

@@ -1,8 +1,9 @@
+import type { FC, ReactElement } from 'react';
 import classes from './Main.module.scss';
 import { Navigation } from './Navigation/Navigation';
 import { MainRoutes } from './MainRoutes';
 
-export const Main = () => {
+export const Main: FC = (): ReactElement => {
   return (
     <main className={classes.main}>
       <Navigation />

@@ -1,9 +1,16 @@
+import type { FC, ReactElement } from 'react';
 import cn from 'classnames';
 import classes from './Error.module.scss';
 import robotError from '../../../assets/images/robot-error.png';
 import robot404 from '../../../assets/images/robot-404.png';
 
-export const Error = ({ code, message, isGlobalError = false }) => {
+type PropsType = {
+  code?: number;
+  message: string;
+  isGlobalError?: boolean;
+};
+
+export const Error: FC<PropsType> = ({ code, message, isGlobalError = false }): ReactElement => {
   const robot = code === 404 ? robot404 : robotError;
 
   return (

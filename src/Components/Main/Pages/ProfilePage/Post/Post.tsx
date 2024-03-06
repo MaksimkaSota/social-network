@@ -1,5 +1,10 @@
+import type { FC, ReactElement } from 'react';
 import classes from './Post.module.scss';
 
-export const Post = ({ postText }) => {
+type PropsType = {
+  postText: string;
+};
+
+export const Post: FC<PropsType> = ({ postText }): ReactElement => {
   return <p className={classes.post}>{postText}</p>;
 };

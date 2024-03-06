@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { store } from './redux/store';
 import { AppContainer } from './Components/AppContainer';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
   <StrictMode>

@@ -1,17 +1,30 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useCallback } from 'react';
 import { LoginPage } from './LoginPage';
 import { login } from '../../../../redux/thunks/auth';
 import { captchaUrlSelector, incorrectAuthTextSelector, isAuthSelector } from '../../../../redux/selectors/auth';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
+import { useTypedDispatch } from '../../../../hooks/useTypedDispatch';
+import type {
+  SetFieldTouchedType,
+  SetFieldValueType,
+  SetStatusType,
+  SetSubmittingType,
+} from '../../../../utils/types/form';
 
 const LoginPageContainer = () => {
-  const isAuth = useSelector(isAuthSelector);
-  const incorrectAuthText = useSelector(incorrectAuthTextSelector);
-  const captchaUrl = useSelector(captchaUrlSelector);
+  const isAuth = useTypedSelector(isAuthSelector);
+  const incorrectAuthText = useTypedSelector(incorrectAuthTextSelector);
+  const captchaUrl = useTypedSelector(captchaUrlSelector);
 
-  const dispatch = useDispatch();
+  const dispatch = useTypedDispatch();
   const loginCallback = useCallback(
-    (loginData, setStatus, setSubmitting, setFieldValue, setFieldTouched) => {
+    (
+      loginData: { email: string; password: string; rememberMe: boolean; captcha: string },
+      setStatus: SetStatusType,
+      setSubmitting: SetSubmittingType,
+      setFieldValue: SetFieldValueType,
+      setFieldTouched: SetFieldTouchedType
+    ) => {
       dispatch(login(loginData, setStatus, setSubmitting, setFieldValue, setFieldTouched));
     },
     [dispatch]

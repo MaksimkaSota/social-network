@@ -1,4 +1,7 @@
-const initialState = {
+import type { ErrorState } from '../types/error';
+import { RequestState } from '../../utils/types/enums';
+
+const initialState: ErrorState = {
   SET_USERS: null,
   SET_PROFILE: null,
   SET_PROFILE_STATUS: null,
@@ -7,7 +10,7 @@ const initialState = {
   SET_AUTH: null,
 };
 
-export const errorReducer = (state = initialState, action) => {
+export const errorReducer = (state: ErrorState = initialState, action: any): ErrorState => {
   const matches = /(.*)_(REQUEST|FAILURE)/.exec(action.type);
 
   if (!matches) return state;
@@ -16,6 +19,6 @@ export const errorReducer = (state = initialState, action) => {
 
   return {
     ...state,
-    [requestName]: requestState === 'FAILURE' ? action.payload : null,
+    [requestName]: requestState === RequestState.failure ? action.payload : null,
   };
 };

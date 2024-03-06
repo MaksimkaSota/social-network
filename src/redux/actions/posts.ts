@@ -1,4 +1,5 @@
-import { ADD_POSTS_POST, DELETE_POSTS_POST } from '../types/posts';
+import { PostsActionType } from '../types/posts';
+import type { AddPostAction, DeletePostAction } from '../types/posts';
 
-export const addPost = (text) => ({ type: ADD_POSTS_POST, payload: text });
-export const deletePost = (id) => ({ type: DELETE_POSTS_POST, payload: id });
+export const addPost = (text: string): AddPostAction => ({ type: PostsActionType.ADD_POSTS_POST, payload: text });
+export const deletePost = (id: number): DeletePostAction => ({ type: PostsActionType.DELETE_POSTS_POST, payload: id });

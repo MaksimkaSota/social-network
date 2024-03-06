@@ -1,9 +1,17 @@
+import type { FC, ReactElement } from 'react';
 import classes from './Posts.module.scss';
 import { Post } from '../Post/Post';
 import { PostFormContainer } from '../PostForm/PostFormContainer';
+import type { PostType } from '../../../../../utils/types/common';
 
-export const Posts = ({ posts, addPost, isAuth }) => {
-  const postsElements = posts.map((post) => <Post postText={post.postText} key={post.id} />);
+type PropsType = {
+  posts: Array<PostType>;
+  addPost: (text: string) => void;
+  isAuth: boolean;
+};
+
+export const Posts: FC<PropsType> = ({ posts, addPost, isAuth }): ReactElement | boolean => {
+  const postsElements = posts.map((post: PostType): ReactElement => <Post postText={post.postText} key={post.id} />);
 
   return (
     isAuth && (

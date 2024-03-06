@@ -1,3 +1,4 @@
+import type { FC, ReactElement } from 'react';
 import classes from './App.module.scss';
 import { HeaderContainer } from './Header/HeaderContainer';
 import { Main } from './Main/Main';
@@ -5,8 +6,16 @@ import { Footer } from './Footer/Footer';
 import { Preloader } from './Common/Preloader/Preloader';
 import { Error } from './Common/Error/Error';
 import { ErrorPopup } from './Common/ErrorPopup/ErrorPopup';
+import type { ErrorType, Nullable } from '../utils/types/common';
 
-export const App = ({ isFetchingAuth, authError, logoutError, setLogoutError }) => {
+type PropsType = {
+  isFetchingAuth: boolean;
+  authError: Nullable<ErrorType>;
+  logoutError: Nullable<ErrorType>;
+  setLogoutError: (error: Nullable<ErrorType>) => void;
+};
+
+export const App: FC<PropsType> = ({ isFetchingAuth, authError, logoutError, setLogoutError }): ReactElement => {
   if (isFetchingAuth) {
     return (
       <div className={classes.preloaderWrapper}>

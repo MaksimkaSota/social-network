@@ -1,5 +1,5 @@
+import type { FC, ReactElement } from 'react';
 import { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Header } from './Header';
 import { logout } from '../../redux/thunks/auth';
 import {
@@ -11,17 +11,19 @@ import {
 } from '../../redux/selectors/auth';
 import { isFetchingPhotoSelector } from '../../redux/selectors/loading';
 import { photoErrorSelector } from '../../redux/selectors/error';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { useTypedDispatch } from '../../hooks/useTypedDispatch';
 
-export const HeaderContainer = () => {
-  const isAuth = useSelector(isAuthSelector);
-  const loginName = useSelector(loginSelector);
-  const authUserPhoto = useSelector(authUserPhotoSelector);
-  const isFetchingAuthUserPhoto = useSelector(isFetchingPhotoSelector);
-  const authUserPhotoError = useSelector(authUserPhotoErrorSelector);
-  const updateUserPhotoError = useSelector(photoErrorSelector);
-  const incorrectAuthText = useSelector(incorrectAuthTextSelector);
+export const HeaderContainer: FC = (): ReactElement => {
+  const isAuth = useTypedSelector(isAuthSelector);
+  const loginName = useTypedSelector(loginSelector);
+  const authUserPhoto = useTypedSelector(authUserPhotoSelector);
+  const isFetchingAuthUserPhoto = useTypedSelector(isFetchingPhotoSelector);
+  const authUserPhotoError = useTypedSelector(authUserPhotoErrorSelector);
+  const updateUserPhotoError = useTypedSelector(photoErrorSelector);
+  const incorrectAuthText = useTypedSelector(incorrectAuthTextSelector);
 
-  const dispatch = useDispatch();
+  const dispatch = useTypedDispatch();
   const logoutCallback = useCallback(() => dispatch(logout()), [dispatch]);
 
   return (

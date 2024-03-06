@@ -1,52 +1,54 @@
 import { act, create } from 'react-test-renderer';
 import { ProfileStatus } from '../../Components/Main/Pages/ProfilePage/ProfileStatus/ProfileStatus';
 
-const createComponent = (status, mockCallback) => {
-  return create(<ProfileStatus status={status} updateStatus={mockCallback} />).root;
+const createComponent = (status: string, mockCallback: any) => {
+  return create(
+    <ProfileStatus isOwner status={status} updateStatus={mockCallback} isFetchingStatus={false} statusError={null} />
+  ).root;
 };
 
-describe('ProfileStatus Component tests', () => {
-  it(`After creation element 'statusText' should be displayed`, async () => {
+describe('ProfileStatus Component tests', (): void => {
+  it(`After creation element 'statusText' should be displayed`, (): void => {
     const root = createComponent('My logic is undeniable', null);
 
-    const statusText = await root.findByProps({ className: 'statusText' });
+    const statusText = root.findByProps({ className: 'statusText' });
     expect(statusText).not.toBeNull();
   });
 
-  it(`After creation element 'inputStatus' should not be displayed`, async () => {
+  it(`After creation element 'inputStatus' should not be displayed`, async (): Promise<void> => {
     const root = createComponent('My logic is undeniable', null);
 
     await expect(async () => {
-      await root.findByProps({ className: 'inputStatus' });
+      root.findByProps({ className: 'inputStatus' });
     }).rejects.toThrow();
   });
 
-  it(`After creation element 'statusText' should contains 'status'`, async () => {
+  it(`After creation element 'statusText' should contains 'status'`, (): void => {
     const root = createComponent('My logic is undeniable', null);
 
-    const statusText = await root.findByProps({ className: 'statusText' });
+    const statusText = root.findByProps({ className: 'statusText' });
     expect(statusText.props.children).toBe('My logic is undeniable');
   });
 
-  it(`After double click element 'inputStatus' should contains 'status'`, async () => {
+  it(`After click element 'statusButton' should contains 'status'`, async (): Promise<void> => {
     const root = createComponent('My logic is undeniable', null);
 
-    const statusText = await root.findByProps({ className: 'statusText' });
-    act(() => statusText.props.onDoubleClick());
+    const statusButton = root.findByProps({ className: 'statusButton' });
+    await act(() => statusButton.props.onClick());
 
-    const inputStatus = await root.findByProps({ className: 'inputStatus' });
+    const inputStatus = root.findByProps({ className: 'inputStatus' });
     expect(inputStatus.props.value).toBe('My logic is undeniable');
   });
 
-  it('Callback should be called', async () => {
+  it('Callback should be called', async (): Promise<void> => {
     const mockCallback = jest.fn();
-    const root = createComponent(null, mockCallback);
+    const root = createComponent('', mockCallback);
 
-    const statusText = await root.findByProps({ className: 'statusText' });
-    act(() => statusText.props.onDoubleClick());
+    const saveStatusButton = root.findByProps({ className: 'statusButton' });
+    await act(() => saveStatusButton.props.onClick());
 
-    const inputStatus = await root.findByProps({ className: 'inputStatus' });
-    act(() => inputStatus.props.onBlur());
+    const editStatusButton = root.findByProps({ className: 'statusButton' });
+    await act(() => editStatusButton.props.onClick());
 
     expect(mockCallback.mock.calls.length).toBe(1);
   });

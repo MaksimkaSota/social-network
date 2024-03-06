@@ -1,13 +1,18 @@
+import type { ChangeEvent, FC, ReactElement } from 'react';
 import { useRef, useState } from 'react';
 import { Button } from '../Button/Button';
 import classes from './InputFile.module.scss';
 
-export const InputFile = ({ actionFile }) => {
-  const [fileInfo, setFileInfo] = useState('No file chosen');
-  const inputFile = useRef(null);
+type PropsType = {
+  actionFile: (photo: File) => void;
+};
 
-  const onChangeInputFile = (event) => {
-    if (event.target.files.length) {
+export const InputFile: FC<PropsType> = ({ actionFile }): ReactElement => {
+  const [fileInfo, setFileInfo] = useState<string>('No file chosen');
+  const inputFile = useRef<HTMLInputElement>(null);
+
+  const onChangeInputFile = (event: ChangeEvent<HTMLInputElement>): void => {
+    if (event.target.files?.length) {
       setFileInfo(event.target.files[0].name);
       actionFile(event.target.files[0]);
     } else {
@@ -15,8 +20,8 @@ export const InputFile = ({ actionFile }) => {
     }
   };
 
-  const autoClick = () => {
-    inputFile.current.click();
+  const autoClick = (): void => {
+    inputFile.current?.click();
   };
 
   return (

@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import type { FC, ReactElement } from 'react';
 import { useCallback, useEffect } from 'react';
 import { UsersPage } from './UsersPage';
 import { useMounted } from '../../../../hooks/useMounted';
@@ -14,27 +14,29 @@ import {
   followErrorsSelector,
   unfollowErrorsSelector,
 } from '../../../../redux/selectors/users';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
+import { useTypedDispatch } from '../../../../hooks/useTypedDispatch';
 
-const UsersPageContainer = () => {
-  const users = useSelector(usersSelector);
-  const page = useSelector(pageSelector);
-  const pageSize = useSelector(pageSizeSelector);
-  const totalCount = useSelector(totalCountSelector);
-  const subscribersId = useSelector(subscribersIdSelector);
-  const isFetchingUsers = useSelector(isFetchingUsersSelector);
-  const usersError = useSelector(usersErrorSelector);
-  const followErrors = useSelector(followErrorsSelector);
-  const unfollowErrors = useSelector(unfollowErrorsSelector);
+const UsersPageContainer: FC = (): ReactElement | boolean => {
+  const users = useTypedSelector(usersSelector);
+  const page = useTypedSelector(pageSelector);
+  const pageSize = useTypedSelector(pageSizeSelector);
+  const totalCount = useTypedSelector(totalCountSelector);
+  const subscribersId = useTypedSelector(subscribersIdSelector);
+  const isFetchingUsers = useTypedSelector(isFetchingUsersSelector);
+  const usersError = useTypedSelector(usersErrorSelector);
+  const followErrors = useTypedSelector(followErrorsSelector);
+  const unfollowErrors = useTypedSelector(unfollowErrorsSelector);
 
-  const dispatch = useDispatch();
-  const followUserCallback = useCallback((id) => dispatch(followUser(id)), [dispatch]);
-  const unfollowUserCallback = useCallback((id) => dispatch(unfollowUser(id)), [dispatch]);
+  const dispatch = useTypedDispatch();
+  const followUserCallback = useCallback((id: number) => dispatch(followUser(id)), [dispatch]);
+  const unfollowUserCallback = useCallback((id: number) => dispatch(unfollowUser(id)), [dispatch]);
   const getUsersCallback = useCallback(
-    (currentPage, currentPageSize) => dispatch(getUsers(currentPage, currentPageSize)),
+    (currentPage: number, currentPageSize: number) => dispatch(getUsers(currentPage, currentPageSize)),
     [dispatch]
   );
 
-  const mounted = useMounted();
+  const mounted: boolean = useMounted();
 
   useEffect(() => {
     dispatch(getUsers(page, pageSize));

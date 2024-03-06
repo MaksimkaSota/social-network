@@ -1,7 +1,21 @@
+import type { FC, ReactElement } from 'react';
 import classes from './ProfileStatusText.module.scss';
 import { Preloader } from '../../../../Common/Preloader/Preloader';
+import type { ErrorType, Nullable } from '../../../../../utils/types/common';
 
-export const ProfileStatusText = ({ status, localStatus, isFetchingStatus, statusError }) => {
+type PropsType = {
+  status: string;
+  localStatus: string;
+  isFetchingStatus: boolean;
+  statusError: Nullable<ErrorType>;
+};
+
+export const ProfileStatusText: FC<PropsType> = ({
+  status,
+  localStatus,
+  isFetchingStatus,
+  statusError,
+}): ReactElement => {
   if (isFetchingStatus && status !== localStatus) {
     return (
       <div className={classes.statusPreloaderWrapper}>

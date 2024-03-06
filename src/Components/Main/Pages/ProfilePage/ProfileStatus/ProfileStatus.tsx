@@ -1,55 +1,65 @@
-import { useEffect, useState } from 'react';
+import type { ChangeEvent, ReactElement } from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './ProfileStatus.module.scss';
 import { ProfileStatusText } from '../ProfileStatusText/ProfileStatusText';
 import { Button } from '../../../../Common/Button/Button';
+import type { ErrorType, Nullable } from '../../../../../utils/types/common';
 
-export const ProfileStatus = ({ isOwner, status, updateStatus, isFetchingStatus, statusError }) => {
-  const [editModeStatus, setEditModeStatus] = useState(false);
-  const [localStatus, setLocalStatus] = useState(status);
+type PropsType = {
+  isOwner: boolean;
+  status: string;
+  updateStatus: (newStatus: string) => void;
+  isFetchingStatus: boolean;
+  statusError: Nullable<ErrorType>;
+};
 
-  useEffect(() => {
-    setLocalStatus(status);
-  }, [status]);
+export const ProfileStatus = React.memo<PropsType>(
+  ({ isOwner, status, updateStatus, isFetchingStatus, statusError }): ReactElement => {
+    const [editModeStatus, setEditModeStatus] = useState<boolean>(false);
+    const [localStatus, setLocalStatus] = useState<string>(status);
 
-  const onActivateEditModeStatus = () => {
-    setEditModeStatus(true);
-  };
+    useEffect(() => {
+      setLocalStatus(status);
+    }, [status]);
 
-  const onDeactivateEditModeStatus = () => {
-    setEditModeStatus(false);
-    updateStatus(localStatus);
-  };
+    const onActivateEditModeStatus = (): void => {
+      setEditModeStatus(true);
+    };
 
-  const onChangeLocalStatus = (event) => {
-    setLocalStatus(event.target.value);
-  };
+    const onDeactivateEditModeStatus = (): void => {
+      setEditModeStatus(false);
+      updateStatus(localStatus);
+    };
 
-  return (
-    <div className={classes.profileStatus}>
-      <div className={classes.statusBlock}>
-        <h5 className={classes.title}>Status:</h5>
-        {editModeStatus ? (
-          <textarea className={classes.inputStatus} onChange={onChangeLocalStatus} value={localStatus} />
-        ) : (
-          <ProfileStatusText
-            isOwner={isOwner}
-            status={status}
-            localStatus={localStatus}
-            setEditModeStatus={setEditModeStatus}
-            isFetchingStatus={isFetchingStatus}
-            statusError={statusError}
-          />
-        )}
-      </div>
-      {isOwner && (
-        <div className={classes.updateButtonBlock}>
+    const onChangeLocalStatus = (event: ChangeEvent<HTMLTextAreaElement>): void => {
+      setLocalStatus(event.target.value);
+    };
+
+    return (
+      <div className={classes.profileStatus}>
+        <div className={classes.statusBlock}>
+          <h5 className={classes.title}>Status:</h5>
           {editModeStatus ? (
-            <Button text="Save" onClick={onDeactivateEditModeStatus} className={classes.button} />
+            <textarea className={classes.inputStatus} onChange={onChangeLocalStatus} value={localStatus} />
           ) : (
-            <Button text="Edit status" onClick={onActivateEditModeStatus} className={classes.button} />
+            <ProfileStatusText
+              status={status}
+              localStatus={localStatus}
+              isFetchingStatus={isFetchingStatus}
+              statusError={statusError}
+            />
           )}
         </div>
-      )}
-    </div>
-  );
-};
+        {isOwner && (
+          <div className={classes.updateButtonBlock}>
+            {editModeStatus ? (
+              <Button text="Save" onClick={onDeactivateEditModeStatus} className={classes.statusButton} />
+            ) : (
+              <Button text="Edit status" onClick={onActivateEditModeStatus} className={classes.statusButton} />
+            )}
+          </div>
+        )}
+      </div>
+    );
+  }
+);

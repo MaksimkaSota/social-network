@@ -1,6 +1,13 @@
+import type { FC, ReactElement } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { LoginForm } from './LoginForm';
+import type {
+  SetFieldTouchedType,
+  SetFieldValueType,
+  SetStatusType,
+  SetSubmittingType,
+} from '../../../../../utils/types/form';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email address').required('Required email address'),
@@ -14,8 +21,38 @@ const validationSchema = Yup.object().shape({
   }),
 });
 
-export const LoginFormContainer = ({ login, captchaUrl }) => {
-  const onSubmit = (formData, { setStatus, setSubmitting, setFieldValue, setFieldTouched }) => {
+type PropsType = {
+  login: (
+    loginData: { email: string; password: string; rememberMe: boolean; captcha: string },
+    setStatus: SetStatusType,
+    setSubmitting: SetSubmittingType,
+    setFieldValue: SetFieldValueType,
+    setFieldTouched: SetFieldTouchedType
+  ) => void;
+  captchaUrl: string;
+};
+type FormDataType = {
+  email: string;
+  password: string;
+  rememberMe: boolean;
+  captcha: string;
+};
+
+export const LoginFormContainer: FC<PropsType> = ({ login, captchaUrl }): ReactElement => {
+  const onSubmit = (
+    formData: FormDataType,
+    {
+      setStatus,
+      setSubmitting,
+      setFieldValue,
+      setFieldTouched,
+    }: {
+      setStatus: SetStatusType;
+      setSubmitting: SetSubmittingType;
+      setFieldValue: SetFieldValueType;
+      setFieldTouched: SetFieldTouchedType;
+    }
+  ): void => {
     login(formData, setStatus, setSubmitting, setFieldValue, setFieldTouched);
   };
 
@@ -31,7 +68,7 @@ export const LoginFormContainer = ({ login, captchaUrl }) => {
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
-      {({ isSubmitting, status, handleChange, errors, touched }) => (
+      {({ isSubmitting, status, handleChange, errors, touched }): ReactElement => (
         <LoginForm
           isSubmitting={isSubmitting}
           status={status}

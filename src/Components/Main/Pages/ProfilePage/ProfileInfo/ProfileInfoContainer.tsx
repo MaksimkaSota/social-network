@@ -1,5 +1,5 @@
+import type { Dispatch, FC, ReactElement, SetStateAction } from 'react';
 import { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { ProfileInfo } from './ProfileInfo';
 import { useMounted } from '../../../../../hooks/useMounted';
 import { updateData, updateStatus, updatePhoto } from '../../../../../redux/thunks/profile';
@@ -10,27 +10,42 @@ import {
   isFetchingDataSelector,
 } from '../../../../../redux/selectors/loading';
 import { statusErrorSelector, photoErrorSelector, dataErrorSelector } from '../../../../../redux/selectors/error';
+import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
+import { useTypedDispatch } from '../../../../../hooks/useTypedDispatch';
+import type { Nullable } from '../../../../../utils/types/common';
+import type { SetStatusType, SetSubmittingType } from '../../../../../utils/types/form';
+import type { IRequestProfile, IResponseProfile } from '../../../../../utils/types/api';
 
-export const ProfileInfoContainer = ({ profile, isOwner }) => {
-  const status = useSelector(statusSelector);
-  const isFetchingStatus = useSelector(isFetchingStatusSelector);
-  const statusError = useSelector(statusErrorSelector);
-  const isFetchingPhoto = useSelector(isFetchingPhotoSelector);
-  const photoError = useSelector(photoErrorSelector);
-  const isFetchingData = useSelector(isFetchingDataSelector);
-  const dataError = useSelector(dataErrorSelector);
+type PropsType = {
+  profile: Nullable<IResponseProfile>;
+  isOwner: boolean;
+};
 
-  const dispatch = useDispatch();
-  const updateStatusCallback = useCallback((newStatus) => dispatch(updateStatus(newStatus)), [dispatch]);
-  const updatePhotoCallback = useCallback((photo) => dispatch(updatePhoto(photo)), [dispatch]);
+export const ProfileInfoContainer: FC<PropsType> = ({ profile, isOwner }): ReactElement | boolean => {
+  const status = useTypedSelector(statusSelector);
+  const isFetchingStatus = useTypedSelector(isFetchingStatusSelector);
+  const statusError = useTypedSelector(statusErrorSelector);
+  const isFetchingPhoto = useTypedSelector(isFetchingPhotoSelector);
+  const photoError = useTypedSelector(photoErrorSelector);
+  const isFetchingData = useTypedSelector(isFetchingDataSelector);
+  const dataError = useTypedSelector(dataErrorSelector);
+
+  const dispatch = useTypedDispatch();
+  const updateStatusCallback = useCallback((newStatus: string) => dispatch(updateStatus(newStatus)), [dispatch]);
+  const updatePhotoCallback = useCallback((photo: File) => dispatch(updatePhoto(photo)), [dispatch]);
   const updateDataCallback = useCallback(
-    (profileData, setStatus, setSubmitting, setEditModeData) => {
+    (
+      profileData: IRequestProfile,
+      setStatus: SetStatusType,
+      setSubmitting: SetSubmittingType,
+      setEditModeData: Dispatch<SetStateAction<boolean>>
+    ) => {
       dispatch(updateData(profileData, setStatus, setSubmitting, setEditModeData));
     },
     [dispatch]
   );
 
-  const mounted = useMounted();
+  const mounted: boolean = useMounted();
 
   return (
     mounted && (

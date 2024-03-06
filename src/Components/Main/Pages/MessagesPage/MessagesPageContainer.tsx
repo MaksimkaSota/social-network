@@ -1,15 +1,17 @@
-import { useDispatch, useSelector } from 'react-redux';
+import type { FC, ReactElement } from 'react';
 import { useCallback } from 'react';
 import { dialogsSelector, messagesSelector } from '../../../../redux/selectors/messages';
 import { MessagesPage } from './MessagesPage';
 import { addMessage } from '../../../../redux/actions/messages';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
+import { useTypedDispatch } from '../../../../hooks/useTypedDispatch';
 
-const MessagesPageContainer = () => {
-  const dialogs = useSelector(dialogsSelector);
-  const messages = useSelector(messagesSelector);
+const MessagesPageContainer: FC = (): ReactElement => {
+  const dialogs = useTypedSelector(dialogsSelector);
+  const messages = useTypedSelector(messagesSelector);
 
-  const dispatch = useDispatch();
-  const addMessageCallback = useCallback((text) => dispatch(addMessage(text)), [dispatch]);
+  const dispatch = useTypedDispatch();
+  const addMessageCallback = useCallback((text: string) => dispatch(addMessage(text)), [dispatch]);
 
   return <MessagesPage dialogs={dialogs} messages={messages} addMessage={addMessageCallback} />;
 };

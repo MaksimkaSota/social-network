@@ -1,29 +1,46 @@
+import type { FC, ReactElement } from 'react';
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import classes from './Paginator.module.scss';
 import { Button } from '../Button/Button';
 
-export const Paginator = ({ page, pageSize, totalCount, portionSize = 10, onCurrentPageCallback, isFetching }) => {
-  const onCurrentPage = (currentPage) => () => {
+type PropsType = {
+  page: number;
+  pageSize: number;
+  totalCount: number;
+  portionSize?: number;
+  onCurrentPageCallback: (currentPage: number, currentPageSize: number) => void;
+  isFetching: boolean;
+};
+
+export const Paginator: FC<PropsType> = ({
+  page,
+  pageSize,
+  totalCount,
+  portionSize = 10,
+  onCurrentPageCallback,
+  isFetching,
+}): ReactElement => {
+  const onCurrentPage = (currentPage: number) => (): void => {
     onCurrentPageCallback(currentPage, pageSize);
   };
 
   const pagesCount = Math.ceil(totalCount / pageSize);
-  const currentPages = [];
+  const currentPages: Array<number> = [];
   for (let i = 1; i <= pagesCount; i++) {
     currentPages.push(i);
   }
 
   const portionCount = Math.ceil(pagesCount / portionSize);
-  const [currentPortion, setCurrentPortion] = useState(1);
+  const [currentPortion, setCurrentPortion] = useState<number>(1);
   const leftBorderPortion = (currentPortion - 1) * portionSize + 1;
   const rightBorderPortion = currentPortion * portionSize;
 
-  const onPrevButton = () => {
+  const onPrevButton = (): void => {
     setCurrentPortion(currentPortion - 1);
   };
 
-  const onNextButton = () => {
+  const onNextButton = (): void => {
     setCurrentPortion(currentPortion + 1);
   };
 
@@ -37,8 +54,10 @@ export const Paginator = ({ page, pageSize, totalCount, portionSize = 10, onCurr
       {currentPortion > 1 && <Button className={classes.paginatorButton} text="Prev" onClick={onPrevButton} />}
       <div className={classes.paginatorBlock}>
         {currentPages
-          .filter((currentPage) => currentPage >= leftBorderPortion && currentPage <= rightBorderPortion)
-          .map((currentPage) => {
+          .filter(
+            (currentPage: number): boolean => currentPage >= leftBorderPortion && currentPage <= rightBorderPortion
+          )
+          .map((currentPage: number): ReactElement => {
             return (
               <Button
                 className={cn({ [classes.selectedPage]: currentPage === page }, classes.pageNumber)}

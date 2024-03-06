@@ -1,6 +1,8 @@
-import { ADD_POSTS_POST, DELETE_POSTS_POST } from '../types/posts';
+import { PostsActionType } from '../types/posts';
+import type { PostsAction, PostsState } from '../types/posts';
+import type { PostType } from '../../utils/types/common';
 
-const initialState = {
+const initialState: PostsState = {
   posts: [
     { id: 1, postText: 'Hi, Max' },
     { id: 2, postText: 'Hi, Eugene' },
@@ -10,9 +12,9 @@ const initialState = {
   ],
 };
 
-export const postsReducer = (state = initialState, action) => {
+export const postsReducer = (state: PostsState = initialState, action: PostsAction): PostsState => {
   switch (action.type) {
-    case ADD_POSTS_POST: {
+    case PostsActionType.ADD_POSTS_POST: {
       let lastPostId = state.posts[state.posts.length - 1].id;
       const newPost = {
         id: ++lastPostId,
@@ -23,10 +25,10 @@ export const postsReducer = (state = initialState, action) => {
         posts: [...state.posts, newPost],
       };
     }
-    case DELETE_POSTS_POST:
+    case PostsActionType.DELETE_POSTS_POST:
       return {
         ...state,
-        posts: state.posts.filter((post) => post.id !== action.payload),
+        posts: state.posts.filter((post: PostType): boolean => post.id !== action.payload),
       };
     default:
       return state;

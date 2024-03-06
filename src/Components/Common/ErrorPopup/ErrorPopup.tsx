@@ -1,26 +1,33 @@
+import type { FC, ReactElement, MouseEvent, KeyboardEvent } from 'react';
 import { useEffect, useRef } from 'react';
 import classes from './ErrorPopup.module.scss';
 import { Error } from '../Error/Error';
 import { Button } from '../Button/Button';
+import type { ErrorType, Nullable } from '../../../utils/types/common';
 
-export const ErrorPopup = ({ errorObject, resetError }) => {
-  const errorPopup = useRef(null);
+type PropsType = {
+  errorObject: Nullable<ErrorType>;
+  resetError: (error: Nullable<ErrorType>) => void;
+};
+
+export const ErrorPopup: FC<PropsType> = ({ errorObject, resetError }): ReactElement => {
+  const errorPopup = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    errorPopup.current.focus();
+    errorPopup.current?.focus();
   }, []);
 
-  const onButtonClick = () => {
+  const onButtonClick = (): void => {
     resetError(null);
   };
 
-  const onPopupMouseClick = (event) => {
-    if (event.target.className === errorPopup.current.className) {
+  const onPopupMouseClick = (event: MouseEvent<HTMLDivElement>): void => {
+    if ((event.target as Element).className === errorPopup.current?.className) {
       resetError(null);
     }
   };
 
-  const onPopupKeyboardClick = (event) => {
+  const onPopupKeyboardClick = (event: KeyboardEvent<HTMLDivElement>): void => {
     if (event.code === 'Escape') {
       resetError(null);
     }
@@ -30,12 +37,12 @@ export const ErrorPopup = ({ errorObject, resetError }) => {
     <div
       className={classes.errorPopup}
       ref={errorPopup}
-      tabIndex="-1"
+      tabIndex={-1}
       onClick={onPopupMouseClick}
       onKeyDown={onPopupKeyboardClick}
     >
       <div className={classes.errorPopupContainer}>
-        <Error code={errorObject.code} message={errorObject.message} />
+        <Error code={errorObject!.code} message={errorObject!.message} />
         <Button text="Close" className={classes.errorPopupButton} onClick={onButtonClick} />
       </div>
     </div>

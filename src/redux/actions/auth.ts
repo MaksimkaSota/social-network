@@ -1,27 +1,55 @@
-import {
-  SET_AUTH_REQUEST,
-  SET_AUTH_SUCCESS_CORRECT,
-  SET_AUTH_SUCCESS_INCORRECT,
-  SET_AUTH_FAILURE,
-  SET_AUTH_PHOTO,
-  SET_AUTH_PHOTO_ERROR,
-  RESET_AUTH_DATA,
-  SET_AUTH_CAPTCHA_URL,
-  SET_AUTH_LOGOUT_ERROR,
+import { AuthActionType } from '../types/auth';
+import type {
+  ResetAuthDataAction,
+  SetAuthFailureAction,
+  SetAuthRequestAction,
+  SetAuthSuccessCorrectAction,
+  SetAuthSuccessIncorrectAction,
+  SetAuthUserPhotoAction,
+  SetAuthUserPhotoErrorAction,
+  SetCaptchaUrlAction,
+  SetLogoutErrorAction,
 } from '../types/auth';
+import type { AuthData, ErrorType, Nullable } from '../../utils/types/common';
+import type { IAuthData } from '../../utils/types/api';
 
-export const setAuthRequest = () => ({ type: SET_AUTH_REQUEST });
-export const setAuthSuccessCorrect = (data) => ({ type: SET_AUTH_SUCCESS_CORRECT, payload: data });
-export const setAuthSuccessIncorrect = (incorrectAuthText) => ({
-  type: SET_AUTH_SUCCESS_INCORRECT,
+export const setAuthRequest = (): SetAuthRequestAction => ({ type: AuthActionType.SET_AUTH_REQUEST });
+export const setAuthSuccessCorrect = (data: IAuthData): SetAuthSuccessCorrectAction => ({
+  type: AuthActionType.SET_AUTH_SUCCESS_CORRECT,
+  payload: data,
+});
+export const setAuthSuccessIncorrect = (incorrectAuthText: string): SetAuthSuccessIncorrectAction => ({
+  type: AuthActionType.SET_AUTH_SUCCESS_INCORRECT,
   payload: incorrectAuthText,
 });
-export const setAuthFailure = (code, message) => ({ type: SET_AUTH_FAILURE, payload: { code, message } });
-export const setAuthUserPhoto = (photo) => ({ type: SET_AUTH_PHOTO, payload: photo });
-export const setAuthUserPhotoError = (code, message) => ({ type: SET_AUTH_PHOTO_ERROR, payload: { code, message } });
-export const resetAuthData = ({ id, email, login, isAuth, authUserPhoto, captchaUrl }) => ({
-  type: RESET_AUTH_DATA,
+export const setAuthFailure = (message: string, code?: number): SetAuthFailureAction => ({
+  type: AuthActionType.SET_AUTH_FAILURE,
+  payload: { code, message },
+});
+export const setAuthUserPhoto = (photo: Nullable<string>): SetAuthUserPhotoAction => ({
+  type: AuthActionType.SET_AUTH_PHOTO,
+  payload: photo,
+});
+export const setAuthUserPhotoError = (message: string, code?: number): SetAuthUserPhotoErrorAction => ({
+  type: AuthActionType.SET_AUTH_PHOTO_ERROR,
+  payload: { code, message },
+});
+export const resetAuthData = ({
+  id,
+  email,
+  login,
+  isAuth,
+  authUserPhoto,
+  captchaUrl,
+}: AuthData): ResetAuthDataAction => ({
+  type: AuthActionType.RESET_AUTH_DATA,
   payload: { id, email, login, isAuth, authUserPhoto, captchaUrl },
 });
-export const setCaptchaUrl = (captchaUrl) => ({ type: SET_AUTH_CAPTCHA_URL, payload: captchaUrl });
-export const setLogoutError = (error) => ({ type: SET_AUTH_LOGOUT_ERROR, payload: error });
+export const setCaptchaUrl = (captchaUrl: string): SetCaptchaUrlAction => ({
+  type: AuthActionType.SET_AUTH_CAPTCHA_URL,
+  payload: captchaUrl,
+});
+export const setLogoutError = (error: Nullable<ErrorType>): SetLogoutErrorAction => ({
+  type: AuthActionType.SET_AUTH_LOGOUT_ERROR,
+  payload: error,
+});

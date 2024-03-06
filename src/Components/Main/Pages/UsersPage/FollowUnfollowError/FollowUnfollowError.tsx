@@ -1,7 +1,14 @@
+import type { FC, ReactElement } from 'react';
 import classes from './FollowUnfollowError.module.scss';
+import type { FollowUnfollowErrorType } from '../../../../../utils/types/common';
 
-export const FollowUnfollowError = ({ errors, userId }) => {
-  const currentError = errors.find((error) => error.id === userId);
+type PropsType = {
+  errors: Array<FollowUnfollowErrorType>;
+  userId: number;
+};
+
+export const FollowUnfollowError: FC<PropsType> = ({ errors, userId }): ReactElement | undefined => {
+  const currentError = errors.find((error: FollowUnfollowErrorType) => error.id === userId);
 
   return (
     currentError && (

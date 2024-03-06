@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux';
+import type { AnyAction } from 'redux';
+import type { ThunkDispatch } from 'redux-thunk';
 import { profileReducer } from './profile';
 import { messagesReducer } from './messages';
 import { postsReducer } from './posts';
@@ -16,3 +18,6 @@ export const rootReducer = combineReducers({
   loading: loadingReducer,
   error: errorReducer,
 });
+
+export type AppState = ReturnType<typeof rootReducer>;
+export type AppDispatch = ThunkDispatch<AppState, unknown, AnyAction>;

@@ -1,16 +1,36 @@
-import { Form } from 'formik';
+import type { ChangeEvent, FC, ReactElement } from 'react';
 import { useState } from 'react';
+import { Form } from 'formik';
 import cn from 'classnames';
 import classes from './ProfileDataForm.module.scss';
 import { FormField } from '../../../../Common/FormField/FormField';
 import { Button } from '../../../../Common/Button/Button';
 import { FormServerError } from '../../../../Common/FormServerError/FormServerError';
 import { ContactsForm } from '../ContactsForm/ContactsForm';
+import type { FormikErrorsType, HandleChangeType, SetFieldValueType } from '../../../../../utils/types/form';
+import type { IRequestProfile } from '../../../../../utils/types/api';
+import { FormName } from '../../../../../utils/types/enums';
 
-export const ProfileDataForm = ({ data, isSubmitting, status, handleChange, setFieldValue, errors }) => {
-  const [editModeSkills, setEditModeSkills] = useState(data.lookingForAJob);
+type PropsType = {
+  data: IRequestProfile;
+  isSubmitting: boolean;
+  status: any;
+  handleChange: HandleChangeType;
+  setFieldValue: SetFieldValueType;
+  errors: FormikErrorsType;
+};
 
-  const onToggleEditModeSkills = (event) => {
+export const ProfileDataForm: FC<PropsType> = ({
+  data,
+  isSubmitting,
+  status,
+  handleChange,
+  setFieldValue,
+  errors,
+}): ReactElement => {
+  const [editModeSkills, setEditModeSkills] = useState<boolean>(data.lookingForAJob);
+
+  const onToggleEditModeSkills = (event: ChangeEvent<any>): void => {
     setFieldValue('lookingForAJob', event.target.checked);
     setEditModeSkills(event.target.checked);
   };
@@ -24,20 +44,20 @@ export const ProfileDataForm = ({ data, isSubmitting, status, handleChange, setF
         <h5 className={classes.title}>Full name:</h5>
         <FormField
           classNameField={cn(classes.field, { [classes.fieldError]: status?.fullName })}
-          name="fullName"
+          name={FormName.full_name}
           type="text"
           placeholder="Full name"
           onChange={handleChange}
           errors={errors}
         />
       </div>
-      {status?.fullName && <FormServerError name="fullName" status={status} className={classes.error} />}
+      {status?.fullName && <FormServerError name={FormName.full_name} status={status} className={classes.error} />}
       <div className={classes.descriptionBlock}>
         <h5 className={classes.title}>Looking for a job:</h5>
         <FormField
           classNameField={classes.checkbox}
           classNameLabel={classes.label}
-          name="lookingForAJob"
+          name={FormName.looking_for_a_job}
           type="checkbox"
           props={{ id: 'rememberMe' }}
           text="looking for a job"
@@ -49,25 +69,25 @@ export const ProfileDataForm = ({ data, isSubmitting, status, handleChange, setF
           <h5 className={classes.title}>My professional skills:</h5>
           <FormField
             classNameField={cn(classes.textarea, { [classes.fieldError]: status?.Job })}
-            name="lookingForAJobDescription"
+            name={FormName.looking_for_a_job_description}
             component="textarea"
             placeholder="My professional skills"
             onChange={handleChange}
           />
         </div>
       )}
-      {status?.Job && <FormServerError name="Job" status={status} className={classes.error} />}
+      {status?.Job && <FormServerError name={FormName.job} status={status} className={classes.error} />}
       <div className={classes.descriptionBlock}>
         <h5 className={classes.title}>About me:</h5>
         <FormField
           classNameField={cn(classes.textarea, { [classes.fieldError]: status?.aboutMe })}
-          name="aboutMe"
+          name={FormName.about_me}
           component="textarea"
           placeholder="About me"
           onChange={handleChange}
         />
       </div>
-      {status?.aboutMe && <FormServerError name="aboutMe" status={status} className={classes.error} />}
+      {status?.aboutMe && <FormServerError name={FormName.about_me} status={status} className={classes.error} />}
       <ContactsForm data={data} status={status} handleChange={handleChange} />
     </Form>
   );

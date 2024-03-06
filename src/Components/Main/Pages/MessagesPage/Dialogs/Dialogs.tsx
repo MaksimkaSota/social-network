@@ -1,8 +1,16 @@
+import type { FC, ReactElement } from 'react';
 import classes from './Dialogs.module.scss';
 import { Dialog } from '../Dialog/Dialog';
+import type { DialogType } from '../../../../../utils/types/common';
 
-export const Dialogs = ({ dialogs }) => {
-  const dialogsElements = dialogs.map((dialog) => <Dialog name={dialog.name} id={dialog.id} key={dialog.id} />);
+type PropsType = {
+  dialogs: Array<DialogType>;
+};
+
+export const Dialogs: FC<PropsType> = ({ dialogs }): ReactElement => {
+  const dialogsElements = dialogs.map(
+    (dialog: DialogType): ReactElement => <Dialog name={dialog.name} id={dialog.id} key={dialog.id} />
+  );
 
   return (
     <div className={classes.dialogsBlock}>
