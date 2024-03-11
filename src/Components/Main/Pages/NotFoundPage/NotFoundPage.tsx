@@ -4,7 +4,7 @@ import { Error } from '../../../Common/Error/Error';
 
 export const NotFoundPage: FC = (): ReactElement => {
   const { pathname } = useLocation();
-  const message: string = `The requested URL "${pathname}" was not found on this server!`;
+  const message = `The requested URL "${pathname}" was not found on this server!`;
 
   return <Error code={404} message={message} />;
 };
