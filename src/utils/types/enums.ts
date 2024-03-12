@@ -44,4 +44,6 @@ export enum FormName {
   password = 'password',
   remember_me = 'rememberMe',
   captcha = 'captcha',
+  term = 'term',
+  friend = 'friend',
 }

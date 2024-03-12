@@ -13,14 +13,18 @@ import {
   usersSelector,
   followErrorsSelector,
   unfollowErrorsSelector,
+  filterSelector,
 } from '../../../../redux/selectors/users';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { useTypedDispatch } from '../../../../hooks/useTypedDispatch';
+import type { FilterType } from '../../../../utils/types/common';
+import type { SetSubmittingType } from '../../../../utils/types/form';
 
 const UsersPageContainer: FC = (): ReactElement | boolean => {
   const users = useTypedSelector(usersSelector);
   const page = useTypedSelector(pageSelector);
   const pageSize = useTypedSelector(pageSizeSelector);
+  const filter = useTypedSelector(filterSelector);
   const totalCount = useTypedSelector(totalCountSelector);
   const subscribersId = useTypedSelector(subscribersIdSelector);
   const isFetchingUsers = useTypedSelector(isFetchingUsersSelector);
@@ -32,14 +36,15 @@ const UsersPageContainer: FC = (): ReactElement | boolean => {
   const followUserCallback = useCallback((id: number) => dispatch(followUser(id)), [dispatch]);
   const unfollowUserCallback = useCallback((id: number) => dispatch(unfollowUser(id)), [dispatch]);
   const getUsersCallback = useCallback(
-    (currentPage: number, currentPageSize: number) => dispatch(getUsers(currentPage, currentPageSize)),
+    (currentPage: number, currentPageSize: number, currentFilter: FilterType, setSubmitting?: SetSubmittingType) =>
+      dispatch(getUsers(currentPage, currentPageSize, currentFilter, setSubmitting)),
     [dispatch]
   );
 
   const mounted: boolean = useMounted();
 
   useEffect(() => {
-    dispatch(getUsers(page, pageSize));
+    dispatch(getUsers(page, pageSize, filter));
     // eslint-disable-next-line
   }, [dispatch]);
 
@@ -49,6 +54,7 @@ const UsersPageContainer: FC = (): ReactElement | boolean => {
         users={users}
         page={page}
         pageSize={pageSize}
+        filter={filter}
         totalCount={totalCount}
         isFetchingUsers={isFetchingUsers}
         usersError={usersError}

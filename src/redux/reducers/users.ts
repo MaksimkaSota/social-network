@@ -10,6 +10,10 @@ const initialState: UsersState = {
   subscribersId: [],
   followErrors: [],
   unfollowErrors: [],
+  filter: {
+    term: '',
+    friend: 'null',
+  },
 };
 
 export const usersReducer = (state: UsersState = initialState, action: UsersAction): UsersState => {
@@ -55,6 +59,11 @@ export const usersReducer = (state: UsersState = initialState, action: UsersActi
         subscribersId: action.payload.isFetching
           ? [...state.subscribersId, action.payload.id]
           : state.subscribersId.filter((id: number): boolean => id !== action.payload.id),
+      };
+    case UsersActionType.SET_USERS_FILTER:
+      return {
+        ...state,
+        filter: action.payload,
       };
     default:
       return state;

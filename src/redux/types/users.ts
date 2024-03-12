@@ -1,5 +1,5 @@
 import type { IUser } from '../../utils/types/api';
-import type { ErrorType, FollowUnfollowErrorType, SubscribersId } from '../../utils/types/common';
+import type { ErrorType, FilterType, FollowUnfollowErrorType, SubscribersId } from '../../utils/types/common';
 
 export type UsersState = {
   users: Array<IUser>;
@@ -9,6 +9,7 @@ export type UsersState = {
   subscribersId: Array<number>;
   followErrors: Array<FollowUnfollowErrorType>;
   unfollowErrors: Array<FollowUnfollowErrorType>;
+  filter: FilterType;
 };
 
 export enum UsersActionType {
@@ -22,6 +23,7 @@ export enum UsersActionType {
   SET_USERS_PAGE = 'SET_USERS_PAGE',
   SET_USERS_TOTAL_COUNT = 'SET_USERS_TOTAL_COUNT',
   SET_USERS_SUBSCRIBERS_ID = 'SET_USERS_SUBSCRIBERS_ID',
+  SET_USERS_FILTER = 'SET_USERS_FILTER',
 }
 
 export type SetUsersRequestAction = { type: UsersActionType.SET_USERS_REQUEST };
@@ -37,6 +39,7 @@ export type SetUnfollowErrorsAction = {
 export type SetPageAction = { type: UsersActionType.SET_USERS_PAGE; payload: number };
 export type SetTotalCountAction = { type: UsersActionType.SET_USERS_TOTAL_COUNT; payload: number };
 export type SetSubscribersIdAction = { type: UsersActionType.SET_USERS_SUBSCRIBERS_ID; payload: SubscribersId };
+export type SetFilterAction = { type: UsersActionType.SET_USERS_FILTER; payload: FilterType };
 
 export type UsersAction =
   | SetUsersRequestAction
@@ -48,4 +51,5 @@ export type UsersAction =
   | SetUnfollowErrorsAction
   | SetPageAction
   | SetTotalCountAction
-  | SetSubscribersIdAction;
+  | SetSubscribersIdAction
+  | SetFilterAction;

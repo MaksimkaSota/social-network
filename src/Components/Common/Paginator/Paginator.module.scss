@@ -1,10 +1,9 @@
 .paginator {
-  margin: $marginMin auto $marginMin auto;
-  @include flex(null, center);
-  justify-content: center;
+  margin: $marginMin auto 0 auto;
+  @include flex(center, center);
   .paginatorBlock {
     display: flex;
-    margin: 0 $marginMin 0 $marginMin;
+    margin: 0 $marginMin 0 0;
     .pageNumber:not(:last-child) {
       margin: 0 $marginMin 0 0;
     }
@@ -15,5 +14,8 @@
   }
   .paginatorButton {
     margin: 0;
+  }
+  .selected {
+    color: $captions;
   }
 }

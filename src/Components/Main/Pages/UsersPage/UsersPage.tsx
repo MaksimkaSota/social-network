@@ -4,20 +4,28 @@ import { User } from './User/User';
 import { Paginator } from '../../../Common/Paginator/Paginator';
 import { Preloader } from '../../../Common/Preloader/Preloader';
 import { Error } from '../../../Common/Error/Error';
-import type { ErrorType, FollowUnfollowErrorType, Nullable } from '../../../../utils/types/common';
+import type { ErrorType, FilterType, FollowUnfollowErrorType, Nullable } from '../../../../utils/types/common';
 import type { IUser } from '../../../../utils/types/api';
+import { UsersSearchFormContainer } from './UsersSearchForm/UsersSearchFormContainer';
+import type { SetSubmittingType } from '../../../../utils/types/form';
 
 type PropsType = {
   users: Array<IUser>;
   page: number;
   pageSize: number;
+  filter: FilterType;
   totalCount: number;
   isFetchingUsers: boolean;
   usersError: Nullable<ErrorType>;
   subscribersId: Array<number>;
   followErrors: Array<FollowUnfollowErrorType>;
   unfollowErrors: Array<FollowUnfollowErrorType>;
-  getUsers: (currentPage: number, currentPageSize: number) => void;
+  getUsers: (
+    currentPage: number,
+    currentPageSize: number,
+    currentFilter: FilterType,
+    setSubmitting?: SetSubmittingType
+  ) => void;
   followUser: (id: number) => void;
   unfollowUser: (id: number) => void;
 };
@@ -26,6 +34,7 @@ export const UsersPage: FC<PropsType> = ({
   users,
   page,
   pageSize,
+  filter,
   totalCount,
   isFetchingUsers,
   usersError,
@@ -46,9 +55,11 @@ export const UsersPage: FC<PropsType> = ({
 
   return (
     <div className={classes.usersPageBlock}>
+      <UsersSearchFormContainer pageSize={pageSize} getUsers={getUsers} />
       <Paginator
         page={page}
         pageSize={pageSize}
+        filter={filter}
         totalCount={totalCount}
         onCurrentPageCallback={getUsers}
         isFetching={isFetchingUsers}

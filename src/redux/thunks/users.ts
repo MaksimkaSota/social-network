@@ -11,26 +11,37 @@ import {
   setFollowErrors,
   unfollow,
   setUnfollowErrors,
+  setFilter,
 } from '../actions/users';
 import { followAPI, getUsersAPI, unfollowAPI } from '../../api/users';
 import { getErrorMessage } from '../../utils/helpers/thunksHelpers';
 import type { FollowAction, UnfollowAction, UsersAction } from '../types/users';
-import type { ThunkType } from '../../utils/types/common';
+import type { FilterType, ThunkType } from '../../utils/types/common';
 import type { IResponse, IUsers } from '../../utils/types/api';
 import { StatusCode } from '../../utils/types/enums';
+import type { SetSubmittingType } from '../../utils/types/form';
 
-export const getUsers = (page: number, pageSize: number): ThunkType<UsersAction> => {
+export const getUsers = (
+  page: number,
+  pageSize: number,
+  filter: FilterType,
+  setSubmitting?: SetSubmittingType
+): ThunkType<UsersAction> => {
   return async (dispatch) => {
     try {
       dispatch(setUsersRequest());
       dispatch(setPage(page));
-      const data: IUsers = await getUsersAPI(page, pageSize);
+      dispatch(setFilter(filter.term, filter.friend));
+      const data: IUsers = await getUsersAPI(page, pageSize, filter.term, filter.friend);
       dispatch(setUsersSuccess(data.items));
       dispatch(setTotalCount(data.totalCount));
     } catch (error) {
       if (isAxiosError(error)) {
         dispatch(setUsersFailure(getErrorMessage(error), error.response?.status));
       }
+    }
+    if (setSubmitting) {
+      setSubmitting(false);
     }
   };
 };
