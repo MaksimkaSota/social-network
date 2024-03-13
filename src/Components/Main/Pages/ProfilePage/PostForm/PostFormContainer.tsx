@@ -1,5 +1,5 @@
+import { memo } from 'react';
 import type { ReactElement } from 'react';
-import React from 'react';
 import { Formik } from 'formik';
 import type { FormikHelpers } from 'formik';
 import * as Yup from 'yup';
@@ -16,7 +16,7 @@ type FormDataType = {
   text: string;
 };
 
-export const PostFormContainer = React.memo<PropsType>(({ addPost }): ReactElement => {
+export const PostFormContainer = memo<PropsType>(({ addPost }): ReactElement => {
   const onSubmit = (formData: FormDataType, { resetForm }: FormikHelpers<FormDataType>): void => {
     addPost(formData.text);
     resetForm();

@@ -1,5 +1,5 @@
+import { useState, memo } from 'react';
 import type { Dispatch, ReactElement, SetStateAction } from 'react';
-import React, { useState } from 'react';
 import classes from './ProfileData.module.scss';
 import { Button } from '../../../../Common/Button/Button';
 import { ProfileDataFormContainer } from '../ProfileDataForm/ProfileDataFormContainer';
@@ -21,29 +21,27 @@ type PropsType = {
   dataError: Nullable<ErrorType>;
 };
 
-export const ProfileData = React.memo<PropsType>(
-  ({ isOwner, data, updateData, isFetchingData, dataError }): ReactElement => {
-    const [editModeData, setEditModeData] = useState<boolean>(false);
+export const ProfileData = memo<PropsType>(({ isOwner, data, updateData, isFetchingData, dataError }): ReactElement => {
+  const [editModeData, setEditModeData] = useState<boolean>(false);
 
-    const onActivateEditModeData = (): void => {
-      setEditModeData(true);
-    };
+  const onActivateEditModeData = (): void => {
+    setEditModeData(true);
+  };
 
-    return (
-      <div className={classes.dataBlock}>
-        {editModeData ? (
-          <ProfileDataFormContainer data={data} updateData={updateData} setEditModeData={setEditModeData} />
-        ) : (
-          <>
-            {isOwner && (
-              <div className={classes.updateButtonBlock}>
-                <Button text="Edit profile" className={classes.button} onClick={onActivateEditModeData} />
-              </div>
-            )}
-            <ProfileDataDescription data={data} isFetchingData={isFetchingData} dataError={dataError} />
-          </>
-        )}
-      </div>
-    );
-  }
-);
+  return (
+    <div className={classes.dataBlock}>
+      {editModeData ? (
+        <ProfileDataFormContainer data={data} updateData={updateData} setEditModeData={setEditModeData} />
+      ) : (
+        <>
+          {isOwner && (
+            <div className={classes.updateButtonBlock}>
+              <Button text="Edit profile" className={classes.button} onClick={onActivateEditModeData} />
+            </div>
+          )}
+          <ProfileDataDescription data={data} isFetchingData={isFetchingData} dataError={dataError} />
+        </>
+      )}
+    </div>
+  );
+});

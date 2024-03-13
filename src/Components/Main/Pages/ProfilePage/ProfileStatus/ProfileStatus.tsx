@@ -1,5 +1,5 @@
+import { useEffect, useState, memo } from 'react';
 import type { ChangeEvent, ReactElement } from 'react';
-import React, { useEffect, useState } from 'react';
 import classes from './ProfileStatus.module.scss';
 import { ProfileStatusText } from '../ProfileStatusText/ProfileStatusText';
 import { Button } from '../../../../Common/Button/Button';
@@ -13,7 +13,7 @@ type PropsType = {
   statusError: Nullable<ErrorType>;
 };
 
-export const ProfileStatus = React.memo<PropsType>(
+export const ProfileStatus = memo<PropsType>(
   ({ isOwner, status, updateStatus, isFetchingStatus, statusError }): ReactElement => {
     const [editModeStatus, setEditModeStatus] = useState<boolean>(false);
     const [localStatus, setLocalStatus] = useState<string>(status);

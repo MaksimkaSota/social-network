@@ -1,5 +1,5 @@
+import { memo } from 'react';
 import type { ReactElement } from 'react';
-import React from 'react';
 import { Formik } from 'formik';
 import type { FormikHelpers } from 'formik';
 import * as Yup from 'yup';
@@ -23,7 +23,7 @@ type PropsType = {
 };
 type FormDataType = FilterType;
 
-export const UsersSearchFormContainer = React.memo<PropsType>(({ pageSize, filter, getUsers }): ReactElement => {
+export const UsersSearchFormContainer = memo<PropsType>(({ pageSize, filter, getUsers }): ReactElement => {
   const onSubmit = (formData: FormDataType, { setSubmitting }: FormikHelpers<FormDataType>): void => {
     getUsers(1, pageSize, formData, setSubmitting);
   };
