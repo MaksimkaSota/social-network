@@ -8,6 +8,7 @@ export enum UrlSubString {
   profile = 'profile/',
   status = 'profile/status/',
   photo = 'profile/photo/',
+  users = 'users',
   follow = 'follow/',
 }
 export enum HeaderValue {

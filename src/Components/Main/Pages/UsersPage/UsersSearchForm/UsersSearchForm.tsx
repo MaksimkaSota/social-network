@@ -27,7 +27,7 @@ export const UsersSearchForm: FC<PropsType> = ({ handleChange, errors, touched, 
         touched={touched}
       />
       <Field name={FormName.friend} component="select" className={classes.selectSearch}>
-        <option value="null">All</option>
+        <option value="">All</option>
         <option value="true">Only followed</option>
         <option value="false">Only unfollowed</option>
       </Field>
