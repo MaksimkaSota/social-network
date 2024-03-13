@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import React from 'react';
-import type { FormikHelpers } from 'formik';
 import { Formik } from 'formik';
+import type { FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { UsersSearchForm } from './UsersSearchForm';
 import type { FilterType } from '../../../../../utils/types/common';

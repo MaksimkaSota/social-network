@@ -1,9 +1,9 @@
 import type { ReactElement } from 'react';
 import React from 'react';
 import { Formik } from 'formik';
+import type { FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { PostForm } from './PostForm';
-import type { ResetFormType } from '../../../../../utils/types/form';
 
 const validationSchema = Yup.object().shape({
   text: Yup.string().max(100, 'Must be not more than 100 characters').required('Required'),
@@ -17,7 +17,7 @@ type FormDataType = {
 };
 
 export const PostFormContainer = React.memo<PropsType>(({ addPost }): ReactElement => {
-  const onSubmit = (formData: FormDataType, { resetForm }: { resetForm: ResetFormType }): void => {
+  const onSubmit = (formData: FormDataType, { resetForm }: FormikHelpers<FormDataType>): void => {
     addPost(formData.text);
     resetForm();
   };

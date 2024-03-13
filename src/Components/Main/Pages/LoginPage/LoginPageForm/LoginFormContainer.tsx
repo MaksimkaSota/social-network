@@ -1,5 +1,6 @@
 import type { FC, ReactElement } from 'react';
 import { Formik } from 'formik';
+import type { FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { LoginForm } from './LoginForm';
 import type {
@@ -36,22 +37,13 @@ type FormDataType = {
   password: string;
   rememberMe: boolean;
   captcha: string;
+  isCaptcha: boolean;
 };
 
 export const LoginFormContainer: FC<PropsType> = ({ login, captchaUrl }): ReactElement => {
   const onSubmit = (
     formData: FormDataType,
-    {
-      setStatus,
-      setSubmitting,
-      setFieldValue,
-      setFieldTouched,
-    }: {
-      setStatus: SetStatusType;
-      setSubmitting: SetSubmittingType;
-      setFieldValue: SetFieldValueType;
-      setFieldTouched: SetFieldTouchedType;
-    }
+    { setStatus, setSubmitting, setFieldValue, setFieldTouched }: FormikHelpers<FormDataType>
   ): void => {
     login(formData, setStatus, setSubmitting, setFieldValue, setFieldTouched);
   };
