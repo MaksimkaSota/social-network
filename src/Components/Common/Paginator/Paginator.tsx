@@ -55,7 +55,8 @@ export const Paginator: FC<PropsType> = ({
 
   useEffect(() => {
     setCurrentPortion(Math.ceil(page / portionSize));
-  }, [page, portionSize]);
+    // eslint-disable-next-line
+  }, [pagesCount]);
 
   return (
     <div className={classes.paginator}>

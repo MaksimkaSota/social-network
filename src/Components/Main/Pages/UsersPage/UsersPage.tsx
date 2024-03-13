@@ -55,27 +55,33 @@ export const UsersPage: FC<PropsType> = ({
 
   return (
     <div className={classes.usersPageBlock}>
-      <UsersSearchFormContainer pageSize={pageSize} getUsers={getUsers} />
-      <Paginator
-        page={page}
-        pageSize={pageSize}
-        filter={filter}
-        totalCount={totalCount}
-        onCurrentPageCallback={getUsers}
-        isFetching={isFetchingUsers}
-      />
+      <UsersSearchFormContainer pageSize={pageSize} filter={filter} getUsers={getUsers} />
+      {!!users.length && (
+        <Paginator
+          page={page}
+          pageSize={pageSize}
+          filter={filter}
+          totalCount={totalCount}
+          onCurrentPageCallback={getUsers}
+          isFetching={isFetchingUsers}
+        />
+      )}
       <div>
-        {users.map(
-          (user: IUser): ReactElement => (
-            <User
-              key={user.id}
-              user={user}
-              subscribersId={subscribersId}
-              followErrors={followErrors}
-              unfollowErrors={unfollowErrors}
-              followUser={followUser}
-              unfollowUser={unfollowUser}
-            />
+        {!isFetchingUsers && !users.length ? (
+          <p className={classes.notFoundMessage}>Users not found</p>
+        ) : (
+          users.map(
+            (user: IUser): ReactElement => (
+              <User
+                key={user.id}
+                user={user}
+                subscribersId={subscribersId}
+                followErrors={followErrors}
+                unfollowErrors={unfollowErrors}
+                followUser={followUser}
+                unfollowUser={unfollowUser}
+              />
+            )
           )
         )}
       </div>

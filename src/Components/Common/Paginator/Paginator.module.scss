@@ -3,7 +3,7 @@
   @include flex(center, center);
   .paginatorBlock {
     display: flex;
-    margin: 0 $marginMin 0 0;
+    margin: 0 $marginMin 0 $marginMin;
     .pageNumber:not(:last-child) {
       margin: 0 $marginMin 0 0;
     }
