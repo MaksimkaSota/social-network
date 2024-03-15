@@ -55,7 +55,7 @@ export const UsersPage: FC<PropsType> = ({
 
   return (
     <div className={classes.usersPageBlock}>
-      <UsersSearchFormContainer pageSize={pageSize} filter={filter} getUsers={getUsers} />
+      <UsersSearchFormContainer page={page} pageSize={pageSize} filter={filter} getUsers={getUsers} />
       {!!users.length && (
         <Paginator
           page={page}

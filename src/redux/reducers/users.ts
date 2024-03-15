@@ -12,7 +12,7 @@ const initialState: UsersState = {
   unfollowErrors: [],
   filter: {
     term: '',
-    friend: 'null',
+    friend: '',
   },
 };
 

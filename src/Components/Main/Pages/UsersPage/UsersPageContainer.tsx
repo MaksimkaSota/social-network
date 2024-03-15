@@ -1,5 +1,6 @@
 import type { FC, ReactElement } from 'react';
 import { useCallback, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { UsersPage } from './UsersPage';
 import { useMounted } from '../../../../hooks/useMounted';
 import { followUser, getUsers, unfollowUser } from '../../../../redux/thunks/users';
@@ -43,10 +44,31 @@ const UsersPageContainer: FC = (): ReactElement | boolean => {
 
   const mounted: boolean = useMounted();
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
-    dispatch(getUsers(page, pageSize, filter));
+    const parsedSearchParams = Object.fromEntries(searchParams);
+
+    const actualTerm = parsedSearchParams.term || filter.term;
+    const actualFriend = parsedSearchParams.friend || filter.friend;
+    const actualPage = +parsedSearchParams.page || page;
+
+    const actualFilter = { term: actualTerm, friend: actualFriend };
+
+    dispatch(getUsers(actualPage, pageSize, actualFilter));
     // eslint-disable-next-line
   }, [dispatch]);
+
+  useEffect(() => {
+    const termURL = filter.term === '' ? '' : `&term=${filter.term}`;
+    const friendURL = filter.friend === '' ? '' : `&friend=${filter.friend}`;
+    const pageURL = page === 1 ? '' : `&page=${page}`;
+
+    const queryURL = termURL + friendURL + pageURL;
+
+    setSearchParams(queryURL);
+    // eslint-disable-next-line
+  }, [filter, page]);
 
   return (
     mounted && (

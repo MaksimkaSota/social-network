@@ -12,6 +12,7 @@ const validationSchema = Yup.object().shape({
 });
 
 type PropsType = {
+  page: number;
   pageSize: number;
   filter: FilterType;
   getUsers: (
@@ -23,9 +24,13 @@ type PropsType = {
 };
 type FormDataType = FilterType;
 
-export const UsersSearchFormContainer = memo<PropsType>(({ pageSize, filter, getUsers }): ReactElement => {
+export const UsersSearchFormContainer = memo<PropsType>(({ page, pageSize, filter, getUsers }): ReactElement => {
   const onSubmit = (formData: FormDataType, { setSubmitting }: FormikHelpers<FormDataType>): void => {
-    getUsers(1, pageSize, formData, setSubmitting);
+    let currentPage = page;
+    if (formData.term !== filter.term || formData.friend !== filter.friend) {
+      currentPage = 1;
+    }
+    getUsers(currentPage, pageSize, formData, setSubmitting);
   };
 
   return (
