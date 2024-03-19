@@ -17,22 +17,22 @@ const state: MessagesState = {
   ],
 };
 
-describe('Messages reducer tests', () => {
-  it('Messages length should be increment', () => {
+describe('Messages reducer tests', (): void => {
+  it('Messages length should be increment', (): void => {
     const action = addMessage('new message text');
     const newState = messagesReducer(state, action);
 
     expect(newState.messages.length).toBe(4);
   });
 
-  it('New message text should be correct', () => {
+  it('New message text should be correct', (): void => {
     const action = addMessage('new message text');
     const newState = messagesReducer(state, action);
 
     expect(newState.messages[3].messageText).toBe('new message text');
   });
 
-  it('Messages length should be decrement', () => {
+  it('Messages length should be decrement', (): void => {
     const action = deleteMessage(1);
     const newState = messagesReducer(state, action);
 

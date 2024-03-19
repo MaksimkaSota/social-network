@@ -12,22 +12,22 @@ const state: PostsState = {
   ],
 };
 
-describe('Posts reducer tests', () => {
-  it('Posts length should be increment', () => {
+describe('Posts reducer tests', (): void => {
+  it('Posts length should be increment', (): void => {
     const action = addPost('new post text');
     const newState = postsReducer(state, action);
 
     expect(newState.posts.length).toBe(6);
   });
 
-  it('New post text should be correct', () => {
+  it('New post text should be correct', (): void => {
     const action = addPost('new post text');
     const newState = postsReducer(state, action);
 
     expect(newState.posts[5].postText).toBe('new post text');
   });
 
-  it('Posts length should be decrement', () => {
+  it('Posts length should be decrement', (): void => {
     const action = deletePost(1);
     const newState = postsReducer(state, action);
 

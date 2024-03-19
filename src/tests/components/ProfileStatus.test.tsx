@@ -51,5 +51,7 @@ describe('ProfileStatus Component tests', (): void => {
     await act(() => editStatusButton.props.onClick());
 
     expect(mockCallback.mock.calls.length).toBe(1);
+
+    mockCallback.mockClear();
   });
 });
