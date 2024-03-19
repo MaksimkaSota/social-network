@@ -60,13 +60,21 @@ const UsersPageContainer: FC = (): ReactElement | boolean => {
   }, [dispatch]);
 
   useEffect(() => {
-    const termURL = filter.term === '' ? '' : `&term=${filter.term}`;
-    const friendURL = filter.friend === '' ? '' : `&friend=${filter.friend}`;
-    const pageURL = page === 1 ? '' : `&page=${page}`;
+    const queryObject: Partial<{ term: string; friend: string; page: string }> = {};
 
-    const queryURL = termURL + friendURL + pageURL;
+    if (filter.term) {
+      queryObject.term = filter.term;
+    }
+    if (filter.friend) {
+      queryObject.friend = filter.friend;
+    }
+    if (page !== 1) {
+      queryObject.page = String(page);
+    }
 
-    setSearchParams(queryURL);
+    const queryString = new URLSearchParams(queryObject).toString();
+
+    setSearchParams(queryString);
     // eslint-disable-next-line
   }, [filter, page]);
 
