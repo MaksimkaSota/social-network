@@ -1,0 +1,24 @@
+.searchUsersBlock {
+  margin: $marginMin 0 0 0;
+  @include flex(center, flex-start);
+  .fieldBlock {
+    width: 20%;
+    margin: 0 $marginMin 0 0;
+    .inputSearch {
+      width: 100%;
+    }
+  }
+  .selectSearch {
+    width: 20%;
+    margin: 0 $marginMin 0 0;
+    border: 2px solid rgb(102, 252, 241);
+  }
+  .inputSearch,
+  .selectSearch {
+    padding: $padding;
+    border-radius: $radius;
+  }
+  .searchButton {
+    margin: 0;
+  }
+}

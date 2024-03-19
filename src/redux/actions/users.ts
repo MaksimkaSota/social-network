@@ -10,6 +10,7 @@ import type {
   SetUsersRequestAction,
   SetUsersSuccessAction,
   UnfollowAction,
+  SetFilterAction,
 } from '../types/users';
 import type { IUser } from '../../utils/types/api';
 import type { FollowUnfollowErrorType } from '../../utils/types/common';
@@ -41,4 +42,8 @@ export const setTotalCount = (totalCount: number): SetTotalCountAction => ({
 export const setSubscribersId = (isFetching: boolean, id: number): SetSubscribersIdAction => ({
   type: UsersActionType.SET_USERS_SUBSCRIBERS_ID,
   payload: { isFetching, id },
+});
+export const setFilter = (term: string, friend: string): SetFilterAction => ({
+  type: UsersActionType.SET_USERS_FILTER,
+  payload: { term, friend },
 });

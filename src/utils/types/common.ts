@@ -34,3 +34,7 @@ export type SubscribersId = {
   isFetching: boolean;
   id: number;
 };
+export type FilterType = {
+  term: string;
+  friend: string;
+};

@@ -1,5 +1,6 @@
 import type { Dispatch, FC, ReactElement, SetStateAction } from 'react';
 import { Formik } from 'formik';
+import type { FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { ProfileDataForm } from './ProfileDataForm';
 import type { SetStatusType, SetSubmittingType } from '../../../../../utils/types/form';
@@ -25,16 +26,7 @@ type PropsType = {
 type FormDataType = IRequestProfile;
 
 export const ProfileDataFormContainer: FC<PropsType> = ({ data, updateData, setEditModeData }): ReactElement => {
-  const onSubmit = (
-    formData: FormDataType,
-    {
-      setStatus,
-      setSubmitting,
-    }: {
-      setStatus: SetStatusType;
-      setSubmitting: SetSubmittingType;
-    }
-  ): void => {
+  const onSubmit = (formData: FormDataType, { setStatus, setSubmitting }: FormikHelpers<FormDataType>): void => {
     updateData(formData, setStatus, setSubmitting, setEditModeData);
   };
 

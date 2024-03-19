@@ -2,8 +2,12 @@ import { http } from './http';
 import { UrlSubString } from '../utils/types/enums';
 import type { IResponse, IUsers } from '../utils/types/api';
 
-export const getUsersAPI = async (page: number, pageSize: number): Promise<IUsers> => {
-  const response = await http.get(`users?page=${page}&count=${pageSize}`);
+export const getUsersAPI = async (page: number, pageSize: number, term: string, friend: string): Promise<IUsers> => {
+  const termValue = term || null;
+  const friendValue = friend || null;
+  const response = await http.get(UrlSubString.users, {
+    params: { page, count: pageSize, term: termValue, friend: friendValue },
+  });
   return response.data;
 };
 

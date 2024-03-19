@@ -3,26 +3,35 @@ import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import classes from './Paginator.module.scss';
 import { Button } from '../Button/Button';
+import type { FilterType } from '../../../utils/types/common';
+import type { SetSubmittingType } from '../../../utils/types/form';
 
 type PropsType = {
   page: number;
   pageSize: number;
+  filter: FilterType;
   totalCount: number;
   portionSize?: number;
-  onCurrentPageCallback: (currentPage: number, currentPageSize: number) => void;
+  onCurrentPageCallback: (
+    currentPage: number,
+    currentPageSize: number,
+    currentFilter: FilterType,
+    setSubmitting?: SetSubmittingType
+  ) => void;
   isFetching: boolean;
 };
 
 export const Paginator: FC<PropsType> = ({
   page,
   pageSize,
+  filter,
   totalCount,
   portionSize = 10,
   onCurrentPageCallback,
   isFetching,
 }): ReactElement => {
   const onCurrentPage = (currentPage: number) => (): void => {
-    onCurrentPageCallback(currentPage, pageSize);
+    onCurrentPageCallback(currentPage, pageSize, filter);
   };
 
   const pagesCount = Math.ceil(totalCount / pageSize);
@@ -47,11 +56,13 @@ export const Paginator: FC<PropsType> = ({
   useEffect(() => {
     setCurrentPortion(Math.ceil(page / portionSize));
     // eslint-disable-next-line
-  }, []);
+  }, [pagesCount]);
 
   return (
     <div className={classes.paginator}>
-      {currentPortion > 1 && <Button className={classes.paginatorButton} text="Prev" onClick={onPrevButton} />}
+      {currentPortion > 1 && (
+        <Button className={classes.paginatorButton} text="Prev" onClick={onPrevButton} disabled={isFetching} />
+      )}
       <div className={classes.paginatorBlock}>
         {currentPages
           .filter(
@@ -70,7 +81,7 @@ export const Paginator: FC<PropsType> = ({
           })}
       </div>
       {currentPortion < portionCount && (
-        <Button className={classes.paginatorButton} text="Next" onClick={onNextButton} />
+        <Button className={classes.paginatorButton} text="Next" onClick={onNextButton} disabled={isFetching} />
       )}
     </div>
   );

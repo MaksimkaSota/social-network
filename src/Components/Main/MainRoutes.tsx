@@ -1,5 +1,5 @@
 import type { FC, ReactElement } from 'react';
-import React, { Suspense } from 'react';
+import { Suspense, lazy } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { NewsPage } from './Pages/NewsPage/NewsPage';
 import { MusicsPage } from './Pages/MusicsPage/MusicsPage';
@@ -10,9 +10,9 @@ import { Preloader } from '../Common/Preloader/Preloader';
 import { NotFoundPage } from './Pages/NotFoundPage/NotFoundPage';
 import { RoutePath } from '../../utils/types/enums';
 
-const MessagesPageContainer = React.lazy(() => import('./Pages/MessagesPage/MessagesPageContainer'));
-const UsersPageContainer = React.lazy(() => import('./Pages/UsersPage/UsersPageContainer'));
-const LoginPageContainer = React.lazy(() => import('./Pages/LoginPage/LoginPageContainer'));
+const MessagesPageContainer = lazy(() => import('./Pages/MessagesPage/MessagesPageContainer'));
+const UsersPageContainer = lazy(() => import('./Pages/UsersPage/UsersPageContainer'));
+const LoginPageContainer = lazy(() => import('./Pages/LoginPage/LoginPageContainer'));
 
 export const MainRoutes: FC = (): ReactElement => {
   const authProfilePage = useAuthRedirect(<ProfilePageContainer />);

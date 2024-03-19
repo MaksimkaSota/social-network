@@ -1,5 +1,5 @@
 import type { ChangeEvent } from 'react';
-import type { FormikErrors, FormikState } from 'formik';
+import type { FormikErrors } from 'formik';
 
 export type SetStatusType = (status?: any) => void;
 export type SetSubmittingType = (isSubmitting: boolean) => void;
@@ -13,7 +13,6 @@ export type SetFieldTouchedType = (
   isTouched?: boolean,
   shouldValidate?: boolean
 ) => Promise<void | FormikErrors<any>>;
-export type ResetFormType = (nextState?: Partial<FormikState<any>>) => void;
 export type HandleChangeType = (event: ChangeEvent<any>) => void;
 
 export type FormikErrorsType = { [field: string]: string | FormikErrorsType };

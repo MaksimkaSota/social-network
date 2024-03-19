@@ -1,5 +1,5 @@
+import { memo } from 'react';
 import type { ReactElement } from 'react';
-import React from 'react';
 import classes from './ProfilePhoto.module.scss';
 import userPhoto from '../../../../../assets/images/user.png';
 import { InputFile } from '../../../../Common/InputFile/InputFile';
@@ -14,7 +14,7 @@ type PropsType = {
   photoError: Nullable<ErrorType>;
 };
 
-export const ProfilePhoto = React.memo<PropsType>(
+export const ProfilePhoto = memo<PropsType>(
   ({ isOwner, photo, updatePhoto, isFetchingPhoto, photoError }): ReactElement => {
     return (
       <div className={classes.photoBlock}>

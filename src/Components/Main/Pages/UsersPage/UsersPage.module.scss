@@ -1,3 +1,8 @@
 .usersPageBlock {
   text-align: center;
 }
+.notFoundMessage {
+  font-size: 1.5rem;
+  color: $error;
+  margin: $marginMin 0 0 0;
+}

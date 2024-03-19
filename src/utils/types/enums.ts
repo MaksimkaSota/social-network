@@ -8,6 +8,7 @@ export enum UrlSubString {
   profile = 'profile/',
   status = 'profile/status/',
   photo = 'profile/photo/',
+  users = 'users',
   follow = 'follow/',
 }
 export enum HeaderValue {
@@ -44,4 +45,6 @@ export enum FormName {
   password = 'password',
   remember_me = 'rememberMe',
   captcha = 'captcha',
+  term = 'term',
+  friend = 'friend',
 }
