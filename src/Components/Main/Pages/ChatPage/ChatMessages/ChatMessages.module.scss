@@ -1,0 +1,7 @@
+.chatMessagesBlock {
+  height: 250px;
+  padding: $padding;
+  border: 1px solid $active;
+  border-radius: $radius 0 0 $radius;
+  overflow-y: auto;
+}

@@ -1,5 +1,6 @@
-export enum UrlString {
-  social_network = 'https://social-network.samuraijs.com/api/1.0/',
+export enum RequestString {
+  samurai_js_http = 'https://social-network.samuraijs.com/api/1.0/',
+  samurai_js_web_socket = 'wss://social-network.samuraijs.com/handlers/ChatHandler.ashx',
 }
 export enum UrlSubString {
   me = 'auth/me/',
@@ -33,6 +34,7 @@ export enum RoutePath {
   musics = '/musics',
   settings = '/settings',
   login = '/login',
+  chat = '/chat',
 }
 export enum FormName {
   text = 'text',

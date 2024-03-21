@@ -27,6 +27,9 @@ export const Navigation: FC = (): ReactElement => {
       <NavLink className={setClass} to={RoutePath.settings}>
         Settings
       </NavLink>
+      <NavLink className={setClass} to={RoutePath.chat}>
+        Chat
+      </NavLink>
     </nav>
   );
 };

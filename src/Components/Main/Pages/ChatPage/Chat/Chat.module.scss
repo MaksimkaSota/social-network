@@ -1,0 +1,7 @@
+.chatBlock {
+  @include position(70%, 0 auto);
+  .title {
+    @extend %title;
+    text-align: center;
+  }
+}

@@ -1,10 +1,10 @@
 import type { AxiosInstance } from 'axios';
 import axios from 'axios';
-import { UrlString } from '../utils/types/enums';
+import { RequestString } from '../utils/types/enums';
 
 export const http: AxiosInstance = axios.create({
   withCredentials: true,
-  baseURL: UrlString.social_network,
+  baseURL: RequestString.samurai_js_http,
   headers: {
     'API-KEY': process.env.KEY,
   },

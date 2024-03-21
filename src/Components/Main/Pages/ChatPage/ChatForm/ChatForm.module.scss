@@ -1,0 +1,15 @@
+.sendTextBlock {
+  @include flex(center, center);
+  margin: $marginMin $marginMax 0 0;
+  .fieldBlock {
+    width: 50%;
+    margin: 0 auto;
+    .inputText {
+      @extend %textarea;
+      width: 100%;
+    }
+  }
+  .sendButton {
+    margin: 0;
+  }
+}

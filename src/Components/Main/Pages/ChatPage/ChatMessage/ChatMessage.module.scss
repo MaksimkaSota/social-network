@@ -1,0 +1,28 @@
+.chatMessageBlock {
+  @include flex(null, center);
+  &:not(:last-child) {
+    border-bottom: 1px solid $content;
+    padding-bottom: $padding;
+  }
+  &:not(:first-child) {
+    padding-top: $padding;
+  }
+  .userName {
+    margin: 0 $marginMin;
+    font-size: 1rem;
+    color: $captions;
+    text-align: center;
+  }
+  .userPhoto {
+    margin: 0 $marginMin 0 0;
+    width: 30px;
+    border: 1px solid $content;
+    border-radius: $radius;
+  }
+  .userMessage {
+    padding: 0 0 0 $padding;
+    border-left: 1px solid $content;
+    font-size: 0.9rem;
+    word-break: break-word;
+  }
+}
