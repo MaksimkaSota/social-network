@@ -1,44 +1,25 @@
 import type { FC, ReactElement } from 'react';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 import { Chat } from './Chat';
-import { RequestString } from '../../../../../utils/types/enums';
-import type { Nullable } from '../../../../../utils/types/common';
+import { useTypedDispatch } from '../../../../../hooks/useTypedDispatch';
+import { sendMessage, startMessagesListening, stopMessagesListening } from '../../../../../redux/thunks/chat';
+import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
+import { channelStatusSelector, messageSelector } from '../../../../../redux/selectors/chat';
 
 export const ChatContainer: FC = (): ReactElement => {
-  const [wsChannel, setWsChannel] = useState<Nullable<WebSocket>>(null);
-  const [isWsChannelOpen, setIsWsChannelOpen] = useState<boolean>(false);
+  const messages = useTypedSelector(messageSelector);
+  const channelStatus = useTypedSelector(channelStatusSelector);
+
+  const dispatch = useTypedDispatch();
+  const sendMessagesCallback = useCallback((message: string) => dispatch(sendMessage(message)), [dispatch]);
 
   useEffect(() => {
-    let ws: WebSocket;
-
-    const createChannel = (): void => {
-      if (ws) {
-        ws.onclose = null;
-        ws.close();
-      }
-
-      ws = new WebSocket(RequestString.samurai_js_web_socket);
-
-      window.onoffline = () => {
-        console.log('disconnect');
-        setIsWsChannelOpen(false);
-        createChannel();
-      };
-
-      ws.onclose = (): void => {
-        console.log('close WebSocket');
-        setIsWsChannelOpen(false);
-        setTimeout(createChannel, 3000);
-      };
-
-      setWsChannel(ws);
-    };
-    createChannel();
+    dispatch(startMessagesListening());
 
     return () => {
-      window.onoffline = null;
+      dispatch(stopMessagesListening());
     };
-  }, []);
+  }, [dispatch]);
 
-  return <Chat wsChannel={wsChannel} isWsChannelOpen={isWsChannelOpen} setIsWsChannelOpen={setIsWsChannelOpen} />;
+  return <Chat messages={messages} sendMessage={sendMessagesCallback} channelStatus={channelStatus} />;
 };

@@ -1,6 +1,7 @@
 import type { Action } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
 import type { AppState } from '../../redux/reducers/reducers';
+import type { IChatMessage } from './api';
 
 export type Nullable<T> = T | null;
 export type ThunkType<T extends Action> = ThunkAction<Promise<void>, AppState, unknown, T>;
@@ -37,4 +38,13 @@ export type SubscribersId = {
 export type FilterType = {
   term: string;
   friend: string;
+};
+
+export type ChannelStatus = 'pending' | 'fulfilled' | 'error';
+export type EventsNames = 'receiveMessage' | 'changeChannelStatus';
+export type MessagesSubscriber = (messages: Array<IChatMessage>) => void;
+export type ChannelStatusSubscriber = (status: ChannelStatus) => void;
+export type SubscribersType = {
+  receiveMessage: Array<MessagesSubscriber>;
+  changeChannelStatus: Array<ChannelStatusSubscriber>;
 };

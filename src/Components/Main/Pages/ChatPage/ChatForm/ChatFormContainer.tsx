@@ -1,41 +1,30 @@
-import type { Dispatch, ReactElement, SetStateAction } from 'react';
-import { useEffect, useState, memo } from 'react';
-import { Formik } from 'formik';
+import type { ReactElement } from 'react';
+import { memo } from 'react';
 import type { FormikHelpers } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { ChatForm } from './ChatForm';
-import type { Nullable } from '../../../../../utils/types/common';
+import type { ChannelStatus } from '../../../../../utils/types/common';
 
 const validationSchema = Yup.object().shape({
   text: Yup.string().max(100, 'Must be not more than 100 characters').required('Required'),
 });
 
 type PropsType = {
-  wsChannel: Nullable<WebSocket>;
-  isWsChannelOpen: boolean;
-  setIsWsChannelOpen: Dispatch<SetStateAction<boolean>>;
+  sendMessage: (message: string) => void;
+  channelStatus: ChannelStatus;
 };
 type FormDataType = {
   text: string;
 };
 
-export const ChatFormContainer = memo<PropsType>(({ wsChannel, isWsChannelOpen, setIsWsChannelOpen }): ReactElement => {
-  const [readyStatus, setReadyStatus] = useState<'pending' | 'ready'>('pending');
-  useEffect(() => {
-    if (!wsChannel) return;
-    wsChannel.onopen = (): void => {
-      console.log('open WebSocket');
-      setIsWsChannelOpen(true);
-      setReadyStatus('ready');
-    };
-  }, [wsChannel]);
-
+export const ChatFormContainer = memo<PropsType>(({ sendMessage, channelStatus }): ReactElement => {
   const onSubmit = (formData: FormDataType, { resetForm }: FormikHelpers<FormDataType>): void => {
-    wsChannel?.send(formData.text);
+    sendMessage(formData.text);
     resetForm();
   };
 
-  const isClosed = wsChannel === null || readyStatus !== 'ready' || !isWsChannelOpen;
+  const isClosed = channelStatus !== 'fulfilled';
 
   return (
     <Formik initialValues={{ text: '' }} validationSchema={validationSchema} onSubmit={onSubmit}>
