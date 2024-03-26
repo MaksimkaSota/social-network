@@ -20,6 +20,7 @@ import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { useTypedDispatch } from '../../../../hooks/useTypedDispatch';
 import type { FilterType } from '../../../../utils/types/common';
 import type { SetSubmittingType } from '../../../../utils/types/form';
+import { idSelector } from '../../../../redux/selectors/auth';
 
 const UsersPageContainer: FC = (): ReactElement | boolean => {
   const users = useTypedSelector(usersSelector);
@@ -32,6 +33,7 @@ const UsersPageContainer: FC = (): ReactElement | boolean => {
   const usersError = useTypedSelector(usersErrorSelector);
   const followErrors = useTypedSelector(followErrorsSelector);
   const unfollowErrors = useTypedSelector(unfollowErrorsSelector);
+  const authorizedUserId = useTypedSelector(idSelector);
 
   const dispatch = useTypedDispatch();
   const followUserCallback = useCallback((id: number) => dispatch(followUser(id)), [dispatch]);
@@ -91,6 +93,7 @@ const UsersPageContainer: FC = (): ReactElement | boolean => {
         subscribersId={subscribersId}
         followErrors={followErrors}
         unfollowErrors={unfollowErrors}
+        authorizedUserId={authorizedUserId}
         followUser={followUserCallback}
         unfollowUser={unfollowUserCallback}
         getUsers={getUsersCallback}

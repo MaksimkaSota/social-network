@@ -20,6 +20,7 @@ type PropsType = {
   subscribersId: Array<number>;
   followErrors: Array<FollowUnfollowErrorType>;
   unfollowErrors: Array<FollowUnfollowErrorType>;
+  authorizedUserId: Nullable<number>;
   getUsers: (
     currentPage: number,
     currentPageSize: number,
@@ -41,6 +42,7 @@ export const UsersPage: FC<PropsType> = ({
   subscribersId,
   followErrors,
   unfollowErrors,
+  authorizedUserId,
   getUsers,
   followUser,
   unfollowUser,
@@ -55,7 +57,13 @@ export const UsersPage: FC<PropsType> = ({
 
   return (
     <div className={classes.usersPageBlock}>
-      <UsersSearchFormContainer page={page} pageSize={pageSize} filter={filter} getUsers={getUsers} />
+      <UsersSearchFormContainer
+        page={page}
+        pageSize={pageSize}
+        filter={filter}
+        authorizedUserId={authorizedUserId}
+        getUsers={getUsers}
+      />
       {!!users.length && (
         <Paginator
           page={page}
