@@ -5,28 +5,33 @@ import { Button } from '../../../../Common/Button/Button';
 import { FormField } from '../../../../Common/FormField/FormField';
 import type { FormikErrorsType, FormikTouchedType, HandleChangeType } from '../../../../../utils/types/form';
 import { FormName } from '../../../../../utils/types/enums';
+import type { ChannelStatus } from '../../../../../utils/types/common';
 
 type PropsType = {
   handleChange: HandleChangeType;
   errors: FormikErrorsType;
   touched: FormikTouchedType;
   disabled: boolean;
+  channelStatus: ChannelStatus;
 };
 
-export const ChatForm: FC<PropsType> = ({ handleChange, errors, touched, disabled }): ReactElement => {
+export const ChatForm: FC<PropsType> = ({ handleChange, errors, touched, disabled, channelStatus }): ReactElement => {
   return (
     <Form className={classes.sendTextBlock}>
-      <FormField
-        classNameFormField={classes.fieldBlock}
-        classNameField={classes.inputText}
-        name={FormName.text}
-        component="textarea"
-        placeholder="My text"
-        onChange={handleChange}
-        errors={errors}
-        touched={touched}
-      />
-      <Button className={classes.sendButton} text="Send text" type="submit" disabled={disabled} />
+      {channelStatus === 'pending' && <p className={classes.pendingText}>Waiting for a WebSocket connection</p>}
+      <div className={classes.formBlock}>
+        <FormField
+          classNameFormField={classes.fieldBlock}
+          classNameField={classes.inputText}
+          name={FormName.text}
+          component="textarea"
+          placeholder="My text"
+          onChange={handleChange}
+          errors={errors}
+          touched={touched}
+        />
+        <Button className={classes.sendButton} text="Send text" type="submit" disabled={disabled} />
+      </div>
     </Form>
   );
 };

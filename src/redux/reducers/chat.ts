@@ -18,6 +18,11 @@ export const chatReducer = (state: ChatState = initialState, action: ChatAction)
         ...state,
         channelStatus: action.payload,
       };
+    case ChatActionType.RESET_CHAT_MESSAGES:
+      return {
+        ...state,
+        messages: [],
+      };
     default:
       return state;
   }

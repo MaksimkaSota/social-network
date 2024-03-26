@@ -5,6 +5,7 @@ import { useTypedDispatch } from '../../../../../hooks/useTypedDispatch';
 import { sendMessage, startMessagesListening, stopMessagesListening } from '../../../../../redux/thunks/chat';
 import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
 import { channelStatusSelector, messageSelector } from '../../../../../redux/selectors/chat';
+import { resetMessages, setChannelStatus } from '../../../../../redux/actions/chat';
 
 export const ChatContainer: FC = (): ReactElement => {
   const messages = useTypedSelector(messageSelector);
@@ -14,6 +15,13 @@ export const ChatContainer: FC = (): ReactElement => {
   const sendMessagesCallback = useCallback((message: string) => dispatch(sendMessage(message)), [dispatch]);
 
   useEffect(() => {
+    if (channelStatus === 'fulfilled') {
+      dispatch(resetMessages());
+    }
+  }, [channelStatus, dispatch]);
+
+  useEffect(() => {
+    dispatch(setChannelStatus('pending'));
     dispatch(startMessagesListening());
 
     return () => {

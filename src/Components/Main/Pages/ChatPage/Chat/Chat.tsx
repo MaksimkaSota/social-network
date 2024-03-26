@@ -15,7 +15,7 @@ export const Chat: FC<PropsType> = ({ messages, sendMessage, channelStatus }): R
   return (
     <div className={classes.chatBlock}>
       <h3 className={classes.title}>Chat</h3>
-      <ChatMessages messages={messages} />
+      <ChatMessages messages={messages} channelStatus={channelStatus} />
       <ChatFormContainer sendMessage={sendMessage} channelStatus={channelStatus} />
     </div>
   );

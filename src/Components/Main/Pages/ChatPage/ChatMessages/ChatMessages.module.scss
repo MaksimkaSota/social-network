@@ -4,4 +4,8 @@
   border: 1px solid $active;
   border-radius: $radius 0 0 $radius;
   overflow-y: auto;
+  .chatPreloader {
+    height: 100%;
+    margin: 0 auto;
+  }
 }

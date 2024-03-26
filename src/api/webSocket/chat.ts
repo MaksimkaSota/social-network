@@ -21,7 +21,6 @@ const cleanUp = (): void => {
   ws.onclose = null;
   ws.onmessage = null;
   ws.onopen = null;
-  ws.onerror = null;
 };
 
 const notifyAboutChannelStatus = (status: ChannelStatus): void => {
@@ -48,9 +47,6 @@ const createChannel = (): void => {
   };
   ws.onopen = (): void => {
     notifyAboutChannelStatus('fulfilled');
-  };
-  ws.onerror = (): void => {
-    notifyAboutChannelStatus('error');
   };
 };
 
