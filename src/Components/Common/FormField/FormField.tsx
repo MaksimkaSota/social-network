@@ -1,4 +1,4 @@
-import type { FC, ReactElement } from 'react';
+import type { FC, KeyboardEvent, ReactElement } from 'react';
 import cn from 'classnames';
 import { ErrorMessage, Field } from 'formik';
 import classes from './FormField.module.scss';
@@ -15,6 +15,7 @@ type PropsType = {
   text?: string;
   props?: { [attribute: string]: string };
   onChange: HandleChangeType;
+  onKeyDown?: (event: KeyboardEvent) => void;
   errors?: FormikErrorsType;
   touched?: FormikTouchedType;
 };
@@ -30,6 +31,7 @@ export const FormField: FC<PropsType> = ({
   text,
   props = {},
   onChange,
+  onKeyDown,
   errors,
   touched,
 }): ReactElement => {
@@ -44,6 +46,7 @@ export const FormField: FC<PropsType> = ({
         type={type}
         placeholder={placeholder}
         onChange={onChange}
+        onKeyDown={onKeyDown}
         {...props}
       />
       <ErrorMessage name={name} component="p" className={classes.fieldError} />

@@ -27,7 +27,7 @@ export const ErrorPopup: FC<PropsType> = ({ errorObject, resetError }): ReactEle
     }
   };
 
-  const onPopupKeyboardClick = (event: KeyboardEvent<HTMLDivElement>): void => {
+  const onKeyboardPress = (event: KeyboardEvent<HTMLDivElement>): void => {
     if (event.code === 'Escape') {
       resetError(null);
     }
@@ -39,7 +39,7 @@ export const ErrorPopup: FC<PropsType> = ({ errorObject, resetError }): ReactEle
       ref={errorPopup}
       tabIndex={-1}
       onClick={onPopupMouseClick}
-      onKeyDown={onPopupKeyboardClick}
+      onKeyDown={onKeyboardPress}
     >
       <div className={classes.errorPopupContainer}>
         <Error code={errorObject!.code} message={errorObject!.message} />

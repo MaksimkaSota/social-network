@@ -1,5 +1,5 @@
-import type { FC, ReactElement } from 'react';
-import { Form } from 'formik';
+import type { FC, KeyboardEvent, ReactElement } from 'react';
+import { Form, useFormikContext } from 'formik';
 import classes from './ChatForm.module.scss';
 import { Button } from '../../../../Common/Button/Button';
 import { FormField } from '../../../../Common/FormField/FormField';
@@ -16,6 +16,14 @@ type PropsType = {
 };
 
 export const ChatForm: FC<PropsType> = ({ handleChange, errors, touched, disabled, channelStatus }): ReactElement => {
+  const { submitForm } = useFormikContext();
+
+  const submitFormOnKeyboardPress = (event: KeyboardEvent): void => {
+    if (event.ctrlKey && event.code === 'Enter') {
+      submitForm();
+    }
+  };
+
   return (
     <Form className={classes.sendTextBlock}>
       {channelStatus === 'pending' && <p className={classes.pendingText}>Waiting for a WebSocket connection</p>}
@@ -25,8 +33,9 @@ export const ChatForm: FC<PropsType> = ({ handleChange, errors, touched, disable
           classNameField={classes.inputText}
           name={FormName.text}
           component="textarea"
-          placeholder="My text"
+          placeholder="You can press Ctrl+Enter to send a message"
           onChange={handleChange}
+          onKeyDown={submitFormOnKeyboardPress}
           errors={errors}
           touched={touched}
         />
