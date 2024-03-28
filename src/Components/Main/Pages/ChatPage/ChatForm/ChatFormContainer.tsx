@@ -24,7 +24,7 @@ export const ChatFormContainer = memo<PropsType>(({ sendMessage, channelStatus }
     resetForm();
   };
 
-  const isClosed = channelStatus === 'pending';
+  const isClosed = channelStatus !== 'received';
 
   return (
     <Formik initialValues={{ text: '' }} validationSchema={validationSchema} onSubmit={onSubmit}>

@@ -40,7 +40,7 @@ export type FilterType = {
   friend: string;
 };
 
-export type ChannelStatus = 'pending' | 'fulfilled';
+export type ChannelStatus = 'pending' | 'fulfilled' | 'received';
 export type EventsNames = 'receiveMessage' | 'changeChannelStatus';
 export type MessagesSubscriber = (messages: Array<IChatMessage>) => void;
 export type ChannelStatusSubscriber = (status: ChannelStatus) => void;

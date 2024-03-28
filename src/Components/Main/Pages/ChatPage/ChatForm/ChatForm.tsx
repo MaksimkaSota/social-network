@@ -19,7 +19,7 @@ export const ChatForm: FC<PropsType> = ({ handleChange, errors, touched, disable
   const { submitForm } = useFormikContext();
 
   const submitFormOnKeyboardPress = (event: KeyboardEvent): void => {
-    if (channelStatus === 'pending') return;
+    if (channelStatus !== 'received') return;
     if (event.ctrlKey && event.code === 'Enter') {
       submitForm();
     }

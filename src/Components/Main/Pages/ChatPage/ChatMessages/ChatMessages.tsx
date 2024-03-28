@@ -1,5 +1,6 @@
 import type { FC, ReactElement, UIEvent } from 'react';
 import { useEffect, useState, useRef } from 'react';
+import cn from 'classnames';
 import { ChatMessage } from '../ChatMessage/ChatMessage';
 import type { IChatMessage } from '../../../../../utils/types/api';
 import classes from './ChatMessages.module.scss';
@@ -19,8 +20,10 @@ export const ChatMessages: FC<PropsType> = ({ messages, channelStatus }): ReactE
     const element = event.currentTarget;
 
     if (element.scrollHeight - element.scrollTop - element.clientHeight < 100) {
-      setIsAutoScroll(true);
-    } else {
+      if (!isAutoScroll) {
+        setIsAutoScroll(true);
+      }
+    } else if (isAutoScroll) {
       setIsAutoScroll(false);
     }
   };
@@ -38,13 +41,24 @@ export const ChatMessages: FC<PropsType> = ({ messages, channelStatus }): ReactE
     }
   }, [isAutoScroll, messages]);
 
+  const isScroll: boolean =
+    messagesAnchorRef.current && channelStatus === 'received'
+      ? messagesAnchorRef.current?.scrollHeight > messagesAnchorRef.current?.clientHeight
+      : false;
+
   return (
-    <div className={classes.chatMessagesBlock} ref={messagesAnchorRef} onScroll={scrollHandler}>
-      {channelStatus === 'pending' ? (
-        <Preloader className={classes.chatPreloader} />
-      ) : (
-        messages.map((message: IChatMessage, index: number) => <ChatMessage message={message} key={index} />)
-      )}
+    <div
+      className={cn(classes.chatMessagesBlock, { [classes.chatMessagesBlockScroll]: isScroll })}
+      ref={messagesAnchorRef}
+      onScroll={scrollHandler}
+    >
+      {channelStatus !== 'received' && <Preloader className={classes.chatPreloader} />}
+      {channelStatus === 'received' &&
+        (!messages.length ? (
+          <p className={classes.emptyMessagesText}>Nobody wrote a message. Be the first!</p>
+        ) : (
+          messages.map((message: IChatMessage, index: number) => <ChatMessage message={message} key={index} />)
+        ))}
     </div>
   );
 };

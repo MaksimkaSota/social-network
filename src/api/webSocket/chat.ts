@@ -44,6 +44,7 @@ const createChannel = (): void => {
   ws.onmessage = (event: MessageEvent): void => {
     const newMessages = JSON.parse(event.data);
     subscribers.receiveMessage.forEach((subscriber: MessagesSubscriber) => subscriber(newMessages));
+    notifyAboutChannelStatus('received');
   };
   ws.onopen = (): void => {
     notifyAboutChannelStatus('fulfilled');
