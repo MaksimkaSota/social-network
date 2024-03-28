@@ -6,6 +6,7 @@ import type { IChatMessage } from '../../../../../utils/types/api';
 import classes from './ChatMessages.module.scss';
 import { Preloader } from '../../../../Common/Preloader/Preloader';
 import type { ChannelStatus } from '../../../../../utils/types/common';
+import { scrollToBottom } from '../../../../../utils/helpers/componentHelpers';
 
 type PropsType = {
   messages: Array<IChatMessage>;
@@ -13,7 +14,7 @@ type PropsType = {
 };
 
 export const ChatMessages: FC<PropsType> = ({ messages, channelStatus }): ReactElement => {
-  const messagesAnchorRef = useRef<HTMLDivElement>(null);
+  const anchorRef = useRef<HTMLDivElement>(null);
   const [isAutoScroll, setIsAutoScroll] = useState<boolean>(true);
 
   const scrollHandler = (event: UIEvent<HTMLDivElement>): void => {
@@ -34,22 +35,19 @@ export const ChatMessages: FC<PropsType> = ({ messages, channelStatus }): ReactE
 
   useEffect(() => {
     if (isAutoScroll) {
-      messagesAnchorRef.current?.scrollTo({
-        top: messagesAnchorRef.current.scrollHeight,
-        behavior: 'smooth',
-      });
+      scrollToBottom(anchorRef);
     }
   }, [isAutoScroll, messages]);
 
   const isScroll: boolean =
-    messagesAnchorRef.current && channelStatus === 'received'
-      ? messagesAnchorRef.current?.scrollHeight > messagesAnchorRef.current?.clientHeight
+    anchorRef.current && channelStatus === 'received'
+      ? anchorRef.current?.scrollHeight > anchorRef.current?.clientHeight
       : false;
 
   return (
     <div
       className={cn(classes.chatMessagesBlock, { [classes.chatMessagesBlockScroll]: isScroll })}
-      ref={messagesAnchorRef}
+      ref={anchorRef}
       onScroll={scrollHandler}
     >
       {channelStatus !== 'received' && <Preloader className={classes.chatPreloader} />}
