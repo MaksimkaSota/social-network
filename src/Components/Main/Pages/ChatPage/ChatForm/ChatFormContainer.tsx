@@ -20,7 +20,13 @@ type FormDataType = {
 
 export const ChatFormContainer = memo<PropsType>(({ sendMessage, channelStatus }): ReactElement => {
   const onSubmit = (formData: FormDataType, { resetForm }: FormikHelpers<FormDataType>): void => {
-    sendMessage(formData.text);
+    const date = new Date();
+    const hours = date.getUTCHours() < 10 ? `0${date.getUTCHours()}` : `${date.getUTCHours()}`;
+    const minutes = date.getUTCMinutes() < 10 ? `0${date.getUTCMinutes()}` : `${date.getUTCMinutes()}`;
+    const time = `${hours}:${minutes} UTC+0`;
+
+    const message = `${formData.text} ${time}`;
+    sendMessage(message);
     resetForm();
   };
 

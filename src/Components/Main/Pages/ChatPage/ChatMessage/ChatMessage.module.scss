@@ -22,7 +22,11 @@
   .userMessage {
     padding: 0 0 0 $padding;
     border-left: 1px solid $content;
-    font-size: 0.9rem;
+    font-size: 1rem;
     word-break: break-word;
+    .userMessageTime {
+      font-size: 0.7rem;
+      color: $dark-background;
+    }
   }
 }
