@@ -1,4 +1,5 @@
-import type { FC, ReactElement } from 'react';
+import type { ReactElement } from 'react';
+import { memo } from 'react';
 import type { IChatMessage } from '../../../../../utils/types/api';
 import userPhoto from '../../../../../assets/images/user.png';
 import classes from './ChatMessage.module.scss';
@@ -7,7 +8,7 @@ type PropsType = {
   message: IChatMessage;
 };
 
-export const ChatMessage: FC<PropsType> = ({ message }): ReactElement => {
+export const ChatMessage = memo<PropsType>(({ message }): ReactElement => {
   return (
     <div className={classes.chatMessageBlock}>
       <p className={classes.userName}>{message.userName}</p>
@@ -15,4 +16,4 @@ export const ChatMessage: FC<PropsType> = ({ message }): ReactElement => {
       <p className={classes.userMessage}>{message.message}</p>
     </div>
   );
-};
+});

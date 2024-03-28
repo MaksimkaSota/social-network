@@ -66,7 +66,9 @@ export const chatAPI = {
   },
   unsubscribe(eventName: EventsNames, callback: MessagesSubscriber | ChannelStatusSubscriber): void {
     // @ts-ignore
-    subscribers[eventName] = subscribers[eventName].filter((subscriber) => subscriber !== callback);
+    subscribers[eventName] = subscribers[eventName].filter(
+      (subscriber: MessagesSubscriber | ChannelStatusSubscriber): boolean => subscriber !== callback
+    );
   },
   sendMessage(message: string): void {
     ws?.send(message);
