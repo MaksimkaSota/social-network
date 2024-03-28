@@ -2,12 +2,12 @@ import type { Dispatch, ReactElement, ReactNode, SetStateAction } from 'react';
 import { Component } from 'react';
 import { Error } from '../Error/Error';
 import { ErrorPopup } from '../ErrorPopup/ErrorPopup';
-import type { ErrorType } from '../../../utils/types/common';
+import type { ErrorType, Nullable } from '../../../utils/types/common';
 
 type PropsType = {
   children: ReactNode;
-  globalError: ErrorType | null;
-  setGlobalError: Dispatch<SetStateAction<ErrorType | null>>;
+  globalError: Nullable<ErrorType>;
+  setGlobalError: Dispatch<SetStateAction<Nullable<ErrorType>>>;
 };
 type StateType = {
   errorMessage: string;
