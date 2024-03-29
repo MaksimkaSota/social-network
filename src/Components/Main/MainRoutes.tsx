@@ -18,6 +18,7 @@ const ChatPage = lazy(() => import('./Pages/ChatPage/ChatPage'));
 export const MainRoutes: FC = (): ReactElement => {
   const authProfilePage = useAuthRedirect(<ProfilePageContainer />);
   const authMessagesPage = useAuthRedirect(<MessagesPageContainer />);
+  const authChatPage = useAuthRedirect(<ChatPage />);
 
   return (
     <Suspense fallback={<Preloader />}>
@@ -32,7 +33,7 @@ export const MainRoutes: FC = (): ReactElement => {
         <Route path={RoutePath.musics} element={<MusicsPage />} />
         <Route path={RoutePath.settings} element={<SettingsPage />} />
         <Route path={RoutePath.login} element={<LoginPageContainer />} />
-        <Route path={RoutePath.chat} element={<ChatPage />} />
+        <Route path={RoutePath.chat} element={authChatPage} />
       </Routes>
     </Suspense>
   );

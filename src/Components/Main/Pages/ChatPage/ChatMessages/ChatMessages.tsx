@@ -21,23 +21,17 @@ export const ChatMessages: FC<PropsType> = ({ messages, channelStatus }): ReactE
     const element = event.currentTarget;
 
     if (element.scrollHeight - element.scrollTop - element.clientHeight < 100) {
-      if (!isAutoScroll) {
-        setIsAutoScroll(true);
-      }
-    } else if (isAutoScroll) {
+      setIsAutoScroll(true);
+    } else {
       setIsAutoScroll(false);
     }
   };
 
   useEffect(() => {
-    setIsAutoScroll(true);
-  }, []);
-
-  useEffect(() => {
     if (isAutoScroll) {
       scrollToBottom(anchorRef);
     }
-  }, [isAutoScroll, messages]);
+  }, [messages]);
 
   const isScroll: boolean =
     anchorRef.current && channelStatus === 'received'
