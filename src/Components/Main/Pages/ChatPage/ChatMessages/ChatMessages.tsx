@@ -29,7 +29,7 @@ export const ChatMessages: FC<PropsType> = ({ messages, channelStatus }): ReactE
 
   useEffect(() => {
     if (isAutoScroll) {
-      scrollToBottom(anchorRef);
+      setTimeout(() => scrollToBottom(anchorRef), 0);
     }
   }, [messages]);
 

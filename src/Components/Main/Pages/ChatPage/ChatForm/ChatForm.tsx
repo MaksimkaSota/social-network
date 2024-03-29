@@ -25,7 +25,7 @@ export const ChatForm: FC<PropsType> = ({ handleChange, errors, touched, disable
 
   return (
     <Form className={classes.sendTextBlock}>
-      {channelStatus === 'pending' && <p className={classes.pendingText}>Waiting for a WebSocket connection</p>}
+      {channelStatus !== 'received' && <p className={classes.pendingText}>Waiting for a chat connection</p>}
       <div className={classes.formBlock}>
         <FormField
           classNameFormField={classes.fieldBlock}

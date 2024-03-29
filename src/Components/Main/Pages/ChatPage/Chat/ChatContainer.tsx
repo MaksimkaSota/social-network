@@ -15,14 +15,12 @@ export const ChatContainer: FC = (): ReactElement => {
   const sendMessagesCallback = useCallback((message: string) => dispatch(sendMessage(message)), [dispatch]);
 
   useEffect(() => {
-    if (channelStatus === 'received') {
-      dispatch(resetMessages());
-    }
-    dispatch(setChannelStatus('pending'));
     dispatch(startMessagesListening());
 
     return () => {
       dispatch(stopMessagesListening());
+      dispatch(resetMessages());
+      dispatch(setChannelStatus('pending'));
     };
   }, [dispatch]);
 
