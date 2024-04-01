@@ -13,7 +13,7 @@ import {
   setUnfollowErrors,
   setFilter,
 } from '../actions/users';
-import { followAPI, getUsersAPI, unfollowAPI } from '../../api/users';
+import { followAPI, getUsersAPI, unfollowAPI } from '../../api/http/users';
 import { getErrorMessage } from '../../utils/helpers/thunksHelpers';
 import type { FollowAction, UnfollowAction, UsersAction } from '../types/users';
 import type { FilterType, ThunkType } from '../../utils/types/common';

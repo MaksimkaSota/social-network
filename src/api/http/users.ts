@@ -1,6 +1,6 @@
 import { http } from './http';
-import { UrlSubString } from '../utils/types/enums';
-import type { IResponse, IUsers } from '../utils/types/api';
+import { UrlSubString } from '../../utils/types/enums';
+import type { IResponse, IUsers } from '../../utils/types/api';
 
 export const getUsersAPI = async (page: number, pageSize: number, term: string, friend: string): Promise<IUsers> => {
   const termValue = term || null;

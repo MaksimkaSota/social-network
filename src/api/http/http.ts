@@ -1,6 +1,6 @@
 import type { AxiosInstance } from 'axios';
 import axios from 'axios';
-import { RequestString } from '../utils/types/enums';
+import { RequestString } from '../../utils/types/enums';
 
 export const http: AxiosInstance = axios.create({
   withCredentials: true,

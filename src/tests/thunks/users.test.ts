@@ -2,9 +2,9 @@ import type { IResponse } from '../../utils/types/api';
 import { StatusCode } from '../../utils/types/enums';
 import { followUser, unfollowUser } from '../../redux/thunks/users';
 import { follow, unfollow, setSubscribersId } from '../../redux/actions/users';
-import * as usersAPI from '../../api/users';
+import * as usersAPI from '../../api/http/users';
 
-jest.mock('../../api/users');
+jest.mock('../../api/http/users');
 const userAPIMock = usersAPI as jest.Mocked<typeof usersAPI>;
 
 const dispatchMock = jest.fn();

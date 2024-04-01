@@ -1,6 +1,6 @@
 import { http } from './http';
-import { UrlSubString } from '../utils/types/enums';
-import type { IAuthData, ICaptcha, ILoginData, IResponse } from '../utils/types/api';
+import { UrlSubString } from '../../utils/types/enums';
+import type { IAuthData, ICaptcha, ILoginData, IResponse } from '../../utils/types/api';
 
 export const getAuthAPI = async (): Promise<IResponse<IAuthData>> => {
   const response = await http.get(UrlSubString.me);
