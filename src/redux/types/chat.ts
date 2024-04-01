@@ -1,8 +1,8 @@
 import type { IChatMessage } from '../../utils/types/api';
-import type { ChannelStatus } from '../../utils/types/common';
+import type { ChannelStatus, ChatMessageWithId } from '../../utils/types/common';
 
 export type ChatState = {
-  messages: Array<IChatMessage>;
+  messages: Array<ChatMessageWithId>;
   channelStatus: ChannelStatus;
 };
 

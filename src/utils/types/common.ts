@@ -48,3 +48,5 @@ export type SubscribersType = {
   receiveMessage: Array<MessagesSubscriber>;
   changeChannelStatus: Array<ChannelStatusSubscriber>;
 };
+
+export type ChatMessageWithId = IChatMessage & { id: string };

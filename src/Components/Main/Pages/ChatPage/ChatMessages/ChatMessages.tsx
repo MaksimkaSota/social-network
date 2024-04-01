@@ -31,6 +31,7 @@ export const ChatMessages: FC<PropsType> = ({ messages, channelStatus }): ReactE
     if (isAutoScroll) {
       setTimeout(() => scrollToBottom(anchorRef), 0);
     }
+    // eslint-disable-next-line
   }, [messages]);
 
   const isScroll: boolean =
