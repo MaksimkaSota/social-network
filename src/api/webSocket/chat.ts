@@ -24,7 +24,7 @@ const cleanUp = (): void => {
 };
 
 const notifyAboutChannelStatus = (status: ChannelStatus): void => {
-  subscribers.changeChannelStatus.forEach((subscriber: ChannelStatusSubscriber) => subscriber(status));
+  subscribers.changeChannelStatus.forEach((subscriber: ChannelStatusSubscriber): void => subscriber(status));
 };
 
 const createChannel = (): void => {
@@ -43,7 +43,7 @@ const createChannel = (): void => {
   };
   ws.onmessage = (event: MessageEvent): void => {
     const newMessages = JSON.parse(event.data);
-    subscribers.receiveMessage.forEach((subscriber: MessagesSubscriber) => subscriber(newMessages));
+    subscribers.receiveMessage.forEach((subscriber: MessagesSubscriber): void => subscriber(newMessages));
     notifyAboutChannelStatus('received');
   };
   ws.onopen = (): void => {

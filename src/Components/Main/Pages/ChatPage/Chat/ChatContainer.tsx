@@ -4,11 +4,11 @@ import { Chat } from './Chat';
 import { useTypedDispatch } from '../../../../../hooks/useTypedDispatch';
 import { sendMessage, startMessagesListening, stopMessagesListening } from '../../../../../redux/thunks/chat';
 import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
-import { channelStatusSelector, messageSelector } from '../../../../../redux/selectors/chat';
+import { channelStatusSelector, messagesSelector } from '../../../../../redux/selectors/chat';
 import { resetMessages, setChannelStatus } from '../../../../../redux/actions/chat';
 
 export const ChatContainer: FC = (): ReactElement => {
-  const messages = useTypedSelector(messageSelector);
+  const messages = useTypedSelector(messagesSelector);
   const channelStatus = useTypedSelector(channelStatusSelector);
 
   const dispatch = useTypedDispatch();
