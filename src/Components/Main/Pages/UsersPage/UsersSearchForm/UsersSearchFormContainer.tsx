@@ -1,11 +1,9 @@
 import { memo } from 'react';
 import type { ReactElement } from 'react';
 import { Formik } from 'formik';
-import type { FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { UsersSearchForm } from './UsersSearchForm';
 import type { FilterType, Nullable } from '../../../../../utils/types/common';
-import type { SetSubmittingType } from '../../../../../utils/types/form';
 
 const validationSchema = Yup.object().shape({
   term: Yup.string().max(50, 'Must be not more than 50 characters'),
@@ -13,26 +11,23 @@ const validationSchema = Yup.object().shape({
 
 type PropsType = {
   page: number;
-  pageSize: number;
   filter: FilterType;
   authorizedUserId: Nullable<number>;
-  getUsers: (
-    currentPage: number,
-    currentPageSize: number,
-    currentFilter: FilterType,
-    setSubmitting?: SetSubmittingType
-  ) => void;
+  setPage: (currentPage: number) => void;
+  setFilter: (term: string, friend: string) => void;
+  isFetching: boolean;
 };
 type FormDataType = FilterType;
 
 export const UsersSearchFormContainer = memo<PropsType>(
-  ({ page, pageSize, filter, authorizedUserId, getUsers }): ReactElement => {
-    const onSubmit = (formData: FormDataType, { setSubmitting }: FormikHelpers<FormDataType>): void => {
+  ({ page, filter, authorizedUserId, setPage, setFilter, isFetching }): ReactElement => {
+    const onSubmit = (formData: FormDataType): void => {
       let currentPage = page;
       if (formData.term !== filter.term || formData.friend !== filter.friend) {
         currentPage = 1;
       }
-      getUsers(currentPage, pageSize, formData, setSubmitting);
+      setPage(currentPage);
+      setFilter(formData.term, formData.friend);
     };
 
     return (
@@ -41,12 +36,12 @@ export const UsersSearchFormContainer = memo<PropsType>(
         validationSchema={validationSchema}
         onSubmit={onSubmit}
       >
-        {({ handleChange, errors, touched, isSubmitting }): ReactElement => (
+        {({ handleChange, errors, touched }): ReactElement => (
           <UsersSearchForm
             handleChange={handleChange}
             errors={errors}
             touched={touched}
-            isSubmitting={isSubmitting}
+            isFetching={isFetching}
             authorizedUserId={authorizedUserId}
           />
         )}

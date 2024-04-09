@@ -11,7 +11,7 @@ type PropsType = {
   handleChange: HandleChangeType;
   errors: FormikErrorsType;
   touched: FormikTouchedType;
-  isSubmitting: boolean;
+  isFetching: boolean;
   authorizedUserId: Nullable<number>;
 };
 
@@ -19,7 +19,7 @@ export const UsersSearchForm: FC<PropsType> = ({
   handleChange,
   errors,
   touched,
-  isSubmitting,
+  isFetching,
   authorizedUserId,
 }): ReactElement => {
   return (
@@ -41,7 +41,7 @@ export const UsersSearchForm: FC<PropsType> = ({
         {authorizedUserId && <option value="true">Only followed</option>}
         {authorizedUserId && <option value="false">Only unfollowed</option>}
       </Field>
-      <Button text="Find" type="submit" className={classes.searchButton} disabled={isSubmitting} />
+      <Button text="Find" type="submit" className={classes.searchButton} disabled={isFetching} />
     </Form>
   );
 };
