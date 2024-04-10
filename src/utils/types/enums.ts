@@ -50,3 +50,7 @@ export enum FormName {
   term = 'term',
   friend = 'friend',
 }
+export enum KeyboardEventCode {
+  escape = 'Escape',
+  enter = 'Enter',
+}

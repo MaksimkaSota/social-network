@@ -1,6 +1,7 @@
 import type { KeyboardEvent, RefObject } from 'react';
 import type { ChannelStatus } from '../types/common';
 import type { SubmitFormType } from '../types/form';
+import { KeyboardEventCode } from '../types/enums';
 
 export const submitFormOnKeyboardPress = (
   event: KeyboardEvent,
@@ -8,7 +9,7 @@ export const submitFormOnKeyboardPress = (
   channelStatus?: ChannelStatus
 ): void => {
   if (!!channelStatus && channelStatus !== 'received') return;
-  if (event.ctrlKey && event.code === 'Enter') {
+  if (event.ctrlKey && event.code === KeyboardEventCode.enter) {
     submitForm();
   }
 };
