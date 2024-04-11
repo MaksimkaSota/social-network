@@ -1,11 +1,9 @@
 import { memo } from 'react';
 import type { ReactElement } from 'react';
 import { Formik } from 'formik';
-import type { FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { UsersSearchForm } from './UsersSearchForm';
-import type { FilterType } from '../../../../../utils/types/common';
-import type { SetSubmittingType } from '../../../../../utils/types/form';
+import type { FilterType, Nullable } from '../../../../../utils/types/common';
 
 const validationSchema = Yup.object().shape({
   term: Yup.string().max(50, 'Must be not more than 50 characters'),
@@ -13,35 +11,41 @@ const validationSchema = Yup.object().shape({
 
 type PropsType = {
   page: number;
-  pageSize: number;
   filter: FilterType;
-  getUsers: (
-    currentPage: number,
-    currentPageSize: number,
-    currentFilter: FilterType,
-    setSubmitting?: SetSubmittingType
-  ) => void;
+  authorizedUserId: Nullable<number>;
+  setPage: (currentPage: number) => void;
+  setFilter: (term: string, friend: string) => void;
+  isFetching: boolean;
 };
 type FormDataType = FilterType;
 
-export const UsersSearchFormContainer = memo<PropsType>(({ page, pageSize, filter, getUsers }): ReactElement => {
-  const onSubmit = (formData: FormDataType, { setSubmitting }: FormikHelpers<FormDataType>): void => {
-    let currentPage = page;
-    if (formData.term !== filter.term || formData.friend !== filter.friend) {
-      currentPage = 1;
-    }
-    getUsers(currentPage, pageSize, formData, setSubmitting);
-  };
+export const UsersSearchFormContainer = memo<PropsType>(
+  ({ page, filter, authorizedUserId, setPage, setFilter, isFetching }): ReactElement => {
+    const onSubmit = (formData: FormDataType): void => {
+      let currentPage = page;
+      if (formData.term !== filter.term || formData.friend !== filter.friend) {
+        currentPage = 1;
+      }
+      setPage(currentPage);
+      setFilter(formData.term, formData.friend);
+    };
 
-  return (
-    <Formik
-      initialValues={{ term: filter.term, friend: filter.friend }}
-      validationSchema={validationSchema}
-      onSubmit={onSubmit}
-    >
-      {({ handleChange, errors, touched, isSubmitting }): ReactElement => (
-        <UsersSearchForm handleChange={handleChange} errors={errors} touched={touched} isSubmitting={isSubmitting} />
-      )}
-    </Formik>
-  );
-});
+    return (
+      <Formik
+        initialValues={{ term: filter.term, friend: filter.friend }}
+        validationSchema={validationSchema}
+        onSubmit={onSubmit}
+      >
+        {({ handleChange, errors, touched }): ReactElement => (
+          <UsersSearchForm
+            handleChange={handleChange}
+            errors={errors}
+            touched={touched}
+            isFetching={isFetching}
+            authorizedUserId={authorizedUserId}
+          />
+        )}
+      </Formik>
+    );
+  }
+);

@@ -3,35 +3,26 @@ import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import classes from './Paginator.module.scss';
 import { Button } from '../Button/Button';
-import type { FilterType } from '../../../utils/types/common';
-import type { SetSubmittingType } from '../../../utils/types/form';
 
 type PropsType = {
   page: number;
   pageSize: number;
-  filter: FilterType;
   totalCount: number;
   portionSize?: number;
-  onCurrentPageCallback: (
-    currentPage: number,
-    currentPageSize: number,
-    currentFilter: FilterType,
-    setSubmitting?: SetSubmittingType
-  ) => void;
+  onCurrentPage: (currentPage: number) => void;
   isFetching: boolean;
 };
 
 export const Paginator: FC<PropsType> = ({
   page,
   pageSize,
-  filter,
   totalCount,
   portionSize = 10,
-  onCurrentPageCallback,
+  onCurrentPage,
   isFetching,
 }): ReactElement => {
-  const onCurrentPage = (currentPage: number) => (): void => {
-    onCurrentPageCallback(currentPage, pageSize, filter);
+  const onCurrentPageClick = (currentPage: number) => (): void => {
+    onCurrentPage(currentPage);
   };
 
   const pagesCount = Math.ceil(totalCount / pageSize);
@@ -73,7 +64,7 @@ export const Paginator: FC<PropsType> = ({
               <Button
                 className={cn({ [classes.selectedPage]: currentPage === page }, classes.pageNumber)}
                 text={currentPage}
-                onClick={onCurrentPage(currentPage)}
+                onClick={onCurrentPageClick(currentPage)}
                 disabled={isFetching || currentPage === page}
                 key={currentPage}
               />

@@ -7,7 +7,6 @@ import { Error } from '../../../Common/Error/Error';
 import type { ErrorType, FilterType, FollowUnfollowErrorType, Nullable } from '../../../../utils/types/common';
 import type { IUser } from '../../../../utils/types/api';
 import { UsersSearchFormContainer } from './UsersSearchForm/UsersSearchFormContainer';
-import type { SetSubmittingType } from '../../../../utils/types/form';
 
 type PropsType = {
   users: Array<IUser>;
@@ -20,12 +19,9 @@ type PropsType = {
   subscribersId: Array<number>;
   followErrors: Array<FollowUnfollowErrorType>;
   unfollowErrors: Array<FollowUnfollowErrorType>;
-  getUsers: (
-    currentPage: number,
-    currentPageSize: number,
-    currentFilter: FilterType,
-    setSubmitting?: SetSubmittingType
-  ) => void;
+  authorizedUserId: Nullable<number>;
+  setPage: (currentPage: number) => void;
+  setFilter: (term: string, friend: string) => void;
   followUser: (id: number) => void;
   unfollowUser: (id: number) => void;
 };
@@ -41,7 +37,9 @@ export const UsersPage: FC<PropsType> = ({
   subscribersId,
   followErrors,
   unfollowErrors,
-  getUsers,
+  authorizedUserId,
+  setPage,
+  setFilter,
   followUser,
   unfollowUser,
 }): ReactElement => {
@@ -55,14 +53,20 @@ export const UsersPage: FC<PropsType> = ({
 
   return (
     <div className={classes.usersPageBlock}>
-      <UsersSearchFormContainer page={page} pageSize={pageSize} filter={filter} getUsers={getUsers} />
+      <UsersSearchFormContainer
+        page={page}
+        filter={filter}
+        authorizedUserId={authorizedUserId}
+        setPage={setPage}
+        setFilter={setFilter}
+        isFetching={isFetchingUsers}
+      />
       {!!users.length && (
         <Paginator
           page={page}
           pageSize={pageSize}
-          filter={filter}
           totalCount={totalCount}
-          onCurrentPageCallback={getUsers}
+          onCurrentPage={setPage}
           isFetching={isFetchingUsers}
         />
       )}

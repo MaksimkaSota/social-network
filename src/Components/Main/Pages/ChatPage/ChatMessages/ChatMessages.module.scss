@@ -1,0 +1,20 @@
+.chatMessagesBlock {
+  height: 250px;
+  padding: $padding;
+  border: 1px solid $active;
+  border-radius: $radius;
+  overflow-y: auto;
+  .chatPreloader {
+    height: 100%;
+    margin: 0 auto;
+  }
+  .emptyMessagesText {
+    color: $dark-background;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+}
+
+.chatMessagesBlockScroll {
+  border-radius: $radius 0 0 $radius;
+}

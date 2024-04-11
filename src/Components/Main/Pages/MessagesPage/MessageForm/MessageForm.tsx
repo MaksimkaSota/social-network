@@ -1,10 +1,11 @@
-import type { FC, ReactElement } from 'react';
-import { Form } from 'formik';
+import type { FC, KeyboardEvent, ReactElement } from 'react';
+import { Form, useFormikContext } from 'formik';
 import classes from './MessageForm.module.scss';
 import { Button } from '../../../../Common/Button/Button';
 import { FormField } from '../../../../Common/FormField/FormField';
 import type { FormikErrorsType, FormikTouchedType, HandleChangeType } from '../../../../../utils/types/form';
 import { FormName } from '../../../../../utils/types/enums';
+import { submitFormOnKeyboardPress } from '../../../../../utils/helpers/componentHelpers';
 
 type PropsType = {
   handleChange: HandleChangeType;
@@ -14,6 +15,12 @@ type PropsType = {
 };
 
 export const MessageForm: FC<PropsType> = ({ handleChange, errors, touched, disabled }): ReactElement => {
+  const { submitForm } = useFormikContext();
+
+  const onKeyDown = (event: KeyboardEvent): void => {
+    submitFormOnKeyboardPress(event, submitForm);
+  };
+
   return (
     <Form className={classes.addMessageBlock}>
       <FormField
@@ -21,8 +28,9 @@ export const MessageForm: FC<PropsType> = ({ handleChange, errors, touched, disa
         classNameField={classes.inputMessage}
         name={FormName.text}
         component="textarea"
-        placeholder="Message text"
+        placeholder="You can press Ctrl+Enter to send a message"
         onChange={handleChange}
+        onKeyDown={onKeyDown}
         errors={errors}
         touched={touched}
       />

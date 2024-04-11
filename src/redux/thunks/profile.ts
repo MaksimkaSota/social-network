@@ -14,7 +14,7 @@ import {
   setDataSuccess,
   setDataFailure,
 } from '../actions/profile';
-import { getProfileAPI, getStatusAPI, updateStatusAPI, updatePhotoAPI, updateProfileAPI } from '../../api/profile';
+import { getProfileAPI, getStatusAPI, updateStatusAPI, updatePhotoAPI, updateProfileAPI } from '../../api/http/profile';
 import { fillErrorsObject, getErrorMessage } from '../../utils/helpers/thunksHelpers';
 import { setAuthUserPhoto } from '../actions/auth';
 import type { Nullable, ThunkType } from '../../utils/types/common';

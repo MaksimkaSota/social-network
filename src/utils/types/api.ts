@@ -58,3 +58,10 @@ export interface IUsers {
   totalCount: number;
   error: Nullable<string>;
 }
+
+export interface IChatMessage {
+  userId: number;
+  userName: string;
+  message: string;
+  photo: string;
+}

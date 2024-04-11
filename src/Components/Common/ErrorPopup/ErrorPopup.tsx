@@ -4,6 +4,7 @@ import classes from './ErrorPopup.module.scss';
 import { Error } from '../Error/Error';
 import { Button } from '../Button/Button';
 import type { ErrorType, Nullable } from '../../../utils/types/common';
+import { KeyboardEventCode } from '../../../utils/types/enums';
 
 type PropsType = {
   errorObject: Nullable<ErrorType>;
@@ -27,8 +28,8 @@ export const ErrorPopup: FC<PropsType> = ({ errorObject, resetError }): ReactEle
     }
   };
 
-  const onPopupKeyboardClick = (event: KeyboardEvent<HTMLDivElement>): void => {
-    if (event.code === 'Escape') {
+  const onKeyboardPress = (event: KeyboardEvent<HTMLDivElement>): void => {
+    if (event.code === KeyboardEventCode.escape) {
       resetError(null);
     }
   };
@@ -39,7 +40,7 @@ export const ErrorPopup: FC<PropsType> = ({ errorObject, resetError }): ReactEle
       ref={errorPopup}
       tabIndex={-1}
       onClick={onPopupMouseClick}
-      onKeyDown={onPopupKeyboardClick}
+      onKeyDown={onKeyboardPress}
     >
       <div className={classes.errorPopupContainer}>
         <Error code={errorObject!.code} message={errorObject!.message} />

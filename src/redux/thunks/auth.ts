@@ -1,5 +1,5 @@
 import { isAxiosError } from 'axios';
-import { getAuthAPI, getCaptchaUrlAPI, loginAPI, logoutAPI } from '../../api/auth';
+import { getAuthAPI, getCaptchaUrlAPI, loginAPI, logoutAPI } from '../../api/http/auth';
 import {
   setAuthRequest,
   setAuthSuccessCorrect,
@@ -11,7 +11,7 @@ import {
   setCaptchaUrl,
   setLogoutError,
 } from '../actions/auth';
-import { getProfileAPI } from '../../api/profile';
+import { getProfileAPI } from '../../api/http/profile';
 import { getErrorMessage } from '../../utils/helpers/thunksHelpers';
 import type { ThunkType } from '../../utils/types/common';
 import type { AuthAction } from '../types/auth';

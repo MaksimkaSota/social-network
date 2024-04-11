@@ -18,8 +18,8 @@ import {
 } from '../../../../redux/selectors/users';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { useTypedDispatch } from '../../../../hooks/useTypedDispatch';
-import type { FilterType } from '../../../../utils/types/common';
-import type { SetSubmittingType } from '../../../../utils/types/form';
+import { idSelector } from '../../../../redux/selectors/auth';
+import { setFilter, setPage } from '../../../../redux/actions/users';
 
 const UsersPageContainer: FC = (): ReactElement | boolean => {
   const users = useTypedSelector(usersSelector);
@@ -32,13 +32,14 @@ const UsersPageContainer: FC = (): ReactElement | boolean => {
   const usersError = useTypedSelector(usersErrorSelector);
   const followErrors = useTypedSelector(followErrorsSelector);
   const unfollowErrors = useTypedSelector(unfollowErrorsSelector);
+  const authorizedUserId = useTypedSelector(idSelector);
 
   const dispatch = useTypedDispatch();
   const followUserCallback = useCallback((id: number) => dispatch(followUser(id)), [dispatch]);
   const unfollowUserCallback = useCallback((id: number) => dispatch(unfollowUser(id)), [dispatch]);
-  const getUsersCallback = useCallback(
-    (currentPage: number, currentPageSize: number, currentFilter: FilterType, setSubmitting?: SetSubmittingType) =>
-      dispatch(getUsers(currentPage, currentPageSize, currentFilter, setSubmitting)),
+  const setPageCallback = useCallback((currentPage: number) => dispatch(setPage(currentPage)), [dispatch]);
+  const setFilterCallback = useCallback(
+    (term: string, friend: string) => dispatch(setFilter(term, friend)),
     [dispatch]
   );
 
@@ -57,7 +58,7 @@ const UsersPageContainer: FC = (): ReactElement | boolean => {
 
     dispatch(getUsers(actualPage, pageSize, actualFilter));
     // eslint-disable-next-line
-  }, [dispatch]);
+  }, [dispatch, searchParams]);
 
   useEffect(() => {
     const queryObject: Partial<{ term: string; friend: string; page: string }> = {};
@@ -91,9 +92,11 @@ const UsersPageContainer: FC = (): ReactElement | boolean => {
         subscribersId={subscribersId}
         followErrors={followErrors}
         unfollowErrors={unfollowErrors}
+        authorizedUserId={authorizedUserId}
         followUser={followUserCallback}
         unfollowUser={unfollowUserCallback}
-        getUsers={getUsersCallback}
+        setPage={setPageCallback}
+        setFilter={setFilterCallback}
       />
     )
   );

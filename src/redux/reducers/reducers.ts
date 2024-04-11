@@ -8,6 +8,7 @@ import { usersReducer } from './users';
 import { authReducer } from './auth';
 import { loadingReducer } from './loading';
 import { errorReducer } from './error';
+import { chatReducer } from './chat';
 
 export const rootReducer = combineReducers({
   profile: profileReducer,
@@ -17,6 +18,7 @@ export const rootReducer = combineReducers({
   auth: authReducer,
   loading: loadingReducer,
   error: errorReducer,
+  chat: chatReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

@@ -26,7 +26,7 @@ export const AppContainer: FC = (): ReactElement => {
     dispatch(getAuth());
   }, [dispatch]);
 
-  const [globalError, setGlobalError] = useState<ErrorType | null>(null);
+  const [globalError, setGlobalError] = useState<Nullable<ErrorType>>(null);
 
   return (
     <ErrorCatcher globalError={globalError} setGlobalError={setGlobalError}>
