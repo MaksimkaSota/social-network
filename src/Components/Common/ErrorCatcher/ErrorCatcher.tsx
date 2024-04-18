@@ -1,4 +1,4 @@
-import type { Dispatch, ReactElement, ReactNode, SetStateAction } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 import { Component } from 'react';
 import { Error } from '../Error/Error';
 import { ErrorPopup } from '../ErrorPopup/ErrorPopup';
@@ -6,18 +6,24 @@ import type { ErrorType, Nullable } from '../../../utils/types/common';
 
 type PropsType = {
   children: ReactNode;
-  globalError: Nullable<ErrorType>;
-  setGlobalError: Dispatch<SetStateAction<Nullable<ErrorType>>>;
 };
 type StateType = {
-  errorMessage: string;
+  UIError: Nullable<ErrorType>;
+  promiseError: Nullable<ErrorType>;
 };
 
 export class ErrorCatcher extends Component<PropsType, StateType> {
-  state = { errorMessage: '' };
+  state: StateType = {
+    UIError: null,
+    promiseError: null,
+  };
 
   static getDerivedStateFromError() {
-    return { errorMessage: 'Some UI Error! We are sorry... Fix it soon!' };
+    return {
+      UIError: {
+        message: 'Some UI Error! We are sorry... Fix it soon!',
+      },
+    };
   }
 
   componentDidMount(): void {
@@ -29,23 +35,31 @@ export class ErrorCatcher extends Component<PropsType, StateType> {
   }
 
   catchUnhandledPromiseErrors = (event: PromiseRejectionEvent): void => {
-    const error = {
-      code: event.reason.response.status,
-      message: 'Unhandled Promise Error! We are sorry... Fix it soon!',
-    };
-    this.props.setGlobalError(error);
+    this.setState({
+      promiseError: {
+        code: event.reason.response.status,
+        message: 'Unhandled Promise Error! We are sorry... Fix it soon!',
+      },
+    });
   };
 
   render(): ReactElement {
-    const { errorMessage } = this.state;
-    const { children, globalError, setGlobalError } = this.props;
-    if (errorMessage) {
-      return <Error message={errorMessage} isGlobalError />;
+    const { UIError, promiseError } = this.state;
+    const { children } = this.props;
+    if (UIError) {
+      return <Error message={UIError.message} isGlobalError />;
     }
     return (
       <>
         {children}
-        {globalError && <ErrorPopup errorObject={globalError} resetError={setGlobalError} />}
+        {promiseError && (
+          <ErrorPopup
+            errorObject={promiseError}
+            resetError={(error: Nullable<ErrorType>): void => {
+              this.setState({ promiseError: error });
+            }}
+          />
+        )}
       </>
     );
   }

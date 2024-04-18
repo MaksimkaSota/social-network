@@ -1,5 +1,5 @@
 import type { FC, ReactElement } from 'react';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 import { App } from './App';
 import { getAuth } from '../redux/thunks/auth';
 import { isFetchingAuthSelector } from '../redux/selectors/loading';
@@ -26,10 +26,8 @@ export const AppContainer: FC = (): ReactElement => {
     dispatch(getAuth());
   }, [dispatch]);
 
-  const [globalError, setGlobalError] = useState<Nullable<ErrorType>>(null);
-
   return (
-    <ErrorCatcher globalError={globalError} setGlobalError={setGlobalError}>
+    <ErrorCatcher>
       <App
         isFetchingAuth={isFetchingAuth}
         authError={authError}
