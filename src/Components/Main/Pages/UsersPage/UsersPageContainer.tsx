@@ -4,35 +4,19 @@ import { useSearchParams } from 'react-router-dom';
 import { UsersPage } from './UsersPage';
 import { useMounted } from '../../../../hooks/useMounted';
 import { followUser, getUsers, unfollowUser } from '../../../../redux/thunks/users';
-import { isFetchingUsersSelector } from '../../../../redux/selectors/loading';
-import { usersErrorSelector } from '../../../../redux/selectors/error';
-import {
-  pageSelector,
-  pageSizeSelector,
-  subscribersIdSelector,
-  totalCountSelector,
-  usersSelector,
-  followErrorsSelector,
-  unfollowErrorsSelector,
-  filterSelector,
-} from '../../../../redux/selectors/users';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { useTypedDispatch } from '../../../../hooks/useTypedDispatch';
-import { idSelector } from '../../../../redux/selectors/auth';
 import { setFilter, setPage } from '../../../../redux/actions/users';
+import { authSelector, usersSelector } from '../../../../redux/selectors/selectors';
+import { isFetchingUsersSelector } from '../../../../redux/selectors/loading';
+import { usersErrorSelector } from '../../../../redux/selectors/error';
 
 const UsersPageContainer: FC = (): ReactElement | boolean => {
-  const users = useTypedSelector(usersSelector);
-  const page = useTypedSelector(pageSelector);
-  const pageSize = useTypedSelector(pageSizeSelector);
-  const filter = useTypedSelector(filterSelector);
-  const totalCount = useTypedSelector(totalCountSelector);
-  const subscribersId = useTypedSelector(subscribersIdSelector);
+  const { id: authorizedUserId } = useTypedSelector(authSelector);
+  const { users, page, pageSize, filter, totalCount, subscribersId, followErrors, unfollowErrors } =
+    useTypedSelector(usersSelector);
   const isFetchingUsers = useTypedSelector(isFetchingUsersSelector);
   const usersError = useTypedSelector(usersErrorSelector);
-  const followErrors = useTypedSelector(followErrorsSelector);
-  const unfollowErrors = useTypedSelector(unfollowErrorsSelector);
-  const authorizedUserId = useTypedSelector(idSelector);
 
   const dispatch = useTypedDispatch();
   const followUserCallback = useCallback((id: number) => dispatch(followUser(id)), [dispatch]);

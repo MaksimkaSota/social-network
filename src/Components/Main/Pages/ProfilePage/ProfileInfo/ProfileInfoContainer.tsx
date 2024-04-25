@@ -3,18 +3,18 @@ import { useCallback } from 'react';
 import { ProfileInfo } from './ProfileInfo';
 import { useMounted } from '../../../../../hooks/useMounted';
 import { updateData, updateStatus, updatePhoto } from '../../../../../redux/thunks/profile';
-import { statusSelector } from '../../../../../redux/selectors/profile';
+import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
+import { useTypedDispatch } from '../../../../../hooks/useTypedDispatch';
+import type { Nullable } from '../../../../../utils/types/common';
+import type { SetStatusType, SetSubmittingType } from '../../../../../utils/types/form';
+import type { IRequestProfile, IResponseProfile } from '../../../../../utils/types/api';
+import { profileSelector } from '../../../../../redux/selectors/selectors';
 import {
   isFetchingStatusSelector,
   isFetchingPhotoSelector,
   isFetchingDataSelector,
 } from '../../../../../redux/selectors/loading';
 import { statusErrorSelector, photoErrorSelector, dataErrorSelector } from '../../../../../redux/selectors/error';
-import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
-import { useTypedDispatch } from '../../../../../hooks/useTypedDispatch';
-import type { Nullable } from '../../../../../utils/types/common';
-import type { SetStatusType, SetSubmittingType } from '../../../../../utils/types/form';
-import type { IRequestProfile, IResponseProfile } from '../../../../../utils/types/api';
 
 type PropsType = {
   profile: Nullable<IResponseProfile>;
@@ -22,7 +22,7 @@ type PropsType = {
 };
 
 export const ProfileInfoContainer: FC<PropsType> = ({ profile, isOwner }): ReactElement | boolean => {
-  const status = useTypedSelector(statusSelector);
+  const { status } = useTypedSelector(profileSelector);
   const isFetchingStatus = useTypedSelector(isFetchingStatusSelector);
   const statusError = useTypedSelector(statusErrorSelector);
   const isFetchingPhoto = useTypedSelector(isFetchingPhotoSelector);
