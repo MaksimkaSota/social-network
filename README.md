@@ -7,7 +7,6 @@ Study project Social Network
 Add following `.env` file to the root of the project (`git` ignored):
 
 ```
-NODE_ENV=development;
 KEY='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 ```
 
