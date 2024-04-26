@@ -1,5 +1,5 @@
 import type { FC, ReactElement } from 'react';
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 import { App } from './App';
 import { getAuth } from '../redux/thunks/auth';
 import { setLogoutError } from '../redux/actions/auth';
@@ -17,10 +17,7 @@ export const AppContainer: FC = (): ReactElement => {
   const authError = useTypedSelector(authErrorSelector);
 
   const dispatch = useTypedDispatch();
-  const setLogoutErrorCallback = useCallback(
-    (error: Nullable<ErrorType>) => dispatch(setLogoutError(error)),
-    [dispatch]
-  );
+  const setLogoutErrorCallback = (error: Nullable<ErrorType>) => dispatch(setLogoutError(error));
 
   useEffect(() => {
     dispatch(getAuth());

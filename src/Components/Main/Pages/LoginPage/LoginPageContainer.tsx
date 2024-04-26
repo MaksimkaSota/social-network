@@ -1,4 +1,3 @@
-import { useCallback } from 'react';
 import { LoginPage } from './LoginPage';
 import { login } from '../../../../redux/thunks/auth';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
@@ -15,18 +14,15 @@ const LoginPageContainer = () => {
   const { isAuth, incorrectAuthText, captchaUrl } = useTypedSelector(authSelector);
 
   const dispatch = useTypedDispatch();
-  const loginCallback = useCallback(
-    (
-      loginData: { email: string; password: string; rememberMe: boolean; captcha: string },
-      setStatus: SetStatusType,
-      setSubmitting: SetSubmittingType,
-      setFieldValue: SetFieldValueType,
-      setFieldTouched: SetFieldTouchedType
-    ) => {
-      dispatch(login(loginData, setStatus, setSubmitting, setFieldValue, setFieldTouched));
-    },
-    [dispatch]
-  );
+  const loginCallback = (
+    loginData: { email: string; password: string; rememberMe: boolean; captcha: string },
+    setStatus: SetStatusType,
+    setSubmitting: SetSubmittingType,
+    setFieldValue: SetFieldValueType,
+    setFieldTouched: SetFieldTouchedType
+  ) => {
+    dispatch(login(loginData, setStatus, setSubmitting, setFieldValue, setFieldTouched));
+  };
 
   return (
     <LoginPage login={loginCallback} isAuth={isAuth} incorrectAuthText={incorrectAuthText} captchaUrl={captchaUrl} />

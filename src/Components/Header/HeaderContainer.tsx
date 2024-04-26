@@ -1,5 +1,4 @@
 import type { FC, ReactElement } from 'react';
-import { useCallback } from 'react';
 import { Header } from './Header';
 import { logout } from '../../redux/thunks/auth';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
@@ -20,7 +19,7 @@ export const HeaderContainer: FC = (): ReactElement => {
   const updateUserPhotoError = useTypedSelector(photoErrorSelector);
 
   const dispatch = useTypedDispatch();
-  const logoutCallback = useCallback(() => dispatch(logout()), [dispatch]);
+  const logoutCallback = () => dispatch(logout());
 
   return (
     <Header
