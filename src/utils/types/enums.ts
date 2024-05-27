@@ -28,11 +28,8 @@ export enum RoutePath {
   not_found = '*',
   main = '/',
   profile = '/profile',
-  messages = '/messages',
+  dialogs = '/dialogs',
   users = '/users',
-  news = '/news',
-  musics = '/musics',
-  settings = '/settings',
   login = '/login',
   chat = '/chat',
 }

@@ -1,6 +1,5 @@
 import type { FC, ReactElement } from 'react';
 import classes from './ProfilePage.module.scss';
-import { PostsContainer } from './Posts/PostsContainer';
 import { ProfileInfoContainer } from './ProfileInfo/ProfileInfoContainer';
 import { Preloader } from '../../../Common/Preloader/Preloader';
 import { Error } from '../../../Common/Error/Error';
@@ -26,7 +25,6 @@ export const ProfilePage: FC<PropsType> = ({ isFetchingProfile, profileError, pr
   return (
     <div className={classes.profilePageBlock}>
       <ProfileInfoContainer profile={profile} isOwner={isOwner} />
-      <PostsContainer />
     </div>
   );
 };
