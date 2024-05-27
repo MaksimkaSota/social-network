@@ -1,9 +1,14 @@
 .infoBlock {
-  width: 50%;
+  @include position(90%, 0 auto);
   text-align: center;
-  border-right: 1px solid $active;
   .title {
     @extend %title;
+  }
+  .innerInfoBlock {
+    display: flex;
+    .statusAndPhotoBlock {
+      @include position(35%, 0 auto);
+    }
   }
   .fullName {
     @include captions(1.3rem, 0.05rem);

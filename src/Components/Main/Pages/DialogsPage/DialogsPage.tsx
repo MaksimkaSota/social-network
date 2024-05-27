@@ -13,7 +13,7 @@ type PropsType = {
 
 export const DialogsPage: FC<PropsType> = ({ messages, addMessage, posts, addPost }): ReactElement => {
   return (
-    <div className={classes.messagesPageBlock}>
+    <div className={classes.dialogsPageBlock}>
       <Messages messages={messages} addMessage={addMessage} />
       <Posts posts={posts} addPost={addPost} />;
     </div>

@@ -34,12 +34,8 @@ export const ProfileData = memo<PropsType>(({ isOwner, data, updateData, isFetch
         <ProfileDataFormContainer data={data} updateData={updateData} setEditModeData={setEditModeData} />
       ) : (
         <>
-          {isOwner && (
-            <div className={classes.updateButtonBlock}>
-              <Button text="Edit profile" className={classes.button} onClick={onActivateEditModeData} />
-            </div>
-          )}
           <ProfileDataDescription data={data} isFetchingData={isFetchingData} dataError={dataError} />
+          {isOwner && <Button text="Edit profile" className={classes.button} onClick={onActivateEditModeData} />}
         </>
       )}
     </div>
