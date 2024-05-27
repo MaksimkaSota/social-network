@@ -6,6 +6,6 @@ export const http: AxiosInstance = axios.create({
   withCredentials: true,
   baseURL: RequestString.samurai_js_http,
   headers: {
-    'API-KEY': process.env.KEY,
+    'API-KEY': process.env.REACT_APP_KEY,
   },
 });
