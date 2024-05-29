@@ -9,6 +9,7 @@ import type {
   SetSubmittingType,
 } from '../../../../utils/types/form';
 import { RoutePath } from '../../../../utils/types/enums';
+import { LoginInformation } from './LoginInformation/LoginInformation';
 
 type PropsType = {
   login: (
@@ -29,7 +30,7 @@ export const LoginPage: FC<PropsType> = ({ login, isAuth, incorrectAuthText, cap
   ) : (
     <div className={classes.loginPageBlock}>
       <h3 className={classes.title}>Login</h3>
-      <p className={classes.incorrectAuthText}>{incorrectAuthText}! Log in, please!</p>
+      <LoginInformation incorrectAuthText={incorrectAuthText} />
       <LoginFormContainer login={login} captchaUrl={captchaUrl} />
     </div>
   );

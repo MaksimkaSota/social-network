@@ -4,8 +4,4 @@
   .title {
     @extend %title;
   }
-  .incorrectAuthText {
-    margin: 0 0 $marginMin 0;
-    color: $error;
-  }
 }
