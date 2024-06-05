@@ -24,8 +24,8 @@ export const MessageFormContainer = memo<PropsType>(({ addMessage }): ReactEleme
 
   return (
     <Formik initialValues={{ text: '' }} validationSchema={validationSchema} onSubmit={onSubmit}>
-      {({ handleChange, errors, touched }): ReactElement => (
-        <MessageForm handleChange={handleChange} errors={errors} touched={touched} disabled={Boolean(errors.text)} />
+      {({ handleChange, errors, touched, isValid, dirty }): ReactElement => (
+        <MessageForm handleChange={handleChange} errors={errors} touched={touched} isValid={isValid} dirty={dirty} />
       )}
     </Formik>
   );

@@ -11,10 +11,11 @@ type PropsType = {
   handleChange: HandleChangeType;
   errors: FormikErrorsType;
   touched: FormikTouchedType;
-  disabled: boolean;
+  isValid: boolean;
+  dirty: boolean;
 };
 
-export const MessageForm: FC<PropsType> = ({ handleChange, errors, touched, disabled }): ReactElement => {
+export const MessageForm: FC<PropsType> = ({ handleChange, errors, touched, isValid, dirty }): ReactElement => {
   const { submitForm } = useFormikContext();
 
   const onKeyDown = (event: KeyboardEvent): void => {
@@ -34,7 +35,7 @@ export const MessageForm: FC<PropsType> = ({ handleChange, errors, touched, disa
         errors={errors}
         touched={touched}
       />
-      <Button text="Add message" type="submit" disabled={disabled} />
+      <Button text="Add message" type="submit" disabled={!isValid || !dirty} />
     </Form>
   );
 };
