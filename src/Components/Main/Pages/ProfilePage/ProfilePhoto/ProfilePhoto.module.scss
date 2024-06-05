@@ -1,7 +1,7 @@
 .photoBlock {
-  @include position(90%, 0 auto);
+  margin: 0 0 $marginMin 0;
   .userPhoto {
-    @include position(30%, 0 auto);
+    @include position(50%, 0 auto);
     border-radius: $radius;
   }
   .userPhotoError {
@@ -9,6 +9,6 @@
     font-size: 1.3rem;
   }
   .photoPreloader {
-    @include position(30%, 0 auto $marginMin auto);
+    @include position(50%, 0 auto $marginMin auto);
   }
 }

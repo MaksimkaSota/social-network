@@ -2,13 +2,13 @@ import type { IUser } from '../../utils/types/api';
 import type { ErrorType, FilterType, FollowUnfollowErrorType, SubscribersId } from '../../utils/types/common';
 
 export type UsersState = {
-  users: Array<IUser>;
+  users: IUser[];
   page: number;
   pageSize: number;
   totalCount: number;
-  subscribersId: Array<number>;
-  followErrors: Array<FollowUnfollowErrorType>;
-  unfollowErrors: Array<FollowUnfollowErrorType>;
+  subscribersId: number[];
+  followErrors: FollowUnfollowErrorType[];
+  unfollowErrors: FollowUnfollowErrorType[];
   filter: FilterType;
 };
 
@@ -27,7 +27,7 @@ export enum UsersActionType {
 }
 
 export type SetUsersRequestAction = { type: UsersActionType.SET_USERS_REQUEST };
-export type SetUsersSuccessAction = { type: UsersActionType.SET_USERS_SUCCESS; payload: Array<IUser> };
+export type SetUsersSuccessAction = { type: UsersActionType.SET_USERS_SUCCESS; payload: IUser[] };
 export type SetUsersFailureAction = { type: UsersActionType.SET_USERS_FAILURE; payload: ErrorType };
 export type FollowAction = { type: UsersActionType.FOLLOW_USERS_USER; payload: number };
 export type SetFollowErrorsAction = { type: UsersActionType.SET_USERS_FOLLOW_ERRORS; payload: FollowUnfollowErrorType };

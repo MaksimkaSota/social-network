@@ -2,7 +2,7 @@ import type { IChatMessage } from '../../utils/types/api';
 import type { ChannelStatus, ChatMessageWithId } from '../../utils/types/common';
 
 export type ChatState = {
-  messages: Array<ChatMessageWithId>;
+  messages: ChatMessageWithId[];
   channelStatus: ChannelStatus;
 };
 
@@ -12,7 +12,7 @@ export enum ChatActionType {
   RESET_CHAT_MESSAGES = 'RESET_CHAT_MESSAGES',
 }
 
-export type SetMessagesAction = { type: ChatActionType.SET_CHAT_MESSAGES; payload: Array<IChatMessage> };
+export type SetMessagesAction = { type: ChatActionType.SET_CHAT_MESSAGES; payload: IChatMessage[] };
 export type SetChannelStatusAction = { type: ChatActionType.SET_CHAT_CHANNEL_STATUS; payload: ChannelStatus };
 export type ResetMessagesAction = { type: ChatActionType.RESET_CHAT_MESSAGES };
 

@@ -11,11 +11,10 @@ const initialState: ChatState = {
 export const chatReducer = (state: ChatState = initialState, action: ChatAction): ChatState => {
   switch (action.type) {
     case ChatActionType.SET_CHAT_MESSAGES: {
-      const messagesWithId: Array<ChatMessageWithId> = addUniqueIdInObject(action.payload);
-      const allMessages: Array<ChatMessageWithId> = [...state.messages, ...messagesWithId];
-      const last100Messages: Array<ChatMessageWithId> = allMessages.filter(
-        (message: ChatMessageWithId, index: number, array: Array<ChatMessageWithId>): boolean =>
-          index >= array.length - 100
+      const messagesWithId: ChatMessageWithId[] = addUniqueIdInObject(action.payload);
+      const allMessages: ChatMessageWithId[] = [...state.messages, ...messagesWithId];
+      const last100Messages: ChatMessageWithId[] = allMessages.filter(
+        (message: ChatMessageWithId, index: number, array: ChatMessageWithId[]): boolean => index >= array.length - 100
       );
       return {
         ...state,

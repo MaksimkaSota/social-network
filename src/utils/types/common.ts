@@ -18,10 +18,6 @@ export type ErrorType = {
   code?: number;
   message: string;
 };
-export type DialogType = {
-  id: number;
-  name: string;
-};
 export type MessageType = {
   id: number;
   messageText: string;
@@ -42,11 +38,11 @@ export type FilterType = {
 
 export type ChannelStatus = 'pending' | 'fulfilled' | 'received';
 export type EventsNames = 'receiveMessage' | 'changeChannelStatus';
-export type MessagesSubscriber = (messages: Array<IChatMessage>) => void;
+export type MessagesSubscriber = (messages: IChatMessage[]) => void;
 export type ChannelStatusSubscriber = (status: ChannelStatus) => void;
 export type SubscribersType = {
-  receiveMessage: Array<MessagesSubscriber>;
-  changeChannelStatus: Array<ChannelStatusSubscriber>;
+  receiveMessage: MessagesSubscriber[];
+  changeChannelStatus: ChannelStatusSubscriber[];
 };
 
 export type ChatMessageWithId = IChatMessage & { id: string };

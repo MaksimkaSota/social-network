@@ -14,7 +14,7 @@ import type { IChatMessage } from '../../utils/types/api';
 let messageHandler: Nullable<MessagesSubscriber> = null;
 export const messageHandlerCreator = (dispatch: Dispatch<ChatAction>) => {
   if (messageHandler === null) {
-    messageHandler = (messages: Array<IChatMessage>): void => {
+    messageHandler = (messages: IChatMessage[]): void => {
       dispatch(setMessages(messages));
     };
   }

@@ -7,7 +7,7 @@ import type { MessageType } from '../../../../../utils/types/common';
 import { scrollToBottom } from '../../../../../utils/helpers/componentHelpers';
 
 type PropsType = {
-  messages: Array<MessageType>;
+  messages: MessageType[];
   addMessage: (text: string) => void;
 };
 

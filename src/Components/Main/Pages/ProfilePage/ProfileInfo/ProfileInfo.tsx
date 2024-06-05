@@ -62,27 +62,31 @@ export const ProfileInfo: FC<PropsType> = ({
   return (
     <div className={classes.infoBlock}>
       <h3 className={classes.title}>Profile info</h3>
-      <ProfileStatus
-        isOwner={isOwner}
-        status={status}
-        updateStatus={updateStatus}
-        isFetchingStatus={isFetchingStatus}
-        statusError={statusError}
-      />
-      <ProfilePhoto
-        isOwner={isOwner}
-        photo={photo}
-        updatePhoto={updatePhoto}
-        isFetchingPhoto={isFetchingPhoto}
-        photoError={photoError}
-      />
-      <ProfileData
-        isOwner={isOwner}
-        data={data}
-        updateData={updateData}
-        isFetchingData={isFetchingData}
-        dataError={dataError}
-      />
+      <div className={classes.innerInfoBlock}>
+        <div className={classes.statusAndPhotoBlock}>
+          <ProfilePhoto
+            isOwner={isOwner}
+            photo={photo}
+            updatePhoto={updatePhoto}
+            isFetchingPhoto={isFetchingPhoto}
+            photoError={photoError}
+          />
+          <ProfileStatus
+            isOwner={isOwner}
+            status={status}
+            updateStatus={updateStatus}
+            isFetchingStatus={isFetchingStatus}
+            statusError={statusError}
+          />
+        </div>
+        <ProfileData
+          isOwner={isOwner}
+          data={data}
+          updateData={updateData}
+          isFetchingData={isFetchingData}
+          dataError={dataError}
+        />
+      </div>
     </div>
   );
 };

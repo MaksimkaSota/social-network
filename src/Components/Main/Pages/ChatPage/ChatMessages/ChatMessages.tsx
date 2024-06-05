@@ -9,7 +9,7 @@ import type { ChannelStatus } from '../../../../../utils/types/common';
 import { scrollToBottom } from '../../../../../utils/helpers/componentHelpers';
 
 type PropsType = {
-  messages: Array<IChatMessage>;
+  messages: IChatMessage[];
   channelStatus: ChannelStatus;
 };
 

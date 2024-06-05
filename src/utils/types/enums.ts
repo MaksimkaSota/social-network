@@ -1,4 +1,5 @@
 export enum RequestString {
+  samurai_js = 'https://social-network.samuraijs.com/',
   samurai_js_http = 'https://social-network.samuraijs.com/api/1.0/',
   samurai_js_web_socket = 'wss://social-network.samuraijs.com/handlers/ChatHandler.ashx',
 }
@@ -28,11 +29,8 @@ export enum RoutePath {
   not_found = '*',
   main = '/',
   profile = '/profile',
-  messages = '/messages',
+  dialogs = '/dialogs',
   users = '/users',
-  news = '/news',
-  musics = '/musics',
-  settings = '/settings',
   login = '/login',
   chat = '/chat',
 }

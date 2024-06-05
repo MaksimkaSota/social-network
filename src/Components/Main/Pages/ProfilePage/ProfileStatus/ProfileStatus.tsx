@@ -50,14 +50,11 @@ export const ProfileStatus = memo<PropsType>(
             />
           )}
         </div>
-        {isOwner && (
-          <div className={classes.updateButtonBlock}>
-            {editModeStatus ? (
-              <Button text="Save" onClick={onDeactivateEditModeStatus} className={classes.statusButton} />
-            ) : (
-              <Button text="Edit status" onClick={onActivateEditModeStatus} className={classes.statusButton} />
-            )}
-          </div>
+        {isOwner && editModeStatus && (
+          <Button text="Save" onClick={onDeactivateEditModeStatus} className={classes.statusButton} />
+        )}
+        {isOwner && !editModeStatus && (
+          <Button text="Edit status" onClick={onActivateEditModeStatus} className={classes.statusButton} />
         )}
       </div>
     );

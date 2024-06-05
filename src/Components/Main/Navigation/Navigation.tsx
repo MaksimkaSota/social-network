@@ -12,20 +12,11 @@ export const Navigation: FC = (): ReactElement => {
       <NavLink className={setClass} to={RoutePath.profile}>
         Profile
       </NavLink>
-      <NavLink className={setClass} to={RoutePath.messages}>
-        Messages
+      <NavLink className={setClass} to={RoutePath.dialogs}>
+        Dialogs
       </NavLink>
       <NavLink className={setClass} to={RoutePath.users}>
         Users
-      </NavLink>
-      <NavLink className={setClass} to={RoutePath.news}>
-        News
-      </NavLink>
-      <NavLink className={setClass} to={RoutePath.musics}>
-        Musics
-      </NavLink>
-      <NavLink className={setClass} to={RoutePath.settings}>
-        Settings
       </NavLink>
       <NavLink className={setClass} to={RoutePath.chat}>
         Chat

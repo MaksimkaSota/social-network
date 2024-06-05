@@ -3,7 +3,7 @@ import classes from './FollowUnfollowError.module.scss';
 import type { FollowUnfollowErrorType } from '../../../../../utils/types/common';
 
 type PropsType = {
-  errors: Array<FollowUnfollowErrorType>;
+  errors: FollowUnfollowErrorType[];
   userId: number;
 };
 

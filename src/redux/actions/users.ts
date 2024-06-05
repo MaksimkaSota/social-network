@@ -16,7 +16,7 @@ import type { IUser } from '../../utils/types/api';
 import type { FollowUnfollowErrorType } from '../../utils/types/common';
 
 export const setUsersRequest = (): SetUsersRequestAction => ({ type: UsersActionType.SET_USERS_REQUEST });
-export const setUsersSuccess = (users: Array<IUser>): SetUsersSuccessAction => ({
+export const setUsersSuccess = (users: IUser[]): SetUsersSuccessAction => ({
   type: UsersActionType.SET_USERS_SUCCESS,
   payload: users,
 });

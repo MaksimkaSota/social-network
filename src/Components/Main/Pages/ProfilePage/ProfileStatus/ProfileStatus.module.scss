@@ -1,7 +1,8 @@
 .profileStatus {
-  @include position(90%, 0 auto $marginMin auto);
+  @include position(70%, 0 auto);
   .statusBlock {
-    @include flex(null, center);
+    @include flex(center, center);
+    margin: 0 0 $marginMin 0;
     .title {
       @include captions(1.1rem);
       margin: 0 $marginMin 0 0;
@@ -11,11 +12,8 @@
       width: 100%;
     }
   }
-  .updateButtonBlock {
-    width: 30%;
-    .statusButton {
-      @include position(100%, 0);
-      padding: 5px $padding;
-    }
+  .statusButton {
+    @include position(100%, 0);
+    padding: 5px $padding;
   }
 }
