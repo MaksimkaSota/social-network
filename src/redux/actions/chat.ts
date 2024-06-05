@@ -3,7 +3,7 @@ import type { IChatMessage } from '../../utils/types/api';
 import type { ChannelStatus } from '../../utils/types/common';
 import { ChatActionType } from '../types/chat';
 
-export const setMessages = (messages: Array<IChatMessage>): SetMessagesAction => ({
+export const setMessages = (messages: IChatMessage[]): SetMessagesAction => ({
   type: ChatActionType.SET_CHAT_MESSAGES,
   payload: messages,
 });

@@ -2,7 +2,7 @@ import type { Nullable } from './common';
 
 export interface IResponse<D = {}> {
   data: D;
-  messages: Array<string>;
+  messages: string[];
   resultCode: number;
 }
 
@@ -54,7 +54,7 @@ export interface IUser {
   followed: boolean;
 }
 export interface IUsers {
-  items: Array<IUser>;
+  items: IUser[];
   totalCount: number;
   error: Nullable<string>;
 }

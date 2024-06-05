@@ -101,8 +101,8 @@ export const updateData = (
 ): ThunkType<ProfileAction> => {
   return async (dispatch, getState) => {
     try {
-      const dataKeys: Array<string> = Object.keys(profileData);
-      const contactsDataKeys: Array<string> = Object.keys(profileData.contacts);
+      const dataKeys: string[] = Object.keys(profileData);
+      const contactsDataKeys: string[] = Object.keys(profileData.contacts);
 
       const data: IResponse = await updateProfileAPI(profileData);
       if (data.resultCode === StatusCode.success) {

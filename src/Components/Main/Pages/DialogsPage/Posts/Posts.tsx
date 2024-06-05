@@ -7,7 +7,7 @@ import type { PostType } from '../../../../../utils/types/common';
 import { scrollToBottom } from '../../../../../utils/helpers/componentHelpers';
 
 type PropsType = {
-  posts: Array<PostType>;
+  posts: PostType[];
   addPost: (text: string) => void;
 };
 

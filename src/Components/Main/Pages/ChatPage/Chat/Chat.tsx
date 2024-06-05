@@ -6,7 +6,7 @@ import classes from './Chat.module.scss';
 import type { ChannelStatus } from '../../../../../utils/types/common';
 
 type PropsType = {
-  messages: Array<IChatMessage>;
+  messages: IChatMessage[];
   sendMessage: (message: string) => void;
   channelStatus: ChannelStatus;
 };

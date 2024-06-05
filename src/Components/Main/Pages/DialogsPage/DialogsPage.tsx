@@ -5,9 +5,9 @@ import type { MessageType, PostType } from '../../../../utils/types/common';
 import { Posts } from './Posts/Posts';
 
 type PropsType = {
-  messages: Array<MessageType>;
+  messages: MessageType[];
   addMessage: (text: string) => void;
-  posts: Array<PostType>;
+  posts: PostType[];
   addPost: (text: string) => void;
 };
 

@@ -11,9 +11,9 @@ import type { FollowUnfollowErrorType } from '../../../../../utils/types/common'
 
 type PropsType = {
   user: IUser;
-  subscribersId: Array<number>;
-  followErrors: Array<FollowUnfollowErrorType>;
-  unfollowErrors: Array<FollowUnfollowErrorType>;
+  subscribersId: number[];
+  followErrors: FollowUnfollowErrorType[];
+  unfollowErrors: FollowUnfollowErrorType[];
   followUser: (id: number) => void;
   unfollowUser: (id: number) => void;
 };

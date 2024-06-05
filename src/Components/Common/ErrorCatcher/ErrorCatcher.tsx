@@ -21,7 +21,7 @@ export class ErrorCatcher extends Component<PropsType, StateType> {
   static getDerivedStateFromError() {
     return {
       UIError: {
-        message: 'Some UI Error! We are sorry... Fix it soon!',
+        message: 'Some UI Error! We are sorry... We will fix it soon!',
       },
     };
   }

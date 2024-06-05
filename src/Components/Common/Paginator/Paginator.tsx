@@ -20,7 +20,7 @@ export const Paginator = memo<PropsType>(
     };
 
     const pagesCount = Math.ceil(totalCount / pageSize);
-    const currentPages: Array<number> = [];
+    const currentPages: number[] = [];
     for (let i = 1; i <= pagesCount; i++) {
       currentPages.push(i);
     }

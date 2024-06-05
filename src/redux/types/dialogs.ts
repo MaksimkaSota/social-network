@@ -1,8 +1,8 @@
 import type { MessageType, PostType } from '../../utils/types/common';
 
 export type DialogsState = {
-  messages: Array<MessageType>;
-  posts: Array<PostType>;
+  messages: MessageType[];
+  posts: PostType[];
 };
 
 export enum DialogsActionType {

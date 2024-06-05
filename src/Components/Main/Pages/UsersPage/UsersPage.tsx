@@ -9,16 +9,16 @@ import type { IUser } from '../../../../utils/types/api';
 import { UsersSearchFormContainer } from './UsersSearchForm/UsersSearchFormContainer';
 
 type PropsType = {
-  users: Array<IUser>;
+  users: IUser[];
   page: number;
   pageSize: number;
   filter: FilterType;
   totalCount: number;
   isFetchingUsers: boolean;
   usersError: Nullable<ErrorType>;
-  subscribersId: Array<number>;
-  followErrors: Array<FollowUnfollowErrorType>;
-  unfollowErrors: Array<FollowUnfollowErrorType>;
+  subscribersId: number[];
+  followErrors: FollowUnfollowErrorType[];
+  unfollowErrors: FollowUnfollowErrorType[];
   authorizedUserId: Nullable<number>;
   setPage: (currentPage: number) => void;
   setFilter: (term: string, friend: string) => void;
