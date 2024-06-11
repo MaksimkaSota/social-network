@@ -12,8 +12,8 @@ export const Navigation: FC = (): ReactElement => {
       <NavLink className={setClass} to={RoutePath.profile}>
         Profile
       </NavLink>
-      <NavLink className={setClass} to={RoutePath.dialogs}>
-        Dialogs
+      <NavLink className={setClass} to={RoutePath.publications}>
+        Publications
       </NavLink>
       <NavLink className={setClass} to={RoutePath.users}>
         Users
