@@ -8,6 +8,7 @@ import { useTypedDispatch } from '../../../../hooks/useTypedDispatch';
 import { authSelector, profileSelector } from '../../../../redux/selectors/selectors';
 import { isFetchingProfileSelector } from '../../../../redux/selectors/loading';
 import { profileErrorSelector } from '../../../../redux/selectors/error';
+import { RoutePath } from '../../../../utils/types/enums';
 
 export const ProfilePageContainer: FC = (): ReactElement => {
   const { id: authorizedUserId } = useTypedSelector(authSelector);
@@ -25,7 +26,7 @@ export const ProfilePageContainer: FC = (): ReactElement => {
       dispatch(getProfile(+paramId));
       dispatch(getStatus(+paramId));
     } else {
-      navigate('/login');
+      navigate(RoutePath.login);
     }
     // eslint-disable-next-line
   }, [dispatch, paramId]);

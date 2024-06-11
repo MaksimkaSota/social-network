@@ -30,7 +30,7 @@ export const getAuth = (): ThunkType<AuthAction> => {
         try {
           const dataProfile = await getProfileAPI(dataAuth.data.id);
           dispatch(setAuthUserPhoto(dataProfile.photos.small));
-        } catch (error) {
+        } catch (error: unknown) {
           if (isAxiosError(error)) {
             dispatch(setAuthUserPhotoError(getErrorMessage(error), error.response?.status));
           }
@@ -38,7 +38,7 @@ export const getAuth = (): ThunkType<AuthAction> => {
       } else if (dataAuth.resultCode === StatusCode.failure) {
         dispatch(setAuthSuccessIncorrect(dataAuth.messages[0]));
       }
-    } catch (error) {
+    } catch (error: unknown) {
       if (isAxiosError(error)) {
         dispatch(setAuthFailure(getErrorMessage(error), error.response?.status));
       }
@@ -74,7 +74,7 @@ export const login = (
         const message = data.messages[0] || 'Some error';
         setStatus(message);
       }
-    } catch (error) {
+    } catch (error: unknown) {
       if (isAxiosError(error)) {
         const message = `Error ${error.response?.status}, ${getErrorMessage(error)}`;
         setStatus(message);
@@ -101,7 +101,7 @@ export const logout = (): ThunkType<AuthAction> => {
         );
         dispatch(setAuthSuccessIncorrect('You are not authorized'));
       }
-    } catch (error) {
+    } catch (error: unknown) {
       if (isAxiosError(error)) {
         dispatch(
           setLogoutError({

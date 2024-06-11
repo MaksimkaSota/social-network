@@ -35,7 +35,7 @@ export const getUsers = (
       const data: IUsers = await getUsersAPI(page, pageSize, filter.term, filter.friend);
       dispatch(setUsersSuccess(data.items));
       dispatch(setTotalCount(data.totalCount));
-    } catch (error) {
+    } catch (error: unknown) {
       if (isAxiosError(error)) {
         dispatch(setUsersFailure(getErrorMessage(error), error.response?.status));
       }
@@ -63,7 +63,7 @@ export const followUser = (id: number): ThunkType<UsersAction> => {
   return async (dispatch) => {
     try {
       await followUnfollowUser(dispatch, id, followAPI, follow);
-    } catch (error) {
+    } catch (error: unknown) {
       if (isAxiosError(error)) {
         dispatch(setFollowErrors({ id, code: error.response?.status, message: getErrorMessage(error) }));
       }
@@ -74,7 +74,7 @@ export const unfollowUser = (id: number): ThunkType<UsersAction> => {
   return async (dispatch) => {
     try {
       await followUnfollowUser(dispatch, id, unfollowAPI, unfollow);
-    } catch (error) {
+    } catch (error: unknown) {
       if (isAxiosError(error)) {
         dispatch(setUnfollowErrors({ id, code: error.response?.status, message: getErrorMessage(error) }));
       }
