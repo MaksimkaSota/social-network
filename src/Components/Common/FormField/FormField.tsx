@@ -11,14 +11,15 @@ type PropsType = {
   classNameLabel?: string;
   name: string;
   component?: string;
-  type?: string;
-  placeholder?: string;
   text?: string;
-  props?: { [attribute: string]: string };
-  onChange: HandleChangeType;
-  onKeyDown?: (event: KeyboardEvent) => void;
   errors?: FormikErrorsType;
   touched?: FormikTouchedType;
+  id?: string;
+  type?: string;
+  placeholder?: string;
+  autoComplete?: string;
+  onChange: HandleChangeType;
+  onKeyDown?: (event: KeyboardEvent) => void;
 };
 
 export const FormField = memo<PropsType>(
@@ -28,14 +29,10 @@ export const FormField = memo<PropsType>(
     classNameLabel,
     name,
     component = 'input',
-    type,
-    placeholder,
     text,
-    props = {},
-    onChange,
-    onKeyDown,
     errors,
     touched,
+    ...props
   }): ReactElement => {
     return (
       <div className={classNameFormField}>
@@ -45,10 +42,6 @@ export const FormField = memo<PropsType>(
           })}
           name={name}
           component={component}
-          type={type}
-          placeholder={placeholder}
-          onChange={onChange}
-          onKeyDown={onKeyDown}
           {...props}
         />
         <ErrorMessage name={name} component="p" className={classes.fieldError} />

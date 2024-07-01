@@ -57,7 +57,7 @@ export const ProfileDataForm: FC<PropsType> = ({
             classNameLabel={classes.label}
             name={FormName.looking_for_a_job}
             type="checkbox"
-            props={{ id: 'rememberMe' }}
+            id="rememberMe"
             text="looking for a job"
             onChange={onToggleEditModeSkills}
           />

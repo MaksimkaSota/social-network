@@ -43,7 +43,7 @@ export const LoginForm: FC<PropsType> = ({
         name={FormName.password}
         type="password"
         placeholder="Password"
-        props={{ autoComplete: 'on' }}
+        autoComplete="on"
         onChange={handleChange}
         errors={errors}
         touched={touched}
@@ -55,7 +55,7 @@ export const LoginForm: FC<PropsType> = ({
         name={FormName.remember_me}
         type="checkbox"
         text="Remember me"
-        props={{ id: 'rememberMe' }}
+        id="rememberMe"
         onChange={handleChange}
       />
       {captchaUrl && (
