@@ -84,6 +84,8 @@ export const updatePhoto = (photo: File): ThunkType<ProfileAction | SetAuthUserP
       if (data.resultCode === StatusCode.success) {
         dispatch(setPhotoSuccess(data.data.photos));
         dispatch(setAuthUserPhoto(data.data.photos.small));
+      } else {
+        dispatch(setPhotoFailure(data.messages[0]));
       }
     } catch (error: unknown) {
       if (isAxiosError(error)) {

@@ -16,3 +16,40 @@
     color: $captions;
   }
 }
+
+@media (max-width: 1440px) {
+  .headerAuthInfo {
+    .authUserPhotoPreloader {
+      width: 60%;
+    }
+    .userPhoto {
+      width: 60%;
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  .headerAuthInfo {
+    .authUserPhotoPreloader {
+      width: 70%;
+    }
+    .userPhoto {
+      width: 70%;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .headerAuthInfo {
+    @include flex(null, center);
+    .authUserPhotoPreloader {
+      width: 100px;
+    }
+    .userPhoto {
+      width: 100px;
+    }
+    .container {
+      margin: 0 0 0 $marginMin;
+    }
+  }
+}

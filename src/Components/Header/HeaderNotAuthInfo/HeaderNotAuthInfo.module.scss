@@ -12,3 +12,31 @@
     color: $error;
   }
 }
+
+@media (max-width: 1440px) {
+  .headerNotAuthInfo {
+    .userPhoto {
+      width: 60%;
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  .headerNotAuthInfo {
+    .userPhoto {
+      width: 70%;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .headerNotAuthInfo {
+    @include flex(null, center);
+    .userPhoto {
+      width: 100px;
+    }
+    .container {
+      margin: 0 0 0 $marginMin;
+    }
+  }
+}

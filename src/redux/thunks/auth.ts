@@ -99,7 +99,7 @@ export const logout = (): ThunkType<AuthAction> => {
             captchaUrl: '',
           })
         );
-        dispatch(setAuthSuccessIncorrect('You are not authorized'));
+        dispatch(setAuthSuccessIncorrect('Not authorized'));
       }
     } catch (error: unknown) {
       if (isAxiosError(error)) {

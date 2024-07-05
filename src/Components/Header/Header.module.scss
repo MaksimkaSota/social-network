@@ -18,3 +18,53 @@
     text-align: center;
   }
 }
+
+@media (max-width: 1440px) {
+  .header {
+    .logoContainer {
+      width: 20%;
+    }
+    .headline {
+      width: 80%;
+    }
+    .loginContainer {
+      width: 20%;
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  .header {
+    .logoContainer {
+      width: 25%;
+    }
+    .headline {
+      width: 75%;
+    }
+    .loginContainer {
+      width: 25%;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    .headline {
+      width: 100%;
+      order: -1;
+    }
+    .loginContainer {
+      width: auto;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .header {
+    .logoContainer {
+      width: 30%;
+    }
+  }
+}

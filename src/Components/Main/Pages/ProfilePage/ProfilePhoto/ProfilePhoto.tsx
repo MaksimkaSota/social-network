@@ -23,7 +23,9 @@ export const ProfilePhoto = memo<PropsType>(
         ) : (
           <>
             <img className={classes.userPhoto} src={photo || userPhoto} alt="avatar" />
-            {photoError && <p className={classes.userPhotoError}>Error {photoError.code}, Failed to update photo</p>}
+            {photoError && (
+              <p className={classes.userPhotoError}>{photoError.code || 'Some'} Error. Failed to update photo!</p>
+            )}
           </>
         )}
         {isOwner && <InputFile actionFile={updatePhoto} />}
