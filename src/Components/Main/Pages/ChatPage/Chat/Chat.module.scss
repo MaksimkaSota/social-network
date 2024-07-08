@@ -5,3 +5,15 @@
     text-align: center;
   }
 }
+
+@media (max-width: 1440px) {
+  .chatBlock {
+    width: 80%;
+  }
+}
+
+@media (max-width: 1280px) {
+  .chatBlock {
+    width: 90%;
+  }
+}

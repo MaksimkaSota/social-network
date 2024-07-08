@@ -43,7 +43,7 @@ export const PublicationForm: FC<PropsType> = ({
         errors={errors}
         touched={touched}
       />
-      <Button text={buttonText} type="submit" disabled={!isValid || !dirty} />
+      <Button className={classes.sendButton} text={buttonText} type="submit" disabled={!isValid || !dirty} />
     </Form>
   );
 };

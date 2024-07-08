@@ -1,5 +1,10 @@
 .publicationsPageBlock {
   display: flex;
-  height: 100%;
   padding: $padding 0 $padding 0;
+}
+
+@media (max-width: 320px) {
+  .publicationsPageBlock {
+    display: block;
+  }
 }
