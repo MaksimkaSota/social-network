@@ -22,3 +22,44 @@
     margin: 0;
   }
 }
+
+@media (max-width: 1280px) {
+  .searchUsersBlock {
+    margin: $marginMin 0;
+    .fieldBlock {
+      width: 30%;
+    }
+    .selectSearch {
+      width: 30%;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .searchUsersBlock {
+    display: block;
+    .fieldBlock {
+      @include position(50%, 0 auto $marginMin);
+    }
+    .selectSearch {
+      @include position(50%, 0 auto $marginMin);
+    }
+    .searchButton {
+      margin: 0 auto;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .searchUsersBlock {
+    .fieldBlock {
+      width: 90%;
+    }
+    .selectSearch {
+      width: 90%;
+    }
+    .searchButton {
+      width: 90%;
+    }
+  }
+}

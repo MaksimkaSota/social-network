@@ -3,9 +3,11 @@
   @include flex(center, center);
   .paginatorBlock {
     display: flex;
-    margin: 0 $marginMin 0 $marginMin;
-    .pageNumber:not(:last-child) {
-      margin: 0 $marginMin 0 0;
+    margin: 0 $marginMin;
+    .pageNumber {
+      &:not(:last-child) {
+        margin: 0 $marginMin 0 0;
+      }
     }
     .selectedPage {
       font-weight: 700;
@@ -17,5 +19,39 @@
   }
   .selected {
     color: $captions;
+  }
+}
+
+@media (max-width: 1280px) {
+  .paginator {
+    @include position(90%, 0 auto);
+    .paginatorBlock {
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 0;
+      .pageNumber {
+        margin: 5px;
+        &:not(:last-child) {
+          margin: 5px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .paginator {
+    display: block;
+    .paginatorButton {
+      margin: 0 auto;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .paginator {
+    .paginatorButton {
+      width: 100%;
+    }
   }
 }

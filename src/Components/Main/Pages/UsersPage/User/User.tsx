@@ -37,12 +37,22 @@ export const User = memo<PropsType>(
           </div>
           {user.followed ? (
             <>
-              <Button onClick={onUnfollow(user.id)} text="Unfollow" disabled={subscribersId.includes(user.id)} />
+              <Button
+                className={classes.userButton}
+                onClick={onUnfollow(user.id)}
+                text="Unfollow"
+                disabled={subscribersId.includes(user.id)}
+              />
               <FollowUnfollowError errors={unfollowErrors} userId={user.id} />
             </>
           ) : (
             <>
-              <Button onClick={onFollow(user.id)} text="Follow" disabled={subscribersId.includes(user.id)} />
+              <Button
+                className={classes.userButton}
+                onClick={onFollow(user.id)}
+                text="Follow"
+                disabled={subscribersId.includes(user.id)}
+              />
               <FollowUnfollowError errors={followErrors} userId={user.id} />
             </>
           )}
