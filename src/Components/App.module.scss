@@ -6,10 +6,8 @@
 }
 
 .preloaderWrapper {
-  width: 100%;
   min-height: 100vh;
-  @include flex(null, center);
-  justify-content: center;
+  @include flex(center, center);
   .preloader {
     width: 500px;
   }

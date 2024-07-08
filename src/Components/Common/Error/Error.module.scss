@@ -1,6 +1,6 @@
 .errorPageBlock {
   height: 100%;
-  padding: $padding 0;
+  padding: $padding;
   @include flex(space-evenly, center);
   flex-direction: column;
   .errorTitle {

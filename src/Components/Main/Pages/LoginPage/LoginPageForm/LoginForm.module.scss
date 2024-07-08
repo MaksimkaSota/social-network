@@ -42,3 +42,21 @@
 .loginFormError {
   border: 2px solid $error;
 }
+
+@media (max-width: 1280px) {
+  .loginForm {
+    width: 50%;
+  }
+}
+
+@media (max-width: 640px) {
+  .loginForm {
+    width: 70%;
+  }
+}
+
+@media (max-width: 320px) {
+  .loginForm {
+    width: 90%;
+  }
+}

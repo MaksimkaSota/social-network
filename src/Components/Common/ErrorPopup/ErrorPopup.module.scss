@@ -9,8 +9,8 @@
   .errorPopupContainer {
     display: flex;
     flex-direction: column;
-  }
-  .errorPopupButton {
-    width: 100%;
+    .errorPopupButton {
+      @include position(90%, 0 auto);
+    }
   }
 }
