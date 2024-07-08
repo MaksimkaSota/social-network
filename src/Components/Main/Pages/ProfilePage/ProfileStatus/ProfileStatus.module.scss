@@ -17,3 +17,21 @@
     padding: 5px $padding;
   }
 }
+
+@media (max-width: 1280px) {
+  .profileStatus {
+    width: 50%;
+  }
+}
+
+@media (max-width: 640px) {
+  .profileStatus {
+    width: 70%;
+  }
+}
+
+@media (max-width: 320px) {
+  .profileStatus {
+    width: 90%;
+  }
+}

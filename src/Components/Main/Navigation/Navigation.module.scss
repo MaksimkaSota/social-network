@@ -37,6 +37,7 @@
   .navigation {
     @include flex(center, null);
     width: 100%;
+    border-bottom: 5px solid $dark-background;
     .link {
       &:not(:last-child) {
         margin: 0 $marginMin 0 0;

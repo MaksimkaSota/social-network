@@ -1,7 +1,27 @@
 .dataBlock {
-  @include position(35%, 0 auto $marginMin auto);
+  width: 50%;
+  @include flex(space-between, null);
+  flex-direction: column;
   .button {
     @include position(100%, 0);
     padding: 5px $padding;
+  }
+}
+
+@media (max-width: 1280px) {
+  .dataBlock {
+    @include position(60%, 0 auto);
+  }
+}
+
+@media (max-width: 640px) {
+  .dataBlock {
+    width: 70%;
+  }
+}
+
+@media (max-width: 320px) {
+  .dataBlock {
+    width: 90%;
   }
 }

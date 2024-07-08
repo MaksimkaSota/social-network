@@ -12,3 +12,21 @@
     @include position(50%, 0 auto $marginMin auto);
   }
 }
+
+@media (max-width: 1280px) {
+  .photoBlock {
+    @include position(50%, 0);
+  }
+}
+
+@media (max-width: 640px) {
+  .photoBlock {
+    @include position(70%, 0 auto $marginMin auto);
+  }
+}
+
+@media (max-width: 320px) {
+  .photoBlock {
+    width: 100%;
+  }
+}
