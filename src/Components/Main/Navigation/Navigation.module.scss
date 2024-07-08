@@ -20,3 +20,40 @@
     }
   }
 }
+
+@media (max-width: 1440px) {
+  .navigation {
+    width: 15%;
+  }
+}
+
+@media (max-width: 1280px) {
+  .navigation {
+    width: 20%;
+  }
+}
+
+@media (max-width: 640px) {
+  .navigation {
+    @include flex(center, null);
+    width: 100%;
+    .link {
+      &:not(:last-child) {
+        margin: 0 $marginMin 0 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .navigation {
+    display: block;
+    width: 100%;
+    .link {
+      font-size: 1.3rem;
+      &:not(:last-child) {
+        margin: 0;
+      }
+    }
+  }
+}

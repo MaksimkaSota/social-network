@@ -18,7 +18,8 @@ img {
   display: block;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   color: $content;
@@ -30,25 +31,29 @@ html, body {
 }
 
 @media (max-width: 1440px) {
-  html, body {
+  html,
+  body {
     font-size: 14px;
   }
 }
 
 @media (max-width: 1280px) {
-  html, body {
+  html,
+  body {
     font-size: 13px;
   }
 }
 
 @media (max-width: 640px) {
-  html, body {
+  html,
+  body {
     font-size: 12px;
   }
 }
 
 @media (max-width: 320px) {
-  html, body {
+  html,
+  body {
     font-size: 11px;
   }
 }

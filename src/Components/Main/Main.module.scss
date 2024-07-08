@@ -6,3 +6,28 @@
     width: $right-block-width;
   }
 }
+
+@media (max-width: 1440px) {
+  .main {
+    .content {
+      width: 85%;
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  .main {
+    .content {
+      width: 80%;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .main {
+    display: block;
+    .content {
+      width: 80%;
+    }
+  }
+}
