@@ -27,10 +27,7 @@
       }
     }
   }
-}
-
-@media (max-width: $laptopMax) {
-  .footer {
+  @include respond($laptopMax) {
     .mailContainer {
       width: 15%;
     }
@@ -38,10 +35,7 @@
       width: 85%;
     }
   }
-}
-
-@media (max-width: $laptopMin) {
-  .footer {
+  @include respond($laptopMin) {
     .mailContainer {
       width: 20%;
     }
@@ -54,10 +48,7 @@
       }
     }
   }
-}
-
-@media (max-width: $tablet) {
-  .footer {
+  @include respond($tablet) {
     padding: 0 0 $padding 0;
     .mailContainer {
       display: none;

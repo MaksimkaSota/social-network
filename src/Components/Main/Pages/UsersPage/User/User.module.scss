@@ -41,16 +41,10 @@
       }
     }
   }
-}
-
-@media (max-width: $laptopMax) {
-  .user {
+  @include respond($laptopMax) {
     width: 60%;
   }
-}
-
-@media (max-width: $laptopMin) {
-  .user {
+  @include respond($laptopMin) {
     width: 70%;
     .userMainBlock {
       width: 30%;
@@ -59,10 +53,7 @@
       width: 70%;
     }
   }
-}
-
-@media (max-width: $tablet) {
-  .user {
+  @include respond($tablet) {
     flex-direction: column;
     width: 90%;
     .userMainBlock {
@@ -84,10 +75,7 @@
       }
     }
   }
-}
-
-@media (max-width: $mobile) {
-  .user {
+  @include respond($mobile) {
     .userMainBlock {
       .userButton {
         width: 30%;

@@ -1,5 +1,28 @@
 @import './variables';
 
+@mixin respond($breakpoint) {
+  @if $breakpoint==$laptopMax {
+    @media (max-width: $laptopMaxSize) {
+      @content;
+    }
+  }
+  @if $breakpoint==$laptopMin {
+    @media (max-width: $laptopMinSize) {
+      @content;
+    }
+  }
+  @if $breakpoint==$tablet {
+    @media (max-width: $tabletSize) {
+      @content;
+    }
+  }
+  @if $breakpoint==$mobile {
+    @media (max-width: $mobileSize) {
+      @content;
+    }
+  }
+}
+
 @mixin position($w, $m) {
   width: $w;
   margin: $m;

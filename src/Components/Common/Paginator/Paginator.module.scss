@@ -20,10 +20,7 @@
   .selected {
     color: $captions;
   }
-}
-
-@media (max-width: $laptopMin) {
-  .paginator {
+  @include respond($laptopMin) {
     @include position(90%, 0 auto);
     .paginatorBlock {
       flex-wrap: wrap;
@@ -37,19 +34,13 @@
       }
     }
   }
-}
-
-@media (max-width: $tablet) {
-  .paginator {
+  @include respond($tablet) {
     display: block;
     .paginatorButton {
       margin: 0 auto;
     }
   }
-}
-
-@media (max-width: $mobile) {
-  .paginator {
+  @include respond($mobile) {
     .paginatorButton {
       width: 100%;
     }

@@ -19,30 +19,21 @@
     font-size: 1rem;
     color: $error;
   }
-}
-
-@media (max-width: $laptopMax) {
-  .sendTextBlock {
+  @include respond($laptopMax) {
     .formBlock {
       .fieldBlock {
         width: 60%;
       }
     }
   }
-}
-
-@media (max-width: $laptopMin) {
-  .sendTextBlock {
+  @include respond($laptopMin) {
     .formBlock {
       .fieldBlock {
         width: 70%;
       }
     }
   }
-}
-
-@media (max-width: $tablet) {
-  .sendTextBlock {
+  @include respond($tablet) {
     margin: 0;
     .formBlock {
       display: block;
@@ -54,10 +45,7 @@
       }
     }
   }
-}
-
-@media (max-width: $mobile) {
-  .sendTextBlock {
+  @include respond($mobile) {
     .formBlock {
       .sendButton {
         width: 100%;

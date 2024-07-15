@@ -19,7 +19,12 @@ $radius: 5px;
 $left-block-width: 10%;
 $right-block-width: 90%;
 
-$laptopMax: 90em;
-$laptopMin: 80em;
-$tablet: 40em;
-$mobile: 20em;
+$laptopMaxSize: 90em;
+$laptopMinSize: 80em;
+$tabletSize: 40em;
+$mobileSize: 20em;
+
+$laptopMax: laptopMax;
+$laptopMin: laptopMin;
+$tablet: tablet;
+$mobile: mobile;

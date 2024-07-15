@@ -38,25 +38,16 @@
   .loginButton {
     width: 100%;
   }
+  @include respond($laptopMin) {
+    width: 50%;
+  }
+  @include respond($tablet) {
+    width: 70%;
+  }
+  @include respond($mobile) {
+    width: 90%;
+  }
 }
 .loginFormError {
   border: 2px solid $error;
-}
-
-@media (max-width: $laptopMin) {
-  .loginForm {
-    width: 50%;
-  }
-}
-
-@media (max-width: $tablet) {
-  .loginForm {
-    width: 70%;
-  }
-}
-
-@media (max-width: $mobile) {
-  .loginForm {
-    width: 90%;
-  }
 }

@@ -6,30 +6,21 @@
       @extend %textarea;
     }
   }
-}
-
-@media (max-width: $laptopMax) {
-  .addPublicationBlock {
+  @include respond($laptopMax) {
     .fieldBlock {
       .inputPost {
         width: 70%;
       }
     }
   }
-}
-
-@media (max-width: $laptopMin) {
-  .addPublicationBlock {
+  @include respond($laptopMin) {
     .fieldBlock {
       .inputPost {
         width: 90%;
       }
     }
   }
-}
-
-@media (max-width: $mobile) {
-  .addPublicationBlock {
+  @include respond($mobile) {
     .sendButton {
       width: 90%;
     }

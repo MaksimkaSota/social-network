@@ -21,10 +21,7 @@
   .searchButton {
     margin: 0;
   }
-}
-
-@media (max-width: $laptopMin) {
-  .searchUsersBlock {
+  @include respond($laptopMin) {
     margin: $marginMin 0;
     .fieldBlock {
       width: 30%;
@@ -33,10 +30,7 @@
       width: 30%;
     }
   }
-}
-
-@media (max-width: $tablet) {
-  .searchUsersBlock {
+  @include respond($tablet) {
     display: block;
     .fieldBlock {
       @include position(50%, 0 auto $marginMin);
@@ -48,10 +42,7 @@
       margin: 0 auto;
     }
   }
-}
-
-@media (max-width: $mobile) {
-  .searchUsersBlock {
+  @include respond($mobileSize) {
     .fieldBlock {
       width: 90%;
     }

@@ -17,10 +17,7 @@
     @include captions(1.3rem, 0.05rem);
     margin: 0 0 $marginMin 0;
   }
-}
-
-@media (max-width: $laptopMin) {
-  .infoBlock {
+  @include respond($laptopMin) {
     @include position(100%, 0);
     .innerInfoBlock {
       display: block;
@@ -33,10 +30,7 @@
       }
     }
   }
-}
-
-@media (max-width: $tablet) {
-  .infoBlock {
+  @include respond($tablet) {
     .innerInfoBlock {
       .statusAndPhotoBlock {
         display: block;
@@ -44,10 +38,7 @@
       }
     }
   }
-}
-
-@media (max-width: $mobile) {
-  .infoBlock {
+  @include respond($mobile) {
     .innerInfoBlock {
       .statusAndPhotoBlock {
         width: 100%;

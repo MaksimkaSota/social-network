@@ -28,32 +28,16 @@ body {
     'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-@media (max-width: $laptopMax) {
-  html,
-  body {
+  @include respond($laptopMax) {
     font-size: 14px;
   }
-}
-
-@media (max-width: $laptopMin) {
-  html,
-  body {
+  @include respond($laptopMin) {
     font-size: 13px;
   }
-}
-
-@media (max-width: $tablet) {
-  html,
-  body {
+  @include respond($tablet) {
     font-size: 12px;
   }
-}
-
-@media (max-width: $mobile) {
-  html,
-  body {
+  @include respond($mobile) {
     font-size: 11px;
   }
 }

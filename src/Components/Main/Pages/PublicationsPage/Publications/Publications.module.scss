@@ -11,34 +11,22 @@
     max-height: 170px;
     overflow-y: auto;
   }
-}
-
-@media (max-width: $laptopMax) {
-  .publicationsBlock {
+  @include respond($laptopMax) {
     .publications {
       max-height: 160px;
     }
   }
-}
-
-@media (max-width: $laptopMin) {
-  .publicationsBlock {
+  @include respond($laptopMin) {
     .publications {
       max-height: 150px;
     }
   }
-}
-
-@media (max-width: $tablet) {
-  .publicationsBlock {
+  @include respond($tablet) {
     .publications {
       max-height: 140px;
     }
   }
-}
-
-@media (max-width: $mobile) {
-  .publicationsBlock {
+  @include respond($mobile) {
     width: 100%;
     &:not(:last-child) {
       border-right: none;

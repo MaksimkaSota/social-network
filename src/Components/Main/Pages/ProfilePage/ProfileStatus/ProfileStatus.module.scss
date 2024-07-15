@@ -16,22 +16,13 @@
     @include position(100%, 0);
     padding: 5px $padding;
   }
-}
-
-@media (max-width: $laptopMin) {
-  .profileStatus {
+  @include respond($laptopMin) {
     width: 50%;
   }
-}
-
-@media (max-width: $tablet) {
-  .profileStatus {
+  @include respond($tablet) {
     width: 70%;
   }
-}
-
-@media (max-width: $mobile) {
-  .profileStatus {
+  @include respond($mobile) {
     width: 90%;
   }
 }

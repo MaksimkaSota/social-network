@@ -11,26 +11,17 @@
   .incorrectAuthText {
     color: $error;
   }
-}
-
-@media (max-width: $laptopMax) {
-  .headerNotAuthInfo {
+  @include respond($laptopMax) {
     .userPhoto {
       width: 60%;
     }
   }
-}
-
-@media (max-width: $laptopMin) {
-  .headerNotAuthInfo {
+  @include respond($laptopMin) {
     .userPhoto {
       width: 70%;
     }
   }
-}
-
-@media (max-width: $tablet) {
-  .headerNotAuthInfo {
+  @include respond($tablet) {
     @include flex(null, center);
     .userPhoto {
       width: 100px;

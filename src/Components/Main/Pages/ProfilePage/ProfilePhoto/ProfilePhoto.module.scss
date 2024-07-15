@@ -11,22 +11,13 @@
   .photoPreloader {
     @include position(50%, 0 auto $marginMin auto);
   }
-}
-
-@media (max-width: $laptopMin) {
-  .photoBlock {
+  @include respond($laptopMin) {
     @include position(50%, 0);
   }
-}
-
-@media (max-width: $tablet) {
-  .photoBlock {
+  @include respond($tablet) {
     @include position(70%, 0 auto $marginMin auto);
   }
-}
-
-@media (max-width: $mobile) {
-  .photoBlock {
+  @include respond($mobile) {
     width: 100%;
   }
 }

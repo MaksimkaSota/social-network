@@ -15,10 +15,7 @@
     font-size: 0.9rem;
     color: $captions;
   }
-}
-
-@media (max-width: $laptopMax) {
-  .headerAuthInfo {
+  @include respond($laptopMaxSize) {
     .authUserPhotoPreloader {
       width: 60%;
     }
@@ -26,10 +23,7 @@
       width: 60%;
     }
   }
-}
-
-@media (max-width: $laptopMin) {
-  .headerAuthInfo {
+  @include respond($laptopMin) {
     .authUserPhotoPreloader {
       width: 70%;
     }
@@ -37,10 +31,7 @@
       width: 70%;
     }
   }
-}
-
-@media (max-width: $tablet) {
-  .headerAuthInfo {
+  @include respond($tablet) {
     @include flex(null, center);
     .authUserPhotoPreloader {
       width: 100px;

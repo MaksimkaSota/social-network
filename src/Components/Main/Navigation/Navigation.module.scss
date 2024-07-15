@@ -19,22 +19,13 @@
       color: $content;
     }
   }
-}
-
-@media (max-width: $laptopMax) {
-  .navigation {
+  @include respond($laptopMax) {
     width: 15%;
   }
-}
-
-@media (max-width: $laptopMin) {
-  .navigation {
+  @include respond($laptopMin) {
     width: 20%;
   }
-}
-
-@media (max-width: $tablet) {
-  .navigation {
+  @include respond($tablet) {
     @include flex(center, null);
     width: 100%;
     border-bottom: 5px solid $dark-background;
@@ -44,10 +35,7 @@
       }
     }
   }
-}
-
-@media (max-width: $mobile) {
-  .navigation {
+  @include respond($mobile) {
     display: block;
     width: 100%;
     .link {

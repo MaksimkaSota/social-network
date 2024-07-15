@@ -4,16 +4,10 @@
     @extend %title;
     text-align: center;
   }
-}
-
-@media (max-width: $laptopMax) {
-  .chatBlock {
+  @include respond($laptopMax) {
     width: 80%;
   }
-}
-
-@media (max-width: $laptopMin) {
-  .chatBlock {
+  @include respond($laptopMin) {
     width: 90%;
   }
 }

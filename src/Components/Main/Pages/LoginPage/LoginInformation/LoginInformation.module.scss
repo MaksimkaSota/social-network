@@ -22,16 +22,10 @@
       color: $active;
     }
   }
-}
-
-@media (max-width: $laptopMin) {
-  .helpBlock {
+  @include respond($laptopMin) {
     width: 80%;
   }
-}
-
-@media (max-width: $tablet) {
-  .helpBlock {
+  @include respond($tablet) {
     width: 90%;
   }
 }

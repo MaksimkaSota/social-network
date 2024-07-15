@@ -6,22 +6,13 @@
     @include position(100%, 0);
     padding: 5px $padding;
   }
-}
-
-@media (max-width: $laptopMin) {
-  .dataBlock {
+  @include respond($laptopMin) {
     @include position(60%, 0 auto);
   }
-}
-
-@media (max-width: $tablet) {
-  .dataBlock {
+  @include respond($tablet) {
     width: 70%;
   }
-}
-
-@media (max-width: $mobile) {
-  .dataBlock {
+  @include respond($mobile) {
     width: 90%;
   }
 }

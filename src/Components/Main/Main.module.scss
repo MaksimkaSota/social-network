@@ -5,26 +5,17 @@
   .content {
     width: $right-block-width;
   }
-}
-
-@media (max-width: $laptopMax) {
-  .main {
+  @include respond($laptopMax) {
     .content {
       width: 85%;
     }
   }
-}
-
-@media (max-width: $laptopMin) {
-  .main {
+  @include respond($laptopMin) {
     .content {
       width: 80%;
     }
   }
-}
-
-@media (max-width: $tablet) {
-  .main {
+  @include respond($tablet) {
     display: block;
     .content {
       width: 100%;
