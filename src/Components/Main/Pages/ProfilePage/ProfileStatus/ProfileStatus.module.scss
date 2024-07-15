@@ -18,19 +18,19 @@
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: $laptopMin) {
   .profileStatus {
     width: 50%;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: $tablet) {
   .profileStatus {
     width: 70%;
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: $mobile) {
   .profileStatus {
     width: 90%;
   }

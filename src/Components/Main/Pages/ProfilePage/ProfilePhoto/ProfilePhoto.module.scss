@@ -13,19 +13,19 @@
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: $laptopMin) {
   .photoBlock {
     @include position(50%, 0);
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: $tablet) {
   .photoBlock {
     @include position(70%, 0 auto $marginMin auto);
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: $mobile) {
   .photoBlock {
     width: 100%;
   }

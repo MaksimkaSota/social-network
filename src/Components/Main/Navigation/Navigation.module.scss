@@ -21,19 +21,19 @@
   }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: $laptopMax) {
   .navigation {
     width: 15%;
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: $laptopMin) {
   .navigation {
     width: 20%;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: $tablet) {
   .navigation {
     @include flex(center, null);
     width: 100%;
@@ -46,7 +46,7 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: $mobile) {
   .navigation {
     display: block;
     width: 100%;

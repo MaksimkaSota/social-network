@@ -30,28 +30,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: $laptopMax) {
   html,
   body {
     font-size: 14px;
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: $laptopMin) {
   html,
   body {
     font-size: 13px;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: $tablet) {
   html,
   body {
     font-size: 12px;
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: $mobile) {
   html,
   body {
     font-size: 11px;

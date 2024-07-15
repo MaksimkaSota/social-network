@@ -12,9 +12,14 @@ $error: $red;
 $dark-background: $light-black;
 $light-background: $light-gray;
 
-$padding: 10px;
-$marginMin: 10px;
 $marginMax: 20px;
+$marginMin: 10px;
+$padding: 10px;
 $radius: 5px;
 $left-block-width: 10%;
 $right-block-width: 90%;
+
+$laptopMax: 90em;
+$laptopMin: 80em;
+$tablet: 40em;
+$mobile: 20em;

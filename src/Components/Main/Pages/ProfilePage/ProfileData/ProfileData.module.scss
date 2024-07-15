@@ -8,19 +8,19 @@
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: $laptopMin) {
   .dataBlock {
     @include position(60%, 0 auto);
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: $tablet) {
   .dataBlock {
     width: 70%;
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: $mobile) {
   .dataBlock {
     width: 90%;
   }

@@ -43,19 +43,19 @@
   border: 2px solid $error;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: $laptopMin) {
   .loginForm {
     width: 50%;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: $tablet) {
   .loginForm {
     width: 70%;
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: $mobile) {
   .loginForm {
     width: 90%;
   }

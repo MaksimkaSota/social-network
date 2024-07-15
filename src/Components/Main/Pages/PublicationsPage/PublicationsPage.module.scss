@@ -3,7 +3,7 @@
   padding: $padding 0 $padding 0;
 }
 
-@media (max-width: 320px) {
+@media (max-width: $mobile) {
   .publicationsPageBlock {
     display: block;
   }

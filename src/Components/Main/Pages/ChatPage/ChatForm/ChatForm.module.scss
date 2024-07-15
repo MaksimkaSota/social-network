@@ -21,7 +21,7 @@
   }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: $laptopMax) {
   .sendTextBlock {
     .formBlock {
       .fieldBlock {
@@ -31,7 +31,7 @@
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: $laptopMin) {
   .sendTextBlock {
     .formBlock {
       .fieldBlock {
@@ -41,7 +41,7 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: $tablet) {
   .sendTextBlock {
     margin: 0;
     .formBlock {
@@ -56,7 +56,7 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: $mobile) {
   .sendTextBlock {
     .formBlock {
       .sendButton {

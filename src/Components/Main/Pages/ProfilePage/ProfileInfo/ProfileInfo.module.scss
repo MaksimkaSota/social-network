@@ -19,7 +19,7 @@
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: $laptopMin) {
   .infoBlock {
     @include position(100%, 0);
     .innerInfoBlock {
@@ -35,7 +35,7 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: $tablet) {
   .infoBlock {
     .innerInfoBlock {
       .statusAndPhotoBlock {
@@ -46,7 +46,7 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: $mobile) {
   .infoBlock {
     .innerInfoBlock {
       .statusAndPhotoBlock {

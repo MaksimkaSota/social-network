@@ -13,7 +13,7 @@
   }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: $laptopMax) {
   .publicationsBlock {
     .publications {
       max-height: 160px;
@@ -21,7 +21,7 @@
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: $laptopMin) {
   .publicationsBlock {
     .publications {
       max-height: 150px;
@@ -29,7 +29,7 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: $tablet) {
   .publicationsBlock {
     .publications {
       max-height: 140px;
@@ -37,7 +37,7 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: $mobile) {
   .publicationsBlock {
     width: 100%;
     &:not(:last-child) {

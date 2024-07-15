@@ -13,7 +13,7 @@
   }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: $laptopMax) {
   .headerNotAuthInfo {
     .userPhoto {
       width: 60%;
@@ -21,7 +21,7 @@
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: $laptopMin) {
   .headerNotAuthInfo {
     .userPhoto {
       width: 70%;
@@ -29,7 +29,7 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: $tablet) {
   .headerNotAuthInfo {
     @include flex(null, center);
     .userPhoto {

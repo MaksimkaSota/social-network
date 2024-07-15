@@ -8,7 +8,7 @@
   }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: $laptopMax) {
   .addPublicationBlock {
     .fieldBlock {
       .inputPost {
@@ -18,7 +18,7 @@
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: $laptopMin) {
   .addPublicationBlock {
     .fieldBlock {
       .inputPost {
@@ -28,7 +28,7 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: $mobile) {
   .addPublicationBlock {
     .sendButton {
       width: 90%;

@@ -29,7 +29,7 @@
   }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: $laptopMax) {
   .footer {
     .mailContainer {
       width: 15%;
@@ -40,7 +40,7 @@
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: $laptopMin) {
   .footer {
     .mailContainer {
       width: 20%;
@@ -56,7 +56,7 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: $tablet) {
   .footer {
     padding: 0 0 $padding 0;
     .mailContainer {

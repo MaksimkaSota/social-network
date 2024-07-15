@@ -43,13 +43,13 @@
   }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: $laptopMax) {
   .user {
     width: 60%;
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: $laptopMin) {
   .user {
     width: 70%;
     .userMainBlock {
@@ -61,7 +61,7 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: $tablet) {
   .user {
     flex-direction: column;
     width: 90%;
@@ -86,7 +86,7 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: $mobile) {
   .user {
     .userMainBlock {
       .userButton {

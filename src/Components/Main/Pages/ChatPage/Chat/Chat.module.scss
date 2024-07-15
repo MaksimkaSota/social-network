@@ -6,13 +6,13 @@
   }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: $laptopMax) {
   .chatBlock {
     width: 80%;
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: $laptopMin) {
   .chatBlock {
     width: 90%;
   }

@@ -22,7 +22,7 @@
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: $laptopMin) {
   .paginator {
     @include position(90%, 0 auto);
     .paginatorBlock {
@@ -39,7 +39,7 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: $tablet) {
   .paginator {
     display: block;
     .paginatorButton {
@@ -48,7 +48,7 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: $mobile) {
   .paginator {
     .paginatorButton {
       width: 100%;

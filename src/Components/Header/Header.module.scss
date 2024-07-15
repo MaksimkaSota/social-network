@@ -19,7 +19,7 @@
   }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: $laptopMax) {
   .header {
     .logoContainer {
       width: 15%;
@@ -33,7 +33,7 @@
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: $laptopMin) {
   .header {
     .logoContainer {
       width: 20%;
@@ -48,7 +48,7 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: $tablet) {
   .header {
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -63,7 +63,7 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: $mobile) {
   .header {
     .logoContainer {
       width: 25%;

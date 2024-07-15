@@ -7,7 +7,7 @@
   }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: $laptopMax) {
   .main {
     .content {
       width: 85%;
@@ -15,7 +15,7 @@
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: $laptopMin) {
   .main {
     .content {
       width: 80%;
@@ -23,7 +23,7 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: $tablet) {
   .main {
     display: block;
     .content {
