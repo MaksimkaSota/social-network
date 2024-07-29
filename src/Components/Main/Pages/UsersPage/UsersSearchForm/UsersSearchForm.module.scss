@@ -42,7 +42,7 @@
       margin: 0 auto;
     }
   }
-  @include respond($mobileSize) {
+  @include respond($mobile) {
     .fieldBlock {
       width: 90%;
     }

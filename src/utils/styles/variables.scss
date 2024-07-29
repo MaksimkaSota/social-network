@@ -28,3 +28,18 @@ $laptopMax: laptopMax;
 $laptopMin: laptopMin;
 $tablet: tablet;
 $mobile: mobile;
+
+$breakpoints: (
+  $laptopMax: (
+    max-width: $laptopMaxSize,
+  ),
+  $laptopMin: (
+    max-width: $laptopMinSize,
+  ),
+  $tablet: (
+    max-width: $tabletSize,
+  ),
+  $mobile: (
+    max-width: $mobileSize,
+  ),
+);

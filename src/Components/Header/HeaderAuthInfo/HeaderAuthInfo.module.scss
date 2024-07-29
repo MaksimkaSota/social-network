@@ -15,7 +15,7 @@
     font-size: 0.9rem;
     color: $captions;
   }
-  @include respond($laptopMaxSize) {
+  @include respond($laptopMax) {
     .authUserPhotoPreloader {
       width: 60%;
     }
