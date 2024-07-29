@@ -16,4 +16,13 @@
     @include position(100%, 0);
     padding: 5px $padding;
   }
+  @include respond($laptopMin) {
+    width: 50%;
+  }
+  @include respond($tablet) {
+    width: 70%;
+  }
+  @include respond($mobile) {
+    width: 90%;
+  }
 }

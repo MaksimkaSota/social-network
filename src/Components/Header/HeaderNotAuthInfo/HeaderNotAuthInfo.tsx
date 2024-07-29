@@ -14,10 +14,12 @@ export const HeaderNotAuthInfo: FC<PropsType> = ({ incorrectAuthText }): ReactEl
   return (
     <div className={classes.headerNotAuthInfo}>
       <img className={classes.userPhoto} src={userPhoto} alt="avatar" />
-      <p className={cn(classes.text, classes.incorrectAuthText)}>{incorrectAuthText}</p>
-      <NavLink to={RoutePath.login}>
-        <Button text="Login" />
-      </NavLink>
+      <div className={classes.container}>
+        <p className={cn(classes.text, classes.incorrectAuthText)}>{incorrectAuthText}</p>
+        <NavLink to={RoutePath.login}>
+          <Button text="Login" />
+        </NavLink>
+      </div>
     </div>
   );
 };

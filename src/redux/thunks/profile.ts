@@ -30,7 +30,7 @@ export const getProfile = (id: number): ThunkType<ProfileAction> => {
       dispatch(setProfileRequest());
       const data: IResponseProfile = await getProfileAPI(id);
       dispatch(setProfileSuccess(data));
-    } catch (error) {
+    } catch (error: unknown) {
       if (isAxiosError(error)) {
         dispatch(setProfileFailure(getErrorMessage(error), error.response?.status));
       }
@@ -44,7 +44,7 @@ export const getStatus = (id: number): ThunkType<ProfileAction> => {
       dispatch(setStatusRequest());
       const data: string = await getStatusAPI(id);
       dispatch(setStatusSuccess(data));
-    } catch (error) {
+    } catch (error: unknown) {
       if (isAxiosError(error)) {
         dispatch(setStatusFailure(getErrorMessage(error), error.response?.status));
       }
@@ -68,7 +68,7 @@ export const updateStatus = (status: string): ThunkType<ProfileAction> => {
           dispatch(setStatusSuccess('Some server status error'));
           break;
       }
-    } catch (error) {
+    } catch (error: unknown) {
       if (isAxiosError(error)) {
         dispatch(setStatusFailure(getErrorMessage(error), error.response?.status));
       }
@@ -84,8 +84,10 @@ export const updatePhoto = (photo: File): ThunkType<ProfileAction | SetAuthUserP
       if (data.resultCode === StatusCode.success) {
         dispatch(setPhotoSuccess(data.data.photos));
         dispatch(setAuthUserPhoto(data.data.photos.small));
+      } else {
+        dispatch(setPhotoFailure(data.messages[0]));
       }
-    } catch (error) {
+    } catch (error: unknown) {
       if (isAxiosError(error)) {
         dispatch(setPhotoFailure(getErrorMessage(error), error.response?.status));
       }
@@ -135,7 +137,7 @@ export const updateData = (
         });
         setStatus(errors);
       }
-    } catch (error) {
+    } catch (error: unknown) {
       setEditModeData(false);
       if (isAxiosError(error)) {
         dispatch(setDataFailure(getErrorMessage(error), error.response?.status));

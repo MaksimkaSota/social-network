@@ -11,4 +11,23 @@
   .incorrectAuthText {
     color: $error;
   }
+  @include respond($laptopMax) {
+    .userPhoto {
+      width: 60%;
+    }
+  }
+  @include respond($laptopMin) {
+    .userPhoto {
+      width: 70%;
+    }
+  }
+  @include respond($tablet) {
+    @include flex(null, center);
+    .userPhoto {
+      width: 100px;
+    }
+    .container {
+      margin: 0 0 0 $marginMin;
+    }
+  }
 }

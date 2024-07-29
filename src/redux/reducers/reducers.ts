@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import type { AnyAction } from 'redux';
 import type { ThunkDispatch } from 'redux-thunk';
 import { profileReducer } from './profile';
-import { dialogsReducer } from './dialogs';
+import { publicationsReducer } from './publications';
 import { usersReducer } from './users';
 import { authReducer } from './auth';
 import { loadingReducer } from './loading';
@@ -12,7 +12,7 @@ import { chatReducer } from './chat';
 export const rootReducer = combineReducers({
   auth: authReducer,
   profile: profileReducer,
-  dialogs: dialogsReducer,
+  publications: publicationsReducer,
   users: usersReducer,
   chat: chatReducer,
   loading: loadingReducer,

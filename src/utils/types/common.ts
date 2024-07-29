@@ -18,13 +18,9 @@ export type ErrorType = {
   code?: number;
   message: string;
 };
-export type MessageType = {
+export type PublicationType = {
   id: number;
-  messageText: string;
-};
-export type PostType = {
-  id: number;
-  postText: string;
+  text: string;
 };
 export type FollowUnfollowErrorType = ErrorType & { id: number };
 export type SubscribersId = {

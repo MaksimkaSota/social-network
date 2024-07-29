@@ -26,10 +26,10 @@
     width: 60%;
     .title {
       @extend %title;
-      margin-bottom: $marginMin;
+      margin: 0 0 $marginMin 0;
     }
     .userInfo {
-      margin-left: $marginMax;
+      margin: 0 0 0 $marginMax;
       text-align: left;
       .infoTitle {
         color: $captions;
@@ -38,6 +38,47 @@
       }
       .infoText {
         font-size: 1.3rem;
+      }
+    }
+  }
+  @include respond($laptopMax) {
+    width: 60%;
+  }
+  @include respond($laptopMin) {
+    width: 70%;
+    .userMainBlock {
+      width: 30%;
+    }
+    .userInfoBlock {
+      width: 70%;
+    }
+  }
+  @include respond($tablet) {
+    flex-direction: column;
+    width: 90%;
+    .userMainBlock {
+      width: 100%;
+      border-right: none;
+      border-bottom: 1px solid $content;
+      padding: 0 0 $padding 0;
+      .userPhotoBlock {
+        width: 30%;
+      }
+    }
+    .userInfoBlock {
+      width: 100%;
+      .title {
+        margin: $marginMin 0;
+      }
+      .userInfo {
+        margin: 0;
+      }
+    }
+  }
+  @include respond($mobile) {
+    .userMainBlock {
+      .userButton {
+        width: 30%;
       }
     }
   }

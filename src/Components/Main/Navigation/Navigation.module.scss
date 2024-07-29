@@ -19,4 +19,30 @@
       color: $content;
     }
   }
+  @include respond($laptopMax) {
+    width: 15%;
+  }
+  @include respond($laptopMin) {
+    width: 20%;
+  }
+  @include respond($tablet) {
+    @include flex(center, null);
+    width: 100%;
+    border-bottom: 5px solid $dark-background;
+    .link {
+      &:not(:last-child) {
+        margin: 0 $marginMin 0 0;
+      }
+    }
+  }
+  @include respond($mobile) {
+    display: block;
+    width: 100%;
+    .link {
+      font-size: 1.3rem;
+      &:not(:last-child) {
+        margin: 0;
+      }
+    }
+  }
 }

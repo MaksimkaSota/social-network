@@ -2,6 +2,6 @@ import type { AppState } from '../reducers/reducers';
 
 export const authSelector = (state: AppState) => state.auth;
 export const profileSelector = (state: AppState) => state.profile;
-export const dialogsSelector = (state: AppState) => state.dialogs;
+export const publicationsSelector = (state: AppState) => state.publications;
 export const usersSelector = (state: AppState) => state.users;
 export const chatSelector = (state: AppState) => state.chat;

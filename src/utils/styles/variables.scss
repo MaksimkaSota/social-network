@@ -12,9 +12,34 @@ $error: $red;
 $dark-background: $light-black;
 $light-background: $light-gray;
 
-$padding: 10px;
-$marginMin: 10px;
 $marginMax: 20px;
+$marginMin: 10px;
+$padding: 10px;
 $radius: 5px;
 $left-block-width: 10%;
 $right-block-width: 90%;
+
+$laptopMaxSize: 90em;
+$laptopMinSize: 80em;
+$tabletSize: 40em;
+$mobileSize: 20em;
+
+$laptopMax: laptopMax;
+$laptopMin: laptopMin;
+$tablet: tablet;
+$mobile: mobile;
+
+$breakpoints: (
+  $laptopMax: (
+    max-width: $laptopMaxSize,
+  ),
+  $laptopMin: (
+    max-width: $laptopMinSize,
+  ),
+  $tablet: (
+    max-width: $tabletSize,
+  ),
+  $mobile: (
+    max-width: $mobileSize,
+  ),
+);

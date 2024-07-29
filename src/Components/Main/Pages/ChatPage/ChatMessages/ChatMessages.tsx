@@ -45,7 +45,11 @@ export const ChatMessages: FC<PropsType> = ({ messages, channelStatus }): ReactE
       ref={anchorRef}
       onScroll={scrollHandler}
     >
-      {channelStatus !== 'received' && <Preloader className={classes.chatPreloader} />}
+      {channelStatus !== 'received' && (
+        <div className={classes.chatPreloaderBlock}>
+          <Preloader className={classes.chatPreloader} />
+        </div>
+      )}
       {channelStatus === 'received' &&
         (!messages.length ? (
           <p className={classes.emptyMessagesText}>Nobody wrote a message. Be the first!</p>

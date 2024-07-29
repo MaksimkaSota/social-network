@@ -15,4 +15,32 @@
     font-size: 0.9rem;
     color: $captions;
   }
+  @include respond($laptopMax) {
+    .authUserPhotoPreloader {
+      width: 60%;
+    }
+    .userPhoto {
+      width: 60%;
+    }
+  }
+  @include respond($laptopMin) {
+    .authUserPhotoPreloader {
+      width: 70%;
+    }
+    .userPhoto {
+      width: 70%;
+    }
+  }
+  @include respond($tablet) {
+    @include flex(null, center);
+    .authUserPhotoPreloader {
+      width: 100px;
+    }
+    .userPhoto {
+      width: 100px;
+    }
+    .container {
+      margin: 0 0 0 $marginMin;
+    }
+  }
 }

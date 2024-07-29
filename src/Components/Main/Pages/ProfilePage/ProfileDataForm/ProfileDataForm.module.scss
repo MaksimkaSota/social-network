@@ -1,6 +1,5 @@
 .dataFormBlock {
   .innerDataFormBlock {
-    margin: 0 0 $marginMin 0;
     .descriptionBlock {
       @include flex(null, center);
       &:nth-child(2) {

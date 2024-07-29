@@ -22,4 +22,10 @@
       color: $active;
     }
   }
+  @include respond($laptopMin) {
+    width: 80%;
+  }
+  @include respond($tablet) {
+    width: 90%;
+  }
 }

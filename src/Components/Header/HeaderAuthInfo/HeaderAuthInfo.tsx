@@ -27,24 +27,28 @@ export const HeaderAuthInfo: FC<PropsType> = ({
       {isFetchingAuthUserPhoto ? (
         <Preloader className={classes.authUserPhotoPreloader} />
       ) : (
-        <>
+        <div>
           <img className={classes.userPhoto} src={authUserPhoto || userPhoto} alt="avatar" />
           {authUserPhotoError && (
             <p className={classes.userPhotoError}>
-              Error {authUserPhotoError.code}. <br />
+              {authUserPhotoError.code || 'Some'} Error.
+              <br />
               Photo is not loaded!
             </p>
           )}
           {updateUserPhotoError && (
             <p className={classes.userPhotoError}>
-              Error {updateUserPhotoError.code}. <br />
+              {updateUserPhotoError.code || 'Some'} Error.
+              <br />
               Photo is not loaded!
             </p>
           )}
-        </>
+        </div>
       )}
-      <p className={classes.text}>{loginName}</p>
-      <Button text="Logout" onClick={logout} />
+      <div className={classes.container}>
+        <p className={classes.text}>{loginName}</p>
+        <Button text="Logout" onClick={logout} />
+      </div>
     </div>
   );
 };

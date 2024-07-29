@@ -1,9 +1,0 @@
-.addPostBlock {
-  margin: 0 0 $marginMin 0;
-  .fieldBlock {
-    margin: 0 0 $marginMin 0;
-    .inputPost {
-      @extend %textarea;
-    }
-  }
-}

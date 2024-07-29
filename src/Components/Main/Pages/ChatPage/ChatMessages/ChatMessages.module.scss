@@ -4,9 +4,13 @@
   border: 1px solid $active;
   border-radius: $radius;
   overflow-y: auto;
-  .chatPreloader {
+  .chatPreloaderBlock {
+    @include flex(center, center);
     height: 100%;
-    margin: 0 auto;
+    .chatPreloader {
+      height: 100%;
+      margin: 0;
+    }
   }
   .emptyMessagesText {
     color: $dark-background;

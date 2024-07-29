@@ -1,5 +1,17 @@
 @import './variables';
 
+@mixin respond($breakpoint) {
+  $query: map-get($breakpoints, $breakpoint);
+
+  @if not $query {
+    @error 'No value found for `#{$breakpoint}`. Please make sure it is defined in `$breakpoints` map.';
+  }
+
+  @media #{if(type-of($query) == 'string', unquote($query), inspect($query))} {
+    @content;
+  }
+}
+
 @mixin position($w, $m) {
   width: $w;
   margin: $m;
@@ -19,7 +31,7 @@
 
 @mixin link($c) {
   cursor: pointer;
-  font-size: 1.3rem;
+  font-size: 0.9rem;
   color: $c;
   transition: all 0.3s linear;
 }

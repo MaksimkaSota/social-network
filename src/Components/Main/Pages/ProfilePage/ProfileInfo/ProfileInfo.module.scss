@@ -1,17 +1,48 @@
 .infoBlock {
   @include position(90%, 0 auto);
+  padding: 0 0 $padding 0;
   text-align: center;
   .title {
     @extend %title;
   }
   .innerInfoBlock {
-    display: flex;
+    @include flex(space-evenly, null);
     .statusAndPhotoBlock {
-      @include position(35%, 0 auto);
+      @include flex(space-between, null);
+      flex-direction: column;
+      width: 30%;
     }
   }
   .fullName {
     @include captions(1.3rem, 0.05rem);
     margin: 0 0 $marginMin 0;
+  }
+  @include respond($laptopMin) {
+    @include position(100%, 0);
+    .innerInfoBlock {
+      display: block;
+      .statusAndPhotoBlock {
+        flex-direction: row;
+        align-items: center;
+        @include position(80%, 0 auto $marginMin);
+        padding: 0 0 $padding 0;
+        border-bottom: 1px solid $active;
+      }
+    }
+  }
+  @include respond($tablet) {
+    .innerInfoBlock {
+      .statusAndPhotoBlock {
+        display: block;
+        width: 90%;
+      }
+    }
+  }
+  @include respond($mobile) {
+    .innerInfoBlock {
+      .statusAndPhotoBlock {
+        width: 100%;
+      }
+    }
   }
 }

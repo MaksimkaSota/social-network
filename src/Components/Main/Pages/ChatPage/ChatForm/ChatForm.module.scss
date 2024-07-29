@@ -4,8 +4,7 @@
     @include flex(center, center);
     margin: $marginMin 0 0 0;
     .fieldBlock {
-      width: 50%;
-      margin: 0 auto;
+      @include position(50%, 0 auto);
       .inputText {
         @extend %textarea;
         width: 100%;
@@ -19,5 +18,38 @@
     text-align: center;
     font-size: 1rem;
     color: $error;
+  }
+  @include respond($laptopMax) {
+    .formBlock {
+      .fieldBlock {
+        width: 60%;
+      }
+    }
+  }
+  @include respond($laptopMin) {
+    .formBlock {
+      .fieldBlock {
+        width: 70%;
+      }
+    }
+  }
+  @include respond($tablet) {
+    margin: 0;
+    .formBlock {
+      display: block;
+      .fieldBlock {
+        @include position(100%, $marginMin 0);
+      }
+      .sendButton {
+        margin: 0 auto;
+      }
+    }
+  }
+  @include respond($mobile) {
+    .formBlock {
+      .sendButton {
+        width: 100%;
+      }
+    }
   }
 }

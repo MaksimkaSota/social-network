@@ -21,4 +21,36 @@
   .searchButton {
     margin: 0;
   }
+  @include respond($laptopMin) {
+    margin: $marginMin 0;
+    .fieldBlock {
+      width: 30%;
+    }
+    .selectSearch {
+      width: 30%;
+    }
+  }
+  @include respond($tablet) {
+    display: block;
+    .fieldBlock {
+      @include position(50%, 0 auto $marginMin);
+    }
+    .selectSearch {
+      @include position(50%, 0 auto $marginMin);
+    }
+    .searchButton {
+      margin: 0 auto;
+    }
+  }
+  @include respond($mobile) {
+    .fieldBlock {
+      width: 90%;
+    }
+    .selectSearch {
+      width: 90%;
+    }
+    .searchButton {
+      width: 90%;
+    }
+  }
 }

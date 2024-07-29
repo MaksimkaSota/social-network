@@ -13,7 +13,8 @@ The WebSocket was used to create a common real-time chat.
 
 ### Technologies
 
-This is a social network project built using `React`, `Redux`, `TypeScript`, `SCSS`, `Axios`, `WebSocket`, `Formik`, `ESLint`, and `Jest`.
+This is a social network project built using:  
+`React`, `Redux`, `TypeScript`, `SCSS`, `Axios`, `REST API`, `WebSocket`, `Formik`, `ESLint`, `Jest`.
 
 ---
 
@@ -28,7 +29,7 @@ This is a social network project built using `React`, `Redux`, `TypeScript`, `SC
 
 ### Developing
 
-- Add following `.env` file to the root of the project (`git` ignored):  
+- Add following `.env.local` file to the root of the project (`git` ignored):  
   `REACT_APP_KEY='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';`  
   You should take the KEY from the developer!
 

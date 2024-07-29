@@ -18,13 +18,26 @@ img {
   display: block;
 }
 
+html,
 body {
   width: 100%;
   height: 100%;
   color: $content;
   background: url('./assets/images/main-background.png');
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @include respond($laptopMax) {
+    font-size: 14px;
+  }
+  @include respond($laptopMin) {
+    font-size: 13px;
+  }
+  @include respond($tablet) {
+    font-size: 12px;
+  }
+  @include respond($mobile) {
+    font-size: 11px;
+  }
 }

@@ -27,4 +27,45 @@
       }
     }
   }
+  @include respond($laptopMax) {
+    .mailContainer {
+      width: 15%;
+    }
+    .contactsContainer {
+      width: 85%;
+    }
+  }
+  @include respond($laptopMin) {
+    .mailContainer {
+      width: 20%;
+    }
+    .contactsContainer {
+      display: block;
+      width: 80%;
+      .title {
+        font-size: 4rem;
+        margin: 0 0 $marginMin 0;
+      }
+    }
+  }
+  @include respond($tablet) {
+    padding: 0 0 $padding 0;
+    .mailContainer {
+      display: none;
+    }
+    .contactsContainer {
+      width: 100%;
+      .title {
+        font-size: 3rem;
+      }
+      .contacts {
+        .contact {
+          display: block;
+          &:not(:last-child) {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
 }

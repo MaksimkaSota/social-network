@@ -29,7 +29,7 @@ export enum RoutePath {
   not_found = '*',
   main = '/',
   profile = '/profile',
-  dialogs = '/dialogs',
+  publications = '/publications',
   users = '/users',
   login = '/login',
   chat = '/chat',
