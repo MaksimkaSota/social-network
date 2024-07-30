@@ -4,6 +4,7 @@ import userPhoto from '../../../assets/images/user.png';
 import { Preloader } from '../../Common/Preloader/Preloader';
 import { Button } from '../../Common/Button/Button';
 import type { ErrorType, Nullable } from '../../../utils/types/common';
+import { textContent } from '../../../utils/textContent';
 
 type PropsType = {
   loginName: Nullable<string>;
@@ -12,6 +13,7 @@ type PropsType = {
   authUserPhotoError: Nullable<ErrorType>;
   updateUserPhotoError: Nullable<ErrorType>;
   logout: () => void;
+  languageMode: string;
 };
 
 export const HeaderAuthInfo: FC<PropsType> = ({
@@ -21,7 +23,10 @@ export const HeaderAuthInfo: FC<PropsType> = ({
   authUserPhotoError,
   updateUserPhotoError,
   logout,
+  languageMode,
 }): ReactElement => {
+  const error = languageMode === 'en' ? 'Some' : 'Некоторая';
+
   return (
     <div className={classes.headerAuthInfo}>
       {isFetchingAuthUserPhoto ? (
@@ -31,23 +36,23 @@ export const HeaderAuthInfo: FC<PropsType> = ({
           <img className={classes.userPhoto} src={authUserPhoto || userPhoto} alt="avatar" />
           {authUserPhotoError && (
             <p className={classes.userPhotoError}>
-              {authUserPhotoError.code || 'Some'} Error.
+              {authUserPhotoError.code || error} {textContent.error[languageMode]}.
               <br />
-              Photo is not loaded!
+              {textContent.headerPhotoErr[languageMode]}!
             </p>
           )}
           {updateUserPhotoError && (
             <p className={classes.userPhotoError}>
-              {updateUserPhotoError.code || 'Some'} Error.
+              {updateUserPhotoError.code || error} {textContent.error[languageMode]}.
               <br />
-              Photo is not loaded!
+              {textContent.headerPhotoErr[languageMode]}!
             </p>
           )}
         </div>
       )}
       <div className={classes.container}>
         <p className={classes.text}>{loginName}</p>
-        <Button text="Logout" onClick={logout} />
+        <Button text={textContent.logoutBtn[languageMode]} onClick={logout} />
       </div>
     </div>
   );

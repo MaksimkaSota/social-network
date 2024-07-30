@@ -7,6 +7,7 @@ import { FormField } from '../../../../Common/FormField/FormField';
 import { FormServerError } from '../../../../Common/FormServerError/FormServerError';
 import type { FormikErrorsType, FormikTouchedType, HandleChangeType } from '../../../../../utils/types/form';
 import { FormName } from '../../../../../utils/types/enums';
+import { textContent } from '../../../../../utils/textContent';
 
 type PropsType = {
   isSubmitting: boolean;
@@ -15,6 +16,7 @@ type PropsType = {
   errors: FormikErrorsType;
   touched: FormikTouchedType;
   captchaUrl: string;
+  languageMode: string;
 };
 
 export const LoginForm: FC<PropsType> = ({
@@ -24,6 +26,7 @@ export const LoginForm: FC<PropsType> = ({
   errors,
   touched,
   captchaUrl,
+  languageMode,
 }): ReactElement => {
   return (
     <Form className={cn(classes.loginForm, { [classes.loginFormError]: status })}>
@@ -32,7 +35,7 @@ export const LoginForm: FC<PropsType> = ({
         classNameField={classes.field}
         name={FormName.email}
         type="email"
-        placeholder="Email"
+        placeholder={textContent.email[languageMode]}
         onChange={handleChange}
         errors={errors}
         touched={touched}
@@ -42,7 +45,7 @@ export const LoginForm: FC<PropsType> = ({
         classNameField={classes.field}
         name={FormName.password}
         type="password"
-        placeholder="Password"
+        placeholder={textContent.password[languageMode]}
         autoComplete="on"
         onChange={handleChange}
         errors={errors}
@@ -54,7 +57,7 @@ export const LoginForm: FC<PropsType> = ({
         classNameLabel={classes.label}
         name={FormName.remember_me}
         type="checkbox"
-        text="Remember me"
+        text={textContent.remember[languageMode]}
         id="rememberMe"
         onChange={handleChange}
       />
@@ -66,14 +69,19 @@ export const LoginForm: FC<PropsType> = ({
             classNameField={classes.field}
             name={FormName.captcha}
             type="text"
-            placeholder="Symbols from image"
+            placeholder={textContent.symbols[languageMode]}
             onChange={handleChange}
             errors={errors}
             touched={touched}
           />
         </>
       )}
-      <Button text="Login" type="submit" className={classes.loginButton} disabled={isSubmitting} />
+      <Button
+        text={textContent.loginBtn[languageMode]}
+        type="submit"
+        className={classes.loginButton}
+        disabled={isSubmitting}
+      />
       {status && <FormServerError status={status} className={classes.error} />}
     </Form>
   );

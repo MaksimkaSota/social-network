@@ -4,6 +4,7 @@ import logo from '../../assets/images/logo.png';
 import { HeaderAuthInfo } from './HeaderAuthInfo/HeaderAuthInfo';
 import { HeaderNotAuthInfo } from './HeaderNotAuthInfo/HeaderNotAuthInfo';
 import type { ErrorType, Nullable } from '../../utils/types/common';
+import { textContent } from '../../utils/textContent';
 
 type PropsType = {
   isAuth: boolean;
@@ -14,6 +15,7 @@ type PropsType = {
   updateUserPhotoError: Nullable<ErrorType>;
   logout: () => void;
   incorrectAuthText: string;
+  languageMode: string;
 };
 
 export const Header: FC<PropsType> = ({
@@ -25,13 +27,14 @@ export const Header: FC<PropsType> = ({
   updateUserPhotoError,
   logout,
   incorrectAuthText,
+  languageMode,
 }): ReactElement => {
   return (
     <header className={classes.header}>
       <div className={classes.logoContainer}>
         <img className={classes.logo} src={logo} alt="logo" />
       </div>
-      <h1 className={classes.headline}>Social Network</h1>
+      <h1 className={classes.headline}>{textContent.headline[languageMode]}</h1>
       <div className={classes.loginContainer}>
         {isAuth ? (
           <HeaderAuthInfo
@@ -41,9 +44,10 @@ export const Header: FC<PropsType> = ({
             authUserPhotoError={authUserPhotoError}
             updateUserPhotoError={updateUserPhotoError}
             logout={logout}
+            languageMode={languageMode}
           />
         ) : (
-          <HeaderNotAuthInfo incorrectAuthText={incorrectAuthText} />
+          <HeaderNotAuthInfo incorrectAuthText={incorrectAuthText} languageMode={languageMode} />
         )}
       </div>
     </header>

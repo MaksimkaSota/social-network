@@ -10,17 +10,21 @@ import type {
   SetSubmittingType,
 } from '../../../../../utils/types/form';
 
-const validationSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email address').required('Required email address'),
-  password: Yup.string()
-    .min(3, 'Must be not less than 3 characters')
-    .max(20, 'Must be not more than 20 characters')
-    .required('Required password'),
-  captcha: Yup.string().when('isCaptcha', {
-    is: true,
-    then: (captcha) => captcha.required('Required captcha'),
-  }),
-});
+const validationSchema = (languageMode: string) => {
+  return Yup.object().shape({
+    email: Yup.string()
+      .email(`${languageMode === 'en' ? 'Invalid email address' : 'Неверный адрес почты'}`)
+      .required(`${languageMode === 'en' ? 'Required email address' : 'Обязательное поле ввода'}`),
+    password: Yup.string()
+      .min(3, `${languageMode === 'en' ? 'Must be not less than 3 symbols' : 'Должен быть не менее 3 символов'}`)
+      .max(20, `${languageMode === 'en' ? 'Must be not more than 20 symbols' : 'Должен быть не более 20 символов'}`)
+      .required(`${languageMode === 'en' ? 'Required password' : 'Обязательное поле ввода'}`),
+    captcha: Yup.string().when('isCaptcha', {
+      is: true,
+      then: (captcha) => captcha.required(`${languageMode === 'en' ? 'Required captcha' : 'Обязательное поле ввода'}`),
+    }),
+  });
+};
 
 type PropsType = {
   login: (
@@ -31,6 +35,7 @@ type PropsType = {
     setFieldTouched: SetFieldTouchedType
   ) => void;
   captchaUrl: string;
+  languageMode: string;
 };
 type FormDataType = {
   email: string;
@@ -40,7 +45,7 @@ type FormDataType = {
   isCaptcha: boolean;
 };
 
-export const LoginFormContainer: FC<PropsType> = ({ login, captchaUrl }): ReactElement => {
+export const LoginFormContainer: FC<PropsType> = ({ login, captchaUrl, languageMode }): ReactElement => {
   const onSubmit = (
     formData: FormDataType,
     { setStatus, setSubmitting, setFieldValue, setFieldTouched }: FormikHelpers<FormDataType>
@@ -57,7 +62,7 @@ export const LoginFormContainer: FC<PropsType> = ({ login, captchaUrl }): ReactE
         captcha: '',
         isCaptcha: false,
       }}
-      validationSchema={validationSchema}
+      validationSchema={validationSchema(languageMode)}
       onSubmit={onSubmit}
     >
       {({ isSubmitting, status, handleChange, errors, touched }): ReactElement => (
@@ -68,6 +73,7 @@ export const LoginFormContainer: FC<PropsType> = ({ login, captchaUrl }): ReactE
           errors={errors}
           touched={touched}
           captchaUrl={captchaUrl}
+          languageMode={languageMode}
         />
       )}
     </Formik>

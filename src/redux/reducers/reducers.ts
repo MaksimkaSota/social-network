@@ -8,6 +8,7 @@ import { authReducer } from './auth';
 import { loadingReducer } from './loading';
 import { errorReducer } from './error';
 import { chatReducer } from './chat';
+import { viewReducer } from './view';
 
 export const rootReducer = combineReducers({
   auth: authReducer,
@@ -17,6 +18,7 @@ export const rootReducer = combineReducers({
   chat: chatReducer,
   loading: loadingReducer,
   error: errorReducer,
+  view: viewReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

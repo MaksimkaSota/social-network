@@ -1,15 +1,17 @@
-import { useState } from 'react';
-import type { FC, ReactElement } from 'react';
+import { memo, useState } from 'react';
+import type { ReactElement } from 'react';
 import classes from './LoginInformation.module.scss';
 import { RequestString } from '../../../../../utils/types/enums';
 import type { Nullable } from '../../../../../utils/types/common';
 import { copyTextOnClick } from '../../../../../utils/helpers/componentHelpers';
+import { textContent } from '../../../../../utils/textContent';
 
 type PropsType = {
   incorrectAuthText: string;
+  languageMode: string;
 };
 
-export const LoginInformation: FC<PropsType> = ({ incorrectAuthText }): ReactElement => {
+export const LoginInformation = memo<PropsType>(({ incorrectAuthText, languageMode }): ReactElement => {
   const [emailStatus, setEmailStatus] = useState<Nullable<string>>(null);
   const [passwordStatus, setPasswordStatus] = useState<Nullable<string>>(null);
   const [isCopiedEmail, setIsCopiedEmail] = useState<boolean>(false);
@@ -17,16 +19,18 @@ export const LoginInformation: FC<PropsType> = ({ incorrectAuthText }): ReactEle
 
   return (
     <div className={classes.helpBlock}>
-      <p className={classes.incorrectAuthText}>{incorrectAuthText}! Log in, please!</p>
-      <p className={classes.mainHelpText}>
-        To log in get registered{' '}
-        <a className={classes.helpLink} href={RequestString.samurai_js} target="_blank" rel="noopener noreferrer">
-          here
-        </a>{' '}
-        or use common test account credentials:
+      <p className={classes.incorrectAuthText}>
+        {incorrectAuthText}. {textContent.incorrectAuthText[languageMode]}!
       </p>
       <p className={classes.mainHelpText}>
-        Email:{' '}
+        {`${textContent.loginTextPt1[languageMode]} `}
+        <a className={classes.helpLink} href={RequestString.samurai_js} target="_blank" rel="noopener noreferrer">
+          {`${textContent.loginTextPt2[languageMode]} `}
+        </a>
+        {textContent.loginTextPt3[languageMode]}:
+      </p>
+      <p className={classes.mainHelpText}>
+        {`${textContent.email[languageMode]}: `}
         {isCopiedEmail ? (
           <span className={classes.copyText}>{emailStatus}</span>
         ) : (
@@ -43,7 +47,7 @@ export const LoginInformation: FC<PropsType> = ({ incorrectAuthText }): ReactEle
         )}
       </p>
       <p className={classes.mainHelpText}>
-        Password:{' '}
+        {`${textContent.password[languageMode]}: `}
         {isCopiedPassword ? (
           <span className={classes.copyText}>{passwordStatus}</span>
         ) : (
@@ -61,4 +65,4 @@ export const LoginInformation: FC<PropsType> = ({ incorrectAuthText }): ReactEle
       </p>
     </div>
   );
-};
+});

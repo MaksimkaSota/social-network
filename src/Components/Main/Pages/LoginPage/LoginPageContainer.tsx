@@ -8,10 +8,11 @@ import type {
   SetStatusType,
   SetSubmittingType,
 } from '../../../../utils/types/form';
-import { authSelector } from '../../../../redux/selectors/selectors';
+import { authSelector, viewSelector } from '../../../../redux/selectors/selectors';
 
 const LoginPageContainer = () => {
   const { isAuth, incorrectAuthText, captchaUrl } = useTypedSelector(authSelector);
+  const { languageMode } = useTypedSelector(viewSelector);
 
   const dispatch = useTypedDispatch();
   const loginCallback = (
@@ -25,7 +26,13 @@ const LoginPageContainer = () => {
   };
 
   return (
-    <LoginPage login={loginCallback} isAuth={isAuth} incorrectAuthText={incorrectAuthText} captchaUrl={captchaUrl} />
+    <LoginPage
+      login={loginCallback}
+      isAuth={isAuth}
+      incorrectAuthText={incorrectAuthText}
+      captchaUrl={captchaUrl}
+      languageMode={languageMode}
+    />
   );
 };
 
