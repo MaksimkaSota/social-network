@@ -10,7 +10,7 @@ import type {
 } from '../../../../utils/types/form';
 import { RoutePath } from '../../../../utils/types/enums';
 import { LoginInformation } from './LoginInformation/LoginInformation';
-import { textContent } from '../../../../utils/languageLocalization/textContent';
+import { contentText } from '../../../../utils/languageLocalization/contentText';
 
 type PropsType = {
   login: (
@@ -37,7 +37,7 @@ export const LoginPage: FC<PropsType> = ({
     <Navigate to={RoutePath.profile} />
   ) : (
     <div className={classes.loginPageBlock}>
-      <h3 className={classes.title}>{textContent.loginTitle[languageMode]}</h3>
+      <h3 className={classes.title}>{contentText.loginTitle[languageMode]}</h3>
       <LoginInformation incorrectAuthText={incorrectAuthText} languageMode={languageMode} />
       <LoginFormContainer login={login} captchaUrl={captchaUrl} languageMode={languageMode} />
     </div>

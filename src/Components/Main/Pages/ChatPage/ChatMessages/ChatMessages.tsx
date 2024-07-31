@@ -6,7 +6,7 @@ import type { IChatMessage } from '../../../../../utils/types/api';
 import classes from './ChatMessages.module.scss';
 import { Preloader } from '../../../../Common/Preloader/Preloader';
 import type { ChannelStatus } from '../../../../../utils/types/common';
-import { scrollToBottom } from '../../../../../utils/helpers/componentHelpers';
+import { scrollToBottom } from '../../../../../utils/helpers/componentsHelpers';
 
 type PropsType = {
   messages: IChatMessage[];

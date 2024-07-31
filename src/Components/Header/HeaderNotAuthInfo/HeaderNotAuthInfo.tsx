@@ -5,7 +5,7 @@ import classes from './HeaderNotAuthInfo.module.scss';
 import userPhoto from '../../../assets/images/user.png';
 import { Button } from '../../Common/Button/Button';
 import { RoutePath } from '../../../utils/types/enums';
-import { textContent } from '../../../utils/languageLocalization/textContent';
+import { contentText } from '../../../utils/languageLocalization/contentText';
 import { errorText } from '../../../utils/languageLocalization/errorText';
 
 type PropsType = {
@@ -22,7 +22,7 @@ export const HeaderNotAuthInfo: FC<PropsType> = ({ incorrectAuthText, languageMo
       <div className={classes.container}>
         <p className={cn(classes.text, classes.incorrectAuthText)}>{incorrectText}</p>
         <NavLink to={RoutePath.login}>
-          <Button text={textContent.loginBtn[languageMode]} />
+          <Button text={contentText.loginBtn[languageMode]} />
         </NavLink>
       </div>
     </div>

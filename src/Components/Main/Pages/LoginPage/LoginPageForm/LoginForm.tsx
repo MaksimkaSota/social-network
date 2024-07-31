@@ -14,7 +14,7 @@ import type {
   ValidateFormType,
 } from '../../../../../utils/types/form';
 import { FormName } from '../../../../../utils/types/enums';
-import { textContent } from '../../../../../utils/languageLocalization/textContent';
+import { contentText } from '../../../../../utils/languageLocalization/contentText';
 
 type PropsType = {
   isSubmitting: boolean;
@@ -52,7 +52,7 @@ export const LoginForm: FC<PropsType> = ({
         classNameField={classes.field}
         name={FormName.email}
         type="email"
-        placeholder={textContent.email[languageMode]}
+        placeholder={contentText.email[languageMode]}
         onChange={handleChange}
         errors={errors}
         touched={touched}
@@ -62,7 +62,7 @@ export const LoginForm: FC<PropsType> = ({
         classNameField={classes.field}
         name={FormName.password}
         type="password"
-        placeholder={textContent.password[languageMode]}
+        placeholder={contentText.password[languageMode]}
         autoComplete="on"
         onChange={handleChange}
         errors={errors}
@@ -74,7 +74,7 @@ export const LoginForm: FC<PropsType> = ({
         classNameLabel={classes.label}
         name={FormName.remember_me}
         type="checkbox"
-        text={textContent.remember[languageMode]}
+        text={contentText.remember[languageMode]}
         id="rememberMe"
         onChange={handleChange}
       />
@@ -86,7 +86,7 @@ export const LoginForm: FC<PropsType> = ({
             classNameField={classes.field}
             name={FormName.captcha}
             type="text"
-            placeholder={textContent.symbols[languageMode]}
+            placeholder={contentText.symbols[languageMode]}
             onChange={handleChange}
             errors={errors}
             touched={touched}
@@ -94,7 +94,7 @@ export const LoginForm: FC<PropsType> = ({
         </>
       )}
       <Button
-        text={textContent.loginBtn[languageMode]}
+        text={contentText.loginBtn[languageMode]}
         type="submit"
         className={classes.loginButton}
         disabled={isSubmitting}

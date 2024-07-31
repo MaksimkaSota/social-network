@@ -4,7 +4,7 @@ import classes from './Publications.module.scss';
 import { Publication } from '../Publication/Publication';
 import { PublicationFormContainer } from '../PublicationForm/PublicationFormContainer';
 import type { PublicationType } from '../../../../../utils/types/common';
-import { scrollToBottom } from '../../../../../utils/helpers/componentHelpers';
+import { scrollToBottom } from '../../../../../utils/helpers/componentsHelpers';
 
 type PropsType = {
   title: string;

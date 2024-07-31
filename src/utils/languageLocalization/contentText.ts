@@ -1,6 +1,6 @@
 import type { LanguageLocalizationType } from '../types/common';
 
-export const textContent: LanguageLocalizationType = {
+export const contentText: LanguageLocalizationType = {
   headline: {
     en: 'Social Network',
     ru: 'Социальная сеть',

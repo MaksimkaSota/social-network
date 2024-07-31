@@ -6,7 +6,7 @@ import { FormField } from '../../../../Common/FormField/FormField';
 import type { FormikErrorsType, FormikTouchedType, HandleChangeType } from '../../../../../utils/types/form';
 import { FormName } from '../../../../../utils/types/enums';
 import type { ChannelStatus } from '../../../../../utils/types/common';
-import { submitFormOnKeyboardPress } from '../../../../../utils/helpers/componentHelpers';
+import { submitFormOnKeyboardPress } from '../../../../../utils/helpers/componentsHelpers';
 
 type PropsType = {
   handleChange: HandleChangeType;

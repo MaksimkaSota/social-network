@@ -4,7 +4,7 @@ import logo from '../../assets/images/logo.png';
 import { HeaderAuthInfo } from './HeaderAuthInfo/HeaderAuthInfo';
 import { HeaderNotAuthInfo } from './HeaderNotAuthInfo/HeaderNotAuthInfo';
 import type { ErrorType, Nullable } from '../../utils/types/common';
-import { textContent } from '../../utils/languageLocalization/textContent';
+import { contentText } from '../../utils/languageLocalization/contentText';
 
 type PropsType = {
   isAuth: boolean;
@@ -34,7 +34,7 @@ export const Header: FC<PropsType> = ({
       <div className={classes.logoContainer}>
         <img className={classes.logo} src={logo} alt="logo" />
       </div>
-      <h1 className={classes.headline}>{textContent.headline[languageMode]}</h1>
+      <h1 className={classes.headline}>{contentText.headline[languageMode]}</h1>
       <div className={classes.loginContainer}>
         {isAuth ? (
           <HeaderAuthInfo

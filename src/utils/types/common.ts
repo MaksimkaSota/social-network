@@ -32,7 +32,7 @@ export type FilterType = {
   friend: string;
 };
 export type LanguageLocalizationType = {
-  [textContentKey: string]: { [languageKey: string]: string };
+  [textKey: string]: { [languageKey: string]: string };
 };
 
 export type ChannelStatus = 'pending' | 'fulfilled' | 'received';

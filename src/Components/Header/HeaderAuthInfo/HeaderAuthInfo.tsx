@@ -4,7 +4,7 @@ import userPhoto from '../../../assets/images/user.png';
 import { Preloader } from '../../Common/Preloader/Preloader';
 import { Button } from '../../Common/Button/Button';
 import type { ErrorType, Nullable } from '../../../utils/types/common';
-import { textContent } from '../../../utils/languageLocalization/textContent';
+import { contentText } from '../../../utils/languageLocalization/contentText';
 import { errorText } from '../../../utils/languageLocalization/errorText';
 
 type PropsType = {
@@ -51,7 +51,7 @@ export const HeaderAuthInfo: FC<PropsType> = ({
       )}
       <div className={classes.container}>
         <p className={classes.text}>{loginName}</p>
-        <Button text={textContent.logoutBtn[languageMode]} onClick={logout} />
+        <Button text={contentText.logoutBtn[languageMode]} onClick={logout} />
       </div>
     </div>
   );

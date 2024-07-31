@@ -3,8 +3,8 @@ import type { ReactElement } from 'react';
 import classes from './LoginInformation.module.scss';
 import { RequestString } from '../../../../../utils/types/enums';
 import type { Nullable } from '../../../../../utils/types/common';
-import { copyTextOnClick } from '../../../../../utils/helpers/componentHelpers';
-import { textContent } from '../../../../../utils/languageLocalization/textContent';
+import { copyTextOnClick } from '../../../../../utils/helpers/componentsHelpers';
+import { contentText } from '../../../../../utils/languageLocalization/contentText';
 import { errorText } from '../../../../../utils/languageLocalization/errorText';
 
 type PropsType = {
@@ -23,17 +23,17 @@ export const LoginInformation = memo<PropsType>(({ incorrectAuthText, languageMo
   return (
     <div className={classes.helpBlock}>
       <p className={classes.incorrectAuthText}>
-        {incorrectText}. {textContent.incorrectAuthText[languageMode]}!
+        {incorrectText}. {contentText.incorrectAuthText[languageMode]}!
       </p>
       <p className={classes.mainHelpText}>
-        {`${textContent.loginTextPt1[languageMode]} `}
+        {`${contentText.loginTextPt1[languageMode]} `}
         <a className={classes.helpLink} href={RequestString.samurai_js} target="_blank" rel="noopener noreferrer">
-          {`${textContent.loginTextPt2[languageMode]} `}
+          {`${contentText.loginTextPt2[languageMode]} `}
         </a>
-        {textContent.loginTextPt3[languageMode]}:
+        {contentText.loginTextPt3[languageMode]}:
       </p>
       <p className={classes.mainHelpText}>
-        {`${textContent.email[languageMode]}: `}
+        {`${contentText.email[languageMode]}: `}
         {isCopiedEmail ? (
           <span className={classes.copyText}>{emailStatus}</span>
         ) : (
@@ -50,7 +50,7 @@ export const LoginInformation = memo<PropsType>(({ incorrectAuthText, languageMo
         )}
       </p>
       <p className={classes.mainHelpText}>
-        {`${textContent.password[languageMode]}: `}
+        {`${contentText.password[languageMode]}: `}
         {isCopiedPassword ? (
           <span className={classes.copyText}>{passwordStatus}</span>
         ) : (
