@@ -4,7 +4,7 @@ import logo from '../../assets/images/logo.png';
 import { HeaderAuthInfo } from './HeaderAuthInfo/HeaderAuthInfo';
 import { HeaderNotAuthInfo } from './HeaderNotAuthInfo/HeaderNotAuthInfo';
 import type { ErrorType, Nullable } from '../../utils/types/common';
-import { textContent } from '../../utils/textContent';
+import { textContent } from '../../utils/languageLocalization/textContent';
 
 type PropsType = {
   isAuth: boolean;

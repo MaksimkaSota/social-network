@@ -9,19 +9,19 @@ import type {
   SetStatusType,
   SetSubmittingType,
 } from '../../../../../utils/types/form';
+import { FormName } from '../../../../../utils/types/enums';
+import { validationText } from '../../../../../utils/languageLocalization/validationText';
 
 const validationSchema = (languageMode: string) => {
   return Yup.object().shape({
-    email: Yup.string()
-      .email(`${languageMode === 'en' ? 'Invalid email address' : 'Неверный адрес почты'}`)
-      .required(`${languageMode === 'en' ? 'Required email address' : 'Обязательное поле ввода'}`),
+    email: Yup.string().email(validationText.email[languageMode]).required(validationText.requiredEmail[languageMode]),
     password: Yup.string()
-      .min(3, `${languageMode === 'en' ? 'Must be not less than 3 symbols' : 'Должен быть не менее 3 символов'}`)
-      .max(20, `${languageMode === 'en' ? 'Must be not more than 20 symbols' : 'Должен быть не более 20 символов'}`)
-      .required(`${languageMode === 'en' ? 'Required password' : 'Обязательное поле ввода'}`),
-    captcha: Yup.string().when('isCaptcha', {
+      .min(3, validationText.minPassword[languageMode])
+      .max(20, validationText.maxPassword[languageMode])
+      .required(validationText.requiredPassword[languageMode]),
+    captcha: Yup.string().when(FormName.is_captcha, {
       is: true,
-      then: (captcha) => captcha.required(`${languageMode === 'en' ? 'Required captcha' : 'Обязательное поле ввода'}`),
+      then: (captcha) => captcha.required(validationText.requiredCaptcha[languageMode]),
     }),
   });
 };
@@ -65,15 +65,17 @@ export const LoginFormContainer: FC<PropsType> = ({ login, captchaUrl, languageM
       validationSchema={validationSchema(languageMode)}
       onSubmit={onSubmit}
     >
-      {({ isSubmitting, status, handleChange, errors, touched }): ReactElement => (
+      {({ isSubmitting, status, setStatus, handleChange, errors, touched, validateForm }): ReactElement => (
         <LoginForm
           isSubmitting={isSubmitting}
           status={status}
+          setStatus={setStatus}
           handleChange={handleChange}
           errors={errors}
           touched={touched}
           captchaUrl={captchaUrl}
           languageMode={languageMode}
+          validateForm={validateForm}
         />
       )}
     </Formik>

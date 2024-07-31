@@ -1,8 +1,16 @@
 import type { FC, ReactElement } from 'react';
 import classes from './Footer.module.scss';
 import email from '../../assets/images/email.png';
+import { ViewFormContainer } from '../Common/ViewForm/ViewFormContainer';
 
-export const Footer: FC = (): ReactElement => {
+type PropsType = {
+  languageMode: string;
+  themeMode: string;
+  setLanguageMode: (languageMode: string) => void;
+  setThemeMode: (themeMode: string) => void;
+};
+
+export const Footer: FC<PropsType> = ({ languageMode, themeMode, setLanguageMode, setThemeMode }): ReactElement => {
   return (
     <footer className={classes.footer}>
       <div className={classes.mailContainer}>
@@ -32,6 +40,12 @@ export const Footer: FC = (): ReactElement => {
           </a>
         </div>
       </div>
+      <ViewFormContainer
+        languageMode={languageMode}
+        themeMode={themeMode}
+        setLanguageMode={setLanguageMode}
+        setThemeMode={setThemeMode}
+      />
     </footer>
   );
 };

@@ -45,8 +45,11 @@ export enum FormName {
   password = 'password',
   remember_me = 'rememberMe',
   captcha = 'captcha',
+  is_captcha = 'isCaptcha',
   term = 'term',
   friend = 'friend',
+  language = 'language',
+  theme = 'theme',
 }
 export enum KeyboardEventCode {
   escape = 'Escape',

@@ -4,7 +4,8 @@ import userPhoto from '../../../assets/images/user.png';
 import { Preloader } from '../../Common/Preloader/Preloader';
 import { Button } from '../../Common/Button/Button';
 import type { ErrorType, Nullable } from '../../../utils/types/common';
-import { textContent } from '../../../utils/textContent';
+import { textContent } from '../../../utils/languageLocalization/textContent';
+import { errorText } from '../../../utils/languageLocalization/errorText';
 
 type PropsType = {
   loginName: Nullable<string>;
@@ -25,8 +26,6 @@ export const HeaderAuthInfo: FC<PropsType> = ({
   logout,
   languageMode,
 }): ReactElement => {
-  const error = languageMode === 'en' ? 'Some' : 'Некоторая';
-
   return (
     <div className={classes.headerAuthInfo}>
       {isFetchingAuthUserPhoto ? (
@@ -36,16 +35,16 @@ export const HeaderAuthInfo: FC<PropsType> = ({
           <img className={classes.userPhoto} src={authUserPhoto || userPhoto} alt="avatar" />
           {authUserPhotoError && (
             <p className={classes.userPhotoError}>
-              {authUserPhotoError.code || error} {textContent.error[languageMode]}.
+              {authUserPhotoError.code || errorText.some[languageMode]} {errorText.error[languageMode]}.
               <br />
-              {textContent.headerPhotoErr[languageMode]}!
+              {errorText.photo[languageMode]}!
             </p>
           )}
           {updateUserPhotoError && (
             <p className={classes.userPhotoError}>
-              {updateUserPhotoError.code || error} {textContent.error[languageMode]}.
+              {updateUserPhotoError.code || errorText.some[languageMode]} {errorText.error[languageMode]}.
               <br />
-              {textContent.headerPhotoErr[languageMode]}!
+              {errorText.photo[languageMode]}!
             </p>
           )}
         </div>

@@ -1,14 +1,15 @@
 import { isAxiosError } from 'axios';
 import { getAuthAPI, getCaptchaUrlAPI, loginAPI, logoutAPI } from '../../api/http/auth';
 import {
+  resetAuthData,
+  setAuthFailure,
   setAuthRequest,
   setAuthSuccessCorrect,
   setAuthSuccessIncorrect,
-  setAuthFailure,
   setAuthUserPhoto,
   setAuthUserPhotoError,
-  resetAuthData,
   setCaptchaUrl,
+  setLoginError,
   setLogoutError,
 } from '../actions/auth';
 import { getProfileAPI } from '../../api/http/profile';
@@ -17,10 +18,11 @@ import type { ThunkType } from '../../utils/types/common';
 import type { AuthAction } from '../types/auth';
 import type { SetFieldTouchedType, SetFieldValueType, SetStatusType, SetSubmittingType } from '../../utils/types/form';
 import type { IAuthData, ICaptcha, IResponse } from '../../utils/types/api';
-import { StatusCode } from '../../utils/types/enums';
+import { FormName, StatusCode } from '../../utils/types/enums';
+import { errorText } from '../../utils/languageLocalization/errorText';
 
 export const getAuth = (): ThunkType<AuthAction> => {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     try {
       dispatch(setAuthRequest());
       const dataAuth: IResponse<IAuthData> = await getAuthAPI();
@@ -36,8 +38,7 @@ export const getAuth = (): ThunkType<AuthAction> => {
           }
         }
       } else if (dataAuth.resultCode === StatusCode.failure) {
-        const serverError = getState().view.languageMode === 'en' ? dataAuth.messages[0] : 'Вы не авторизованы';
-        dispatch(setAuthSuccessIncorrect(serverError));
+        dispatch(setAuthSuccessIncorrect(dataAuth.messages[0]));
       }
     } catch (error: unknown) {
       if (isAxiosError(error)) {
@@ -69,18 +70,20 @@ export const login = (
       } else {
         if (data.resultCode === StatusCode.required_captcha) {
           await dispatch(getCaptchaUrl());
-          await setFieldValue('isCaptcha', true);
-          await setFieldTouched('captcha', false);
+          await setFieldValue(FormName.is_captcha, true);
+          await setFieldTouched(FormName.captcha, false);
         }
-        const serverError = getState().view.languageMode === 'en' ? data.messages[0] : 'Неверная почта или пароль';
-        const anotherError = getState().view.languageMode === 'en' ? 'Some error' : 'Некоторая ошибка';
-        const message = serverError || anotherError;
-        setStatus(message);
+        const serverError = getState().view.languageMode === 'en' ? data.messages[0] : errorText.incorrectLoginData.ru;
+        setStatus(serverError);
       }
     } catch (error: unknown) {
       if (isAxiosError(error)) {
-        const message = `Error ${error.response?.status}, ${getErrorMessage(error)}`;
-        setStatus(message);
+        dispatch(
+          setLoginError({
+            code: error.response?.status,
+            message: getErrorMessage(error),
+          })
+        );
       }
     }
     setSubmitting(false);
@@ -88,7 +91,7 @@ export const login = (
 };
 
 export const logout = (): ThunkType<AuthAction> => {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     try {
       const data = await logoutAPI();
       if (data.resultCode === StatusCode.success) {
@@ -102,8 +105,7 @@ export const logout = (): ThunkType<AuthAction> => {
             captchaUrl: '',
           })
         );
-        const incorrectAuthText = getState().view.languageMode === 'en' ? 'Not authorized' : 'Не авторизован';
-        dispatch(setAuthSuccessIncorrect(incorrectAuthText));
+        dispatch(setAuthSuccessIncorrect('You are not authorized'));
       }
     } catch (error: unknown) {
       if (isAxiosError(error)) {

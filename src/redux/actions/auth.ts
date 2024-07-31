@@ -8,6 +8,7 @@ import type {
   SetAuthUserPhotoAction,
   SetAuthUserPhotoErrorAction,
   SetCaptchaUrlAction,
+  SetLoginErrorAction,
   SetLogoutErrorAction,
 } from '../types/auth';
 import type { AuthData, ErrorType, Nullable } from '../../utils/types/common';
@@ -48,6 +49,10 @@ export const resetAuthData = ({
 export const setCaptchaUrl = (captchaUrl: string): SetCaptchaUrlAction => ({
   type: AuthActionType.SET_AUTH_CAPTCHA_URL,
   payload: captchaUrl,
+});
+export const setLoginError = (error: Nullable<ErrorType>): SetLoginErrorAction => ({
+  type: AuthActionType.SET_AUTH_LOGIN_ERROR,
+  payload: error,
 });
 export const setLogoutError = (error: Nullable<ErrorType>): SetLogoutErrorAction => ({
   type: AuthActionType.SET_AUTH_LOGOUT_ERROR,

@@ -10,6 +10,7 @@ const initialState: AuthState = {
   authUserPhotoError: null,
   incorrectAuthText: '',
   captchaUrl: '',
+  loginError: null,
   logoutError: null,
 };
 
@@ -45,6 +46,11 @@ export const authReducer = (state: AuthState = initialState, action: AuthAction)
       return {
         ...state,
         captchaUrl: action.payload,
+      };
+    case AuthActionType.SET_AUTH_LOGIN_ERROR:
+      return {
+        ...state,
+        loginError: action.payload,
       };
     case AuthActionType.SET_AUTH_LOGOUT_ERROR:
       return {

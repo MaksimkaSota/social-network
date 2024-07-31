@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import type { FC, ReactElement } from 'react';
 import { Form } from 'formik';
 import cn from 'classnames';
@@ -5,29 +6,45 @@ import classes from './LoginForm.module.scss';
 import { Button } from '../../../../Common/Button/Button';
 import { FormField } from '../../../../Common/FormField/FormField';
 import { FormServerError } from '../../../../Common/FormServerError/FormServerError';
-import type { FormikErrorsType, FormikTouchedType, HandleChangeType } from '../../../../../utils/types/form';
+import type {
+  FormikErrorsType,
+  FormikTouchedType,
+  HandleChangeType,
+  SetStatusType,
+  ValidateFormType,
+} from '../../../../../utils/types/form';
 import { FormName } from '../../../../../utils/types/enums';
-import { textContent } from '../../../../../utils/textContent';
+import { textContent } from '../../../../../utils/languageLocalization/textContent';
 
 type PropsType = {
   isSubmitting: boolean;
   status: any;
+  setStatus: SetStatusType;
   handleChange: HandleChangeType;
   errors: FormikErrorsType;
   touched: FormikTouchedType;
   captchaUrl: string;
   languageMode: string;
+  validateForm: ValidateFormType;
 };
 
 export const LoginForm: FC<PropsType> = ({
   isSubmitting,
   status,
+  setStatus,
   handleChange,
   errors,
   touched,
   captchaUrl,
   languageMode,
+  validateForm,
 }): ReactElement => {
+  useEffect(() => {
+    setStatus();
+    validateForm();
+    // eslint-disable-next-line
+  }, [languageMode]);
+
   return (
     <Form className={cn(classes.loginForm, { [classes.loginFormError]: status })}>
       <FormField

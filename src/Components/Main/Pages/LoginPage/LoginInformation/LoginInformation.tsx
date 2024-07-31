@@ -4,7 +4,8 @@ import classes from './LoginInformation.module.scss';
 import { RequestString } from '../../../../../utils/types/enums';
 import type { Nullable } from '../../../../../utils/types/common';
 import { copyTextOnClick } from '../../../../../utils/helpers/componentHelpers';
-import { textContent } from '../../../../../utils/textContent';
+import { textContent } from '../../../../../utils/languageLocalization/textContent';
+import { errorText } from '../../../../../utils/languageLocalization/errorText';
 
 type PropsType = {
   incorrectAuthText: string;
@@ -17,10 +18,12 @@ export const LoginInformation = memo<PropsType>(({ incorrectAuthText, languageMo
   const [isCopiedEmail, setIsCopiedEmail] = useState<boolean>(false);
   const [isCopiedPassword, setIsCopiedPassword] = useState<boolean>(false);
 
+  const incorrectText = languageMode === 'en' ? incorrectAuthText : errorText.authorization.ru;
+
   return (
     <div className={classes.helpBlock}>
       <p className={classes.incorrectAuthText}>
-        {incorrectAuthText}. {textContent.incorrectAuthText[languageMode]}!
+        {incorrectText}. {textContent.incorrectAuthText[languageMode]}!
       </p>
       <p className={classes.mainHelpText}>
         {`${textContent.loginTextPt1[languageMode]} `}

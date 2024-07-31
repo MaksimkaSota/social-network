@@ -10,7 +10,7 @@ import type {
 } from '../../../../utils/types/form';
 import { RoutePath } from '../../../../utils/types/enums';
 import { LoginInformation } from './LoginInformation/LoginInformation';
-import { textContent } from '../../../../utils/textContent';
+import { textContent } from '../../../../utils/languageLocalization/textContent';
 
 type PropsType = {
   login: (

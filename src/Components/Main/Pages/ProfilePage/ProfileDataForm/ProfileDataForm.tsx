@@ -31,7 +31,7 @@ export const ProfileDataForm: FC<PropsType> = ({
   const [editModeSkills, setEditModeSkills] = useState<boolean>(data.lookingForAJob);
 
   const onToggleEditModeSkills = (event: ChangeEvent<any>): void => {
-    setFieldValue('lookingForAJob', event.target.checked);
+    setFieldValue(FormName.looking_for_a_job, event.target.checked);
     setEditModeSkills(event.target.checked);
   };
 
