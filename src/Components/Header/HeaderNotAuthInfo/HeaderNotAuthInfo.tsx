@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import classes from './HeaderNotAuthInfo.module.scss';
 import userPhoto from '../../../assets/images/user.png';
 import { Button } from '../../Common/Button/Button';
-import { RoutePath } from '../../../utils/types/enums';
+import { Language, RoutePath } from '../../../utils/types/enums';
 import { contentText } from '../../../utils/languageLocalization/contentText';
 import { errorText } from '../../../utils/languageLocalization/errorText';
 
@@ -14,7 +14,7 @@ type PropsType = {
 };
 
 export const HeaderNotAuthInfo: FC<PropsType> = ({ incorrectAuthText, languageMode }): ReactElement => {
-  const incorrectText = languageMode === 'en' ? incorrectAuthText : errorText.authorization.ru;
+  const incorrectText = languageMode === Language.en ? incorrectAuthText : errorText.authorization.ru;
 
   return (
     <div className={classes.headerNotAuthInfo}>

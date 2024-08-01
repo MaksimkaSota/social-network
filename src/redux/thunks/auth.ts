@@ -18,7 +18,7 @@ import type { ThunkType } from '../../utils/types/common';
 import type { AuthAction } from '../types/auth';
 import type { SetFieldTouchedType, SetFieldValueType, SetStatusType, SetSubmittingType } from '../../utils/types/form';
 import type { IAuthData, ICaptcha, IResponse } from '../../utils/types/api';
-import { FormName, StatusCode } from '../../utils/types/enums';
+import { FormName, Language, StatusCode } from '../../utils/types/enums';
 import { errorText } from '../../utils/languageLocalization/errorText';
 
 export const getAuth = (): ThunkType<AuthAction> => {
@@ -73,7 +73,8 @@ export const login = (
           await setFieldValue(FormName.is_captcha, true);
           await setFieldTouched(FormName.captcha, false);
         }
-        const serverError = getState().view.languageMode === 'en' ? data.messages[0] : errorText.incorrectLoginData.ru;
+        const serverError =
+          getState().view.languageMode === Language.en ? data.messages[0] : errorText.incorrectLoginData.ru;
         setStatus(serverError);
       }
     } catch (error: unknown) {

@@ -1,7 +1,7 @@
 import { memo, useState } from 'react';
 import type { ReactElement } from 'react';
 import classes from './LoginInformation.module.scss';
-import { RequestString } from '../../../../../utils/types/enums';
+import { Language, RequestString } from '../../../../../utils/types/enums';
 import type { Nullable } from '../../../../../utils/types/common';
 import { copyTextOnClick } from '../../../../../utils/helpers/componentsHelpers';
 import { contentText } from '../../../../../utils/languageLocalization/contentText';
@@ -18,7 +18,7 @@ export const LoginInformation = memo<PropsType>(({ incorrectAuthText, languageMo
   const [isCopiedEmail, setIsCopiedEmail] = useState<boolean>(false);
   const [isCopiedPassword, setIsCopiedPassword] = useState<boolean>(false);
 
-  const incorrectText = languageMode === 'en' ? incorrectAuthText : errorText.authorization.ru;
+  const incorrectText = languageMode === Language.en ? incorrectAuthText : errorText.authorization.ru;
 
   return (
     <div className={classes.helpBlock}>

@@ -49,4 +49,20 @@ export const contentText: LanguageLocalizationType = {
     en: 'Symbols from image',
     ru: 'Символы с картинки',
   },
+  en: {
+    en: 'English',
+    ru: 'Английский',
+  },
+  ru: {
+    en: 'Russian',
+    ru: 'Русский',
+  },
+  light: {
+    en: 'Light',
+    ru: 'Светлая',
+  },
+  dark: {
+    en: 'Dark',
+    ru: 'Темная',
+  },
 };

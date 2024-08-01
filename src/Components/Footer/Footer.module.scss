@@ -3,13 +3,13 @@
   text-align: center;
   @include flex(null, center);
   .mailContainer {
-    @extend %left-block;
+    @extend %side-block;
     .mail {
       width: 100%;
     }
   }
   .contactsContainer {
-    width: $right-block-width;
+    width: 80%;
     @include flex(center, baseline);
     .title {
       @include captions(3rem, 0.3rem);
@@ -32,7 +32,7 @@
       width: 15%;
     }
     .contactsContainer {
-      width: 85%;
+      width: 70%;
     }
   }
   @include respond($laptopMin) {
@@ -41,14 +41,15 @@
     }
     .contactsContainer {
       display: block;
-      width: 80%;
+      width: 60%;
       .title {
-        font-size: 4rem;
+        font-size: 3.5rem;
         margin: 0 0 $marginMin 0;
       }
     }
   }
   @include respond($tablet) {
+    flex-direction: column;
     padding: 0 0 $padding 0;
     .mailContainer {
       display: none;

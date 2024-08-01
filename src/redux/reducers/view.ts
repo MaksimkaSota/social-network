@@ -1,9 +1,10 @@
 import type { ViewAction, ViewState } from '../types/view';
 import { ViewActionType } from '../types/view';
+import { Language, Theme } from '../../utils/types/enums';
 
 const initialState: ViewState = {
-  languageMode: 'en',
-  themeMode: 'light',
+  languageMode: Language.en,
+  themeMode: Theme.light,
 };
 
 export const viewReducer = (state: ViewState = initialState, action: ViewAction): ViewState => {

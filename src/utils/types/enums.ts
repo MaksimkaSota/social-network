@@ -55,3 +55,11 @@ export enum KeyboardEventCode {
   escape = 'Escape',
   enter = 'Enter',
 }
+export enum Language {
+  en = 'en',
+  ru = 'ru',
+}
+export enum Theme {
+  light = 'light',
+  dark = 'dark',
+}

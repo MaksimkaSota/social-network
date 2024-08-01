@@ -2,7 +2,7 @@
   background: $dark-background;
   @include flex(null, center);
   .logoContainer {
-    @extend %left-block;
+    @extend %side-block;
     .logo {
       width: 100%;
       border-radius: $radius;
@@ -14,7 +14,7 @@
     @include captions(5rem, 0.5rem);
   }
   .loginContainer {
-    @extend %left-block;
+    @extend %side-block;
     text-align: center;
   }
   @include respond($laptopMax) {
@@ -34,7 +34,7 @@
     }
     .headline {
       width: 60%;
-      font-size: 4rem;
+      font-size: 3.5rem;
     }
     .loginContainer {
       width: 20%;
@@ -45,7 +45,7 @@
     justify-content: space-evenly;
     .headline {
       width: 100%;
-      font-size: 5rem;
+      font-size: 3rem;
       order: -1;
     }
     .loginContainer {

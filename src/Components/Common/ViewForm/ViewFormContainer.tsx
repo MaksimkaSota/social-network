@@ -15,7 +15,13 @@ export const ViewFormContainer = memo<PropsType>(
     return (
       <Formik initialValues={{ language: languageMode, theme: themeMode }} onSubmit={() => {}}>
         {({ setFieldValue }): ReactElement => (
-          <ViewForm setFieldValue={setFieldValue} setLanguageMode={setLanguageMode} setThemeMode={setThemeMode} />
+          <ViewForm
+            setFieldValue={setFieldValue}
+            languageMode={languageMode}
+            setLanguageMode={setLanguageMode}
+            themeMode={themeMode}
+            setThemeMode={setThemeMode}
+          />
         )}
       </Formik>
     );
