@@ -15,6 +15,7 @@ import type {
 } from '../../../../../utils/types/form';
 import { FormName } from '../../../../../utils/types/enums';
 import { contentText } from '../../../../../utils/languageLocalization/contentText';
+import { InputPassword } from '../../../../Common/InputPassword/InputPassword';
 
 type PropsType = {
   isSubmitting: boolean;
@@ -57,17 +58,7 @@ export const LoginForm: FC<PropsType> = ({
         errors={errors}
         touched={touched}
       />
-      <FormField
-        classNameFormField={classes.fieldBlock}
-        classNameField={classes.field}
-        name={FormName.password}
-        type="password"
-        placeholder={contentText.password[languageMode]}
-        autoComplete="on"
-        onChange={handleChange}
-        errors={errors}
-        touched={touched}
-      />
+      <InputPassword languageMode={languageMode} onChange={handleChange} errors={errors} touched={touched} />
       <FormField
         classNameFormField={classes.toggleBlock}
         classNameField={classes.checkbox}
