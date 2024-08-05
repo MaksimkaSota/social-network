@@ -15,6 +15,7 @@ type PropsType = {
   updateUserPhotoError: Nullable<ErrorType>;
   logout: () => void;
   incorrectAuthText: string;
+  incorrectPhotoText: string;
   languageMode: string;
 };
 
@@ -27,6 +28,7 @@ export const Header: FC<PropsType> = ({
   updateUserPhotoError,
   logout,
   incorrectAuthText,
+  incorrectPhotoText,
   languageMode,
 }): ReactElement => {
   return (
@@ -43,6 +45,7 @@ export const Header: FC<PropsType> = ({
             isFetchingAuthUserPhoto={isFetchingAuthUserPhoto}
             authUserPhotoError={authUserPhotoError}
             updateUserPhotoError={updateUserPhotoError}
+            incorrectPhotoText={incorrectPhotoText}
             logout={logout}
             languageMode={languageMode}
           />

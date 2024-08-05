@@ -3,17 +3,19 @@ import { ContactForm } from '../ContactForm/ContactForm';
 import classes from '../Contacts/Contacts.module.scss';
 import type { HandleChangeType } from '../../../../../utils/types/form';
 import type { IRequestProfile } from '../../../../../utils/types/api';
+import { contentText } from '../../../../../utils/languageLocalization/contentText';
 
 type PropsType = {
   data: IRequestProfile;
   status: any;
   handleChange: HandleChangeType;
+  languageMode: string;
 };
 
-export const ContactsForm: FC<PropsType> = ({ data, status, handleChange }): ReactElement => {
+export const ContactsForm: FC<PropsType> = ({ data, status, handleChange, languageMode }): ReactElement => {
   return (
     <div className={classes.contactsBlock}>
-      <h5 className={classes.title}>Contacts:</h5>
+      <h5 className={classes.title}>{contentText.contacts[languageMode]}:</h5>
       {Object.keys(data.contacts).map((contact: string, index: number): ReactElement => {
         return (
           <ContactForm

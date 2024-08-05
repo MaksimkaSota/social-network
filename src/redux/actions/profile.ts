@@ -5,13 +5,15 @@ import type {
   SetDataSuccessAction,
   SetPhotoFailureAction,
   SetPhotoRequestAction,
-  SetPhotoSuccessAction,
+  SetPhotoSuccessCorrectAction,
+  SetPhotoSuccessIncorrectAction,
   SetProfileFailureAction,
   SetProfileRequestAction,
   SetProfileSuccessAction,
   SetStatusFailureAction,
   SetStatusRequestAction,
-  SetStatusSuccessAction,
+  SetStatusSuccessCorrectAction,
+  SetStatusSuccessIncorrectAction,
 } from '../types/profile';
 import type { IPhotos, IResponseProfile } from '../../utils/types/api';
 
@@ -25,8 +27,12 @@ export const setProfileFailure = (message: string, code?: number): SetProfileFai
   payload: { code, message },
 });
 export const setStatusRequest = (): SetStatusRequestAction => ({ type: ProfileActionType.SET_PROFILE_STATUS_REQUEST });
-export const setStatusSuccess = (status: string): SetStatusSuccessAction => ({
-  type: ProfileActionType.SET_PROFILE_STATUS_SUCCESS,
+export const setStatusSuccessCorrect = (status: string): SetStatusSuccessCorrectAction => ({
+  type: ProfileActionType.SET_PROFILE_STATUS_SUCCESS_CORRECT,
+  payload: status,
+});
+export const setStatusSuccessIncorrect = (status: string): SetStatusSuccessIncorrectAction => ({
+  type: ProfileActionType.SET_PROFILE_STATUS_SUCCESS_INCORRECT,
   payload: status,
 });
 export const setStatusFailure = (message: string, code?: number): SetStatusFailureAction => ({
@@ -34,9 +40,13 @@ export const setStatusFailure = (message: string, code?: number): SetStatusFailu
   payload: { code, message },
 });
 export const setPhotoRequest = (): SetPhotoRequestAction => ({ type: ProfileActionType.SET_PROFILE_PHOTO_REQUEST });
-export const setPhotoSuccess = (photo: IPhotos): SetPhotoSuccessAction => ({
-  type: ProfileActionType.SET_PROFILE_PHOTO_SUCCESS,
+export const setPhotoSuccessCorrect = (photo: IPhotos): SetPhotoSuccessCorrectAction => ({
+  type: ProfileActionType.SET_PROFILE_PHOTO_SUCCESS_CORRECT,
   payload: photo,
+});
+export const setPhotoSuccessIncorrect = (incorrectPhotoText: string): SetPhotoSuccessIncorrectAction => ({
+  type: ProfileActionType.SET_PROFILE_PHOTO_SUCCESS_INCORRECT,
+  payload: incorrectPhotoText,
 });
 export const setPhotoFailure = (message: string, code?: number): SetPhotoFailureAction => ({
   type: ProfileActionType.SET_PROFILE_PHOTO_FAILURE,

@@ -6,11 +6,14 @@ import { ProfileData } from '../ProfileData/ProfileData';
 import type { ErrorType, Nullable } from '../../../../../utils/types/common';
 import type { SetStatusType, SetSubmittingType } from '../../../../../utils/types/form';
 import type { IRequestProfile, IResponseProfile } from '../../../../../utils/types/api';
+import { contentText } from '../../../../../utils/languageLocalization/contentText';
 
 type PropsType = {
   isOwner: boolean;
   profile: Nullable<IResponseProfile>;
   status: string;
+  incorrectStatusText: string;
+  incorrectPhotoText: string;
   updateStatus: (newStatus: string) => void;
   isFetchingStatus: boolean;
   statusError: Nullable<ErrorType>;
@@ -25,12 +28,15 @@ type PropsType = {
   ) => void;
   isFetchingData: boolean;
   dataError: Nullable<ErrorType>;
+  languageMode: string;
 };
 
 export const ProfileInfo: FC<PropsType> = ({
   isOwner,
   profile,
   status,
+  incorrectStatusText,
+  incorrectPhotoText,
   updateStatus,
   isFetchingStatus,
   statusError,
@@ -40,6 +46,7 @@ export const ProfileInfo: FC<PropsType> = ({
   updateData,
   isFetchingData,
   dataError,
+  languageMode,
 }) => {
   const data: IRequestProfile = {
     fullName: profile!.fullName,
@@ -61,7 +68,7 @@ export const ProfileInfo: FC<PropsType> = ({
 
   return (
     <div className={classes.infoBlock}>
-      <h3 className={classes.title}>Profile info</h3>
+      <h3 className={classes.title}>{contentText.profileTitle[languageMode]}</h3>
       <div className={classes.innerInfoBlock}>
         <div className={classes.statusAndPhotoBlock}>
           <ProfilePhoto
@@ -70,13 +77,17 @@ export const ProfileInfo: FC<PropsType> = ({
             updatePhoto={updatePhoto}
             isFetchingPhoto={isFetchingPhoto}
             photoError={photoError}
+            incorrectPhotoText={incorrectPhotoText}
+            languageMode={languageMode}
           />
           <ProfileStatus
             isOwner={isOwner}
             status={status}
+            incorrectStatusText={incorrectStatusText}
             updateStatus={updateStatus}
             isFetchingStatus={isFetchingStatus}
             statusError={statusError}
+            languageMode={languageMode}
           />
         </div>
         <ProfileData
@@ -85,6 +96,7 @@ export const ProfileInfo: FC<PropsType> = ({
           updateData={updateData}
           isFetchingData={isFetchingData}
           dataError={dataError}
+          languageMode={languageMode}
         />
       </div>
     </div>

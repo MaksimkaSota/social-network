@@ -3,7 +3,15 @@ import { ProfileStatus } from '../../Components/Main/Pages/ProfilePage/ProfileSt
 
 const createComponent = (status: string, mockCallback: any) => {
   return create(
-    <ProfileStatus isOwner status={status} updateStatus={mockCallback} isFetchingStatus={false} statusError={null} />
+    <ProfileStatus
+      isOwner
+      status={status}
+      incorrectStatusText=""
+      updateStatus={mockCallback}
+      isFetchingStatus={false}
+      statusError={null}
+      languageMode="en"
+    />
   ).root;
 };
 

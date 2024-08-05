@@ -8,7 +8,7 @@ import { useTypedDispatch } from '../../../../../hooks/useTypedDispatch';
 import type { Nullable } from '../../../../../utils/types/common';
 import type { SetStatusType, SetSubmittingType } from '../../../../../utils/types/form';
 import type { IRequestProfile, IResponseProfile } from '../../../../../utils/types/api';
-import { profileSelector } from '../../../../../redux/selectors/selectors';
+import { profileSelector, viewSelector } from '../../../../../redux/selectors/selectors';
 import {
   isFetchingStatusSelector,
   isFetchingPhotoSelector,
@@ -22,13 +22,14 @@ type PropsType = {
 };
 
 export const ProfileInfoContainer: FC<PropsType> = ({ profile, isOwner }): ReactElement | boolean => {
-  const { status } = useTypedSelector(profileSelector);
+  const { status, incorrectStatusText, incorrectPhotoText } = useTypedSelector(profileSelector);
   const isFetchingStatus = useTypedSelector(isFetchingStatusSelector);
   const statusError = useTypedSelector(statusErrorSelector);
   const isFetchingPhoto = useTypedSelector(isFetchingPhotoSelector);
   const photoError = useTypedSelector(photoErrorSelector);
   const isFetchingData = useTypedSelector(isFetchingDataSelector);
   const dataError = useTypedSelector(dataErrorSelector);
+  const { languageMode } = useTypedSelector(viewSelector);
 
   const dispatch = useTypedDispatch();
   const updateStatusCallback = useCallback((newStatus: string) => dispatch(updateStatus(newStatus)), [dispatch]);
@@ -53,6 +54,8 @@ export const ProfileInfoContainer: FC<PropsType> = ({ profile, isOwner }): React
         isOwner={isOwner}
         profile={profile}
         status={status}
+        incorrectStatusText={incorrectStatusText}
+        incorrectPhotoText={incorrectPhotoText}
         updateStatus={updateStatusCallback}
         isFetchingStatus={isFetchingStatus}
         statusError={statusError}
@@ -62,6 +65,7 @@ export const ProfileInfoContainer: FC<PropsType> = ({ profile, isOwner }): React
         updateData={updateDataCallback}
         isFetchingData={isFetchingData}
         dataError={dataError}
+        languageMode={languageMode}
       />
     )
   );

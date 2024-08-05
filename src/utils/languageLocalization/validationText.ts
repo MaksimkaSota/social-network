@@ -10,8 +10,8 @@ export const validationText: LanguageLocalizationType = {
     en: 'Required email address',
   },
   minPassword: {
-    ru: 'Должен быть не менее 3 символов',
-    en: 'Must be not less than 3 symbols',
+    ru: 'Должен быть не менее 5 символов',
+    en: 'Must be not less than 5 symbols',
   },
   maxPassword: {
     ru: 'Должен быть не более 20 символов',
@@ -24,5 +24,17 @@ export const validationText: LanguageLocalizationType = {
   requiredCaptcha: {
     ru: 'Символы с картинки обязательны для ввода',
     en: 'Required captcha',
+  },
+  minName: {
+    ru: 'Должно быть не менее 3 символов',
+    en: 'Must be not less than 3 symbols',
+  },
+  maxName: {
+    ru: 'Должно быть не более 30 символов',
+    en: 'Must be not more than 30 symbols',
+  },
+  requiredName: {
+    ru: 'Полное имя обязательно для ввода',
+    en: 'Required full name',
   },
 };

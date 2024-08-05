@@ -1,5 +1,6 @@
 .dataFormBlock {
   .innerDataFormBlock {
+    margin: 0 0 $marginMin 0;
     .descriptionBlock {
       @include flex(null, center);
       &:nth-child(2) {
@@ -11,6 +12,10 @@
       .title {
         @include captions(1.1rem);
         margin: 0 $marginMin 0 0;
+      }
+      .formField {
+        @include flex(null, flex-start);
+        flex-direction: column;
       }
       .field {
         padding: 5px;

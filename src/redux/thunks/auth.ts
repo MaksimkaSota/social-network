@@ -26,19 +26,24 @@ export const getAuth = (): ThunkType<AuthAction> => {
     try {
       dispatch(setAuthRequest());
       const dataAuth: IResponse<IAuthData> = await getAuthAPI();
-      if (dataAuth.resultCode === StatusCode.success) {
-        dispatch(setAuthSuccessCorrect(dataAuth.data));
-        dispatch(setAuthSuccessIncorrect(''));
-        try {
-          const dataProfile = await getProfileAPI(dataAuth.data.id);
-          dispatch(setAuthUserPhoto(dataProfile.photos.small));
-        } catch (error: unknown) {
-          if (isAxiosError(error)) {
-            dispatch(setAuthUserPhotoError(getErrorMessage(error), error.response?.status));
+      switch (dataAuth.resultCode) {
+        case StatusCode.success:
+          dispatch(setAuthSuccessCorrect(dataAuth.data));
+          dispatch(setAuthSuccessIncorrect(''));
+          try {
+            const dataProfile = await getProfileAPI(dataAuth.data.id);
+            dispatch(setAuthUserPhoto(dataProfile.photos.small));
+          } catch (error: unknown) {
+            if (isAxiosError(error)) {
+              dispatch(setAuthUserPhotoError(getErrorMessage(error), error.response?.status));
+            }
           }
-        }
-      } else if (dataAuth.resultCode === StatusCode.failure) {
-        dispatch(setAuthSuccessIncorrect(dataAuth.messages[0]));
+          break;
+        case StatusCode.failure:
+          dispatch(setAuthSuccessIncorrect(dataAuth.messages[0]));
+          break;
+        default:
+          throw new Error('Unknown error');
       }
     } catch (error: unknown) {
       if (isAxiosError(error)) {

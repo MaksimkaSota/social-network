@@ -65,4 +65,72 @@ export const contentText: LanguageLocalizationType = {
     en: 'Dark',
     ru: 'Темная',
   },
+  profileTitle: {
+    en: 'Profile info',
+    ru: 'Информация профиля',
+  },
+  file: {
+    en: 'No file chosen',
+    ru: 'Файл не выбран',
+  },
+  fileBtn: {
+    en: 'Choose file',
+    ru: 'Выберите файл',
+  },
+  status: {
+    en: 'Status',
+    ru: 'Статус',
+  },
+  noStatus: {
+    en: 'No status',
+    ru: 'Нет статуса',
+  },
+  saveStatusBtn: {
+    en: 'Save status',
+    ru: 'Сохранить статус',
+  },
+  editStatusBtn: {
+    en: 'Edit status',
+    ru: 'Редактировать статус',
+  },
+  name: {
+    en: 'Full name',
+    ru: 'Полное имя',
+  },
+  job: {
+    en: 'Looking for a job',
+    ru: 'В поиске работы',
+  },
+  jobDescription: {
+    en: 'My professional skills',
+    ru: 'Мои профессиональные навыки',
+  },
+  me: {
+    en: 'About me',
+    ru: 'Обо мне',
+  },
+  contacts: {
+    en: 'Contacts',
+    ru: 'Контакты',
+  },
+  noContact: {
+    en: 'no link',
+    ru: 'нет ссылки',
+  },
+  saveDataBtn: {
+    en: 'Save data',
+    ru: 'Сохранить данные',
+  },
+  editDataBtn: {
+    en: 'Edit data',
+    ru: 'Редактировать данные',
+  },
+  yes: {
+    en: 'yes',
+    ru: 'да',
+  },
+  no: {
+    en: 'no',
+    ru: 'нет',
+  },
 };

@@ -7,6 +7,7 @@ import { setLanguageMode, setThemeMode } from '../../redux/actions/view';
 
 export const FooterContainer: FC = (): ReactElement => {
   const { languageMode, themeMode } = useTypedSelector(viewSelector);
+
   const dispatch = useTypedDispatch();
   const setLanguageModeCallback = (language: string) => dispatch(setLanguageMode(language));
   const setThemeModeCallback = (theme: string) => dispatch(setThemeMode(theme));

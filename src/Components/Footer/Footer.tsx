@@ -2,6 +2,7 @@ import type { FC, ReactElement } from 'react';
 import classes from './Footer.module.scss';
 import email from '../../assets/images/email.png';
 import { ViewFormContainer } from '../Common/ViewForm/ViewFormContainer';
+import { contentText } from '../../utils/languageLocalization/contentText';
 
 type PropsType = {
   languageMode: string;
@@ -17,7 +18,7 @@ export const Footer: FC<PropsType> = ({ languageMode, themeMode, setLanguageMode
         <img className={classes.mail} src={email} alt="mail" />
       </div>
       <div className={classes.contactsContainer}>
-        <h2 className={classes.title}>Contacts:</h2>
+        <h2 className={classes.title}>{contentText.contacts[languageMode]}:</h2>
         <div className={classes.contacts}>
           <a
             className={classes.contact}

@@ -16,7 +16,7 @@ const validationSchema = (languageMode: string) => {
   return Yup.object().shape({
     email: Yup.string().email(validationText.email[languageMode]).required(validationText.requiredEmail[languageMode]),
     password: Yup.string()
-      .min(3, validationText.minPassword[languageMode])
+      .min(5, validationText.minPassword[languageMode])
       .max(20, validationText.maxPassword[languageMode])
       .required(validationText.requiredPassword[languageMode]),
     captcha: Yup.string().when(FormName.is_captcha, {

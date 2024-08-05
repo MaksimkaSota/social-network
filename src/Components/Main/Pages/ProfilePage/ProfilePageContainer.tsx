@@ -5,7 +5,7 @@ import { getProfile, getStatus } from '../../../../redux/thunks/profile';
 import { ProfilePage } from './ProfilePage';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { useTypedDispatch } from '../../../../hooks/useTypedDispatch';
-import { authSelector, profileSelector } from '../../../../redux/selectors/selectors';
+import { authSelector, profileSelector, viewSelector } from '../../../../redux/selectors/selectors';
 import { isFetchingProfileSelector } from '../../../../redux/selectors/loading';
 import { profileErrorSelector } from '../../../../redux/selectors/error';
 import { RoutePath } from '../../../../utils/types/enums';
@@ -15,6 +15,7 @@ export const ProfilePageContainer: FC = (): ReactElement => {
   const { profile } = useTypedSelector(profileSelector);
   const isFetchingProfile = useTypedSelector(isFetchingProfileSelector);
   const profileError = useTypedSelector(profileErrorSelector);
+  const { languageMode } = useTypedSelector(viewSelector);
 
   const dispatch = useTypedDispatch();
 
@@ -39,6 +40,7 @@ export const ProfilePageContainer: FC = (): ReactElement => {
       profileError={profileError}
       profile={profile}
       isOwner={isOwner}
+      languageMode={languageMode}
     />
   );
 };

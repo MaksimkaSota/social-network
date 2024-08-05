@@ -7,6 +7,7 @@ import { ProfileDataDescription } from '../ProfileDataDescription/ProfileDataDes
 import type { ErrorType, Nullable } from '../../../../../utils/types/common';
 import type { SetStatusType, SetSubmittingType } from '../../../../../utils/types/form';
 import type { IRequestProfile } from '../../../../../utils/types/api';
+import { contentText } from '../../../../../utils/languageLocalization/contentText';
 
 type PropsType = {
   isOwner: boolean;
@@ -19,25 +20,44 @@ type PropsType = {
   ) => void;
   isFetchingData: boolean;
   dataError: Nullable<ErrorType>;
+  languageMode: string;
 };
 
-export const ProfileData = memo<PropsType>(({ isOwner, data, updateData, isFetchingData, dataError }): ReactElement => {
-  const [editModeData, setEditModeData] = useState<boolean>(false);
+export const ProfileData = memo<PropsType>(
+  ({ isOwner, data, updateData, isFetchingData, dataError, languageMode }): ReactElement => {
+    const [editModeData, setEditModeData] = useState<boolean>(false);
 
-  const onActivateEditModeData = (): void => {
-    setEditModeData(true);
-  };
+    const onActivateEditModeData = (): void => {
+      setEditModeData(true);
+    };
 
-  return (
-    <div className={classes.dataBlock}>
-      {editModeData ? (
-        <ProfileDataFormContainer data={data} updateData={updateData} setEditModeData={setEditModeData} />
-      ) : (
-        <>
-          <ProfileDataDescription data={data} isFetchingData={isFetchingData} dataError={dataError} />
-          {isOwner && <Button text="Edit profile" className={classes.button} onClick={onActivateEditModeData} />}
-        </>
-      )}
-    </div>
-  );
-});
+    return (
+      <div className={classes.dataBlock}>
+        {editModeData ? (
+          <ProfileDataFormContainer
+            data={data}
+            updateData={updateData}
+            setEditModeData={setEditModeData}
+            languageMode={languageMode}
+          />
+        ) : (
+          <>
+            <ProfileDataDescription
+              data={data}
+              isFetchingData={isFetchingData}
+              dataError={dataError}
+              languageMode={languageMode}
+            />
+            {isOwner && (
+              <Button
+                text={contentText.editDataBtn[languageMode]}
+                className={classes.button}
+                onClick={onActivateEditModeData}
+              />
+            )}
+          </>
+        )}
+      </div>
+    );
+  }
+);

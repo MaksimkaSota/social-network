@@ -2,13 +2,15 @@
   .authUserPhotoPreloader {
     @include position(50%, 0 auto $marginMin auto);
   }
-  .userPhoto {
-    @include position(50%, 0 auto 0 auto);
-    border-radius: $radius;
-  }
-  .userPhotoError {
-    color: $error;
-    font-size: 1rem;
+  .photoAndErrorBlock {
+    .userPhoto {
+      @include position(50%, 0 auto 0 auto);
+      border-radius: $radius;
+    }
+    .userPhotoError {
+      color: $error;
+      font-size: 1rem;
+    }
   }
   .text {
     margin: $marginMin 0;
@@ -19,25 +21,32 @@
     .authUserPhotoPreloader {
       width: 60%;
     }
-    .userPhoto {
-      width: 60%;
+    .photoAndErrorBlock {
+      .userPhoto {
+        width: 60%;
+      }
     }
   }
   @include respond($laptopMin) {
     .authUserPhotoPreloader {
       width: 70%;
     }
-    .userPhoto {
-      width: 70%;
+    .photoAndErrorBlock {
+      .userPhoto {
+        width: 70%;
+      }
     }
   }
   @include respond($tablet) {
-    @include flex(null, center);
+    @include flex(center, center);
     .authUserPhotoPreloader {
       width: 100px;
     }
-    .userPhoto {
-      width: 100px;
+    .photoAndErrorBlock {
+      width: 50%;
+      .userPhoto {
+        width: 100px;
+      }
     }
     .container {
       margin: 0 0 0 $marginMin;
