@@ -5,8 +5,9 @@ import userPhoto from '../../../../../assets/images/user.png';
 import { InputFile } from '../../../../Common/InputFile/InputFile';
 import { Preloader } from '../../../../Common/Preloader/Preloader';
 import type { ErrorType, Nullable } from '../../../../../utils/types/common';
-import { errorText } from '../../../../../utils/languageLocalization/errorText';
-import { Language } from '../../../../../utils/types/enums';
+import { ConnectionError } from '../../../../Common/ConnectionError/ConnectionError';
+import { ServerError } from '../../../../Common/ServerError/ServerError';
+import { TextKey } from '../../../../../utils/types/enums';
 
 type PropsType = {
   isOwner: boolean;
@@ -27,19 +28,18 @@ export const ProfilePhoto = memo<PropsType>(
         ) : (
           <>
             <img className={classes.userPhoto} src={photo || userPhoto} alt="avatar" />
-            {photoError && (
-              <p className={classes.userPhotoError}>
-                {photoError.code || errorText.some[languageMode]} {errorText.error[languageMode]}.
-                <br />
-                {errorText.updatePhoto[languageMode]}!
-              </p>
-            )}
-            {incorrectPhotoText && languageMode === Language.en && (
-              <p className={classes.userPhotoError}>{incorrectPhotoText}!</p>
-            )}
-            {incorrectPhotoText && languageMode === Language.ru && (
-              <p className={classes.userPhotoError}>{errorText.incorrectPhotoText.ru}!</p>
-            )}
+            <ConnectionError
+              error={photoError}
+              errorTextKey={TextKey.updatePhoto}
+              languageMode={languageMode}
+              className={classes.userPhotoError}
+            />
+            <ServerError
+              incorrectText={incorrectPhotoText}
+              incorrectTextKey={TextKey.incorrectPhoto}
+              languageMode={languageMode}
+              className={classes.userPhotoError}
+            />
           </>
         )}
         {isOwner && <InputFile actionFile={updatePhoto} languageMode={languageMode} />}

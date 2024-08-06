@@ -4,8 +4,9 @@ import { Preloader } from '../../../../Common/Preloader/Preloader';
 import { Contacts } from '../Contacts/Contacts';
 import type { ErrorType, Nullable } from '../../../../../utils/types/common';
 import type { IRequestProfile } from '../../../../../utils/types/api';
-import { errorText } from '../../../../../utils/languageLocalization/errorText';
 import { contentText } from '../../../../../utils/languageLocalization/contentText';
+import { ConnectionError } from '../../../../Common/ConnectionError/ConnectionError';
+import { TextKey } from '../../../../../utils/types/enums';
 
 type PropsType = {
   data: IRequestProfile;
@@ -30,13 +31,12 @@ export const ProfileDataDescription: FC<PropsType> = ({
 
   return (
     <div className={classes.dataDescriptionBlock}>
-      {dataError && (
-        <p className={classes.dataError}>
-          {dataError.code || errorText.some[languageMode]} {errorText.error[languageMode]}.
-          <br />
-          {errorText.data[languageMode]}!
-        </p>
-      )}
+      <ConnectionError
+        error={dataError}
+        errorTextKey={TextKey.data}
+        languageMode={languageMode}
+        className={classes.dataError}
+      />
       <div className={classes.descriptionBlock}>
         <h5 className={classes.title}>{contentText.name[languageMode]}:</h5>
         <p className={classes.text}>{data.fullName}</p>

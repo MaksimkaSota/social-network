@@ -63,3 +63,14 @@ export enum Theme {
   light = 'light',
   dark = 'dark',
 }
+export enum TextKey {
+  promise = 'promise',
+  logout = 'logout',
+  login = 'login',
+  loadPhoto = 'loadPhoto',
+  updatePhoto = 'updatePhoto',
+  incorrectPhoto = 'incorrectPhotoText',
+  status = 'status',
+  incorrectStatus = 'incorrectStatusText',
+  data = 'data',
+}

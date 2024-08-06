@@ -26,7 +26,7 @@ export const AppContainer: FC = (): ReactElement => {
   }, [dispatch]);
 
   return (
-    <ErrorCatcher>
+    <ErrorCatcher languageMode={languageMode}>
       <App
         isFetchingAuth={isFetchingAuth}
         authError={authError}

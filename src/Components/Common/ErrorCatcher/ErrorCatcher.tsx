@@ -3,9 +3,12 @@ import { Component } from 'react';
 import { Error } from '../Error/Error';
 import { ErrorPopup } from '../ErrorPopup/ErrorPopup';
 import type { ErrorType, Nullable } from '../../../utils/types/common';
+import { Language, TextKey } from '../../../utils/types/enums';
+import { errorText } from '../../../utils/languageLocalization/errorText';
 
 type PropsType = {
   children: ReactNode;
+  languageMode: string;
 };
 type StateType = {
   UIError: Nullable<ErrorType>;
@@ -21,7 +24,7 @@ export class ErrorCatcher extends Component<PropsType, StateType> {
   static getDerivedStateFromError() {
     return {
       UIError: {
-        message: 'Some UI Error! We are sorry... We will fix it soon!',
+        message: 'Some UI error! We are sorry... We will fix it soon!',
       },
     };
   }
@@ -38,28 +41,29 @@ export class ErrorCatcher extends Component<PropsType, StateType> {
     this.setState({
       promiseError: {
         code: event.reason.response.status,
-        message: 'Unhandled Promise Error! We are sorry... Fix it soon!',
+        message: 'Some Connection error! We are sorry... We will fix it soon!',
       },
     });
   };
 
   render(): ReactElement {
     const { UIError, promiseError } = this.state;
-    const { children } = this.props;
+    const { children, languageMode } = this.props;
     if (UIError) {
-      return <Error message={UIError.message} isGlobalError />;
+      const UIErrorMessage = languageMode === Language.en ? UIError.message : errorText.ui.ru;
+      return <Error message={UIErrorMessage} isGlobalError />;
     }
     return (
       <>
         {children}
-        {promiseError && (
-          <ErrorPopup
-            errorObject={promiseError}
-            resetError={(error: Nullable<ErrorType>): void => {
-              this.setState({ promiseError: error });
-            }}
-          />
-        )}
+        <ErrorPopup
+          errorObject={promiseError}
+          resetError={(error: Nullable<ErrorType>): void => {
+            this.setState({ promiseError: error });
+          }}
+          languageMode={languageMode}
+          errorTextKey={TextKey.promise}
+        />
       </>
     );
   }

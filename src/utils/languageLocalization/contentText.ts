@@ -133,4 +133,8 @@ export const contentText: LanguageLocalizationType = {
     en: 'no',
     ru: 'нет',
   },
+  close: {
+    en: 'Close',
+    ru: 'Закрыть',
+  },
 };

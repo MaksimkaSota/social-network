@@ -18,8 +18,8 @@ export const errorText: LanguageLocalizationType = {
     ru: 'Не удалось обновить фото',
   },
   status: {
-    en: 'Failed to update status',
-    ru: 'Не удалось обновить статус',
+    en: 'Failed to load or update status',
+    ru: 'Не удалось загрузить или обновить статус',
   },
   data: {
     en: 'Failed to update data',
@@ -51,5 +51,11 @@ export const errorText: LanguageLocalizationType = {
   },
   incorrectPhotoText: {
     ru: 'Файл долен иметь расширение .jpg, .jpeg, .png и быть меньше 10 МБ',
+  },
+  promise: {
+    ru: 'Некоторая ошибка соединения! Приносим извинения... Скоро исправим!',
+  },
+  ui: {
+    ru: 'Некоторая ошибка интерфейса! Приносим извинения... Скоро исправим!',
   },
 };

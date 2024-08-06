@@ -8,7 +8,7 @@ import { ErrorPopup } from './Common/ErrorPopup/ErrorPopup';
 import type { ErrorType, Nullable } from '../utils/types/common';
 import { FooterContainer } from './Footer/FooterContainer';
 import { errorText } from '../utils/languageLocalization/errorText';
-import { Language } from '../utils/types/enums';
+import { Language, TextKey } from '../utils/types/enums';
 
 type PropsType = {
   isFetchingAuth: boolean;
@@ -47,16 +47,18 @@ export const App: FC<PropsType> = ({
       <HeaderContainer />
       <Main />
       <FooterContainer />
-      {logoutError && languageMode === Language.en && (
-        <ErrorPopup errorObject={logoutError} resetError={setLogoutError} />
-      )}
-      {logoutError && languageMode === Language.ru && (
-        <ErrorPopup errorObject={{ message: errorText.logout.ru }} resetError={setLogoutError} />
-      )}
-      {loginError && languageMode === Language.en && <ErrorPopup errorObject={loginError} resetError={setLoginError} />}
-      {loginError && languageMode === Language.ru && (
-        <ErrorPopup errorObject={{ message: errorText.login.ru }} resetError={setLoginError} />
-      )}
+      <ErrorPopup
+        errorObject={logoutError}
+        resetError={setLogoutError}
+        languageMode={languageMode}
+        errorTextKey={TextKey.logout}
+      />
+      <ErrorPopup
+        errorObject={loginError}
+        resetError={setLoginError}
+        languageMode={languageMode}
+        errorTextKey={TextKey.login}
+      />
     </div>
   );
 };

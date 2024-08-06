@@ -1,5 +1,6 @@
 import { act, create } from 'react-test-renderer';
 import { ProfileStatus } from '../../Components/Main/Pages/ProfilePage/ProfileStatus/ProfileStatus';
+import { Language } from '../../utils/types/enums';
 
 const createComponent = (status: string, mockCallback: any) => {
   return create(
@@ -10,7 +11,7 @@ const createComponent = (status: string, mockCallback: any) => {
       updateStatus={mockCallback}
       isFetchingStatus={false}
       statusError={null}
-      languageMode="en"
+      languageMode={Language.en}
     />
   ).root;
 };
