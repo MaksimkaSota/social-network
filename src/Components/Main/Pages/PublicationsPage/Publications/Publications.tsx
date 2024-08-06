@@ -11,9 +11,16 @@ type PropsType = {
   buttonText: string;
   publications: PublicationType[];
   addPublication: (text: string) => void;
+  languageMode: string;
 };
 
-export const Publications: FC<PropsType> = ({ title, buttonText, publications, addPublication }): ReactElement => {
+export const Publications: FC<PropsType> = ({
+  title,
+  buttonText,
+  publications,
+  addPublication,
+  languageMode,
+}): ReactElement => {
   const publicationsElements = publications.map(
     (publication: PublicationType): ReactElement => <Publication text={publication.text} key={publication.id} />
   );
@@ -26,7 +33,7 @@ export const Publications: FC<PropsType> = ({ title, buttonText, publications, a
   return (
     <div className={classes.publicationsBlock}>
       <h3 className={classes.title}>{title}</h3>
-      <PublicationFormContainer buttonText={buttonText} addPublication={addPublication} />
+      <PublicationFormContainer buttonText={buttonText} addPublication={addPublication} languageMode={languageMode} />
       <div className={classes.publications} ref={anchorRef}>
         {publicationsElements}
       </div>

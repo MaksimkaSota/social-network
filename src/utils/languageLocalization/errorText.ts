@@ -2,12 +2,12 @@ import type { LanguageLocalizationType } from '../types/common';
 
 export const errorText: LanguageLocalizationType = {
   some: {
-    ru: 'Некоторая',
     en: 'Some',
+    ru: 'Некоторая',
   },
   error: {
-    ru: 'Ошибка',
     en: 'Error',
+    ru: 'Ошибка',
   },
   loadPhoto: {
     en: 'Failed to load photo',
@@ -24,6 +24,10 @@ export const errorText: LanguageLocalizationType = {
   data: {
     en: 'Failed to update data',
     ru: 'Не удалось обновить данные',
+  },
+  chat: {
+    en: 'Waiting for a chat connection',
+    ru: 'Ожидание подключения к чату',
   },
   authorization: {
     ru: 'Вы не авторизованы',

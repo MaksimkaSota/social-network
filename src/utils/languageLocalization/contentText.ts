@@ -137,4 +137,36 @@ export const contentText: LanguageLocalizationType = {
     en: 'Close',
     ru: 'Закрыть',
   },
+  messagesTitle: {
+    en: 'Messages',
+    ru: 'Сообщения',
+  },
+  postsTitle: {
+    en: 'Posts',
+    ru: 'Записи',
+  },
+  messageBtn: {
+    en: 'Add message',
+    ru: 'Добавить сообщение',
+  },
+  postBtn: {
+    en: 'Add post',
+    ru: 'Добавить запись',
+  },
+  chatTitle: {
+    en: 'Chat',
+    ru: 'Чат',
+  },
+  emptyChatText: {
+    en: 'Nobody wrote a message. Be the first!',
+    ru: 'Никто не написал сообщение. Будь первым!',
+  },
+  chatBtn: {
+    en: 'Send text',
+    ru: 'Отправить текст',
+  },
+  ctrlEnter: {
+    en: 'You can press Ctrl+Enter to send',
+    ru: 'Вы можете нажать Ctrl+Enter для отправки',
+  },
 };

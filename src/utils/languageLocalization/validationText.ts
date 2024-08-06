@@ -2,39 +2,55 @@ import type { LanguageLocalizationType } from '../types/common';
 
 export const validationText: LanguageLocalizationType = {
   email: {
-    ru: 'Неверный адрес почты',
     en: 'Invalid email address',
+    ru: 'Неверный адрес почты',
   },
   requiredEmail: {
-    ru: 'Почта обязательна для ввода',
     en: 'Required email address',
+    ru: 'Почта обязательна для ввода',
   },
   minPassword: {
-    ru: 'Должен быть не менее 5 символов',
     en: 'Must be not less than 5 symbols',
+    ru: 'Должен быть не менее 5 символов',
   },
   maxPassword: {
-    ru: 'Должен быть не более 20 символов',
     en: 'Must be not more than 20 symbols',
+    ru: 'Должен быть не более 20 символов',
   },
   requiredPassword: {
-    ru: 'Пароль обязателен для ввода',
     en: 'Required password',
+    ru: 'Пароль обязателен для ввода',
   },
   requiredCaptcha: {
-    ru: 'Символы с картинки обязательны для ввода',
     en: 'Required captcha',
+    ru: 'Символы с картинки обязательны для ввода',
   },
   minName: {
-    ru: 'Должно быть не менее 3 символов',
     en: 'Must be not less than 3 symbols',
+    ru: 'Должно быть не менее 3 символов',
   },
   maxName: {
-    ru: 'Должно быть не более 30 символов',
     en: 'Must be not more than 30 symbols',
+    ru: 'Должно быть не более 30 символов',
   },
   requiredName: {
-    ru: 'Полное имя обязательно для ввода',
     en: 'Required full name',
+    ru: 'Полное имя обязательно для ввода',
+  },
+  maxPublication: {
+    en: 'Must be not more than 100 symbols',
+    ru: 'Должно быть не более 100 символов',
+  },
+  requiredPublication: {
+    en: 'Required publication',
+    ru: 'Публикация обязательна для ввода',
+  },
+  maxChatText: {
+    en: 'Must be not more than 200 symbols',
+    ru: 'Должно быть не более 200 символов',
+  },
+  requiredChatText: {
+    en: 'Required text',
+    ru: 'Текст обязателен для ввода',
   },
 };

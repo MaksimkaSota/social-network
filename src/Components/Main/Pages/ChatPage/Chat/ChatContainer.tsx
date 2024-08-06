@@ -5,10 +5,11 @@ import { useTypedDispatch } from '../../../../../hooks/useTypedDispatch';
 import { sendMessage, startMessagesListening, stopMessagesListening } from '../../../../../redux/thunks/chat';
 import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
 import { resetMessages, setChannelStatus } from '../../../../../redux/actions/chat';
-import { chatSelector } from '../../../../../redux/selectors/selectors';
+import { chatSelector, viewSelector } from '../../../../../redux/selectors/selectors';
 
 export const ChatContainer: FC = (): ReactElement => {
   const { messages, channelStatus } = useTypedSelector(chatSelector);
+  const { languageMode } = useTypedSelector(viewSelector);
 
   const dispatch = useTypedDispatch();
   const sendMessagesCallback = useCallback((message: string) => dispatch(sendMessage(message)), [dispatch]);
@@ -29,5 +30,12 @@ export const ChatContainer: FC = (): ReactElement => {
     }
   }, [channelStatus, dispatch]);
 
-  return <Chat messages={messages} sendMessage={sendMessagesCallback} channelStatus={channelStatus} />;
+  return (
+    <Chat
+      messages={messages}
+      sendMessage={sendMessagesCallback}
+      channelStatus={channelStatus}
+      languageMode={languageMode}
+    />
+  );
 };
