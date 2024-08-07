@@ -4,10 +4,13 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { UsersSearchForm } from './UsersSearchForm';
 import type { FilterType, Nullable } from '../../../../../utils/types/common';
+import { validationText } from '../../../../../utils/languageLocalization/validationText';
 
-const validationSchema = Yup.object().shape({
-  term: Yup.string().max(50, 'Must be not more than 50 characters'),
-});
+const validationSchema = (languageMode: string) => {
+  return Yup.object().shape({
+    term: Yup.string().max(50, validationText.maxTerm[languageMode]),
+  });
+};
 
 type PropsType = {
   page: number;
@@ -16,11 +19,12 @@ type PropsType = {
   setPage: (currentPage: number) => void;
   setFilter: (term: string, friend: string) => void;
   isFetching: boolean;
+  languageMode: string;
 };
 type FormDataType = FilterType;
 
 export const UsersSearchFormContainer = memo<PropsType>(
-  ({ page, filter, authorizedUserId, setPage, setFilter, isFetching }): ReactElement => {
+  ({ page, filter, authorizedUserId, setPage, setFilter, isFetching, languageMode }): ReactElement => {
     const onSubmit = (formData: FormDataType): void => {
       let currentPage = page;
       if (formData.term !== filter.term || formData.friend !== filter.friend) {
@@ -33,16 +37,18 @@ export const UsersSearchFormContainer = memo<PropsType>(
     return (
       <Formik
         initialValues={{ term: filter.term, friend: filter.friend }}
-        validationSchema={validationSchema}
+        validationSchema={validationSchema(languageMode)}
         onSubmit={onSubmit}
       >
-        {({ handleChange, errors, touched }): ReactElement => (
+        {({ handleChange, errors, touched, validateForm }): ReactElement => (
           <UsersSearchForm
             handleChange={handleChange}
             errors={errors}
             touched={touched}
             isFetching={isFetching}
             authorizedUserId={authorizedUserId}
+            languageMode={languageMode}
+            validateForm={validateForm}
           />
         )}
       </Formik>

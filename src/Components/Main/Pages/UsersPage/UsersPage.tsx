@@ -7,6 +7,9 @@ import { Error } from '../../../Common/Error/Error';
 import type { ErrorType, FilterType, FollowUnfollowErrorType, Nullable } from '../../../../utils/types/common';
 import type { IUser } from '../../../../utils/types/api';
 import { UsersSearchFormContainer } from './UsersSearchForm/UsersSearchFormContainer';
+import { contentText } from '../../../../utils/languageLocalization/contentText';
+import { Language } from '../../../../utils/types/enums';
+import { errorText } from '../../../../utils/languageLocalization/errorText';
 
 type PropsType = {
   users: IUser[];
@@ -24,6 +27,7 @@ type PropsType = {
   setFilter: (term: string, friend: string) => void;
   followUser: (id: number) => void;
   unfollowUser: (id: number) => void;
+  languageMode: string;
 };
 
 export const UsersPage: FC<PropsType> = ({
@@ -42,13 +46,15 @@ export const UsersPage: FC<PropsType> = ({
   setFilter,
   followUser,
   unfollowUser,
+  languageMode,
 }): ReactElement => {
   if (isFetchingUsers && !users.length) {
     return <Preloader />;
   }
 
   if (usersError) {
-    return <Error code={usersError.code} message={usersError.message} />;
+    const message = languageMode === Language.en ? usersError.message : errorText.users.ru;
+    return <Error code={usersError.code} message={message} />;
   }
 
   return (
@@ -60,6 +66,7 @@ export const UsersPage: FC<PropsType> = ({
         setPage={setPage}
         setFilter={setFilter}
         isFetching={isFetchingUsers}
+        languageMode={languageMode}
       />
       {!!users.length && (
         <Paginator
@@ -68,11 +75,12 @@ export const UsersPage: FC<PropsType> = ({
           totalCount={totalCount}
           onCurrentPage={setPage}
           isFetching={isFetchingUsers}
+          languageMode={languageMode}
         />
       )}
       <div>
         {!isFetchingUsers && !users.length ? (
-          <p className={classes.notFoundMessage}>Users not found</p>
+          <p className={classes.notFoundMessage}>{contentText.usersNotFound[languageMode]}</p>
         ) : (
           users.map(
             (user: IUser): ReactElement => (
@@ -84,6 +92,7 @@ export const UsersPage: FC<PropsType> = ({
                 unfollowErrors={unfollowErrors}
                 followUser={followUser}
                 unfollowUser={unfollowUser}
+                languageMode={languageMode}
               />
             )
           )

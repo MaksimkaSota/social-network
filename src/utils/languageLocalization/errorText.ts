@@ -29,6 +29,10 @@ export const errorText: LanguageLocalizationType = {
     en: 'Waiting for a chat connection',
     ru: 'Ожидание подключения к чату',
   },
+  reload: {
+    en: 'Reload the page and try again',
+    ru: 'Перезагрузите страницу и попробуйте еще раз',
+  },
   authorization: {
     ru: 'Вы не авторизованы',
   },
@@ -43,6 +47,12 @@ export const errorText: LanguageLocalizationType = {
   },
   profile: {
     ru: 'При загрузке профиля что-то пошло не так',
+  },
+  users: {
+    ru: 'При загрузке пользователей что-то пошло не так',
+  },
+  followUnfollow: {
+    ru: 'При подписке или отписке что-то пошло не так',
   },
   incorrectLoginData: {
     ru: 'Неверная почта или пароль',

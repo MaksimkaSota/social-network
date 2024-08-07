@@ -55,7 +55,11 @@ export const ErrorPopup: FC<PropsType> = ({
         <div className={classes.errorPopupContainer}>
           {languageMode === Language.en && <Error code={errorObject.code} message={errorObject.message} />}
           {languageMode === Language.ru && <Error message={errorText[errorTextKey].ru} />}
-          <Button text={contentText.close[languageMode]} className={classes.errorPopupButton} onClick={onButtonClick} />
+          <Button
+            text={contentText.closeBtn[languageMode]}
+            className={classes.errorPopupButton}
+            onClick={onButtonClick}
+          />
         </div>
       </div>
     )

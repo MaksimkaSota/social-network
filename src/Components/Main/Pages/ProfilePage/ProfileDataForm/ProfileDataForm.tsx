@@ -58,13 +58,13 @@ export const ProfileDataForm: FC<PropsType> = ({
     <Form className={classes.dataFormBlock}>
       <div className={classes.innerDataFormBlock}>
         <div className={classes.descriptionBlock}>
-          <h5 className={classes.title}>{contentText.name[languageMode]}:</h5>
+          <h5 className={classes.title}>{contentText.fullName[languageMode]}:</h5>
           <FormField
             classNameFormField={classes.formField}
             classNameField={cn(classes.field, { [classes.fieldError]: status?.fullName })}
             name={FormName.full_name}
             type="text"
-            placeholder={contentText.name[languageMode]}
+            placeholder={contentText.fullName[languageMode]}
             onChange={handleChange}
             errors={errors}
           />

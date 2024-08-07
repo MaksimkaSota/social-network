@@ -7,7 +7,7 @@ import { followUser, getUsers, unfollowUser } from '../../../../redux/thunks/use
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { useTypedDispatch } from '../../../../hooks/useTypedDispatch';
 import { setFilter, setPage } from '../../../../redux/actions/users';
-import { authSelector, usersSelector } from '../../../../redux/selectors/selectors';
+import { authSelector, usersSelector, viewSelector } from '../../../../redux/selectors/selectors';
 import { isFetchingUsersSelector } from '../../../../redux/selectors/loading';
 import { usersErrorSelector } from '../../../../redux/selectors/error';
 
@@ -17,6 +17,7 @@ const UsersPageContainer: FC = (): ReactElement | boolean => {
     useTypedSelector(usersSelector);
   const isFetchingUsers = useTypedSelector(isFetchingUsersSelector);
   const usersError = useTypedSelector(usersErrorSelector);
+  const { languageMode } = useTypedSelector(viewSelector);
 
   const dispatch = useTypedDispatch();
   const followUserCallback = useCallback((id: number) => dispatch(followUser(id)), [dispatch]);
@@ -81,6 +82,7 @@ const UsersPageContainer: FC = (): ReactElement | boolean => {
         unfollowUser={unfollowUserCallback}
         setPage={setPageCallback}
         setFilter={setFilterCallback}
+        languageMode={languageMode}
       />
     )
   );

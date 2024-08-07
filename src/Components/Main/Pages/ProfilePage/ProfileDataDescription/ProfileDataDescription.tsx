@@ -38,7 +38,7 @@ export const ProfileDataDescription: FC<PropsType> = ({
         className={classes.dataError}
       />
       <div className={classes.descriptionBlock}>
-        <h5 className={classes.title}>{contentText.name[languageMode]}:</h5>
+        <h5 className={classes.title}>{contentText.fullName[languageMode]}:</h5>
         <p className={classes.text}>{data.fullName}</p>
       </div>
       <div className={classes.descriptionBlock}>

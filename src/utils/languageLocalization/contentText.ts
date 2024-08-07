@@ -5,6 +5,67 @@ export const contentText: LanguageLocalizationType = {
     en: 'Social Network',
     ru: 'Социальная сеть',
   },
+  profileTitle: {
+    en: 'Profile info',
+    ru: 'Информация профиля',
+  },
+  messagesTitle: {
+    en: 'Messages',
+    ru: 'Сообщения',
+  },
+  postsTitle: {
+    en: 'Posts',
+    ru: 'Записи',
+  },
+  chatTitle: {
+    en: 'Chat',
+    ru: 'Чат',
+  },
+  loginTitle: {
+    en: 'Login form',
+    ru: 'Форма для входа',
+  },
+
+  fileBtn: {
+    en: 'Choose file',
+    ru: 'Выберите файл',
+  },
+  saveStatusBtn: {
+    en: 'Save status',
+    ru: 'Сохранить статус',
+  },
+  editStatusBtn: {
+    en: 'Edit status',
+    ru: 'Редактировать статус',
+  },
+  saveDataBtn: {
+    en: 'Save data',
+    ru: 'Сохранить данные',
+  },
+  editDataBtn: {
+    en: 'Edit data',
+    ru: 'Редактировать данные',
+  },
+  messageBtn: {
+    en: 'Add message',
+    ru: 'Добавить сообщение',
+  },
+  postBtn: {
+    en: 'Add post',
+    ru: 'Добавить запись',
+  },
+  chatBtn: {
+    en: 'Send text',
+    ru: 'Отправить текст',
+  },
+  findUserBtn: {
+    en: 'Find',
+    ru: 'Искать',
+  },
+  closeBtn: {
+    en: 'Close',
+    ru: 'Закрыть',
+  },
   loginBtn: {
     en: 'Login',
     ru: 'Войти',
@@ -13,10 +74,64 @@ export const contentText: LanguageLocalizationType = {
     en: 'Logout',
     ru: 'Выйти',
   },
-  loginTitle: {
-    en: 'Login form',
-    ru: 'Форма для входа',
+  prevBtn: {
+    en: 'Prev',
+    ru: 'Назад',
   },
+  nextBtn: {
+    en: 'Next',
+    ru: 'Вперед',
+  },
+  followBtn: {
+    en: 'Follow',
+    ru: 'Подписаться',
+  },
+  unfollowBtn: {
+    en: 'Unfollow',
+    ru: 'Отписаться',
+  },
+
+  email: {
+    en: 'Email',
+    ru: 'Почта',
+  },
+  password: {
+    en: 'Password',
+    ru: 'Пароль',
+  },
+  fullName: {
+    en: 'Full name',
+    ru: 'Полное имя',
+  },
+  userName: {
+    en: 'User name',
+    ru: 'Имя пользователя',
+  },
+  job: {
+    en: 'Looking for a job',
+    ru: 'В поиске работы',
+  },
+  jobDescription: {
+    en: 'My professional skills',
+    ru: 'Мои профессиональные навыки',
+  },
+  me: {
+    en: 'About me',
+    ru: 'Обо мне',
+  },
+  symbols: {
+    en: 'Symbols from image',
+    ru: 'Символы с картинки',
+  },
+  ctrlEnter: {
+    en: 'You can press Ctrl+Enter to send',
+    ru: 'Вы можете нажать Ctrl+Enter для отправки',
+  },
+  remember: {
+    en: 'Remember me',
+    ru: 'Запомнить меня',
+  },
+
   incorrectAuthText: {
     en: 'Log in, please',
     ru: 'Войдите, пожалуйста',
@@ -33,21 +148,53 @@ export const contentText: LanguageLocalizationType = {
     en: 'or use common test account credentials',
     ru: 'или используйте общие учетные данные тестового аккаунта',
   },
-  email: {
-    en: 'Email',
-    ru: 'Почта',
+  file: {
+    en: 'No file chosen',
+    ru: 'Файл не выбран',
   },
-  password: {
-    en: 'Password',
-    ru: 'Пароль',
+  status: {
+    en: 'Status',
+    ru: 'Статус',
   },
-  remember: {
-    en: 'Remember me',
-    ru: 'Запомнить меня',
+  contacts: {
+    en: 'Contacts',
+    ru: 'Контакты',
   },
-  symbols: {
-    en: 'Symbols from image',
-    ru: 'Символы с картинки',
+  noName: {
+    en: 'No name',
+    ru: 'Нет имени',
+  },
+  noStatus: {
+    en: 'No status',
+    ru: 'Нет статуса',
+  },
+  noContact: {
+    en: 'no link',
+    ru: 'нет ссылки',
+  },
+  emptyChatText: {
+    en: 'Nobody wrote a message. Be the first!',
+    ru: 'Никто не написал сообщение. Будь первым!',
+  },
+  usersNotFound: {
+    en: 'Users not found',
+    ru: 'Пользователи не найдены',
+  },
+  all: {
+    en: 'All users',
+    ru: 'Все пользователи',
+  },
+  followed: {
+    en: 'Only followed',
+    ru: 'Только подписанные',
+  },
+  unfollowed: {
+    en: 'Only unfollowed',
+    ru: 'Только отписанные',
+  },
+  aboutUser: {
+    en: 'About user',
+    ru: 'О пользователе',
   },
   en: {
     en: 'English',
@@ -65,66 +212,6 @@ export const contentText: LanguageLocalizationType = {
     en: 'Dark',
     ru: 'Темная',
   },
-  profileTitle: {
-    en: 'Profile info',
-    ru: 'Информация профиля',
-  },
-  file: {
-    en: 'No file chosen',
-    ru: 'Файл не выбран',
-  },
-  fileBtn: {
-    en: 'Choose file',
-    ru: 'Выберите файл',
-  },
-  status: {
-    en: 'Status',
-    ru: 'Статус',
-  },
-  noStatus: {
-    en: 'No status',
-    ru: 'Нет статуса',
-  },
-  saveStatusBtn: {
-    en: 'Save status',
-    ru: 'Сохранить статус',
-  },
-  editStatusBtn: {
-    en: 'Edit status',
-    ru: 'Редактировать статус',
-  },
-  name: {
-    en: 'Full name',
-    ru: 'Полное имя',
-  },
-  job: {
-    en: 'Looking for a job',
-    ru: 'В поиске работы',
-  },
-  jobDescription: {
-    en: 'My professional skills',
-    ru: 'Мои профессиональные навыки',
-  },
-  me: {
-    en: 'About me',
-    ru: 'Обо мне',
-  },
-  contacts: {
-    en: 'Contacts',
-    ru: 'Контакты',
-  },
-  noContact: {
-    en: 'no link',
-    ru: 'нет ссылки',
-  },
-  saveDataBtn: {
-    en: 'Save data',
-    ru: 'Сохранить данные',
-  },
-  editDataBtn: {
-    en: 'Edit data',
-    ru: 'Редактировать данные',
-  },
   yes: {
     en: 'yes',
     ru: 'да',
@@ -132,41 +219,5 @@ export const contentText: LanguageLocalizationType = {
   no: {
     en: 'no',
     ru: 'нет',
-  },
-  close: {
-    en: 'Close',
-    ru: 'Закрыть',
-  },
-  messagesTitle: {
-    en: 'Messages',
-    ru: 'Сообщения',
-  },
-  postsTitle: {
-    en: 'Posts',
-    ru: 'Записи',
-  },
-  messageBtn: {
-    en: 'Add message',
-    ru: 'Добавить сообщение',
-  },
-  postBtn: {
-    en: 'Add post',
-    ru: 'Добавить запись',
-  },
-  chatTitle: {
-    en: 'Chat',
-    ru: 'Чат',
-  },
-  emptyChatText: {
-    en: 'Nobody wrote a message. Be the first!',
-    ru: 'Никто не написал сообщение. Будь первым!',
-  },
-  chatBtn: {
-    en: 'Send text',
-    ru: 'Отправить текст',
-  },
-  ctrlEnter: {
-    en: 'You can press Ctrl+Enter to send',
-    ru: 'Вы можете нажать Ctrl+Enter для отправки',
   },
 };

@@ -53,4 +53,8 @@ export const validationText: LanguageLocalizationType = {
     en: 'Required text',
     ru: 'Текст обязателен для ввода',
   },
+  maxTerm: {
+    en: 'Must be not more than 50 symbols',
+    ru: 'Должно быть не более 50 символов',
+  },
 };

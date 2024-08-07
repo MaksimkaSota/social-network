@@ -8,6 +8,7 @@ import { FollowUnfollowError } from '../FollowUnfollowError/FollowUnfollowError'
 import { RoutePath } from '../../../../../utils/types/enums';
 import type { IUser } from '../../../../../utils/types/api';
 import type { FollowUnfollowErrorType } from '../../../../../utils/types/common';
+import { contentText } from '../../../../../utils/languageLocalization/contentText';
 
 type PropsType = {
   user: IUser;
@@ -16,10 +17,11 @@ type PropsType = {
   unfollowErrors: FollowUnfollowErrorType[];
   followUser: (id: number) => void;
   unfollowUser: (id: number) => void;
+  languageMode: string;
 };
 
 export const User = memo<PropsType>(
-  ({ user, subscribersId, followErrors, unfollowErrors, followUser, unfollowUser }): ReactElement => {
+  ({ user, subscribersId, followErrors, unfollowErrors, followUser, unfollowUser, languageMode }): ReactElement => {
     const onFollow = (id: number) => (): void => {
       followUser(id);
     };
@@ -40,33 +42,35 @@ export const User = memo<PropsType>(
               <Button
                 className={classes.userButton}
                 onClick={onUnfollow(user.id)}
-                text="Unfollow"
+                text={contentText.unfollowBtn[languageMode]}
                 disabled={subscribersId.includes(user.id)}
               />
-              <FollowUnfollowError errors={unfollowErrors} userId={user.id} />
+              <FollowUnfollowError errors={unfollowErrors} userId={user.id} languageMode={languageMode} />
             </>
           ) : (
             <>
               <Button
                 className={classes.userButton}
                 onClick={onFollow(user.id)}
-                text="Follow"
+                text={contentText.followBtn[languageMode]}
                 disabled={subscribersId.includes(user.id)}
               />
-              <FollowUnfollowError errors={followErrors} userId={user.id} />
+              <FollowUnfollowError errors={followErrors} userId={user.id} languageMode={languageMode} />
             </>
           )}
         </div>
         <div className={classes.userInfoBlock}>
-          <div className={classes.title}>About: {user.name}</div>
+          <div className={classes.title}>
+            {contentText.aboutUser[languageMode]}: {user.name}
+          </div>
           <div className={classes.userInfo}>
             <div>
               <span className={classes.infoTitle}>Name: </span>
-              <span className={classes.infoText}>{user.name || 'unknown name'}</span>
+              <span className={classes.infoText}>{user.name || contentText.noName[languageMode]}</span>
             </div>
             <div>
               <span className={classes.infoTitle}>Status: </span>
-              <span className={classes.infoText}>{user.status || 'unknown status'}</span>
+              <span className={classes.infoText}>{user.status || contentText.noStatus[languageMode]}</span>
             </div>
           </div>
         </div>

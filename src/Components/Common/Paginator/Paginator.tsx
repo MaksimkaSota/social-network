@@ -3,6 +3,7 @@ import { useEffect, useState, memo } from 'react';
 import cn from 'classnames';
 import classes from './Paginator.module.scss';
 import { Button } from '../Button/Button';
+import { contentText } from '../../../utils/languageLocalization/contentText';
 
 type PropsType = {
   page: number;
@@ -11,10 +12,11 @@ type PropsType = {
   portionSize?: number;
   onCurrentPage: (currentPage: number) => void;
   isFetching: boolean;
+  languageMode: string;
 };
 
 export const Paginator = memo<PropsType>(
-  ({ page, pageSize, totalCount, portionSize = 10, onCurrentPage, isFetching }): ReactElement => {
+  ({ page, pageSize, totalCount, portionSize = 10, onCurrentPage, isFetching, languageMode }): ReactElement => {
     const onCurrentPageClick = (currentPage: number) => (): void => {
       onCurrentPage(currentPage);
     };
@@ -46,7 +48,12 @@ export const Paginator = memo<PropsType>(
     return (
       <div className={classes.paginator}>
         {currentPortion > 1 && (
-          <Button className={classes.paginatorButton} text="Prev" onClick={onPrevButton} disabled={isFetching} />
+          <Button
+            className={classes.paginatorButton}
+            text={contentText.prevBtn[languageMode]}
+            onClick={onPrevButton}
+            disabled={isFetching}
+          />
         )}
         <div className={classes.paginatorBlock}>
           {currentPages
@@ -66,7 +73,12 @@ export const Paginator = memo<PropsType>(
             })}
         </div>
         {currentPortion < portionCount && (
-          <Button className={classes.paginatorButton} text="Next" onClick={onNextButton} disabled={isFetching} />
+          <Button
+            className={classes.paginatorButton}
+            text={contentText.nextBtn[languageMode]}
+            onClick={onNextButton}
+            disabled={isFetching}
+          />
         )}
       </div>
     );
