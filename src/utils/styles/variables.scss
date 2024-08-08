@@ -1,16 +1,16 @@
-$black: rgb(31, 40, 51);
 $white: rgb(255, 255, 255);
-$aqua: rgb(102, 252, 241);
-$red: rgb(102, 0, 0);
-$light-black: rgba(31, 40, 51, 0.7);
-$light-gray: rgba(197, 198, 199, 0.3);
+$my-black: rgb(31, 40, 51);
+$my-aqua: rgb(102, 252, 241);
+$my-red: rgb(102, 0, 0);
+$transparent-my-black: rgba(31, 40, 51, 0.7);
+$transparent-my-gray: rgba(197, 198, 199, 0.3);
 
-$content: $black;
+$content: $my-black;
 $captions: $white;
-$active: $aqua;
-$error: $red;
-$dark-background: $light-black;
-$light-background: $light-gray;
+$active: $my-aqua;
+$error: $my-red;
+$secondary-background: $transparent-my-black;
+$main-background: $transparent-my-gray;
 
 $marginMax: 20px;
 $marginMin: 10px;

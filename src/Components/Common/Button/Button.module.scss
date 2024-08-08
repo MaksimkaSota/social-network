@@ -13,7 +13,7 @@
   }
   &:active {
     transition: none;
-    box-shadow: 0 0 0 3px $black;
+    box-shadow: 0 0 0 3px $content;
   }
   &:disabled {
     cursor: default;
