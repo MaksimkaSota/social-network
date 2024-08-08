@@ -4,7 +4,7 @@ import { setLanguageMode, setThemeMode } from '../redux/actions/view';
 import { Language, Theme } from '../utils/types/enums';
 import { useTypedDispatch } from './useTypedDispatch';
 
-export const useViewParams = (languageMode: string, themeMode: string): void => {
+export const useViewParameters = (languageMode: string, themeMode: string): void => {
   const dispatch = useTypedDispatch();
 
   const [viewParams, setViewParams] = useSearchParams();

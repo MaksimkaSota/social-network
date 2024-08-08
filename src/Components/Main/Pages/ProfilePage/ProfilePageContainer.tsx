@@ -9,7 +9,7 @@ import { authSelector, profileSelector, viewSelector } from '../../../../redux/s
 import { isFetchingProfileSelector } from '../../../../redux/selectors/loading';
 import { profileErrorSelector } from '../../../../redux/selectors/error';
 import { RoutePath } from '../../../../utils/types/enums';
-import { useViewParams } from '../../../../hooks/useViewParams';
+import { useViewParameters } from '../../../../hooks/useViewParameters';
 
 export const ProfilePageContainer: FC = (): ReactElement => {
   const { id: authorizedUserId } = useTypedSelector(authSelector);
@@ -33,7 +33,7 @@ export const ProfilePageContainer: FC = (): ReactElement => {
     // eslint-disable-next-line
   }, [dispatch, paramId]);
 
-  useViewParams(languageMode, themeMode);
+  useViewParameters(languageMode, themeMode);
 
   const isOwner = paramId === authorizedUserId;
 

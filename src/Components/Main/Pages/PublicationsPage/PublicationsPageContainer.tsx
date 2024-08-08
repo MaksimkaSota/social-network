@@ -5,7 +5,7 @@ import { addMessage, addPost } from '../../../../redux/actions/publications';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { useTypedDispatch } from '../../../../hooks/useTypedDispatch';
 import { publicationsSelector, viewSelector } from '../../../../redux/selectors/selectors';
-import { useViewParams } from '../../../../hooks/useViewParams';
+import { useViewParameters } from '../../../../hooks/useViewParameters';
 
 const PublicationsPageContainer: FC = (): ReactElement => {
   const { messages, posts } = useTypedSelector(publicationsSelector);
@@ -15,7 +15,7 @@ const PublicationsPageContainer: FC = (): ReactElement => {
   const addMessageCallback = useCallback((text: string) => dispatch(addMessage(text)), [dispatch]);
   const addPostCallback = useCallback((text: string) => dispatch(addPost(text)), [dispatch]);
 
-  useViewParams(languageMode, themeMode);
+  useViewParameters(languageMode, themeMode);
 
   return (
     <PublicationsPage

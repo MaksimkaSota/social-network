@@ -6,7 +6,7 @@ import { sendMessage, startMessagesListening, stopMessagesListening } from '../.
 import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
 import { resetMessages, setChannelStatus } from '../../../../../redux/actions/chat';
 import { chatSelector, viewSelector } from '../../../../../redux/selectors/selectors';
-import { useViewParams } from '../../../../../hooks/useViewParams';
+import { useViewParameters } from '../../../../../hooks/useViewParameters';
 
 export const ChatContainer: FC = (): ReactElement => {
   const { messages, channelStatus } = useTypedSelector(chatSelector);
@@ -31,7 +31,7 @@ export const ChatContainer: FC = (): ReactElement => {
     }
   }, [channelStatus, dispatch]);
 
-  useViewParams(languageMode, themeMode);
+  useViewParameters(languageMode, themeMode);
 
   return (
     <Chat

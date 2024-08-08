@@ -33,6 +33,14 @@ export const errorText: LanguageLocalizationType = {
     en: 'Reload the page and try again',
     ru: 'Перезагрузите страницу и попробуйте еще раз',
   },
+  notFoundPt1: {
+    en: 'The requested URL',
+    ru: 'Запрошенный URL-адрес',
+  },
+  notFoundPt2: {
+    en: 'was not found on this server',
+    ru: 'не найден на этом сервере',
+  },
   authorization: {
     ru: 'Вы не авторизованы',
   },
