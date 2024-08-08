@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import type { ChangeEvent, FC, ReactElement } from 'react';
 import { Field, Form } from 'formik';
 import { FormName, Language, Theme } from '../../../utils/types/enums';
@@ -24,13 +25,17 @@ export const ViewForm: FC<PropsType> = ({
   setLanguageMode,
   setThemeMode,
 }): ReactElement => {
+  useEffect(() => {
+    setFieldValue(FormName.language, languageMode);
+    setFieldValue(FormName.theme, themeMode);
+    // eslint-disable-next-line
+  }, [languageMode, themeMode]);
+
   const onLanguageChange = (event: ChangeEvent<HTMLSelectElement>): void => {
-    setFieldValue(FormName.language, event.target.value);
     setLanguageMode(event.target.value);
   };
 
   const onThemeChange = (event: ChangeEvent<HTMLSelectElement>): void => {
-    setFieldValue(FormName.theme, event.target.value);
     setThemeMode(event.target.value);
   };
 

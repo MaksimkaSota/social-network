@@ -6,10 +6,11 @@ import { sendMessage, startMessagesListening, stopMessagesListening } from '../.
 import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
 import { resetMessages, setChannelStatus } from '../../../../../redux/actions/chat';
 import { chatSelector, viewSelector } from '../../../../../redux/selectors/selectors';
+import { useViewParams } from '../../../../../hooks/useViewParams';
 
 export const ChatContainer: FC = (): ReactElement => {
   const { messages, channelStatus } = useTypedSelector(chatSelector);
-  const { languageMode } = useTypedSelector(viewSelector);
+  const { languageMode, themeMode } = useTypedSelector(viewSelector);
 
   const dispatch = useTypedDispatch();
   const sendMessagesCallback = useCallback((message: string) => dispatch(sendMessage(message)), [dispatch]);
@@ -29,6 +30,8 @@ export const ChatContainer: FC = (): ReactElement => {
       dispatch(resetMessages());
     }
   }, [channelStatus, dispatch]);
+
+  useViewParams(languageMode, themeMode);
 
   return (
     <Chat

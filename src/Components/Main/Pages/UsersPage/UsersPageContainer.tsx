@@ -10,6 +10,8 @@ import { setFilter, setPage } from '../../../../redux/actions/users';
 import { authSelector, usersSelector, viewSelector } from '../../../../redux/selectors/selectors';
 import { isFetchingUsersSelector } from '../../../../redux/selectors/loading';
 import { usersErrorSelector } from '../../../../redux/selectors/error';
+import { Language, Theme } from '../../../../utils/types/enums';
+import { setLanguageMode, setThemeMode } from '../../../../redux/actions/view';
 
 const UsersPageContainer: FC = (): ReactElement | boolean => {
   const { id: authorizedUserId } = useTypedSelector(authSelector);
@@ -17,7 +19,7 @@ const UsersPageContainer: FC = (): ReactElement | boolean => {
     useTypedSelector(usersSelector);
   const isFetchingUsers = useTypedSelector(isFetchingUsersSelector);
   const usersError = useTypedSelector(usersErrorSelector);
-  const { languageMode } = useTypedSelector(viewSelector);
+  const { languageMode, themeMode } = useTypedSelector(viewSelector);
 
   const dispatch = useTypedDispatch();
   const followUserCallback = useCallback((id: number) => dispatch(followUser(id)), [dispatch]);
@@ -37,17 +39,28 @@ const UsersPageContainer: FC = (): ReactElement | boolean => {
 
     const actualTerm = parsedSearchParams.term || filter.term;
     const actualFriend = parsedSearchParams.friend || filter.friend;
-    const actualPage = +parsedSearchParams.page || page;
-
     const actualFilter = { term: actualTerm, friend: actualFriend };
 
+    const actualPage = +parsedSearchParams.page || page;
+
+    const actualLanguageMode = parsedSearchParams.language || languageMode;
+    const actualThemeMode = parsedSearchParams.theme || themeMode;
+
+    dispatch(setLanguageMode(actualLanguageMode));
+    dispatch(setThemeMode(actualThemeMode));
     dispatch(getUsers(actualPage, pageSize, actualFilter));
     // eslint-disable-next-line
   }, [dispatch, searchParams]);
 
   useEffect(() => {
-    const queryObject: Partial<{ term: string; friend: string; page: string }> = {};
+    const queryObject: Partial<{ language: string; theme: string; term: string; friend: string; page: string }> = {};
 
+    if (languageMode !== Language.en) {
+      queryObject.language = Language.ru;
+    }
+    if (themeMode !== Theme.light) {
+      queryObject.theme = Theme.dark;
+    }
     if (filter.term) {
       queryObject.term = filter.term;
     }
@@ -62,7 +75,7 @@ const UsersPageContainer: FC = (): ReactElement | boolean => {
 
     setSearchParams(queryString);
     // eslint-disable-next-line
-  }, [filter, page]);
+  }, [languageMode, themeMode, filter, page]);
 
   return (
     mounted && (
