@@ -13,7 +13,7 @@ type PropsType = {
 
 export const Footer: FC<PropsType> = ({ languageMode, themeMode, setLanguageMode, setThemeMode }): ReactElement => {
   return (
-    <footer className={classes.footer}>
+    <footer className={classes[`footer-${themeMode}`]}>
       <div className={classes.mailContainer}>
         <img className={classes.mail} src={email} alt="mail" />
       </div>

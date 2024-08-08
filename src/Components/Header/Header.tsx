@@ -17,6 +17,7 @@ type PropsType = {
   incorrectAuthText: string;
   incorrectPhotoText: string;
   languageMode: string;
+  themeMode: string;
 };
 
 export const Header: FC<PropsType> = ({
@@ -30,9 +31,10 @@ export const Header: FC<PropsType> = ({
   incorrectAuthText,
   incorrectPhotoText,
   languageMode,
+  themeMode,
 }): ReactElement => {
   return (
-    <header className={classes.header}>
+    <header className={classes[`header-${themeMode}`]}>
       <div className={classes.logoContainer}>
         <img className={classes.logo} src={logo} alt="logo" />
       </div>

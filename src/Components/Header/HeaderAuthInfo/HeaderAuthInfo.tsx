@@ -1,4 +1,5 @@
-import type { FC, ReactElement } from 'react';
+import { memo } from 'react';
+import type { ReactElement } from 'react';
 import classes from './HeaderAuthInfo.module.scss';
 import userPhoto from '../../../assets/images/user.png';
 import { Preloader } from '../../Common/Preloader/Preloader';
@@ -20,47 +21,49 @@ type PropsType = {
   languageMode: string;
 };
 
-export const HeaderAuthInfo: FC<PropsType> = ({
-  loginName,
-  authUserPhoto,
-  isFetchingAuthUserPhoto,
-  authUserPhotoError,
-  updateUserPhotoError,
-  incorrectPhotoText,
-  logout,
-  languageMode,
-}): ReactElement => {
-  return (
-    <div className={classes.headerAuthInfo}>
-      {isFetchingAuthUserPhoto ? (
-        <Preloader className={classes.authUserPhotoPreloader} />
-      ) : (
-        <div className={classes.photoAndErrorBlock}>
-          <img className={classes.userPhoto} src={authUserPhoto || userPhoto} alt="avatar" />
-          <ConnectionError
-            error={authUserPhotoError}
-            errorTextKey={TextKey.loadPhoto}
-            languageMode={languageMode}
-            className={classes.userPhotoError}
-          />
-          <ConnectionError
-            error={updateUserPhotoError}
-            errorTextKey={TextKey.updatePhoto}
-            languageMode={languageMode}
-            className={classes.userPhotoError}
-          />
-          <ServerError
-            incorrectText={incorrectPhotoText}
-            incorrectTextKey={TextKey.incorrectPhoto}
-            languageMode={languageMode}
-            className={classes.userPhotoError}
-          />
+export const HeaderAuthInfo = memo<PropsType>(
+  ({
+    loginName,
+    authUserPhoto,
+    isFetchingAuthUserPhoto,
+    authUserPhotoError,
+    updateUserPhotoError,
+    incorrectPhotoText,
+    logout,
+    languageMode,
+  }): ReactElement => {
+    return (
+      <div className={classes.headerAuthInfo}>
+        {isFetchingAuthUserPhoto ? (
+          <Preloader className={classes.authUserPhotoPreloader} />
+        ) : (
+          <div className={classes.photoAndErrorBlock}>
+            <img className={classes.userPhoto} src={authUserPhoto || userPhoto} alt="avatar" />
+            <ConnectionError
+              error={authUserPhotoError}
+              errorTextKey={TextKey.loadPhoto}
+              languageMode={languageMode}
+              className={classes.userPhotoError}
+            />
+            <ConnectionError
+              error={updateUserPhotoError}
+              errorTextKey={TextKey.updatePhoto}
+              languageMode={languageMode}
+              className={classes.userPhotoError}
+            />
+            <ServerError
+              incorrectText={incorrectPhotoText}
+              incorrectTextKey={TextKey.incorrectPhoto}
+              languageMode={languageMode}
+              className={classes.userPhotoError}
+            />
+          </div>
+        )}
+        <div className={classes.container}>
+          <p className={classes.text}>{loginName}</p>
+          <Button text={contentText.logoutBtn[languageMode]} onClick={logout} />
         </div>
-      )}
-      <div className={classes.container}>
-        <p className={classes.text}>{loginName}</p>
-        <Button text={contentText.logoutBtn[languageMode]} onClick={logout} />
       </div>
-    </div>
-  );
-};
+    );
+  }
+);

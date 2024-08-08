@@ -1,10 +1,11 @@
-import type { FC, ReactElement } from 'react';
+import { memo } from 'react';
+import type { ReactElement } from 'react';
 import cn from 'classnames';
 import { NavLink } from 'react-router-dom';
 import classes from './Navigation.module.scss';
 import { RoutePath } from '../../../utils/types/enums';
 
-export const Navigation: FC = (): ReactElement => {
+export const Navigation = memo((): ReactElement => {
   const setClass = ({ isActive }: { isActive: boolean }): string => cn(classes.link, { [classes.active]: isActive });
 
   return (
@@ -23,4 +24,4 @@ export const Navigation: FC = (): ReactElement => {
       </NavLink>
     </nav>
   );
-};
+});

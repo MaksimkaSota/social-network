@@ -1,4 +1,5 @@
-import type { FC, ReactElement } from 'react';
+import { memo } from 'react';
+import type { ReactElement } from 'react';
 import cn from 'classnames';
 import { NavLink } from 'react-router-dom';
 import classes from './HeaderNotAuthInfo.module.scss';
@@ -13,7 +14,7 @@ type PropsType = {
   languageMode: string;
 };
 
-export const HeaderNotAuthInfo: FC<PropsType> = ({ incorrectAuthText, languageMode }): ReactElement => {
+export const HeaderNotAuthInfo = memo<PropsType>(({ incorrectAuthText, languageMode }): ReactElement => {
   const incorrectText = languageMode === Language.en ? incorrectAuthText : errorText.authorization.ru;
 
   return (
@@ -27,4 +28,4 @@ export const HeaderNotAuthInfo: FC<PropsType> = ({ incorrectAuthText, languageMo
       </div>
     </div>
   );
-};
+});

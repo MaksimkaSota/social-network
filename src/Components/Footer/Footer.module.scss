@@ -1,5 +1,13 @@
-.footer {
+.footer-light {
   background: $secondary-background;
+}
+
+.footer-dark {
+  background: $secondary-background-dark;
+}
+
+.footer-light,
+.footer-dark {
   text-align: center;
   @include flex(null, center);
   .mailContainer {

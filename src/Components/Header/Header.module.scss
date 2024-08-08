@@ -1,5 +1,13 @@
-.header {
+.header-light {
   background: $secondary-background;
+}
+
+.header-dark {
+  background: $secondary-background-dark;
+}
+
+.header-light,
+.header-dark {
   @include flex(null, center);
   .logoContainer {
     @extend %side-block;

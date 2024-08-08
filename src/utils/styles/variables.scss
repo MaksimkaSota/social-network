@@ -1,16 +1,20 @@
 $white: rgb(255, 255, 255);
+$black: rgb(0, 0, 0);
 $my-black: rgb(31, 40, 51);
 $my-aqua: rgb(102, 252, 241);
 $my-red: rgb(102, 0, 0);
 $transparent-my-black: rgba(31, 40, 51, 0.7);
 $transparent-my-gray: rgba(197, 198, 199, 0.3);
+$transparent-gray: rgba(128, 128, 128, 0.3);
 
 $content: $my-black;
 $captions: $white;
 $active: $my-aqua;
 $error: $my-red;
-$secondary-background: $transparent-my-black;
 $main-background: $transparent-my-gray;
+$main-background-dark: $transparent-gray;
+$secondary-background: $transparent-my-black;
+$secondary-background-dark: $black;
 
 $marginMax: 20px;
 $marginMin: 10px;

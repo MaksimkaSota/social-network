@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import type { FC, ReactElement } from 'react';
 import { Header } from './Header';
 import { logout } from '../../redux/thunks/auth';
@@ -18,10 +19,10 @@ export const HeaderContainer: FC = (): ReactElement => {
   const { incorrectPhotoText } = useTypedSelector(profileSelector);
   const isFetchingAuthUserPhoto = useTypedSelector(isFetchingPhotoSelector);
   const updateUserPhotoError = useTypedSelector(photoErrorSelector);
-  const { languageMode } = useTypedSelector(viewSelector);
+  const { languageMode, themeMode } = useTypedSelector(viewSelector);
 
   const dispatch = useTypedDispatch();
-  const logoutCallback = () => dispatch(logout());
+  const logoutCallback = useCallback(() => dispatch(logout()), [dispatch]);
 
   return (
     <Header
@@ -35,6 +36,7 @@ export const HeaderContainer: FC = (): ReactElement => {
       incorrectAuthText={incorrectAuthText}
       incorrectPhotoText={incorrectPhotoText}
       languageMode={languageMode}
+      themeMode={themeMode}
     />
   );
 };
