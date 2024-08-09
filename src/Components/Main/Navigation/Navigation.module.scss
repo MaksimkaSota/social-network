@@ -1,5 +1,5 @@
 .navigation {
-  @extend %left-block;
+  @extend %side-block;
   .link {
     display: block;
     padding: $padding;
@@ -28,7 +28,7 @@
   @include respond($tablet) {
     @include flex(center, null);
     width: 100%;
-    border-bottom: 5px solid $dark-background;
+    border-bottom: 5px solid $secondary-background;
     .link {
       &:not(:last-child) {
         margin: 0 $marginMin 0 0;

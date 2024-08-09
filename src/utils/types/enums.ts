@@ -45,10 +45,32 @@ export enum FormName {
   password = 'password',
   remember_me = 'rememberMe',
   captcha = 'captcha',
+  is_captcha = 'isCaptcha',
   term = 'term',
   friend = 'friend',
+  language = 'language',
+  theme = 'theme',
 }
 export enum KeyboardEventCode {
   escape = 'Escape',
   enter = 'Enter',
+}
+export enum Language {
+  en = 'en',
+  ru = 'ru',
+}
+export enum Theme {
+  light = 'light',
+  dark = 'dark',
+}
+export enum TextKey {
+  promise = 'promise',
+  logout = 'logout',
+  login = 'login',
+  loadPhoto = 'loadPhoto',
+  updatePhoto = 'updatePhoto',
+  incorrectPhoto = 'incorrectPhotoText',
+  status = 'status',
+  incorrectStatus = 'incorrectStatusText',
+  data = 'data',
 }

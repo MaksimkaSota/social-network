@@ -41,8 +41,8 @@
   @include captions(2rem, 0.05rem);
 }
 
-%left-block {
-  width: $left-block-width;
+%side-block {
+  width: $side-block-width;
   padding: $padding;
 }
 

@@ -1,11 +1,18 @@
+import { useEffect } from 'react';
 import type { FC, ReactElement } from 'react';
 import { Field, Form } from 'formik';
 import classes from './UsersSearchForm.module.scss';
 import { Button } from '../../../../Common/Button/Button';
 import { FormField } from '../../../../Common/FormField/FormField';
-import type { FormikErrorsType, FormikTouchedType, HandleChangeType } from '../../../../../utils/types/form';
+import type {
+  FormikErrorsType,
+  FormikTouchedType,
+  HandleChangeType,
+  ValidateFormType,
+} from '../../../../../utils/types/form';
 import { FormName } from '../../../../../utils/types/enums';
 import type { Nullable } from '../../../../../utils/types/common';
+import { contentText } from '../../../../../utils/languageLocalization/contentText';
 
 type PropsType = {
   handleChange: HandleChangeType;
@@ -13,6 +20,8 @@ type PropsType = {
   touched: FormikTouchedType;
   isFetching: boolean;
   authorizedUserId: Nullable<number>;
+  languageMode: string;
+  validateForm: ValidateFormType;
 };
 
 export const UsersSearchForm: FC<PropsType> = ({
@@ -21,7 +30,14 @@ export const UsersSearchForm: FC<PropsType> = ({
   touched,
   isFetching,
   authorizedUserId,
+  languageMode,
+  validateForm,
 }): ReactElement => {
+  useEffect(() => {
+    validateForm();
+    // eslint-disable-next-line
+  }, [languageMode]);
+
   return (
     <Form className={classes.searchUsersBlock}>
       <FormField
@@ -29,19 +45,24 @@ export const UsersSearchForm: FC<PropsType> = ({
         classNameField={classes.inputSearch}
         name={FormName.term}
         type="text"
-        placeholder="User name"
+        placeholder={contentText.userName[languageMode]}
         onChange={handleChange}
         errors={errors}
         touched={touched}
       />
       <Field name={FormName.friend} component="select" className={classes.selectSearch}>
         <option value="" disabled={!authorizedUserId}>
-          All
+          {contentText.all[languageMode]}
         </option>
-        {authorizedUserId && <option value="true">Only followed</option>}
-        {authorizedUserId && <option value="false">Only unfollowed</option>}
+        {authorizedUserId && <option value="true">{contentText.followed[languageMode]}</option>}
+        {authorizedUserId && <option value="false">{contentText.unfollowed[languageMode]}</option>}
       </Field>
-      <Button text="Find" type="submit" className={classes.searchButton} disabled={isFetching} />
+      <Button
+        text={contentText.findUserBtn[languageMode]}
+        type="submit"
+        className={classes.searchButton}
+        disabled={isFetching}
+      />
     </Form>
   );
 };

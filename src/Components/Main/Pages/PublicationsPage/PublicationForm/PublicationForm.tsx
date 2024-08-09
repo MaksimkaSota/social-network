@@ -1,11 +1,18 @@
+import { useEffect } from 'react';
 import type { FC, KeyboardEvent, ReactElement } from 'react';
 import { Form, useFormikContext } from 'formik';
 import classes from './PublicationForm.module.scss';
 import { Button } from '../../../../Common/Button/Button';
 import { FormField } from '../../../../Common/FormField/FormField';
-import type { FormikErrorsType, FormikTouchedType, HandleChangeType } from '../../../../../utils/types/form';
+import type {
+  FormikErrorsType,
+  FormikTouchedType,
+  HandleChangeType,
+  ValidateFormType,
+} from '../../../../../utils/types/form';
 import { FormName } from '../../../../../utils/types/enums';
-import { submitFormOnKeyboardPress } from '../../../../../utils/helpers/componentHelpers';
+import { submitFormOnKeyboardPress } from '../../../../../utils/helpers/componentsHelpers';
+import { contentText } from '../../../../../utils/languageLocalization/contentText';
 
 type PropsType = {
   handleChange: HandleChangeType;
@@ -14,6 +21,8 @@ type PropsType = {
   isValid: boolean;
   dirty: boolean;
   buttonText: string;
+  languageMode: string;
+  validateForm: ValidateFormType;
 };
 
 export const PublicationForm: FC<PropsType> = ({
@@ -23,7 +32,14 @@ export const PublicationForm: FC<PropsType> = ({
   isValid,
   dirty,
   buttonText,
+  languageMode,
+  validateForm,
 }): ReactElement => {
+  useEffect(() => {
+    validateForm();
+    // eslint-disable-next-line
+  }, [languageMode]);
+
   const { submitForm } = useFormikContext();
 
   const onKeyDown = (event: KeyboardEvent): void => {
@@ -37,7 +53,7 @@ export const PublicationForm: FC<PropsType> = ({
         classNameField={classes.inputPost}
         name={FormName.text}
         component="textarea"
-        placeholder="You can press Ctrl+Enter to send"
+        placeholder={contentText.ctrlEnter[languageMode]}
         onChange={handleChange}
         onKeyDown={onKeyDown}
         errors={errors}

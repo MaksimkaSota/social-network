@@ -1,9 +1,17 @@
-.main {
-  background: $light-background;
+.main-light {
+  background: $main-background;
+}
+
+.main-dark {
+  background: $main-background-dark;
+}
+
+.main-light,
+.main-dark {
   display: flex;
   flex: auto;
   .content {
-    width: $right-block-width;
+    width: 90%;
   }
   @include respond($laptopMax) {
     .content {

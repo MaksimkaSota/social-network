@@ -1,15 +1,15 @@
 import type { FC, ReactElement } from 'react';
-import { useCallback, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useCallback } from 'react';
 import { UsersPage } from './UsersPage';
 import { useMounted } from '../../../../hooks/useMounted';
-import { followUser, getUsers, unfollowUser } from '../../../../redux/thunks/users';
+import { followUser, unfollowUser } from '../../../../redux/thunks/users';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { useTypedDispatch } from '../../../../hooks/useTypedDispatch';
 import { setFilter, setPage } from '../../../../redux/actions/users';
-import { authSelector, usersSelector } from '../../../../redux/selectors/selectors';
+import { authSelector, usersSelector, viewSelector } from '../../../../redux/selectors/selectors';
 import { isFetchingUsersSelector } from '../../../../redux/selectors/loading';
 import { usersErrorSelector } from '../../../../redux/selectors/error';
+import { useSearchParameters } from '../../../../hooks/useSearchParameters';
 
 const UsersPageContainer: FC = (): ReactElement | boolean => {
   const { id: authorizedUserId } = useTypedSelector(authSelector);
@@ -17,6 +17,7 @@ const UsersPageContainer: FC = (): ReactElement | boolean => {
     useTypedSelector(usersSelector);
   const isFetchingUsers = useTypedSelector(isFetchingUsersSelector);
   const usersError = useTypedSelector(usersErrorSelector);
+  const { languageMode, themeMode } = useTypedSelector(viewSelector);
 
   const dispatch = useTypedDispatch();
   const followUserCallback = useCallback((id: number) => dispatch(followUser(id)), [dispatch]);
@@ -29,39 +30,7 @@ const UsersPageContainer: FC = (): ReactElement | boolean => {
 
   const mounted: boolean = useMounted();
 
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  useEffect(() => {
-    const parsedSearchParams = Object.fromEntries(searchParams);
-
-    const actualTerm = parsedSearchParams.term || filter.term;
-    const actualFriend = parsedSearchParams.friend || filter.friend;
-    const actualPage = +parsedSearchParams.page || page;
-
-    const actualFilter = { term: actualTerm, friend: actualFriend };
-
-    dispatch(getUsers(actualPage, pageSize, actualFilter));
-    // eslint-disable-next-line
-  }, [dispatch, searchParams]);
-
-  useEffect(() => {
-    const queryObject: Partial<{ term: string; friend: string; page: string }> = {};
-
-    if (filter.term) {
-      queryObject.term = filter.term;
-    }
-    if (filter.friend) {
-      queryObject.friend = filter.friend;
-    }
-    if (page !== 1) {
-      queryObject.page = String(page);
-    }
-
-    const queryString = new URLSearchParams(queryObject).toString();
-
-    setSearchParams(queryString);
-    // eslint-disable-next-line
-  }, [filter, page]);
+  useSearchParameters(languageMode, themeMode, filter, page, pageSize);
 
   return (
     mounted && (
@@ -81,6 +50,7 @@ const UsersPageContainer: FC = (): ReactElement | boolean => {
         unfollowUser={unfollowUserCallback}
         setPage={setPageCallback}
         setFilter={setFilterCallback}
+        languageMode={languageMode}
       />
     )
   );

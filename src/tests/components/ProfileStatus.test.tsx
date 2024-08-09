@@ -1,9 +1,18 @@
 import { act, create } from 'react-test-renderer';
 import { ProfileStatus } from '../../Components/Main/Pages/ProfilePage/ProfileStatus/ProfileStatus';
+import { Language } from '../../utils/types/enums';
 
 const createComponent = (status: string, mockCallback: any) => {
   return create(
-    <ProfileStatus isOwner status={status} updateStatus={mockCallback} isFetchingStatus={false} statusError={null} />
+    <ProfileStatus
+      isOwner
+      status={status}
+      incorrectStatusText=""
+      updateStatus={mockCallback}
+      isFetchingStatus={false}
+      statusError={null}
+      languageMode={Language.en}
+    />
   ).root;
 };
 

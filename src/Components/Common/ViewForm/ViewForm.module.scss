@@ -1,0 +1,57 @@
+.viewBlock {
+  @extend %side-block;
+  .selectBlock {
+    @include flex(space-between, center);
+    &:not(:last-child) {
+      margin: 0 0 $marginMin 0;
+    }
+    .flag {
+      width: 15%;
+    }
+    .select {
+      width: 75%;
+      padding: 5px;
+      border: 2px solid rgb(102, 252, 241);
+      border-radius: $radius;
+    }
+  }
+  @include respond($laptopMax) {
+    width: 15%;
+  }
+  @include respond($laptopMin) {
+    width: 20%;
+    .selectBlock {
+      .select {
+        width: 80%;
+        padding: 2.5px;
+      }
+    }
+  }
+  @include respond($tablet) {
+    width: 100%;
+    order: -1;
+    @include flex(space-around, center);
+    .selectBlock {
+      width: 40%;
+      &:not(:last-child) {
+        margin: 0;
+      }
+    }
+  }
+  @include respond($mobile) {
+    display: block;
+    .selectBlock {
+      width: 100%;
+      justify-content: space-evenly;
+      &:not(:last-child) {
+        margin: 0 0 $marginMin 0;
+      }
+      .flag {
+        width: 10%;
+      }
+      .select {
+        width: 70%;
+      }
+    }
+  }
+}

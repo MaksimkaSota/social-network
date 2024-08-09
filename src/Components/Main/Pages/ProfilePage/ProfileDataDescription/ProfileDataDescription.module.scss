@@ -1,13 +1,6 @@
-.dataPreloaderWrapper {
-  .dataPreloader {
-    @include position(50%, $marginMin auto 0 auto);
-  }
-}
-
 .dataDescriptionBlock {
   margin: 0 0 $marginMin 0;
   .dataError {
-    color: $error;
     font-size: 1.3rem;
   }
   .descriptionBlock {
@@ -20,5 +13,11 @@
       font-size: 1.2rem;
       word-break: break-word;
     }
+  }
+}
+
+.dataPreloaderWrapper {
+  .dataPreloader {
+    @include position(50%, $marginMin auto 0 auto);
   }
 }

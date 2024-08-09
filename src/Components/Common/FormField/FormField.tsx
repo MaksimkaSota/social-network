@@ -1,7 +1,7 @@
 import type { KeyboardEvent, ReactElement } from 'react';
 import { memo } from 'react';
 import cn from 'classnames';
-import { ErrorMessage, FastField } from 'formik';
+import { ErrorMessage, Field } from 'formik';
 import classes from './FormField.module.scss';
 import type { FormikErrorsType, FormikTouchedType, HandleChangeType } from '../../../utils/types/form';
 
@@ -36,7 +36,7 @@ export const FormField = memo<PropsType>(
   }): ReactElement => {
     return (
       <div className={classNameFormField}>
-        <FastField
+        <Field
           className={cn(classNameField, classes.successValidation, {
             [classes.errorValidation]: touched?.[name] && errors?.[name],
           })}

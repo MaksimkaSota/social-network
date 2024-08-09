@@ -2,19 +2,27 @@ import type { FC, ReactElement } from 'react';
 import classes from './ProfileStatusText.module.scss';
 import { Preloader } from '../../../../Common/Preloader/Preloader';
 import type { ErrorType, Nullable } from '../../../../../utils/types/common';
+import { contentText } from '../../../../../utils/languageLocalization/contentText';
+import { ConnectionError } from '../../../../Common/ConnectionError/ConnectionError';
+import { ServerError } from '../../../../Common/ServerError/ServerError';
+import { TextKey } from '../../../../../utils/types/enums';
 
 type PropsType = {
   status: string;
   localStatus: string;
+  incorrectStatusText: string;
   isFetchingStatus: boolean;
   statusError: Nullable<ErrorType>;
+  languageMode: string;
 };
 
 export const ProfileStatusText: FC<PropsType> = ({
   status,
   localStatus,
+  incorrectStatusText,
   isFetchingStatus,
   statusError,
+  languageMode,
 }): ReactElement => {
   if (isFetchingStatus && status !== localStatus) {
     return (
@@ -26,8 +34,19 @@ export const ProfileStatusText: FC<PropsType> = ({
 
   return (
     <div className={classes.statusTextBlock}>
-      <p className={classes.statusText}>{status || 'no status'}</p>
-      {statusError && <p className={classes.statusTextError}>Error {statusError.code}, Failed to update status</p>}
+      <p className={classes.statusText}>{status || contentText.noStatus[languageMode]}</p>
+      <ConnectionError
+        error={statusError}
+        errorTextKey={TextKey.status}
+        languageMode={languageMode}
+        className={classes.statusTextError}
+      />
+      <ServerError
+        incorrectText={incorrectStatusText}
+        incorrectTextKey={TextKey.incorrectStatus}
+        languageMode={languageMode}
+        className={classes.statusTextError}
+      />
     </div>
   );
 };

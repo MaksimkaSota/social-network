@@ -1,5 +1,5 @@
-import type { FC, ReactElement } from 'react';
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, memo } from 'react';
+import type { ReactElement } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { useAuthRedirect } from '../../hooks/useRedirect';
 import { ProfilePageContainer } from './Pages/ProfilePage/ProfilePageContainer';
@@ -12,7 +12,7 @@ const UsersPageContainer = lazy(() => import('./Pages/UsersPage/UsersPageContain
 const LoginPageContainer = lazy(() => import('./Pages/LoginPage/LoginPageContainer'));
 const ChatPage = lazy(() => import('./Pages/ChatPage/ChatPage'));
 
-export const MainRoutes: FC = (): ReactElement => {
+export const MainRoutes = memo((): ReactElement => {
   const authProfilePage = useAuthRedirect(<ProfilePageContainer />);
   const authPublicationsPage = useAuthRedirect(<PublicationsPageContainer />);
   const authChatPage = useAuthRedirect(<ChatPage />);
@@ -31,4 +31,4 @@ export const MainRoutes: FC = (): ReactElement => {
       </Routes>
     </Suspense>
   );
-};
+});

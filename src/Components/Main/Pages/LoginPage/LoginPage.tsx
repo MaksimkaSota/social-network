@@ -10,6 +10,7 @@ import type {
 } from '../../../../utils/types/form';
 import { RoutePath } from '../../../../utils/types/enums';
 import { LoginInformation } from './LoginInformation/LoginInformation';
+import { contentText } from '../../../../utils/languageLocalization/contentText';
 
 type PropsType = {
   login: (
@@ -22,16 +23,23 @@ type PropsType = {
   isAuth: boolean;
   incorrectAuthText: string;
   captchaUrl: string;
+  languageMode: string;
 };
 
-export const LoginPage: FC<PropsType> = ({ login, isAuth, incorrectAuthText, captchaUrl }): ReactElement => {
+export const LoginPage: FC<PropsType> = ({
+  login,
+  isAuth,
+  incorrectAuthText,
+  captchaUrl,
+  languageMode,
+}): ReactElement => {
   return isAuth ? (
     <Navigate to={RoutePath.profile} />
   ) : (
     <div className={classes.loginPageBlock}>
-      <h3 className={classes.title}>Login</h3>
-      <LoginInformation incorrectAuthText={incorrectAuthText} />
-      <LoginFormContainer login={login} captchaUrl={captchaUrl} />
+      <h3 className={classes.title}>{contentText.loginTitle[languageMode]}</h3>
+      <LoginInformation incorrectAuthText={incorrectAuthText} languageMode={languageMode} />
+      <LoginFormContainer login={login} captchaUrl={captchaUrl} languageMode={languageMode} />
     </div>
   );
 };

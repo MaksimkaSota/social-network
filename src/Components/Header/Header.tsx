@@ -4,6 +4,8 @@ import logo from '../../assets/images/logo.png';
 import { HeaderAuthInfo } from './HeaderAuthInfo/HeaderAuthInfo';
 import { HeaderNotAuthInfo } from './HeaderNotAuthInfo/HeaderNotAuthInfo';
 import type { ErrorType, Nullable } from '../../utils/types/common';
+import { contentText } from '../../utils/languageLocalization/contentText';
+import { altText } from '../../utils/languageLocalization/altText';
 
 type PropsType = {
   isAuth: boolean;
@@ -14,6 +16,9 @@ type PropsType = {
   updateUserPhotoError: Nullable<ErrorType>;
   logout: () => void;
   incorrectAuthText: string;
+  incorrectPhotoText: string;
+  languageMode: string;
+  themeMode: string;
 };
 
 export const Header: FC<PropsType> = ({
@@ -25,13 +30,16 @@ export const Header: FC<PropsType> = ({
   updateUserPhotoError,
   logout,
   incorrectAuthText,
+  incorrectPhotoText,
+  languageMode,
+  themeMode,
 }): ReactElement => {
   return (
-    <header className={classes.header}>
+    <header className={classes[`header-${themeMode}`]}>
       <div className={classes.logoContainer}>
-        <img className={classes.logo} src={logo} alt="logo" />
+        <img className={classes.logo} src={logo} alt={altText.logo[languageMode]} />
       </div>
-      <h1 className={classes.headline}>Social Network</h1>
+      <h1 className={classes.headline}>{contentText.headline[languageMode]}</h1>
       <div className={classes.loginContainer}>
         {isAuth ? (
           <HeaderAuthInfo
@@ -40,10 +48,12 @@ export const Header: FC<PropsType> = ({
             isFetchingAuthUserPhoto={isFetchingAuthUserPhoto}
             authUserPhotoError={authUserPhotoError}
             updateUserPhotoError={updateUserPhotoError}
+            incorrectPhotoText={incorrectPhotoText}
             logout={logout}
+            languageMode={languageMode}
           />
         ) : (
-          <HeaderNotAuthInfo incorrectAuthText={incorrectAuthText} />
+          <HeaderNotAuthInfo incorrectAuthText={incorrectAuthText} languageMode={languageMode} />
         )}
       </div>
     </header>

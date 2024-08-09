@@ -1,25 +1,32 @@
-import type { FC, ReactElement } from 'react';
+import { memo } from 'react';
+import type { ReactElement } from 'react';
 import cn from 'classnames';
 import { NavLink } from 'react-router-dom';
 import classes from './HeaderNotAuthInfo.module.scss';
 import userPhoto from '../../../assets/images/user.png';
 import { Button } from '../../Common/Button/Button';
-import { RoutePath } from '../../../utils/types/enums';
+import { Language, RoutePath } from '../../../utils/types/enums';
+import { contentText } from '../../../utils/languageLocalization/contentText';
+import { errorText } from '../../../utils/languageLocalization/errorText';
+import { altText } from '../../../utils/languageLocalization/altText';
 
 type PropsType = {
   incorrectAuthText: string;
+  languageMode: string;
 };
 
-export const HeaderNotAuthInfo: FC<PropsType> = ({ incorrectAuthText }): ReactElement => {
+export const HeaderNotAuthInfo = memo<PropsType>(({ incorrectAuthText, languageMode }): ReactElement => {
+  const incorrectText = languageMode === Language.en ? incorrectAuthText : errorText.authorization.ru;
+
   return (
     <div className={classes.headerNotAuthInfo}>
-      <img className={classes.userPhoto} src={userPhoto} alt="avatar" />
+      <img className={classes.userPhoto} src={userPhoto} alt={altText.ava[languageMode]} />
       <div className={classes.container}>
-        <p className={cn(classes.text, classes.incorrectAuthText)}>{incorrectAuthText}</p>
+        <p className={cn(classes.text, classes.incorrectAuthText)}>{incorrectText}</p>
         <NavLink to={RoutePath.login}>
-          <Button text="Login" />
+          <Button text={contentText.loginBtn[languageMode]} />
         </NavLink>
       </div>
     </div>
   );
-};
+});

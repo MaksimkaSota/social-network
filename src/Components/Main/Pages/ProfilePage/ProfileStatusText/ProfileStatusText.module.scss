@@ -1,9 +1,3 @@
-.statusPreloaderWrapper {
-  .statusPreloader {
-    @include position(30px, 0);
-  }
-}
-
 .statusTextBlock {
   .statusText {
     word-break: break-word;
@@ -11,7 +5,13 @@
     font-size: 1.2rem;
   }
   .statusTextError {
-    color: $error;
+    text-align: left;
     font-size: 1rem;
+  }
+}
+
+.statusPreloaderWrapper {
+  .statusPreloader {
+    @include position(30px, 0);
   }
 }

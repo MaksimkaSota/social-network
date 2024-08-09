@@ -1,14 +1,15 @@
 import { isAxiosError } from 'axios';
 import { getAuthAPI, getCaptchaUrlAPI, loginAPI, logoutAPI } from '../../api/http/auth';
 import {
+  resetAuthData,
+  setAuthFailure,
   setAuthRequest,
   setAuthSuccessCorrect,
   setAuthSuccessIncorrect,
-  setAuthFailure,
   setAuthUserPhoto,
   setAuthUserPhotoError,
-  resetAuthData,
   setCaptchaUrl,
+  setLoginError,
   setLogoutError,
 } from '../actions/auth';
 import { getProfileAPI } from '../../api/http/profile';
@@ -17,26 +18,32 @@ import type { ThunkType } from '../../utils/types/common';
 import type { AuthAction } from '../types/auth';
 import type { SetFieldTouchedType, SetFieldValueType, SetStatusType, SetSubmittingType } from '../../utils/types/form';
 import type { IAuthData, ICaptcha, IResponse } from '../../utils/types/api';
-import { StatusCode } from '../../utils/types/enums';
+import { FormName, Language, StatusCode } from '../../utils/types/enums';
+import { errorText } from '../../utils/languageLocalization/errorText';
 
 export const getAuth = (): ThunkType<AuthAction> => {
   return async (dispatch) => {
     try {
       dispatch(setAuthRequest());
       const dataAuth: IResponse<IAuthData> = await getAuthAPI();
-      if (dataAuth.resultCode === StatusCode.success) {
-        dispatch(setAuthSuccessCorrect(dataAuth.data));
-        dispatch(setAuthSuccessIncorrect(''));
-        try {
-          const dataProfile = await getProfileAPI(dataAuth.data.id);
-          dispatch(setAuthUserPhoto(dataProfile.photos.small));
-        } catch (error: unknown) {
-          if (isAxiosError(error)) {
-            dispatch(setAuthUserPhotoError(getErrorMessage(error), error.response?.status));
+      switch (dataAuth.resultCode) {
+        case StatusCode.success:
+          dispatch(setAuthSuccessCorrect(dataAuth.data));
+          dispatch(setAuthSuccessIncorrect(''));
+          try {
+            const dataProfile = await getProfileAPI(dataAuth.data.id);
+            dispatch(setAuthUserPhoto(dataProfile.photos.small));
+          } catch (error: unknown) {
+            if (isAxiosError(error)) {
+              dispatch(setAuthUserPhotoError(getErrorMessage(error), error.response?.status));
+            }
           }
-        }
-      } else if (dataAuth.resultCode === StatusCode.failure) {
-        dispatch(setAuthSuccessIncorrect(dataAuth.messages[0]));
+          break;
+        case StatusCode.failure:
+          dispatch(setAuthSuccessIncorrect(dataAuth.messages[0]));
+          break;
+        default:
+          throw new Error('Unknown error');
       }
     } catch (error: unknown) {
       if (isAxiosError(error)) {
@@ -60,7 +67,7 @@ export const login = (
   setFieldValue: SetFieldValueType,
   setFieldTouched: SetFieldTouchedType
 ): ThunkType<AuthAction> => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
       const data = await loginAPI(loginData.email, loginData.password, loginData.rememberMe, loginData.captcha);
       if (data.resultCode === StatusCode.success) {
@@ -68,16 +75,21 @@ export const login = (
       } else {
         if (data.resultCode === StatusCode.required_captcha) {
           await dispatch(getCaptchaUrl());
-          await setFieldValue('isCaptcha', true);
-          await setFieldTouched('captcha', false);
+          await setFieldValue(FormName.is_captcha, true);
+          await setFieldTouched(FormName.captcha, false);
         }
-        const message = data.messages[0] || 'Some error';
-        setStatus(message);
+        const serverError =
+          getState().view.languageMode === Language.en ? data.messages[0] : errorText.incorrectLoginData.ru;
+        setStatus(serverError);
       }
     } catch (error: unknown) {
       if (isAxiosError(error)) {
-        const message = `Error ${error.response?.status}, ${getErrorMessage(error)}`;
-        setStatus(message);
+        dispatch(
+          setLoginError({
+            code: error.response?.status,
+            message: getErrorMessage(error),
+          })
+        );
       }
     }
     setSubmitting(false);
@@ -99,7 +111,7 @@ export const logout = (): ThunkType<AuthAction> => {
             captchaUrl: '',
           })
         );
-        dispatch(setAuthSuccessIncorrect('Not authorized'));
+        dispatch(setAuthSuccessIncorrect('You are not authorized'));
       }
     } catch (error: unknown) {
       if (isAxiosError(error)) {

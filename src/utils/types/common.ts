@@ -31,6 +31,9 @@ export type FilterType = {
   term: string;
   friend: string;
 };
+export type LanguageLocalizationType = {
+  [textKey: string]: { [languageKey: string]: string };
+};
 
 export type ChannelStatus = 'pending' | 'fulfilled' | 'received';
 export type EventsNames = 'receiveMessage' | 'changeChannelStatus';

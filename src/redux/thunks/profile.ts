@@ -5,14 +5,16 @@ import {
   setProfileSuccess,
   setProfileFailure,
   setStatusRequest,
-  setStatusSuccess,
+  setStatusSuccessCorrect,
   setStatusFailure,
   setPhotoRequest,
-  setPhotoSuccess,
+  setPhotoSuccessCorrect,
+  setPhotoSuccessIncorrect,
   setPhotoFailure,
   setDataRequest,
   setDataSuccess,
   setDataFailure,
+  setStatusSuccessIncorrect,
 } from '../actions/profile';
 import { getProfileAPI, getStatusAPI, updateStatusAPI, updatePhotoAPI, updateProfileAPI } from '../../api/http/profile';
 import { fillErrorsObject, getErrorMessage } from '../../utils/helpers/thunksHelpers';
@@ -43,7 +45,8 @@ export const getStatus = (id: number): ThunkType<ProfileAction> => {
     try {
       dispatch(setStatusRequest());
       const data: string = await getStatusAPI(id);
-      dispatch(setStatusSuccess(data));
+      dispatch(setStatusSuccessCorrect(data));
+      dispatch(setStatusSuccessIncorrect(''));
     } catch (error: unknown) {
       if (isAxiosError(error)) {
         dispatch(setStatusFailure(getErrorMessage(error), error.response?.status));
@@ -58,15 +61,15 @@ export const updateStatus = (status: string): ThunkType<ProfileAction> => {
       dispatch(setStatusRequest());
       const data: IResponse = await updateStatusAPI(status);
       switch (data.resultCode) {
-        case 0:
-          dispatch(setStatusSuccess(status));
+        case StatusCode.success:
+          dispatch(setStatusSuccessCorrect(status));
+          dispatch(setStatusSuccessIncorrect(''));
           break;
-        case 1:
-          dispatch(setStatusSuccess(data.messages[0]));
+        case StatusCode.failure:
+          dispatch(setStatusSuccessIncorrect(data.messages[0]));
           break;
         default:
-          dispatch(setStatusSuccess('Some server status error'));
-          break;
+          throw new Error('Unknown error');
       }
     } catch (error: unknown) {
       if (isAxiosError(error)) {
@@ -81,11 +84,17 @@ export const updatePhoto = (photo: File): ThunkType<ProfileAction | SetAuthUserP
     try {
       dispatch(setPhotoRequest());
       const data: IResponse<IPhotoData> = await updatePhotoAPI(photo);
-      if (data.resultCode === StatusCode.success) {
-        dispatch(setPhotoSuccess(data.data.photos));
-        dispatch(setAuthUserPhoto(data.data.photos.small));
-      } else {
-        dispatch(setPhotoFailure(data.messages[0]));
+      switch (data.resultCode) {
+        case StatusCode.success:
+          dispatch(setPhotoSuccessCorrect(data.data.photos));
+          dispatch(setPhotoSuccessIncorrect(''));
+          dispatch(setAuthUserPhoto(data.data.photos.small));
+          break;
+        case StatusCode.failure:
+          dispatch(setPhotoSuccessIncorrect(data.messages[0]));
+          break;
+        default:
+          throw new Error('Unknown error');
       }
     } catch (error: unknown) {
       if (isAxiosError(error)) {
@@ -128,10 +137,10 @@ export const updateData = (
             }
             if (key === 'contacts') {
               contactsDataKeys.forEach((contactsDataKey: string): void => {
-                fillErrorsObject(errors.contacts, contactsDataKey, message);
+                fillErrorsObject(errors.contacts, contactsDataKey, message, getState().view.languageMode);
               });
             } else {
-              fillErrorsObject(errors, key, message);
+              fillErrorsObject(errors, key, message, getState().view.languageMode);
             }
           });
         });

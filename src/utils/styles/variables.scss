@@ -1,23 +1,26 @@
-$black: rgb(31, 40, 51);
 $white: rgb(255, 255, 255);
-$aqua: rgb(102, 252, 241);
-$red: rgb(102, 0, 0);
-$light-black: rgba(31, 40, 51, 0.7);
-$light-gray: rgba(197, 198, 199, 0.3);
+$black: rgb(0, 0, 0);
+$my-black: rgb(31, 40, 51);
+$my-aqua: rgb(102, 252, 241);
+$my-red: rgb(102, 0, 0);
+$transparent-my-black: rgba(31, 40, 51, 0.7);
+$transparent-my-gray: rgba(197, 198, 199, 0.3);
+$transparent-gray: rgba(128, 128, 128, 0.3);
 
-$content: $black;
+$content: $my-black;
 $captions: $white;
-$active: $aqua;
-$error: $red;
-$dark-background: $light-black;
-$light-background: $light-gray;
+$active: $my-aqua;
+$error: $my-red;
+$main-background: $transparent-my-gray;
+$main-background-dark: $transparent-gray;
+$secondary-background: $transparent-my-black;
+$secondary-background-dark: $black;
 
 $marginMax: 20px;
 $marginMin: 10px;
 $padding: 10px;
 $radius: 5px;
-$left-block-width: 10%;
-$right-block-width: 90%;
+$side-block-width: 10%;
 
 $laptopMaxSize: 90em;
 $laptopMinSize: 80em;

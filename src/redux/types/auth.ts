@@ -10,6 +10,7 @@ export type AuthState = {
   authUserPhotoError: Nullable<ErrorType>;
   incorrectAuthText: string;
   captchaUrl: string;
+  loginError: Nullable<ErrorType>;
   logoutError: Nullable<ErrorType>;
 };
 
@@ -22,6 +23,7 @@ export enum AuthActionType {
   SET_AUTH_PHOTO_ERROR = 'SET_AUTH_PHOTO_ERROR',
   RESET_AUTH_DATA = 'RESET_AUTH_DATA',
   SET_AUTH_CAPTCHA_URL = 'SET_AUTH_CAPTCHA_URL',
+  SET_AUTH_LOGIN_ERROR = 'SET_AUTH_LOGIN_ERROR',
   SET_AUTH_LOGOUT_ERROR = 'SET_AUTH_LOGOUT_ERROR',
 }
 
@@ -33,6 +35,7 @@ export type SetAuthUserPhotoAction = { type: AuthActionType.SET_AUTH_PHOTO; payl
 export type SetAuthUserPhotoErrorAction = { type: AuthActionType.SET_AUTH_PHOTO_ERROR; payload: ErrorType };
 export type ResetAuthDataAction = { type: AuthActionType.RESET_AUTH_DATA; payload: AuthData };
 export type SetCaptchaUrlAction = { type: AuthActionType.SET_AUTH_CAPTCHA_URL; payload: string };
+export type SetLoginErrorAction = { type: AuthActionType.SET_AUTH_LOGIN_ERROR; payload: Nullable<ErrorType> };
 export type SetLogoutErrorAction = { type: AuthActionType.SET_AUTH_LOGOUT_ERROR; payload: Nullable<ErrorType> };
 
 export type AuthAction =
@@ -44,4 +47,5 @@ export type AuthAction =
   | SetAuthUserPhotoErrorAction
   | ResetAuthDataAction
   | SetCaptchaUrlAction
+  | SetLoginErrorAction
   | SetLogoutErrorAction;

@@ -6,14 +6,16 @@ import type { IChatMessage } from '../../../../../utils/types/api';
 import classes from './ChatMessages.module.scss';
 import { Preloader } from '../../../../Common/Preloader/Preloader';
 import type { ChannelStatus } from '../../../../../utils/types/common';
-import { scrollToBottom } from '../../../../../utils/helpers/componentHelpers';
+import { scrollToBottom } from '../../../../../utils/helpers/componentsHelpers';
+import { contentText } from '../../../../../utils/languageLocalization/contentText';
 
 type PropsType = {
   messages: IChatMessage[];
   channelStatus: ChannelStatus;
+  languageMode: string;
 };
 
-export const ChatMessages: FC<PropsType> = ({ messages, channelStatus }): ReactElement => {
+export const ChatMessages: FC<PropsType> = ({ messages, channelStatus, languageMode }): ReactElement => {
   const anchorRef = useRef<HTMLDivElement>(null);
   const [isAutoScroll, setIsAutoScroll] = useState<boolean>(true);
 
@@ -52,9 +54,11 @@ export const ChatMessages: FC<PropsType> = ({ messages, channelStatus }): ReactE
       )}
       {channelStatus === 'received' &&
         (!messages.length ? (
-          <p className={classes.emptyMessagesText}>Nobody wrote a message. Be the first!</p>
+          <p className={classes.emptyMessagesText}>{contentText.emptyChatText[languageMode]}</p>
         ) : (
-          messages.map((message: IChatMessage, index: number) => <ChatMessage message={message} key={index} />)
+          messages.map((message: IChatMessage, index: number) => (
+            <ChatMessage message={message} key={index} languageMode={languageMode} />
+          ))
         ))}
     </div>
   );

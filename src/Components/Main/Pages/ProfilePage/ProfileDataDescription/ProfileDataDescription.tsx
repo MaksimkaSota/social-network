@@ -4,14 +4,23 @@ import { Preloader } from '../../../../Common/Preloader/Preloader';
 import { Contacts } from '../Contacts/Contacts';
 import type { ErrorType, Nullable } from '../../../../../utils/types/common';
 import type { IRequestProfile } from '../../../../../utils/types/api';
+import { contentText } from '../../../../../utils/languageLocalization/contentText';
+import { ConnectionError } from '../../../../Common/ConnectionError/ConnectionError';
+import { TextKey } from '../../../../../utils/types/enums';
 
 type PropsType = {
   data: IRequestProfile;
   isFetchingData: boolean;
   dataError: Nullable<ErrorType>;
+  languageMode: string;
 };
 
-export const ProfileDataDescription: FC<PropsType> = ({ data, isFetchingData, dataError }): ReactElement => {
+export const ProfileDataDescription: FC<PropsType> = ({
+  data,
+  isFetchingData,
+  dataError,
+  languageMode,
+}): ReactElement => {
   if (isFetchingData) {
     return (
       <div className={classes.dataPreloaderWrapper}>
@@ -22,26 +31,33 @@ export const ProfileDataDescription: FC<PropsType> = ({ data, isFetchingData, da
 
   return (
     <div className={classes.dataDescriptionBlock}>
-      {dataError && <p className={classes.dataError}>Error {dataError.code}, Failed to update data</p>}
+      <ConnectionError
+        error={dataError}
+        errorTextKey={TextKey.data}
+        languageMode={languageMode}
+        className={classes.dataError}
+      />
       <div className={classes.descriptionBlock}>
-        <h5 className={classes.title}>Full name:</h5>
+        <h5 className={classes.title}>{contentText.fullName[languageMode]}:</h5>
         <p className={classes.text}>{data.fullName}</p>
       </div>
       <div className={classes.descriptionBlock}>
-        <h5 className={classes.title}>Looking for a job:</h5>
-        <p className={classes.text}>{data.lookingForAJob ? 'yes' : 'no'}</p>
+        <h5 className={classes.title}>{contentText.job[languageMode]}:</h5>
+        <p className={classes.text}>
+          {data.lookingForAJob ? contentText.yes[languageMode] : contentText.no[languageMode]}
+        </p>
       </div>
       {data.lookingForAJob && (
         <div className={classes.descriptionBlock}>
-          <h5 className={classes.title}>My professional skills:</h5>
+          <h5 className={classes.title}>{contentText.jobDescription[languageMode]}:</h5>
           <p className={classes.text}>{data.lookingForAJobDescription}</p>
         </div>
       )}
       <div className={classes.descriptionBlock}>
-        <h5 className={classes.title}>About me:</h5>
+        <h5 className={classes.title}>{contentText.me[languageMode]}:</h5>
         <p className={classes.text}>{data.aboutMe}</p>
       </div>
-      <Contacts contacts={data.contacts} />
+      <Contacts contacts={data.contacts} languageMode={languageMode} />
     </div>
   );
 };
