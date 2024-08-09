@@ -9,6 +9,7 @@ import ruMode from '../../../assets/images/ru.png';
 import lightMode from '../../../assets/images/light.png';
 import darkMode from '../../../assets/images/dark.png';
 import { contentText } from '../../../utils/languageLocalization/contentText';
+import { altText } from '../../../utils/languageLocalization/altText';
 
 type PropsType = {
   setFieldValue: SetFieldValueType;
@@ -42,16 +43,22 @@ export const ViewForm: FC<PropsType> = ({
   return (
     <Form className={classes.viewBlock}>
       <div className={classes.selectBlock}>
-        {languageMode === Language.en && <img className={classes.flag} src={enMode} alt="Great Britain flag" />}
-        {languageMode === Language.ru && <img className={classes.flag} src={ruMode} alt="Russia flag" />}
+        {languageMode === Language.en && (
+          <img className={classes.flag} src={enMode} alt={altText.enFlag[languageMode]} />
+        )}
+        {languageMode === Language.ru && (
+          <img className={classes.flag} src={ruMode} alt={altText.ruFlag[languageMode]} />
+        )}
         <Field name={FormName.language} component="select" className={classes.select} onChange={onLanguageChange}>
           <option value={Language.en}>{contentText.en[languageMode]}</option>
           <option value={Language.ru}>{contentText.ru[languageMode]}</option>
         </Field>
       </div>
       <div className={classes.selectBlock}>
-        {themeMode === Theme.light && <img className={classes.flag} src={lightMode} alt="Sun" />}
-        {themeMode === Theme.dark && <img className={classes.flag} src={darkMode} alt="Sun eclipse" />}
+        {themeMode === Theme.light && (
+          <img className={classes.flag} src={lightMode} alt={altText.light[languageMode]} />
+        )}
+        {themeMode === Theme.dark && <img className={classes.flag} src={darkMode} alt={altText.dark[languageMode]} />}
         <Field name={FormName.theme} component="select" className={classes.select} onChange={onThemeChange}>
           <option value={Theme.light}>{contentText.light[languageMode]}</option>
           <option value={Theme.dark}>{contentText.dark[languageMode]}</option>

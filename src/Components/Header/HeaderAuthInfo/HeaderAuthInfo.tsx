@@ -9,6 +9,7 @@ import { contentText } from '../../../utils/languageLocalization/contentText';
 import { ConnectionError } from '../../Common/ConnectionError/ConnectionError';
 import { ServerError } from '../../Common/ServerError/ServerError';
 import { TextKey } from '../../../utils/types/enums';
+import { altText } from '../../../utils/languageLocalization/altText';
 
 type PropsType = {
   loginName: Nullable<string>;
@@ -38,7 +39,7 @@ export const HeaderAuthInfo = memo<PropsType>(
           <Preloader className={classes.authUserPhotoPreloader} />
         ) : (
           <div className={classes.photoAndErrorBlock}>
-            <img className={classes.userPhoto} src={authUserPhoto || userPhoto} alt="avatar" />
+            <img className={classes.userPhoto} src={authUserPhoto || userPhoto} alt={altText.ava[languageMode]} />
             <ConnectionError
               error={authUserPhotoError}
               errorTextKey={TextKey.loadPhoto}

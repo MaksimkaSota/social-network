@@ -8,6 +8,7 @@ import type { ErrorType, Nullable } from '../../../../../utils/types/common';
 import { ConnectionError } from '../../../../Common/ConnectionError/ConnectionError';
 import { ServerError } from '../../../../Common/ServerError/ServerError';
 import { TextKey } from '../../../../../utils/types/enums';
+import { altText } from '../../../../../utils/languageLocalization/altText';
 
 type PropsType = {
   isOwner: boolean;
@@ -27,7 +28,7 @@ export const ProfilePhoto = memo<PropsType>(
           <Preloader className={classes.photoPreloader} />
         ) : (
           <>
-            <img className={classes.userPhoto} src={photo || userPhoto} alt="avatar" />
+            <img className={classes.userPhoto} src={photo || userPhoto} alt={altText.ava[languageMode]} />
             <ConnectionError
               error={photoError}
               errorTextKey={TextKey.updatePhoto}

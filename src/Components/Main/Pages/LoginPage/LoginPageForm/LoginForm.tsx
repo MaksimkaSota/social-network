@@ -16,6 +16,7 @@ import type {
 import { FormName } from '../../../../../utils/types/enums';
 import { contentText } from '../../../../../utils/languageLocalization/contentText';
 import { InputPassword } from '../../../../Common/InputPassword/InputPassword';
+import { altText } from '../../../../../utils/languageLocalization/altText';
 
 type PropsType = {
   isSubmitting: boolean;
@@ -71,7 +72,7 @@ export const LoginForm: FC<PropsType> = ({
       />
       {captchaUrl && (
         <>
-          <img className={classes.captcha} src={captchaUrl} alt="captcha" />
+          <img className={classes.captcha} src={captchaUrl} alt={altText.captcha[languageMode]} />
           <FormField
             classNameFormField={classes.fieldBlock}
             classNameField={classes.field}

@@ -56,7 +56,9 @@ export const ChatMessages: FC<PropsType> = ({ messages, channelStatus, languageM
         (!messages.length ? (
           <p className={classes.emptyMessagesText}>{contentText.emptyChatText[languageMode]}</p>
         ) : (
-          messages.map((message: IChatMessage, index: number) => <ChatMessage message={message} key={index} />)
+          messages.map((message: IChatMessage, index: number) => (
+            <ChatMessage message={message} key={index} languageMode={languageMode} />
+          ))
         ))}
     </div>
   );

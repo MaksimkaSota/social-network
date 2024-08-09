@@ -3,6 +3,7 @@ import classes from './Footer.module.scss';
 import email from '../../assets/images/email.png';
 import { ViewFormContainer } from '../Common/ViewForm/ViewFormContainer';
 import { contentText } from '../../utils/languageLocalization/contentText';
+import { altText } from '../../utils/languageLocalization/altText';
 
 type PropsType = {
   languageMode: string;
@@ -15,7 +16,7 @@ export const Footer: FC<PropsType> = ({ languageMode, themeMode, setLanguageMode
   return (
     <footer className={classes[`footer-${themeMode}`]}>
       <div className={classes.mailContainer}>
-        <img className={classes.mail} src={email} alt="mail" />
+        <img className={classes.mail} src={email} alt={altText.mail[languageMode]} />
       </div>
       <div className={classes.contactsContainer}>
         <h2 className={classes.title}>{contentText.contacts[languageMode]}:</h2>

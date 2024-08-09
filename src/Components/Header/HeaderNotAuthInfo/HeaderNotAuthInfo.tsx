@@ -8,6 +8,7 @@ import { Button } from '../../Common/Button/Button';
 import { Language, RoutePath } from '../../../utils/types/enums';
 import { contentText } from '../../../utils/languageLocalization/contentText';
 import { errorText } from '../../../utils/languageLocalization/errorText';
+import { altText } from '../../../utils/languageLocalization/altText';
 
 type PropsType = {
   incorrectAuthText: string;
@@ -19,7 +20,7 @@ export const HeaderNotAuthInfo = memo<PropsType>(({ incorrectAuthText, languageM
 
   return (
     <div className={classes.headerNotAuthInfo}>
-      <img className={classes.userPhoto} src={userPhoto} alt="avatar" />
+      <img className={classes.userPhoto} src={userPhoto} alt={altText.ava[languageMode]} />
       <div className={classes.container}>
         <p className={cn(classes.text, classes.incorrectAuthText)}>{incorrectText}</p>
         <NavLink to={RoutePath.login}>

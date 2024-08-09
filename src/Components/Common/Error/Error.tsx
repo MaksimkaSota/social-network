@@ -6,6 +6,7 @@ import robot404 from '../../../assets/images/robot-404.png';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { viewSelector } from '../../../redux/selectors/selectors';
 import { errorText } from '../../../utils/languageLocalization/errorText';
+import { altText } from '../../../utils/languageLocalization/altText';
 
 type PropsType = {
   code?: number;
@@ -23,7 +24,7 @@ export const Error: FC<PropsType> = ({ code, message, isGlobalError = false }): 
       <h3 className={classes.errorTitle}>
         {code} {errorText.error[languageMode]}
       </h3>
-      <img className={classes.errorImage} src={robot} alt="robot" />
+      <img className={classes.errorImage} src={robot} alt={altText.robot[languageMode]} />
       <p className={classes.errorText}>{message}</p>
     </div>
   );

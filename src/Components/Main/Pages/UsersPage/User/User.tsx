@@ -9,6 +9,7 @@ import { RoutePath } from '../../../../../utils/types/enums';
 import type { IUser } from '../../../../../utils/types/api';
 import type { FollowUnfollowErrorType } from '../../../../../utils/types/common';
 import { contentText } from '../../../../../utils/languageLocalization/contentText';
+import { altText } from '../../../../../utils/languageLocalization/altText';
 
 type PropsType = {
   user: IUser;
@@ -34,7 +35,7 @@ export const User = memo<PropsType>(
         <div className={classes.userMainBlock}>
           <div className={classes.userPhotoBlock}>
             <NavLink to={`${RoutePath.profile}/${user.id}`}>
-              <img className={classes.userPhoto} src={user.photos.small || userPhoto} alt="avatar" />
+              <img className={classes.userPhoto} src={user.photos.small || userPhoto} alt={altText.ava[languageMode]} />
             </NavLink>
           </div>
           {user.followed ? (
