@@ -23,7 +23,7 @@ export const LoginInformation = memo<PropsType>(({ incorrectAuthText, languageMo
   return (
     <div className={classes.helpBlock}>
       <p className={classes.incorrectAuthText}>
-        {incorrectText}. {contentText.incorrectAuthText[languageMode]}!
+        {incorrectText}. {errorText.incorrectAuthText[languageMode]}!
       </p>
       <p className={classes.mainHelpText}>
         {`${contentText.loginTextPt1[languageMode]} `}
@@ -39,10 +39,10 @@ export const LoginInformation = memo<PropsType>(({ incorrectAuthText, languageMo
         ) : (
           <span
             className={classes.additionalHelpText}
-            title="click to copy"
+            title={contentText.hintText[languageMode]}
             aria-hidden
             onClick={() => {
-              copyTextOnClick('free@samuraijs.com', setEmailStatus, setIsCopiedEmail);
+              copyTextOnClick('free@samuraijs.com', setEmailStatus, setIsCopiedEmail, languageMode);
             }}
           >
             free@samuraijs.com
@@ -56,10 +56,10 @@ export const LoginInformation = memo<PropsType>(({ incorrectAuthText, languageMo
         ) : (
           <span
             className={classes.additionalHelpText}
-            title="click to copy"
+            title={contentText.hintText[languageMode]}
             aria-hidden
             onClick={() => {
-              copyTextOnClick('free', setPasswordStatus, setIsCopiedPassword);
+              copyTextOnClick('free', setPasswordStatus, setIsCopiedPassword, languageMode);
             }}
           >
             free

@@ -132,10 +132,6 @@ export const contentText: LanguageLocalizationType = {
     ru: 'Запомнить меня',
   },
 
-  incorrectAuthText: {
-    en: 'Log in, please',
-    ru: 'Войдите, пожалуйста',
-  },
   loginTextPt1: {
     en: 'To log in get registered',
     ru: 'Для входа пройдите регистрацию',
@@ -211,6 +207,18 @@ export const contentText: LanguageLocalizationType = {
   dark: {
     en: 'Dark',
     ru: 'Темная',
+  },
+  hintText: {
+    en: 'click to copy',
+    ru: 'нажмите для копирования',
+  },
+  successfulCopying: {
+    en: 'successful copying',
+    ru: 'удачное копирование',
+  },
+  failedCopying: {
+    en: 'failed copying',
+    ru: 'неудачное копирование',
   },
   yes: {
     en: 'yes',
