@@ -37,7 +37,7 @@ This is a social network project built using:
   Email: `free@samuraijs.com`;  
   Password: `free`.
 
-- Deploy project ([firebase.google.com](https://firebase.google.com)) :
+- Project deployment ([firebase.google.com](https://firebase.google.com)) :
   - To host your site with Firebase Hosting, you need the Firebase CLI (a command line tool).  
     Run the following npm command to install the CLI or update to the latest CLI version.  
     `npm install -g firebase-tools`;
@@ -50,6 +50,7 @@ This is a social network project built using:
   - Deploy or redeploy your web app.  
     Put your static files (e.g., HTML, CSS, JS) in your app's deploy directory (the default is "public").  
     `firebase deploy`.
+
 ---
 
 ###### If you have some questions access, write me on [LinkedIn](www.linkedin.com/in/maksimkasota)
