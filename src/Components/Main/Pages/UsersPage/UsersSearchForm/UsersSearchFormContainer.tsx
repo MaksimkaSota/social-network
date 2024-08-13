@@ -8,7 +8,7 @@ import { validationText } from '../../../../../utils/languageLocalization/valida
 
 const validationSchema = (languageMode: string) => {
   return Yup.object().shape({
-    term: Yup.string().max(50, validationText.maxTerm[languageMode]),
+    term: Yup.string().max(30, validationText.max30[languageMode]),
   });
 };
 

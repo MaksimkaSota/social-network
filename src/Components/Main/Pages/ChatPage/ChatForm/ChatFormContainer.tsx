@@ -10,7 +10,7 @@ import { validationText } from '../../../../../utils/languageLocalization/valida
 const validationSchema = (languageMode: string) => {
   return Yup.object().shape({
     text: Yup.string()
-      .max(100, validationText.maxChatText[languageMode])
+      .max(200, validationText.max200[languageMode])
       .required(validationText.requiredChatText[languageMode]),
   });
 };

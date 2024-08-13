@@ -10,8 +10,8 @@ import { validationText } from '../../../../../utils/languageLocalization/valida
 const validationSchema = (languageMode: string) => {
   return Yup.object().shape({
     fullName: Yup.string()
-      .min(3, validationText.minName[languageMode])
-      .max(30, validationText.maxName[languageMode])
+      .min(3, validationText.min3[languageMode])
+      .max(30, validationText.max30[languageMode])
       .required(validationText.requiredName[languageMode]),
   });
 };
