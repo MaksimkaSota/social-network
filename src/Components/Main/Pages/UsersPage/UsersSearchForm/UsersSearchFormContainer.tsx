@@ -5,10 +5,11 @@ import * as Yup from 'yup';
 import { UsersSearchForm } from './UsersSearchForm';
 import type { FilterType, Nullable } from '../../../../../utils/types/common';
 import { validationText } from '../../../../../utils/languageLocalization/validationText';
+import { replaceString } from '../../../../../utils/helpers/componentsHelpers';
 
 const validationSchema = (languageMode: string) => {
   return Yup.object().shape({
-    term: Yup.string().max(50, validationText.maxTerm[languageMode]),
+    term: Yup.string().max(30, replaceString(validationText.max[languageMode], { '%{number}': 30 })),
   });
 };
 

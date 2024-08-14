@@ -6,12 +6,13 @@ import { ProfileDataForm } from './ProfileDataForm';
 import type { SetStatusType, SetSubmittingType } from '../../../../../utils/types/form';
 import type { IRequestProfile } from '../../../../../utils/types/api';
 import { validationText } from '../../../../../utils/languageLocalization/validationText';
+import { replaceString } from '../../../../../utils/helpers/componentsHelpers';
 
 const validationSchema = (languageMode: string) => {
   return Yup.object().shape({
     fullName: Yup.string()
-      .min(3, validationText.minName[languageMode])
-      .max(30, validationText.maxName[languageMode])
+      .min(3, replaceString(validationText.min[languageMode], { '%{number}': 3 }))
+      .max(30, replaceString(validationText.max[languageMode], { '%{number}': 30 }))
       .required(validationText.requiredName[languageMode]),
   });
 };

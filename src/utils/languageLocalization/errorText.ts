@@ -62,6 +62,10 @@ export const errorText: LanguageLocalizationType = {
   followUnfollow: {
     ru: 'При подписке или отписке что-то пошло не так',
   },
+  incorrectAuthText: {
+    en: 'Log in, please',
+    ru: 'Войдите, пожалуйста',
+  },
   incorrectLoginData: {
     ru: 'Неверная почта или пароль',
   },

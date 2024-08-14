@@ -6,11 +6,12 @@ import * as Yup from 'yup';
 import { ChatForm } from './ChatForm';
 import type { ChannelStatus } from '../../../../../utils/types/common';
 import { validationText } from '../../../../../utils/languageLocalization/validationText';
+import { replaceString } from '../../../../../utils/helpers/componentsHelpers';
 
 const validationSchema = (languageMode: string) => {
   return Yup.object().shape({
     text: Yup.string()
-      .max(100, validationText.maxChatText[languageMode])
+      .max(200, replaceString(validationText.max[languageMode], { '%{number}': 200 }))
       .required(validationText.requiredChatText[languageMode]),
   });
 };

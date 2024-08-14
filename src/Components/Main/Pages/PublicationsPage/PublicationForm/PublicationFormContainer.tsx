@@ -5,11 +5,12 @@ import type { FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { PublicationForm } from './PublicationForm';
 import { validationText } from '../../../../../utils/languageLocalization/validationText';
+import { replaceString } from '../../../../../utils/helpers/componentsHelpers';
 
 const validationSchema = (languageMode: string) => {
   return Yup.object().shape({
     text: Yup.string()
-      .max(100, validationText.maxPublication[languageMode])
+      .max(100, replaceString(validationText.max[languageMode], { '%{number}': 100 }))
       .required(validationText.requiredPublication[languageMode]),
   });
 };

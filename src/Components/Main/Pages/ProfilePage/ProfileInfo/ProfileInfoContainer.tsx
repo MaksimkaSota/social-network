@@ -1,7 +1,6 @@
 import type { Dispatch, FC, ReactElement, SetStateAction } from 'react';
 import { useCallback } from 'react';
 import { ProfileInfo } from './ProfileInfo';
-import { useMounted } from '../../../../../hooks/useMounted';
 import { updateData, updateStatus, updatePhoto } from '../../../../../redux/thunks/profile';
 import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
 import { useTypedDispatch } from '../../../../../hooks/useTypedDispatch';
@@ -21,7 +20,7 @@ type PropsType = {
   isOwner: boolean;
 };
 
-export const ProfileInfoContainer: FC<PropsType> = ({ profile, isOwner }): ReactElement | boolean => {
+export const ProfileInfoContainer: FC<PropsType> = ({ profile, isOwner }): ReactElement | null => {
   const { status, incorrectStatusText, incorrectPhotoText } = useTypedSelector(profileSelector);
   const isFetchingStatus = useTypedSelector(isFetchingStatusSelector);
   const statusError = useTypedSelector(statusErrorSelector);
@@ -46,10 +45,8 @@ export const ProfileInfoContainer: FC<PropsType> = ({ profile, isOwner }): React
     [dispatch]
   );
 
-  const mounted: boolean = useMounted();
-
   return (
-    mounted && (
+    profile && (
       <ProfileInfo
         isOwner={isOwner}
         profile={profile}

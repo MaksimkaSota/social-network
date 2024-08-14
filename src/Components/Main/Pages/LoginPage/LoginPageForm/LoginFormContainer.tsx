@@ -11,13 +11,14 @@ import type {
 } from '../../../../../utils/types/form';
 import { FormName } from '../../../../../utils/types/enums';
 import { validationText } from '../../../../../utils/languageLocalization/validationText';
+import { replaceString } from '../../../../../utils/helpers/componentsHelpers';
 
 const validationSchema = (languageMode: string) => {
   return Yup.object().shape({
     email: Yup.string().email(validationText.email[languageMode]).required(validationText.requiredEmail[languageMode]),
     password: Yup.string()
-      .min(5, validationText.minPassword[languageMode])
-      .max(20, validationText.maxPassword[languageMode])
+      .min(3, replaceString(validationText.min[languageMode], { '%{number}': 3 }))
+      .max(30, replaceString(validationText.max[languageMode], { '%{number}': 30 }))
       .required(validationText.requiredPassword[languageMode]),
     captcha: Yup.string().when(FormName.is_captcha, {
       is: true,
