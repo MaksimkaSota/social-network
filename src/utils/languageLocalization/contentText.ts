@@ -208,7 +208,7 @@ export const contentText: LanguageLocalizationType = {
     en: 'Dark',
     ru: 'Темная',
   },
-  hintText: {
+  copyHintText: {
     en: 'click to copy',
     ru: 'нажмите для копирования',
   },

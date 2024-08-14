@@ -1,5 +1,5 @@
 import type { KeyboardEvent, RefObject } from 'react';
-import type { ChannelStatus, Nullable } from '../types/common';
+import type { ChannelStatus, Nullable, ObjectType } from '../types/common';
 import type { SubmitFormType } from '../types/form';
 import { KeyboardEventCode } from '../types/enums';
 import { contentText } from '../languageLocalization/contentText';
@@ -38,4 +38,15 @@ export const copyTextOnClick = async (
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 1000);
   }
+};
+
+export const replaceString = (string: string, params: ObjectType, flag: string = 'i'): string => {
+  let result = string;
+
+  Object.entries(params).forEach(([key, value]: [key: string, value: any]): void => {
+    const regexp = new RegExp(`${key}`, flag);
+    result = result.replace(regexp, value);
+  });
+
+  return result;
 };

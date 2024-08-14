@@ -30,20 +30,12 @@ export const validationText: LanguageLocalizationType = {
     ru: 'Текст обязателен для ввода',
   },
 
-  min3: {
-    en: 'Must be not less than 3 symbols',
-    ru: 'Не менее 3 символов',
+  min: {
+    en: 'Must be not less than %{number} symbols',
+    ru: 'Не менее %{number} символов',
   },
-  max30: {
-    en: 'Must be not more than 30 symbols',
-    ru: 'Не более 30 символов',
-  },
-  max100: {
-    en: 'Must be not more than 100 symbols',
-    ru: 'Не более 100 символов',
-  },
-  max200: {
-    en: 'Must be not more than 200 symbols',
-    ru: 'Не более 200 символов',
+  max: {
+    en: 'Must be not more than %{number} symbols',
+    ru: 'Не более %{number} символов',
   },
 };

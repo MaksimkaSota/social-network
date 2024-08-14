@@ -34,6 +34,7 @@ export type FilterType = {
 export type LanguageLocalizationType = {
   [textKey: string]: { [languageKey: string]: string };
 };
+export type ObjectType = { [field: string]: any };
 
 export type ChannelStatus = 'pending' | 'fulfilled' | 'received';
 export type EventsNames = 'receiveMessage' | 'changeChannelStatus';

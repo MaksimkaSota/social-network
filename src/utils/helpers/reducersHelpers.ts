@@ -1,6 +1,5 @@
 import { v1 } from 'uuid';
-
-type ObjectType = { [field: string]: any };
+import type { ObjectType } from '../types/common';
 
 export const updateObjectInArray = (items: ObjectType[], itemId: number, objectProps: ObjectType): any[] => {
   return items.map((item: ObjectType): ObjectType => {

@@ -39,7 +39,7 @@ export const LoginInformation = memo<PropsType>(({ incorrectAuthText, languageMo
         ) : (
           <span
             className={classes.additionalHelpText}
-            title={contentText.hintText[languageMode]}
+            title={contentText.copyHintText[languageMode]}
             aria-hidden
             onClick={() => {
               copyTextOnClick('free@samuraijs.com', setEmailStatus, setIsCopiedEmail, languageMode);
@@ -56,7 +56,7 @@ export const LoginInformation = memo<PropsType>(({ incorrectAuthText, languageMo
         ) : (
           <span
             className={classes.additionalHelpText}
-            title={contentText.hintText[languageMode]}
+            title={contentText.copyHintText[languageMode]}
             aria-hidden
             onClick={() => {
               copyTextOnClick('free', setPasswordStatus, setIsCopiedPassword, languageMode);

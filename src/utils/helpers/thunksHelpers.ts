@@ -1,8 +1,7 @@
 import type { AxiosError } from 'axios';
 import { Language } from '../types/enums';
 import { errorText } from '../languageLocalization/errorText';
-
-type ObjectType = { [field: string]: string | ObjectType };
+import type { ObjectType } from '../types/common';
 
 export const fillErrorsObject = (object: ObjectType, key: string, message: string, languageMode: string): void => {
   if (message.toLowerCase().replaceAll(' ', '').includes(key.toLowerCase())) {
