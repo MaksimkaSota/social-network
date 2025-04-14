@@ -6,6 +6,7 @@
 }
 
 .preloaderWrapper {
+  background: $my-black;
   min-height: 100vh;
   @include flex(center, center);
   .preloader {
