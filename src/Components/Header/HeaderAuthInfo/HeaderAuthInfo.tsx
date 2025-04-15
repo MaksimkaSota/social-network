@@ -1,15 +1,13 @@
-import { memo } from 'react';
-import type { ReactElement } from 'react';
+import { memo, type ReactElement } from 'react';
 import classes from './HeaderAuthInfo.module.scss';
-import userPhoto from '../../../assets/images/user.png';
+import { Avatar } from '../../Common/Avatar/Avatar';
 import { Preloader } from '../../Common/Preloader/Preloader';
 import { Button } from '../../Common/Button/Button';
-import type { ErrorType, Nullable } from '../../../utils/types/common';
-import { contentText } from '../../../utils/languageLocalization/contentText';
 import { ConnectionError } from '../../Common/ConnectionError/ConnectionError';
 import { ServerError } from '../../Common/ServerError/ServerError';
+import type { ErrorType, Nullable } from '../../../utils/types/common';
 import { TextKey } from '../../../utils/types/enums';
-import { altText } from '../../../utils/languageLocalization/altText';
+import { contentText } from '../../../utils/languageLocalization/contentText';
 
 type PropsType = {
   loginName: Nullable<string>;
@@ -39,7 +37,7 @@ export const HeaderAuthInfo = memo<PropsType>(
           <Preloader className={classes.authUserPhotoPreloader} />
         ) : (
           <div className={classes.photoAndErrorBlock}>
-            <img className={classes.userPhoto} src={authUserPhoto || userPhoto} alt={altText.ava[languageMode]} />
+            <Avatar avatar={authUserPhoto} className={classes.userPhoto} languageMode={languageMode} />
             <ConnectionError
               error={authUserPhotoError}
               errorTextKey={TextKey.loadPhoto}
