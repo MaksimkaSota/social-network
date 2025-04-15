@@ -1,13 +1,12 @@
-import { useEffect } from 'react';
-import type { ChangeEvent, FC, ReactElement } from 'react';
+import { type ChangeEvent, type FC, type ReactElement, useEffect } from 'react';
 import { Field, Form } from 'formik';
+import classes from './ViewForm.module.scss';
+import EnMode from '../../../assets/images/en.svg';
+import RuMode from '../../../assets/images/ru.svg';
+import LightMode from '../../../assets/images/light.svg';
+import DarkMode from '../../../assets/images/dark.svg';
 import { FormName, Language, Theme } from '../../../utils/types/enums';
 import type { SetFieldValueType } from '../../../utils/types/form';
-import classes from './ViewForm.module.scss';
-import enMode from '../../../assets/images/en.png';
-import ruMode from '../../../assets/images/ru.png';
-import lightMode from '../../../assets/images/light.png';
-import darkMode from '../../../assets/images/dark.png';
 import { contentText } from '../../../utils/languageLocalization/contentText';
 import { altText } from '../../../utils/languageLocalization/altText';
 
@@ -43,22 +42,16 @@ export const ViewForm: FC<PropsType> = ({
   return (
     <Form className={classes.viewBlock}>
       <div className={classes.selectBlock}>
-        {languageMode === Language.en && (
-          <img className={classes.flag} src={enMode} alt={altText.enFlag[languageMode]} />
-        )}
-        {languageMode === Language.ru && (
-          <img className={classes.flag} src={ruMode} alt={altText.ruFlag[languageMode]} />
-        )}
+        {languageMode === Language.en && <EnMode className={classes.flag} alt={altText.enFlag[languageMode]} />}
+        {languageMode === Language.ru && <RuMode className={classes.flag} alt={altText.ruFlag[languageMode]} />}
         <Field name={FormName.language} component="select" className={classes.select} onChange={onLanguageChange}>
           <option value={Language.en}>{contentText.en[languageMode]}</option>
           <option value={Language.ru}>{contentText.ru[languageMode]}</option>
         </Field>
       </div>
       <div className={classes.selectBlock}>
-        {themeMode === Theme.light && (
-          <img className={classes.flag} src={lightMode} alt={altText.light[languageMode]} />
-        )}
-        {themeMode === Theme.dark && <img className={classes.flag} src={darkMode} alt={altText.dark[languageMode]} />}
+        {themeMode === Theme.light && <LightMode className={classes.theme} alt={altText.light[languageMode]} />}
+        {themeMode === Theme.dark && <DarkMode className={classes.theme} alt={altText.dark[languageMode]} />}
         <Field name={FormName.theme} component="select" className={classes.select} onChange={onThemeChange}>
           <option value={Theme.light}>{contentText.light[languageMode]}</option>
           <option value={Theme.dark}>{contentText.dark[languageMode]}</option>
