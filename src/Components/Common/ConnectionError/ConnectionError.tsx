@@ -1,7 +1,7 @@
 import type { FC, ReactElement } from 'react';
 import cn from 'classnames';
-import type { ErrorType, Nullable } from '../../../utils/types/common';
 import classes from './ConnectionError.module.scss';
+import type { ErrorType, Nullable } from '../../../utils/types/common';
 import { errorText } from '../../../utils/languageLocalization/errorText';
 
 type PropsType = {

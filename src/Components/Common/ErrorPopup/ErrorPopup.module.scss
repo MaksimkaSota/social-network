@@ -6,9 +6,11 @@
   width: 100%;
   height: 100%;
   background-color: $secondary-background;
+
   .errorPopupContainer {
     display: flex;
     flex-direction: column;
+
     .errorPopupButton {
       @include position(90%, 0 auto);
     }

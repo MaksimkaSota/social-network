@@ -1,7 +1,6 @@
-import type { KeyboardEvent, ReactElement } from 'react';
-import { memo } from 'react';
-import cn from 'classnames';
+import { type KeyboardEvent, memo, type ReactElement } from 'react';
 import { ErrorMessage, Field } from 'formik';
+import cn from 'classnames';
 import classes from './FormField.module.scss';
 import type { FormikErrorsType, FormikTouchedType, HandleChangeType } from '../../../utils/types/form';
 

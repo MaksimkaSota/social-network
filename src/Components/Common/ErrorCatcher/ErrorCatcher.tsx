@@ -1,9 +1,8 @@
-import type { ReactElement, ReactNode } from 'react';
-import { Component } from 'react';
+import { Component, type ReactElement, type ReactNode } from 'react';
 import { Error } from '../Error/Error';
 import { ErrorPopup } from '../ErrorPopup/ErrorPopup';
-import type { ErrorType, Nullable } from '../../../utils/types/common';
 import { Language, TextKey } from '../../../utils/types/enums';
+import type { ErrorType, Nullable } from '../../../utils/types/common';
 import { errorText } from '../../../utils/languageLocalization/errorText';
 
 type PropsType = {

@@ -8,13 +8,16 @@
   border: 1px solid $content;
   cursor: pointer;
   transition: all 0.3s linear;
+
   &:hover {
     box-shadow: 0 0 0 3px $active;
   }
+
   &:active {
     transition: none;
     box-shadow: 0 0 0 3px $content;
   }
+
   &:disabled {
     cursor: default;
     box-shadow: none;

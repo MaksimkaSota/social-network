@@ -1,45 +1,55 @@
 .paginator {
-  margin: $marginMin auto 0 auto;
   @include flex(center, center);
+  margin: $marginMin auto 0 auto;
+
   .paginatorBlock {
     display: flex;
     margin: 0 $marginMin;
-    .pageNumber {
-      &:not(:last-child) {
-        margin: 0 $marginMin 0 0;
-      }
+
+    .pageNumber:not(:last-child) {
+      margin: 0 $marginMin 0 0;
     }
+
     .selectedPage {
       font-weight: 700;
       color: $captions;
     }
   }
+
   .paginatorButton {
     margin: 0;
   }
+
   .selected {
     color: $captions;
   }
+
   @include respond($laptopMin) {
     @include position(90%, 0 auto);
+
     .paginatorBlock {
       flex-wrap: wrap;
       justify-content: center;
       margin: 0;
+
       .pageNumber {
         margin: 5px;
+
         &:not(:last-child) {
           margin: 5px;
         }
       }
     }
   }
+
   @include respond($tablet) {
     display: block;
+
     .paginatorButton {
       margin: 0 auto;
     }
   }
+
   @include respond($mobile) {
     .paginatorButton {
       width: 100%;
