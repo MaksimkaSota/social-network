@@ -1,15 +1,14 @@
-import type { FC, ReactElement } from 'react';
-import { useEffect } from 'react';
+import { type FC, type ReactElement, useEffect } from 'react';
 import { App } from './App';
-import { getAuth } from '../redux/thunks/auth';
-import { setLoginError, setLogoutError } from '../redux/actions/auth';
 import { ErrorCatcher } from './Common/ErrorCatcher/ErrorCatcher';
-import { useTypedSelector } from '../hooks/useTypedSelector';
 import { useTypedDispatch } from '../hooks/useTypedDispatch';
-import type { ErrorType, Nullable } from '../utils/types/common';
+import { useTypedSelector } from '../hooks/useTypedSelector';
 import { authSelector, viewSelector } from '../redux/selectors/selectors';
 import { isFetchingAuthSelector } from '../redux/selectors/loading';
 import { authErrorSelector } from '../redux/selectors/error';
+import { setLoginError, setLogoutError } from '../redux/actions/auth';
+import { getAuth } from '../redux/thunks/auth';
+import type { ErrorType, Nullable } from '../utils/types/common';
 
 export const AppContainer: FC = (): ReactElement => {
   const { loginError, logoutError } = useTypedSelector(authSelector);

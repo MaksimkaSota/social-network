@@ -1,45 +1,54 @@
 .navigation {
   @extend %side-block;
+
   .link {
+    @include link($content);
     display: block;
     padding: $padding;
     font-weight: 700;
     text-align: center;
     border-radius: $radius;
-    @include link($content);
+
     &:hover {
       color: $captions;
     }
   }
+
   .active {
     background: $active;
     border-radius: $radius;
+
     &:hover:not(:first-child) {
       cursor: default;
       color: $content;
     }
   }
+
   @include respond($laptopMax) {
     width: 15%;
   }
+
   @include respond($laptopMin) {
     width: 20%;
   }
+
   @include respond($tablet) {
     @include flex(center, null);
     width: 100%;
     border-bottom: 5px solid $secondary-background;
-    .link {
-      &:not(:last-child) {
-        margin: 0 $marginMin 0 0;
-      }
+
+    .link:not(:last-child) {
+      margin: 0 $marginMin 0 0;
     }
   }
+
   @include respond($mobile) {
     display: block;
     width: 100%;
+
     .link {
       font-size: 1.3rem;
+
       &:not(:last-child) {
         margin: 0;
       }

@@ -1,12 +1,10 @@
-import type { ReactElement } from 'react';
-import { memo } from 'react';
-import type { FormikHelpers } from 'formik';
-import { Formik } from 'formik';
+import { memo, type ReactElement } from 'react';
+import { Formik, type FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { ChatForm } from './ChatForm';
+import { replaceString } from '../../../../../utils/helpers/componentsHelpers';
 import type { ChannelStatus } from '../../../../../utils/types/common';
 import { validationText } from '../../../../../utils/languageLocalization/validationText';
-import { replaceString } from '../../../../../utils/helpers/componentsHelpers';
 
 const validationSchema = (languageMode: string) => {
   return Yup.object().shape({

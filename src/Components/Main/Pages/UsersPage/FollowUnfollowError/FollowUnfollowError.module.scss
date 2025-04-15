@@ -1,6 +1,4 @@
-.followUnfollowErrorBlock {
-  .followUnfollowError {
-    color: $error;
-    font-size: 1rem;
-  }
+.followUnfollowErrorBlock .followUnfollowError {
+  color: $error;
+  font-size: 1rem;
 }

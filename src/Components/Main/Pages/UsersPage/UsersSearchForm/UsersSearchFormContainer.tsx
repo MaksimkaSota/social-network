@@ -1,11 +1,10 @@
-import { memo } from 'react';
-import type { ReactElement } from 'react';
+import { memo, type ReactElement } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { UsersSearchForm } from './UsersSearchForm';
+import { replaceString } from '../../../../../utils/helpers/componentsHelpers';
 import type { FilterType, Nullable } from '../../../../../utils/types/common';
 import { validationText } from '../../../../../utils/languageLocalization/validationText';
-import { replaceString } from '../../../../../utils/helpers/componentsHelpers';
 
 const validationSchema = (languageMode: string) => {
   return Yup.object().shape({

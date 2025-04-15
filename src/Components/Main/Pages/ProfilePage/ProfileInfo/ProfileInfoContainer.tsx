@@ -1,19 +1,18 @@
-import type { Dispatch, FC, ReactElement, SetStateAction } from 'react';
-import { useCallback } from 'react';
+import { type Dispatch, type FC, type ReactElement, type SetStateAction, useCallback } from 'react';
 import { ProfileInfo } from './ProfileInfo';
-import { updateData, updateStatus, updatePhoto } from '../../../../../redux/thunks/profile';
-import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
 import { useTypedDispatch } from '../../../../../hooks/useTypedDispatch';
-import type { Nullable } from '../../../../../utils/types/common';
-import type { SetStatusType, SetSubmittingType } from '../../../../../utils/types/form';
-import type { IRequestProfile, IResponseProfile } from '../../../../../utils/types/api';
+import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
 import { profileSelector, viewSelector } from '../../../../../redux/selectors/selectors';
 import {
-  isFetchingStatusSelector,
-  isFetchingPhotoSelector,
   isFetchingDataSelector,
+  isFetchingPhotoSelector,
+  isFetchingStatusSelector,
 } from '../../../../../redux/selectors/loading';
-import { statusErrorSelector, photoErrorSelector, dataErrorSelector } from '../../../../../redux/selectors/error';
+import { dataErrorSelector, photoErrorSelector, statusErrorSelector } from '../../../../../redux/selectors/error';
+import { updateData, updatePhoto, updateStatus } from '../../../../../redux/thunks/profile';
+import type { SetStatusType, SetSubmittingType } from '../../../../../utils/types/form';
+import type { IRequestProfile, IResponseProfile } from '../../../../../utils/types/api';
+import type { Nullable } from '../../../../../utils/types/common';
 
 type PropsType = {
   profile: Nullable<IResponseProfile>;

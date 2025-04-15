@@ -4,11 +4,11 @@ import { User } from './User/User';
 import { Paginator } from '../../../Common/Paginator/Paginator';
 import { Preloader } from '../../../Common/Preloader/Preloader';
 import { Error } from '../../../Common/Error/Error';
+import { UsersSearchFormContainer } from './UsersSearchForm/UsersSearchFormContainer';
+import { Language } from '../../../../utils/types/enums';
 import type { ErrorType, FilterType, FollowUnfollowErrorType, Nullable } from '../../../../utils/types/common';
 import type { IUser } from '../../../../utils/types/api';
-import { UsersSearchFormContainer } from './UsersSearchForm/UsersSearchFormContainer';
 import { contentText } from '../../../../utils/languageLocalization/contentText';
-import { Language } from '../../../../utils/types/enums';
 import { errorText } from '../../../../utils/languageLocalization/errorText';
 
 type PropsType = {

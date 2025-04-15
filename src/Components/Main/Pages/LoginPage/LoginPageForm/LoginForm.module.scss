@@ -3,8 +3,10 @@
   border: 1px solid $active;
   border-radius: $radius;
   padding: $padding;
+
   .fieldBlock {
     margin: 0 0 $marginMin 0;
+
     .field {
       display: block;
       width: 100%;
@@ -12,42 +14,52 @@
       border-radius: $radius;
     }
   }
+
   .captcha {
     display: block;
     width: 100%;
     margin: 0 0 $marginMin 0;
     border-radius: $radius;
   }
+
   .toggleBlock {
     @include flex(center, null);
     margin: 0 0 $marginMin 0;
+
     .checkbox {
       cursor: pointer;
       margin: 0 $marginMin 0 0;
     }
+
     .label {
       cursor: pointer;
       color: $captions;
       font-size: 1rem;
     }
   }
+
   .error {
     text-align: center;
     font-size: 1.1rem;
   }
+
   .loginButton {
     width: 100%;
   }
+
   @include respond($laptopMin) {
     width: 50%;
   }
+
   @include respond($tablet) {
     width: 70%;
   }
+
   @include respond($mobile) {
     width: 90%;
   }
 }
+
 .loginFormError {
   border: 2px solid $error;
 }

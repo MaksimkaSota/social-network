@@ -1,5 +1,4 @@
-import type { ChangeEvent, FC, ReactElement } from 'react';
-import { useState, useEffect } from 'react';
+import { type ChangeEvent, type FC, type ReactElement, useEffect, useState } from 'react';
 import { Form } from 'formik';
 import cn from 'classnames';
 import classes from './ProfileDataForm.module.scss';
@@ -7,6 +6,7 @@ import { FormField } from '../../../../Common/FormField/FormField';
 import { Button } from '../../../../Common/Button/Button';
 import { FormServerError } from '../../../../Common/FormServerError/FormServerError';
 import { ContactsForm } from '../ContactsForm/ContactsForm';
+import { FormName } from '../../../../../utils/types/enums';
 import type {
   FormikErrorsType,
   HandleChangeType,
@@ -15,7 +15,6 @@ import type {
   ValidateFormType,
 } from '../../../../../utils/types/form';
 import type { IRequestProfile } from '../../../../../utils/types/api';
-import { FormName } from '../../../../../utils/types/enums';
 import { contentText } from '../../../../../utils/languageLocalization/contentText';
 
 type PropsType = {

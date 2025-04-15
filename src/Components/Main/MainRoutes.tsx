@@ -1,10 +1,9 @@
-import { Suspense, lazy, memo } from 'react';
-import type { ReactElement } from 'react';
+import { lazy, memo, type ReactElement, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { useAuthRedirect } from '../../hooks/useRedirect';
 import { ProfilePageContainer } from './Pages/ProfilePage/ProfilePageContainer';
 import { Preloader } from '../Common/Preloader/Preloader';
 import { NotFoundPage } from './Pages/NotFoundPage/NotFoundPage';
+import { useAuthRedirect } from '../../hooks/useRedirect';
 import { RoutePath } from '../../utils/types/enums';
 
 const PublicationsPageContainer = lazy(() => import('./Pages/PublicationsPage/PublicationsPageContainer'));

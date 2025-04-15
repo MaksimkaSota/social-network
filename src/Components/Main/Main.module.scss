@@ -10,21 +10,26 @@
 .main-dark {
   display: flex;
   flex: auto;
+
   .content {
     width: 90%;
   }
+
   @include respond($laptopMax) {
     .content {
       width: 85%;
     }
   }
+
   @include respond($laptopMin) {
     .content {
       width: 80%;
     }
   }
+
   @include respond($tablet) {
     display: block;
+
     .content {
       width: 100%;
     }

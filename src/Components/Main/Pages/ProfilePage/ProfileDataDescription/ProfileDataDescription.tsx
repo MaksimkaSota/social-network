@@ -2,11 +2,11 @@ import type { FC, ReactElement } from 'react';
 import classes from './ProfileDataDescription.module.scss';
 import { Preloader } from '../../../../Common/Preloader/Preloader';
 import { Contacts } from '../Contacts/Contacts';
+import { ConnectionError } from '../../../../Common/ConnectionError/ConnectionError';
+import { TextKey } from '../../../../../utils/types/enums';
 import type { ErrorType, Nullable } from '../../../../../utils/types/common';
 import type { IRequestProfile } from '../../../../../utils/types/api';
 import { contentText } from '../../../../../utils/languageLocalization/contentText';
-import { ConnectionError } from '../../../../Common/ConnectionError/ConnectionError';
-import { TextKey } from '../../../../../utils/types/enums';
 
 type PropsType = {
   data: IRequestProfile;

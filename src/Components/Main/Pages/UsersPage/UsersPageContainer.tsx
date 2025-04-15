@@ -1,15 +1,14 @@
-import type { FC, ReactElement } from 'react';
-import { useCallback } from 'react';
+import { type FC, type ReactElement, useCallback } from 'react';
 import { UsersPage } from './UsersPage';
 import { useMounted } from '../../../../hooks/useMounted';
-import { followUser, unfollowUser } from '../../../../redux/thunks/users';
-import { useTypedSelector } from '../../../../hooks/useTypedSelector';
+import { useSearchParameters } from '../../../../hooks/useSearchParameters';
 import { useTypedDispatch } from '../../../../hooks/useTypedDispatch';
-import { setFilter, setPage } from '../../../../redux/actions/users';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { authSelector, usersSelector, viewSelector } from '../../../../redux/selectors/selectors';
 import { isFetchingUsersSelector } from '../../../../redux/selectors/loading';
 import { usersErrorSelector } from '../../../../redux/selectors/error';
-import { useSearchParameters } from '../../../../hooks/useSearchParameters';
+import { setFilter, setPage } from '../../../../redux/actions/users';
+import { followUser, unfollowUser } from '../../../../redux/thunks/users';
 
 const UsersPageContainer: FC = (): ReactElement | boolean => {
   const { id: authorizedUserId } = useTypedSelector(authSelector);

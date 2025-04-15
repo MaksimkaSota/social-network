@@ -9,57 +9,71 @@
 .header-light,
 .header-dark {
   @include flex(null, center);
+
   .logoContainer {
     @extend %side-block;
+
     .logo {
       width: 100%;
       border-radius: $radius;
     }
   }
+
   .headline {
+    @include captions(5rem, 0.5rem);
     width: 80%;
     text-align: center;
-    @include captions(5rem, 0.5rem);
   }
+
   .loginContainer {
     @extend %side-block;
     text-align: center;
   }
+
   @include respond($laptopMax) {
     .logoContainer {
       width: 15%;
     }
+
     .headline {
       width: 70%;
     }
+
     .loginContainer {
       width: 15%;
     }
   }
+
   @include respond($laptopMin) {
     .logoContainer {
       width: 20%;
     }
+
     .headline {
       width: 60%;
       font-size: 3.5rem;
     }
+
     .loginContainer {
       width: 20%;
     }
   }
+
   @include respond($tablet) {
     flex-wrap: wrap;
     justify-content: space-evenly;
+
     .headline {
       width: 100%;
       font-size: 3rem;
       order: -1;
     }
+
     .loginContainer {
       width: auto;
     }
   }
+
   @include respond($mobile) {
     .logoContainer {
       width: 25%;

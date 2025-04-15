@@ -1,21 +1,27 @@
 .photoBlock {
   margin: 0 0 $marginMin 0;
+
   .userPhoto {
     @include position(50%, 0 auto);
     border-radius: $radius;
   }
+
   .userPhotoError {
     font-size: 1.3rem;
   }
+
   .photoPreloader {
     @include position(50%, 0 auto $marginMin auto);
   }
+
   @include respond($laptopMin) {
     @include position(50%, 0);
   }
+
   @include respond($tablet) {
     @include position(70%, 0 auto $marginMin auto);
   }
+
   @include respond($mobile) {
     width: 100%;
   }

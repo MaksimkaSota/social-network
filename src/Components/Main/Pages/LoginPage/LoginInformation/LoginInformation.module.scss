@@ -1,30 +1,38 @@
 .helpBlock {
   width: 60%;
   margin: 0 auto $marginMax auto;
+
   .incorrectAuthText {
     margin: 0 0 $marginMin 0;
     color: $error;
   }
+
   .mainHelpText {
     color: $content;
+
     .helpLink {
       color: $captions;
       transition: all 0.3s linear;
+
       &:hover {
         color: $active;
       }
     }
+
     .additionalHelpText {
       color: $captions;
       cursor: pointer;
     }
+
     .copyText {
       color: $active;
     }
   }
+
   @include respond($laptopMin) {
     width: 80%;
   }
+
   @include respond($tablet) {
     width: 90%;
   }

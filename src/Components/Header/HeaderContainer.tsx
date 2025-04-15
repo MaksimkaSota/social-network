@@ -1,12 +1,11 @@
-import { useCallback } from 'react';
-import type { FC, ReactElement } from 'react';
+import { type FC, type ReactElement, useCallback } from 'react';
 import { Header } from './Header';
-import { logout } from '../../redux/thunks/auth';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useTypedDispatch } from '../../hooks/useTypedDispatch';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { authSelector, profileSelector, viewSelector } from '../../redux/selectors/selectors';
 import { isFetchingPhotoSelector } from '../../redux/selectors/loading';
 import { photoErrorSelector } from '../../redux/selectors/error';
+import { logout } from '../../redux/thunks/auth';
 
 export const HeaderContainer: FC = (): ReactElement => {
   const {

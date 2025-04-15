@@ -1,55 +1,61 @@
 .sendTextBlock {
   margin: $marginMin $marginMax 0 0;
+
   .formBlock {
     @include flex(center, center);
     margin: $marginMin 0 0 0;
+
     .fieldBlock {
       @include position(50%, 0 auto);
+
       .inputText {
         @extend %textarea;
         width: 100%;
       }
     }
+
     .sendButton {
       margin: 0;
     }
   }
+
   .pendingText {
     text-align: center;
     font-size: 1rem;
     color: $error;
   }
+
   @include respond($laptopMax) {
-    .formBlock {
-      .fieldBlock {
-        width: 60%;
-      }
+    .formBlock .fieldBlock {
+      width: 60%;
     }
   }
+
   @include respond($laptopMin) {
-    .formBlock {
-      .fieldBlock {
-        width: 70%;
-      }
+    .formBlock .fieldBlock {
+      width: 70%;
     }
   }
+
   @include respond($tablet) {
     margin: 0;
+
     .formBlock {
       display: block;
+
       .fieldBlock {
         @include position(100%, $marginMin 0);
       }
+
       .sendButton {
         margin: 0 auto;
       }
     }
   }
+
   @include respond($mobile) {
-    .formBlock {
-      .sendButton {
-        width: 100%;
-      }
+    .formBlock .sendButton {
+      width: 100%;
     }
   }
 }

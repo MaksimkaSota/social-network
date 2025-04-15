@@ -5,8 +5,8 @@ import { InputFile } from '../../../../Common/InputFile/InputFile';
 import { Preloader } from '../../../../Common/Preloader/Preloader';
 import { ConnectionError } from '../../../../Common/ConnectionError/ConnectionError';
 import { ServerError } from '../../../../Common/ServerError/ServerError';
-import type { ErrorType, Nullable } from '../../../../../utils/types/common';
 import { TextKey } from '../../../../../utils/types/enums';
+import type { ErrorType, Nullable } from '../../../../../utils/types/common';
 
 type PropsType = {
   isOwner: boolean;

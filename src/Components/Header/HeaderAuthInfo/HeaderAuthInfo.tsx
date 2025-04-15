@@ -5,8 +5,8 @@ import { Preloader } from '../../Common/Preloader/Preloader';
 import { Button } from '../../Common/Button/Button';
 import { ConnectionError } from '../../Common/ConnectionError/ConnectionError';
 import { ServerError } from '../../Common/ServerError/ServerError';
-import type { ErrorType, Nullable } from '../../../utils/types/common';
 import { TextKey } from '../../../utils/types/enums';
+import type { ErrorType, Nullable } from '../../../utils/types/common';
 import { contentText } from '../../../utils/languageLocalization/contentText';
 
 type PropsType = {

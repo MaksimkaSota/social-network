@@ -1,11 +1,12 @@
-import { useEffect } from 'react';
-import type { FC, ReactElement } from 'react';
+import { type FC, type ReactElement, useEffect } from 'react';
 import { Form } from 'formik';
 import cn from 'classnames';
 import classes from './LoginForm.module.scss';
 import { Button } from '../../../../Common/Button/Button';
 import { FormField } from '../../../../Common/FormField/FormField';
 import { FormServerError } from '../../../../Common/FormServerError/FormServerError';
+import { InputPassword } from '../../../../Common/InputPassword/InputPassword';
+import { FormName } from '../../../../../utils/types/enums';
 import type {
   FormikErrorsType,
   FormikTouchedType,
@@ -13,9 +14,7 @@ import type {
   SetStatusType,
   ValidateFormType,
 } from '../../../../../utils/types/form';
-import { FormName } from '../../../../../utils/types/enums';
 import { contentText } from '../../../../../utils/languageLocalization/contentText';
-import { InputPassword } from '../../../../Common/InputPassword/InputPassword';
 import { altText } from '../../../../../utils/languageLocalization/altText';
 
 type PropsType = {

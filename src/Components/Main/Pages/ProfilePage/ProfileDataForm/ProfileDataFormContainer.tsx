@@ -1,12 +1,11 @@
 import type { Dispatch, FC, ReactElement, SetStateAction } from 'react';
-import { Formik } from 'formik';
-import type { FormikHelpers } from 'formik';
+import { Formik, type FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { ProfileDataForm } from './ProfileDataForm';
+import { replaceString } from '../../../../../utils/helpers/componentsHelpers';
 import type { SetStatusType, SetSubmittingType } from '../../../../../utils/types/form';
 import type { IRequestProfile } from '../../../../../utils/types/api';
 import { validationText } from '../../../../../utils/languageLocalization/validationText';
-import { replaceString } from '../../../../../utils/helpers/componentsHelpers';
 
 const validationSchema = (languageMode: string) => {
   return Yup.object().shape({

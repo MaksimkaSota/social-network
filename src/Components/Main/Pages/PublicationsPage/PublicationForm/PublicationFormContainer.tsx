@@ -1,11 +1,9 @@
-import { memo } from 'react';
-import type { ReactElement } from 'react';
-import { Formik } from 'formik';
-import type { FormikHelpers } from 'formik';
+import { memo, type ReactElement } from 'react';
+import { Formik, type FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { PublicationForm } from './PublicationForm';
-import { validationText } from '../../../../../utils/languageLocalization/validationText';
 import { replaceString } from '../../../../../utils/helpers/componentsHelpers';
+import { validationText } from '../../../../../utils/languageLocalization/validationText';
 
 const validationSchema = (languageMode: string) => {
   return Yup.object().shape({

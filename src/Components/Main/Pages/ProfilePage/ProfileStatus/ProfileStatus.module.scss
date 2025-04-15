@@ -1,27 +1,34 @@
 .profileStatus {
   @include position(70%, 0 auto);
+
   .statusBlock {
     @include flex(center, center);
     margin: 0 0 $marginMin 0;
+
     .title {
       @include captions(1.1rem);
       margin: 0 $marginMin 0 0;
     }
+
     .inputStatus {
       @extend %textarea;
       width: 100%;
     }
   }
+
   .statusButton {
     @include position(100%, 0);
     padding: 5px $padding;
   }
+
   @include respond($laptopMin) {
     width: 50%;
   }
+
   @include respond($tablet) {
     width: 70%;
   }
+
   @include respond($mobile) {
     width: 90%;
   }

@@ -2,20 +2,25 @@
   &:not(:last-child) {
     margin: 0 0 $marginMin 0;
   }
+
   .contact {
     @include flex(null, center);
+
     .title {
       @include captions(1rem);
       margin: 0 $marginMin;
     }
+
     .field {
       padding: 5px;
       border-radius: $radius;
     }
+
     .fieldError {
       border: 2px solid $error;
     }
   }
+
   .error {
     margin: $marginMin 0 0 $marginMin;
   }

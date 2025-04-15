@@ -2,51 +2,59 @@
   .authUserPhotoPreloader {
     @include position(50%, 0 auto $marginMin auto);
   }
+
   .photoAndErrorBlock {
     .userPhoto {
       @include position(50%, 0 auto 0 auto);
       border-radius: $radius;
     }
+
     .userPhotoError {
       font-size: 1rem;
     }
   }
+
   .text {
     margin: $marginMin 0;
     font-size: 0.9rem;
     color: $captions;
   }
+
   @include respond($laptopMax) {
     .authUserPhotoPreloader {
       width: 60%;
     }
-    .photoAndErrorBlock {
-      .userPhoto {
-        width: 60%;
-      }
+
+    .photoAndErrorBlock .userPhoto {
+      width: 60%;
     }
   }
+
   @include respond($laptopMin) {
     .authUserPhotoPreloader {
       width: 70%;
     }
-    .photoAndErrorBlock {
-      .userPhoto {
-        width: 70%;
-      }
+
+    .photoAndErrorBlock .userPhoto {
+      width: 70%;
     }
   }
+
   @include respond($tablet) {
     @include flex(center, center);
+
     .authUserPhotoPreloader {
       width: 100px;
     }
+
     .photoAndErrorBlock {
       width: 50%;
+
       .userPhoto {
         width: 100px;
       }
     }
+
     .container {
       margin: 0 0 0 $marginMin;
     }

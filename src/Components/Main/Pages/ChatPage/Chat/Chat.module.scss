@@ -1,12 +1,15 @@
 .chatBlock {
   @include position(70%, 0 auto);
+
   .title {
     @extend %title;
     text-align: center;
   }
+
   @include respond($laptopMax) {
     width: 80%;
   }
+
   @include respond($laptopMin) {
     width: 90%;
   }

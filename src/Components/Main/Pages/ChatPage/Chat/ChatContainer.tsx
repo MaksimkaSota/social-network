@@ -1,12 +1,11 @@
-import type { FC, ReactElement } from 'react';
-import { useCallback, useEffect } from 'react';
+import { type FC, type ReactElement, useCallback, useEffect } from 'react';
 import { Chat } from './Chat';
-import { useTypedDispatch } from '../../../../../hooks/useTypedDispatch';
-import { sendMessage, startMessagesListening, stopMessagesListening } from '../../../../../redux/thunks/chat';
-import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
-import { resetMessages, setChannelStatus } from '../../../../../redux/actions/chat';
-import { chatSelector, viewSelector } from '../../../../../redux/selectors/selectors';
 import { useViewParameters } from '../../../../../hooks/useViewParameters';
+import { useTypedDispatch } from '../../../../../hooks/useTypedDispatch';
+import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
+import { chatSelector, viewSelector } from '../../../../../redux/selectors/selectors';
+import { resetMessages, setChannelStatus } from '../../../../../redux/actions/chat';
+import { sendMessage, startMessagesListening, stopMessagesListening } from '../../../../../redux/thunks/chat';
 
 export const ChatContainer: FC = (): ReactElement => {
   const { messages, channelStatus } = useTypedSelector(chatSelector);
