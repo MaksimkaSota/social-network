@@ -1,5 +1,4 @@
-import { memo } from 'react';
-import type { ReactElement } from 'react';
+import { memo, type ReactElement } from 'react';
 import { Formik } from 'formik';
 import { ViewForm } from './ViewForm';
 

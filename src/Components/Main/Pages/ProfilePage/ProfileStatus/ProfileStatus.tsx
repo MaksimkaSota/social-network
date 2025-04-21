@@ -1,5 +1,4 @@
-import { useEffect, useState, memo } from 'react';
-import type { ChangeEvent, ReactElement } from 'react';
+import { type ChangeEvent, memo, type ReactElement, useEffect, useState } from 'react';
 import classes from './ProfileStatus.module.scss';
 import { ProfileStatusText } from '../ProfileStatusText/ProfileStatusText';
 import { Button } from '../../../../Common/Button/Button';

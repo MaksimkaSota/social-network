@@ -1,12 +1,11 @@
-import type { FC, ReactElement, UIEvent } from 'react';
-import { useEffect, useState, useRef } from 'react';
+import { type FC, type ReactElement, type UIEvent, useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
-import { ChatMessage } from '../ChatMessage/ChatMessage';
-import type { IChatMessage } from '../../../../../utils/types/api';
 import classes from './ChatMessages.module.scss';
+import { ChatMessage } from '../ChatMessage/ChatMessage';
 import { Preloader } from '../../../../Common/Preloader/Preloader';
-import type { ChannelStatus } from '../../../../../utils/types/common';
 import { scrollToBottom } from '../../../../../utils/helpers/componentsHelpers';
+import type { IChatMessage } from '../../../../../utils/types/api';
+import type { ChannelStatus } from '../../../../../utils/types/common';
 import { contentText } from '../../../../../utils/languageLocalization/contentText';
 
 type PropsType = {

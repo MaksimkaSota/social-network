@@ -1,16 +1,15 @@
-import { useEffect } from 'react';
-import type { FC, ReactElement } from 'react';
+import { type FC, type ReactElement, useEffect } from 'react';
 import { Field, Form } from 'formik';
 import classes from './UsersSearchForm.module.scss';
 import { Button } from '../../../../Common/Button/Button';
 import { FormField } from '../../../../Common/FormField/FormField';
+import { FormName } from '../../../../../utils/types/enums';
 import type {
   FormikErrorsType,
   FormikTouchedType,
   HandleChangeType,
   ValidateFormType,
 } from '../../../../../utils/types/form';
-import { FormName } from '../../../../../utils/types/enums';
 import type { Nullable } from '../../../../../utils/types/common';
 import { contentText } from '../../../../../utils/languageLocalization/contentText';
 

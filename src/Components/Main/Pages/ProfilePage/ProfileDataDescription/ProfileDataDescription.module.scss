@@ -1,14 +1,18 @@
 .dataDescriptionBlock {
   margin: 0 0 $marginMin 0;
+
   .dataError {
     font-size: 1.3rem;
   }
+
   .descriptionBlock {
     @include flex(null, center);
+
     .title {
       @include captions(1.1rem);
       margin: 0 $marginMin 0 0;
     }
+
     .text {
       font-size: 1.2rem;
       word-break: break-word;
@@ -16,8 +20,6 @@
   }
 }
 
-.dataPreloaderWrapper {
-  .dataPreloader {
-    @include position(50%, $marginMin auto 0 auto);
-  }
+.dataPreloaderWrapper .dataPreloader {
+  @include position(50%, $marginMin auto 0 auto);
 }

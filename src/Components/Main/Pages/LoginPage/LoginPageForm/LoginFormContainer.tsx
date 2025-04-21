@@ -1,17 +1,16 @@
 import type { FC, ReactElement } from 'react';
-import { Formik } from 'formik';
-import type { FormikHelpers } from 'formik';
+import { Formik, type FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { LoginForm } from './LoginForm';
+import { replaceString } from '../../../../../utils/helpers/componentsHelpers';
+import { FormName } from '../../../../../utils/types/enums';
 import type {
   SetFieldTouchedType,
   SetFieldValueType,
   SetStatusType,
   SetSubmittingType,
 } from '../../../../../utils/types/form';
-import { FormName } from '../../../../../utils/types/enums';
 import { validationText } from '../../../../../utils/languageLocalization/validationText';
-import { replaceString } from '../../../../../utils/helpers/componentsHelpers';
 
 const validationSchema = (languageMode: string) => {
   return Yup.object().shape({

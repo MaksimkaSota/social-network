@@ -1,18 +1,17 @@
-import { useEffect } from 'react';
-import type { FC, KeyboardEvent, ReactElement } from 'react';
+import { type FC, type KeyboardEvent, type ReactElement, useEffect } from 'react';
 import { Form, useFormikContext } from 'formik';
 import classes from './ChatForm.module.scss';
 import { Button } from '../../../../Common/Button/Button';
 import { FormField } from '../../../../Common/FormField/FormField';
+import { submitFormOnKeyboardPress } from '../../../../../utils/helpers/componentsHelpers';
+import { FormName } from '../../../../../utils/types/enums';
 import type {
   FormikErrorsType,
   FormikTouchedType,
   HandleChangeType,
   ValidateFormType,
 } from '../../../../../utils/types/form';
-import { FormName } from '../../../../../utils/types/enums';
 import type { ChannelStatus } from '../../../../../utils/types/common';
-import { submitFormOnKeyboardPress } from '../../../../../utils/helpers/componentsHelpers';
 import { contentText } from '../../../../../utils/languageLocalization/contentText';
 import { errorText } from '../../../../../utils/languageLocalization/errorText';
 

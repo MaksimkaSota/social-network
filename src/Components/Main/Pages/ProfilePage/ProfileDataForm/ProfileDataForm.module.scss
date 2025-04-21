@@ -1,48 +1,60 @@
 .dataFormBlock {
   .innerDataFormBlock {
     margin: 0 0 $marginMin 0;
+
     .descriptionBlock {
       @include flex(null, center);
+
       &:nth-child(2) {
         margin: $marginMin 0;
       }
+
       &:nth-child(4) {
         margin: $marginMin 0;
       }
+
       .title {
         @include captions(1.1rem);
         margin: 0 $marginMin 0 0;
       }
+
       .formField {
         @include flex(null, flex-start);
         flex-direction: column;
       }
+
       .field {
         padding: 5px;
         border-radius: $radius;
       }
+
       .fieldError {
         border: 2px solid $error;
       }
+
       .textarea {
         @extend %textarea;
         width: 100%;
       }
+
       .checkbox {
         cursor: pointer;
         margin: 0 $marginMin 0 0;
       }
+
       .label {
         cursor: pointer;
         font-size: 1rem;
       }
     }
+
     .error {
       text-align: left;
       margin: $marginMin 0;
       font-size: 1rem;
     }
   }
+
   .button {
     @include position(100%, 0);
     padding: 5px $padding;

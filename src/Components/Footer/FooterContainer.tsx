@@ -1,8 +1,8 @@
 import type { FC, ReactElement } from 'react';
+import { Footer } from './Footer';
+import { useTypedDispatch } from '../../hooks/useTypedDispatch';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { viewSelector } from '../../redux/selectors/selectors';
-import { useTypedDispatch } from '../../hooks/useTypedDispatch';
-import { Footer } from './Footer';
 import { setLanguageMode, setThemeMode } from '../../redux/actions/view';
 
 export const FooterContainer: FC = (): ReactElement => {

@@ -1,8 +1,8 @@
 import type { FC, ReactElement } from 'react';
 import classes from './Header.module.scss';
-import logo from '../../assets/images/logo.png';
 import { HeaderAuthInfo } from './HeaderAuthInfo/HeaderAuthInfo';
 import { HeaderNotAuthInfo } from './HeaderNotAuthInfo/HeaderNotAuthInfo';
+import Logo from '../../assets/images/logo.svg';
 import type { ErrorType, Nullable } from '../../utils/types/common';
 import { contentText } from '../../utils/languageLocalization/contentText';
 import { altText } from '../../utils/languageLocalization/altText';
@@ -37,7 +37,7 @@ export const Header: FC<PropsType> = ({
   return (
     <header className={classes[`header-${themeMode}`]}>
       <div className={classes.logoContainer}>
-        <img className={classes.logo} src={logo} alt={altText.logo[languageMode]} />
+        <Logo className={classes.logo} alt={altText.logo[languageMode]} />
       </div>
       <h1 className={classes.headline}>{contentText.headline[languageMode]}</h1>
       <div className={classes.loginContainer}>

@@ -1,5 +1,5 @@
-import cn from 'classnames';
 import type { FC, ReactElement } from 'react';
+import cn from 'classnames';
 import classes from './ServerError.module.scss';
 import { Language } from '../../../utils/types/enums';
 import { errorText } from '../../../utils/languageLocalization/errorText';

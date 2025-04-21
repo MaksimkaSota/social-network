@@ -1,5 +1,4 @@
-import { useState, memo } from 'react';
-import type { Dispatch, ReactElement, SetStateAction } from 'react';
+import { type Dispatch, memo, type ReactElement, type SetStateAction, useState } from 'react';
 import classes from './ProfileData.module.scss';
 import { Button } from '../../../../Common/Button/Button';
 import { ProfileDataFormContainer } from '../ProfileDataForm/ProfileDataFormContainer';

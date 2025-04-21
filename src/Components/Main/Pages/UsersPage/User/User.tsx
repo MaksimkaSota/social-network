@@ -1,15 +1,13 @@
-import type { ReactElement } from 'react';
-import { memo } from 'react';
+import { memo, type ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import classes from './User.module.scss';
-import userPhoto from '../../../../../assets/images/user.png';
+import { Avatar } from '../../../../Common/Avatar/Avatar';
 import { Button } from '../../../../Common/Button/Button';
 import { FollowUnfollowError } from '../FollowUnfollowError/FollowUnfollowError';
 import { RoutePath } from '../../../../../utils/types/enums';
 import type { IUser } from '../../../../../utils/types/api';
 import type { FollowUnfollowErrorType } from '../../../../../utils/types/common';
 import { contentText } from '../../../../../utils/languageLocalization/contentText';
-import { altText } from '../../../../../utils/languageLocalization/altText';
 
 type PropsType = {
   user: IUser;
@@ -35,7 +33,7 @@ export const User = memo<PropsType>(
         <div className={classes.userMainBlock}>
           <div className={classes.userPhotoBlock}>
             <NavLink to={`${RoutePath.profile}/${user.id}`}>
-              <img className={classes.userPhoto} src={user.photos.small || userPhoto} alt={altText.ava[languageMode]} />
+              <Avatar avatar={user.photos.small} className={classes.userPhoto} languageMode={languageMode} />
             </NavLink>
           </div>
           {user.followed ? (

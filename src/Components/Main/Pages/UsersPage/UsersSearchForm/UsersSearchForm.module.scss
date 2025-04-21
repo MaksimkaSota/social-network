@@ -1,54 +1,69 @@
 .searchUsersBlock {
-  margin: $marginMin 0 0 0;
   @include flex(center, flex-start);
+  margin: $marginMin 0 0 0;
+
   .fieldBlock {
     width: 20%;
     margin: 0 $marginMin 0 0;
+
     .inputSearch {
       width: 100%;
     }
   }
+
   .selectSearch {
     width: 20%;
     margin: 0 $marginMin 0 0;
     border: 2px solid rgb(102, 252, 241);
   }
+
   .inputSearch,
   .selectSearch {
     padding: $padding;
     border-radius: $radius;
   }
+
   .searchButton {
     margin: 0;
   }
+
   @include respond($laptopMin) {
     margin: $marginMin 0;
+
     .fieldBlock {
       width: 30%;
     }
+
     .selectSearch {
       width: 30%;
     }
   }
+
   @include respond($tablet) {
     display: block;
+
     .fieldBlock {
       @include position(50%, 0 auto $marginMin);
     }
+
     .selectSearch {
       @include position(50%, 0 auto $marginMin);
     }
+
     .searchButton {
       margin: 0 auto;
     }
   }
+
   @include respond($mobile) {
     .fieldBlock {
       width: 90%;
     }
+
     .selectSearch {
       width: 90%;
     }
+
     .searchButton {
       width: 90%;
     }

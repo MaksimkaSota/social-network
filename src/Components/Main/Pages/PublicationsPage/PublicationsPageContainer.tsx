@@ -1,11 +1,10 @@
-import type { FC, ReactElement } from 'react';
-import { useCallback } from 'react';
+import { type FC, type ReactElement, useCallback } from 'react';
 import { PublicationsPage } from './PublicationsPage';
-import { addMessage, addPost } from '../../../../redux/actions/publications';
-import { useTypedSelector } from '../../../../hooks/useTypedSelector';
-import { useTypedDispatch } from '../../../../hooks/useTypedDispatch';
-import { publicationsSelector, viewSelector } from '../../../../redux/selectors/selectors';
 import { useViewParameters } from '../../../../hooks/useViewParameters';
+import { useTypedDispatch } from '../../../../hooks/useTypedDispatch';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
+import { publicationsSelector, viewSelector } from '../../../../redux/selectors/selectors';
+import { addMessage, addPost } from '../../../../redux/actions/publications';
 
 const PublicationsPageContainer: FC = (): ReactElement => {
   const { messages, posts } = useTypedSelector(publicationsSelector);

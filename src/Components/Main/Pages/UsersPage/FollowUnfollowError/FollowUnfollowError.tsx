@@ -1,8 +1,8 @@
 import type { FC, ReactElement } from 'react';
 import classes from './FollowUnfollowError.module.scss';
+import { Language } from '../../../../../utils/types/enums';
 import type { FollowUnfollowErrorType } from '../../../../../utils/types/common';
 import { errorText } from '../../../../../utils/languageLocalization/errorText';
-import { Language } from '../../../../../utils/types/enums';
 
 type PropsType = {
   errors: FollowUnfollowErrorType[];

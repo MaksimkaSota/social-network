@@ -8,71 +8,85 @@
 
 .footer-light,
 .footer-dark {
-  text-align: center;
   @include flex(null, center);
+  text-align: center;
+
   .mailContainer {
     @extend %side-block;
+
     .mail {
       width: 100%;
     }
   }
+
   .contactsContainer {
-    width: 80%;
     @include flex(center, baseline);
+    width: 80%;
+
     .title {
       @include captions(3rem, 0.3rem);
       margin: 0 $marginMax 0 0;
     }
-    .contacts {
-      .contact {
-        @include link($captions);
-        &:not(:last-child) {
-          margin: 0 $marginMax 0 0;
-        }
-        &:hover {
-          color: $active;
-        }
+
+    .contacts .contact {
+      @include link($captions);
+
+      &:not(:last-child) {
+        margin: 0 $marginMax 0 0;
+      }
+
+      &:hover {
+        color: $active;
       }
     }
   }
+
   @include respond($laptopMax) {
     .mailContainer {
       width: 15%;
     }
+
     .contactsContainer {
       width: 70%;
     }
   }
+
   @include respond($laptopMin) {
     .mailContainer {
       width: 20%;
     }
+
     .contactsContainer {
       display: block;
       width: 60%;
+
       .title {
         font-size: 3.5rem;
         margin: 0 0 $marginMin 0;
       }
     }
   }
+
   @include respond($tablet) {
     flex-direction: column;
     padding: 0 0 $padding 0;
+
     .mailContainer {
       display: none;
     }
+
     .contactsContainer {
       width: 100%;
+
       .title {
         font-size: 3rem;
       }
-      .contacts {
-        .contact {
-          display: block;
-          &:not(:last-child) {
-            margin: 0;
-          }
+
+      .contacts .contact {
+        display: block;
+
+        &:not(:last-child) {
+          margin: 0;
         }
       }
     }

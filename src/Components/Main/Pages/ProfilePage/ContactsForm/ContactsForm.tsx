@@ -1,6 +1,6 @@
 import type { FC, ReactElement } from 'react';
-import { ContactForm } from '../ContactForm/ContactForm';
 import classes from '../Contacts/Contacts.module.scss';
+import { ContactForm } from '../ContactForm/ContactForm';
 import type { HandleChangeType } from '../../../../../utils/types/form';
 import type { IRequestProfile } from '../../../../../utils/types/api';
 import { contentText } from '../../../../../utils/languageLocalization/contentText';

@@ -1,9 +1,7 @@
-import type { ReactElement } from 'react';
-import { memo } from 'react';
-import type { IChatMessage } from '../../../../../utils/types/api';
-import userPhoto from '../../../../../assets/images/user.png';
+import { memo, type ReactElement } from 'react';
 import classes from './ChatMessage.module.scss';
-import { altText } from '../../../../../utils/languageLocalization/altText';
+import { Avatar } from '../../../../Common/Avatar/Avatar';
+import type { IChatMessage } from '../../../../../utils/types/api';
 
 type PropsType = {
   message: IChatMessage;
@@ -22,7 +20,7 @@ export const ChatMessage = memo<PropsType>(({ message, languageMode }): ReactEle
   return (
     <div className={classes.chatMessageBlock}>
       <p className={classes.userName}>{message.userName}</p>
-      <img className={classes.userPhoto} src={message.photo || userPhoto} alt={altText.ava[languageMode]} />
+      <Avatar avatar={message.photo} className={classes.userPhoto} languageMode={languageMode} />
       <p className={classes.userMessage}>
         {text} <span className={classes.userMessageTime}>({time})</span>
       </p>

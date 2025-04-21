@@ -2,13 +2,13 @@ import type { FC, ReactElement } from 'react';
 import classes from './App.module.scss';
 import { HeaderContainer } from './Header/HeaderContainer';
 import { Main } from './Main/Main';
+import { FooterContainer } from './Footer/FooterContainer';
 import { Preloader } from './Common/Preloader/Preloader';
 import { Error } from './Common/Error/Error';
 import { ErrorPopup } from './Common/ErrorPopup/ErrorPopup';
-import type { ErrorType, Nullable } from '../utils/types/common';
-import { FooterContainer } from './Footer/FooterContainer';
-import { errorText } from '../utils/languageLocalization/errorText';
 import { Language, TextKey } from '../utils/types/enums';
+import type { ErrorType, Nullable } from '../utils/types/common';
+import { errorText } from '../utils/languageLocalization/errorText';
 
 type PropsType = {
   isFetchingAuth: boolean;

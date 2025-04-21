@@ -1,11 +1,11 @@
 import type { FC, ReactElement } from 'react';
 import classes from './ProfileStatusText.module.scss';
 import { Preloader } from '../../../../Common/Preloader/Preloader';
-import type { ErrorType, Nullable } from '../../../../../utils/types/common';
-import { contentText } from '../../../../../utils/languageLocalization/contentText';
 import { ConnectionError } from '../../../../Common/ConnectionError/ConnectionError';
 import { ServerError } from '../../../../Common/ServerError/ServerError';
 import { TextKey } from '../../../../../utils/types/enums';
+import type { ErrorType, Nullable } from '../../../../../utils/types/common';
+import { contentText } from '../../../../../utils/languageLocalization/contentText';
 
 type PropsType = {
   status: string;

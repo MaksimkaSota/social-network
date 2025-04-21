@@ -1,37 +1,46 @@
 .publicationsBlock {
   width: 50%;
   text-align: center;
+
   &:not(:last-child) {
     border-right: 1px solid $active;
   }
+
   .title {
     @extend %title;
   }
+
   .publications {
     max-height: 170px;
     overflow-y: auto;
   }
+
   @include respond($laptopMax) {
     .publications {
       max-height: 160px;
     }
   }
+
   @include respond($laptopMin) {
     .publications {
       max-height: 150px;
     }
   }
+
   @include respond($tablet) {
     .publications {
       max-height: 140px;
     }
   }
+
   @include respond($mobile) {
     width: 100%;
+
     &:not(:last-child) {
       border-right: none;
       border-bottom: 1px solid $active;
     }
+
     .publications {
       max-height: 140px;
     }

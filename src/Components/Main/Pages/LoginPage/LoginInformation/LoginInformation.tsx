@@ -1,9 +1,8 @@
-import { memo, useState } from 'react';
-import type { ReactElement } from 'react';
+import { memo, type ReactElement, useState } from 'react';
 import classes from './LoginInformation.module.scss';
+import { copyTextOnClick } from '../../../../../utils/helpers/componentsHelpers';
 import { Language, RequestString } from '../../../../../utils/types/enums';
 import type { Nullable } from '../../../../../utils/types/common';
-import { copyTextOnClick } from '../../../../../utils/helpers/componentsHelpers';
 import { contentText } from '../../../../../utils/languageLocalization/contentText';
 import { errorText } from '../../../../../utils/languageLocalization/errorText';
 

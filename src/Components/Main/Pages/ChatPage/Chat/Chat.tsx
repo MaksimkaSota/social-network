@@ -1,8 +1,8 @@
 import type { FC, ReactElement } from 'react';
+import classes from './Chat.module.scss';
 import { ChatMessages } from '../ChatMessages/ChatMessages';
 import { ChatFormContainer } from '../ChatForm/ChatFormContainer';
 import type { IChatMessage } from '../../../../../utils/types/api';
-import classes from './Chat.module.scss';
 import type { ChannelStatus } from '../../../../../utils/types/common';
 import { contentText } from '../../../../../utils/languageLocalization/contentText';
 

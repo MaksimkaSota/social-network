@@ -1,10 +1,9 @@
-import type { FC, ReactElement } from 'react';
-import { useEffect, useRef } from 'react';
+import { type FC, type ReactElement, useEffect, useRef } from 'react';
 import classes from './Publications.module.scss';
 import { Publication } from '../Publication/Publication';
 import { PublicationFormContainer } from '../PublicationForm/PublicationFormContainer';
-import type { PublicationType } from '../../../../../utils/types/common';
 import { scrollToBottom } from '../../../../../utils/helpers/componentsHelpers';
+import type { PublicationType } from '../../../../../utils/types/common';
 
 type PropsType = {
   title: string;

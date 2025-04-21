@@ -1,25 +1,26 @@
 .addPublicationBlock {
   margin: 0 0 $marginMin 0;
+
   .fieldBlock {
     margin: 0 0 $marginMin 0;
+
     .inputPost {
       @extend %textarea;
     }
   }
+
   @include respond($laptopMax) {
-    .fieldBlock {
-      .inputPost {
-        width: 70%;
-      }
+    .fieldBlock .inputPost {
+      width: 70%;
     }
   }
+
   @include respond($laptopMin) {
-    .fieldBlock {
-      .inputPost {
-        width: 90%;
-      }
+    .fieldBlock .inputPost {
+      width: 90%;
     }
   }
+
   @include respond($mobile) {
     .sendButton {
       width: 90%;

@@ -1,7 +1,7 @@
 import type { FC, ReactElement } from 'react';
 import classes from './PublicationsPage.module.scss';
-import type { PublicationType } from '../../../../utils/types/common';
 import { Publications } from './Publications/Publications';
+import type { PublicationType } from '../../../../utils/types/common';
 import { contentText } from '../../../../utils/languageLocalization/contentText';
 
 type PropsType = {

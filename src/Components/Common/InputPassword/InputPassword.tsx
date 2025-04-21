@@ -1,12 +1,11 @@
-import { useState } from 'react';
-import type { FC, ReactElement } from 'react';
+import { type FC, type ReactElement, useState } from 'react';
 import classes from './InputPassword.module.scss';
 import { FormField } from '../FormField/FormField';
-import { FormName } from '../../../utils/types/enums';
-import { contentText } from '../../../utils/languageLocalization/contentText';
 import Eye from '../../../assets/images/eye.svg';
 import SlashEye from '../../../assets/images/eye-slash.svg';
+import { FormName } from '../../../utils/types/enums';
 import type { FormikErrorsType, FormikTouchedType, HandleChangeType } from '../../../utils/types/form';
+import { contentText } from '../../../utils/languageLocalization/contentText';
 
 type PropsType = {
   languageMode: string;

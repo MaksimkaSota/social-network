@@ -1,7 +1,7 @@
 import type { FC, ReactElement } from 'react';
 import classes from './Footer.module.scss';
-import email from '../../assets/images/email.png';
 import { ViewFormContainer } from '../Common/ViewForm/ViewFormContainer';
+import Email from '../../assets/images/email.svg';
 import { contentText } from '../../utils/languageLocalization/contentText';
 import { altText } from '../../utils/languageLocalization/altText';
 
@@ -16,7 +16,7 @@ export const Footer: FC<PropsType> = ({ languageMode, themeMode, setLanguageMode
   return (
     <footer className={classes[`footer-${themeMode}`]}>
       <div className={classes.mailContainer}>
-        <img className={classes.mail} src={email} alt={altText.mail[languageMode]} />
+        <Email className={classes.mail} alt={altText.mail[languageMode]} />
       </div>
       <div className={classes.contactsContainer}>
         <h2 className={classes.title}>{contentText.contacts[languageMode]}:</h2>

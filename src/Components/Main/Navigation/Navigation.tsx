@@ -1,7 +1,6 @@
-import { memo } from 'react';
-import type { ReactElement } from 'react';
-import cn from 'classnames';
+import { memo, type ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
+import cn from 'classnames';
 import classes from './Navigation.module.scss';
 import { RoutePath } from '../../../utils/types/enums';
 

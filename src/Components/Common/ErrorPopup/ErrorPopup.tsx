@@ -1,10 +1,9 @@
-import type { FC, ReactElement, MouseEvent, KeyboardEvent } from 'react';
-import { useEffect, useRef } from 'react';
+import { type FC, type KeyboardEvent, type MouseEvent, type ReactElement, useEffect, useRef } from 'react';
 import classes from './ErrorPopup.module.scss';
 import { Error } from '../Error/Error';
 import { Button } from '../Button/Button';
-import type { ErrorType, Nullable } from '../../../utils/types/common';
 import { KeyboardEventCode, Language } from '../../../utils/types/enums';
+import type { ErrorType, Nullable } from '../../../utils/types/common';
 import { contentText } from '../../../utils/languageLocalization/contentText';
 import { errorText } from '../../../utils/languageLocalization/errorText';
 

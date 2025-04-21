@@ -1,14 +1,12 @@
-import { memo } from 'react';
-import type { ReactElement } from 'react';
+import { memo, type ReactElement } from 'react';
 import classes from './ProfilePhoto.module.scss';
-import userPhoto from '../../../../../assets/images/user.png';
+import { Avatar } from '../../../../Common/Avatar/Avatar';
 import { InputFile } from '../../../../Common/InputFile/InputFile';
 import { Preloader } from '../../../../Common/Preloader/Preloader';
-import type { ErrorType, Nullable } from '../../../../../utils/types/common';
 import { ConnectionError } from '../../../../Common/ConnectionError/ConnectionError';
 import { ServerError } from '../../../../Common/ServerError/ServerError';
 import { TextKey } from '../../../../../utils/types/enums';
-import { altText } from '../../../../../utils/languageLocalization/altText';
+import type { ErrorType, Nullable } from '../../../../../utils/types/common';
 
 type PropsType = {
   isOwner: boolean;
@@ -28,7 +26,7 @@ export const ProfilePhoto = memo<PropsType>(
           <Preloader className={classes.photoPreloader} />
         ) : (
           <>
-            <img className={classes.userPhoto} src={photo || userPhoto} alt={altText.ava[languageMode]} />
+            <Avatar avatar={photo} className={classes.userPhoto} languageMode={languageMode} />
             <ConnectionError
               error={photoError}
               errorTextKey={TextKey.updatePhoto}

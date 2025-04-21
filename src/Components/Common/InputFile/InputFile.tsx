@@ -1,7 +1,6 @@
-import type { ChangeEvent, FC, ReactElement } from 'react';
-import { useRef, useState, useEffect } from 'react';
-import { Button } from '../Button/Button';
+import { type ChangeEvent, type FC, type ReactElement, useEffect, useRef, useState } from 'react';
 import classes from './InputFile.module.scss';
+import { Button } from '../Button/Button';
 import { contentText } from '../../../utils/languageLocalization/contentText';
 
 type PropsType = {

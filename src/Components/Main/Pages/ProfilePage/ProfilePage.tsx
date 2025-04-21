@@ -2,9 +2,9 @@ import type { FC, ReactElement } from 'react';
 import { ProfileInfoContainer } from './ProfileInfo/ProfileInfoContainer';
 import { Preloader } from '../../../Common/Preloader/Preloader';
 import { Error } from '../../../Common/Error/Error';
+import { Language } from '../../../../utils/types/enums';
 import type { ErrorType, Nullable } from '../../../../utils/types/common';
 import type { IResponseProfile } from '../../../../utils/types/api';
-import { Language } from '../../../../utils/types/enums';
 import { errorText } from '../../../../utils/languageLocalization/errorText';
 
 type PropsType = {

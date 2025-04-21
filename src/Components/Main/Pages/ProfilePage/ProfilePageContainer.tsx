@@ -1,15 +1,14 @@
-import type { FC, ReactElement } from 'react';
-import { useEffect } from 'react';
+import { type FC, type ReactElement, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getProfile, getStatus } from '../../../../redux/thunks/profile';
 import { ProfilePage } from './ProfilePage';
-import { useTypedSelector } from '../../../../hooks/useTypedSelector';
+import { useViewParameters } from '../../../../hooks/useViewParameters';
 import { useTypedDispatch } from '../../../../hooks/useTypedDispatch';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { authSelector, profileSelector, viewSelector } from '../../../../redux/selectors/selectors';
 import { isFetchingProfileSelector } from '../../../../redux/selectors/loading';
 import { profileErrorSelector } from '../../../../redux/selectors/error';
+import { getProfile, getStatus } from '../../../../redux/thunks/profile';
 import { RoutePath } from '../../../../utils/types/enums';
-import { useViewParameters } from '../../../../hooks/useViewParameters';
 
 export const ProfilePageContainer: FC = (): ReactElement => {
   const { id: authorizedUserId } = useTypedSelector(authSelector);

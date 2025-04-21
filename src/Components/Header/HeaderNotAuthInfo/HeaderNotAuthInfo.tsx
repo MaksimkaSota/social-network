@@ -1,10 +1,9 @@
-import { memo } from 'react';
-import type { ReactElement } from 'react';
-import cn from 'classnames';
+import { memo, type ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
+import cn from 'classnames';
 import classes from './HeaderNotAuthInfo.module.scss';
-import userPhoto from '../../../assets/images/user.png';
 import { Button } from '../../Common/Button/Button';
+import UserPhoto from '../../../assets/images/user.svg';
 import { Language, RoutePath } from '../../../utils/types/enums';
 import { contentText } from '../../../utils/languageLocalization/contentText';
 import { errorText } from '../../../utils/languageLocalization/errorText';
@@ -20,7 +19,7 @@ export const HeaderNotAuthInfo = memo<PropsType>(({ incorrectAuthText, languageM
 
   return (
     <div className={classes.headerNotAuthInfo}>
-      <img className={classes.userPhoto} src={userPhoto} alt={altText.ava[languageMode]} />
+      <UserPhoto className={classes.userPhoto} alt={altText.ava[languageMode]} />
       <div className={classes.container}>
         <p className={cn(classes.text, classes.incorrectAuthText)}>{incorrectText}</p>
         <NavLink to={RoutePath.login}>
